@@ -8,7 +8,7 @@ executors:
 jobs:
   build:
     executor: linux
-    working_directory: ~/project/Pacman
+    working_directory: ~/project
     steps:
       - checkout
       - run:
@@ -22,9 +22,14 @@ jobs:
             apt update
             apt install -y g++ cmake libsfml-dev
       - run:
+          name: Debug project structure
+          command: |
+            pwd
+            ls -la
+      - run:
           name: Build Project
           command: |
-            cmake -S Pacman -B build
+            cmake -S . -B build
             cmake --build build
 
   test:
