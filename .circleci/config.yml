@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Run Hello World Test
           command: |
-            mkdir -p build
+            mkdir -p build                                           
             cd build
             cmake ..
             cmake --build .
