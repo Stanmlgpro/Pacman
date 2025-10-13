@@ -8,4 +8,6 @@ include_directories(.)
 add_executable(Pacman
         Entity.cpp
         Entity.h
-        main.cpp)
+        main.cpp
+        Game.cpp
+        Game.h)
