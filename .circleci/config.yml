@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Build Project
           command: |
-            cmake -S . -B build
+            cmake -S Pacman -B build
             cmake --build build
 
   test:
