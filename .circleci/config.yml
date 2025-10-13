@@ -8,8 +8,14 @@ executors:
 jobs:
   build:
     executor: linux
+    working_directory: ~/project
     steps:
       - checkout
+      - run:
+          name: Debug project structure
+          command: |
+            pwd
+            ls -la
       - run:
           name: Install dependencies
           command: |
