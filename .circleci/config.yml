@@ -48,7 +48,13 @@ jobs:
             cd build
             cmake ..
             cmake --build .
-            ./Pacman || echo "Hello World"
+            OUTPUT=$(./Pacman)
+            if [ "$OUTPUT" = "Hello World" ]; then
+            echo "✅ Output matched: $OUTPUT"
+            else
+            echo "❌ Expected 'Hello World' but got: '$OUTPUT'"
+            exit 1
+            fi
 
 workflows:
   version: 2
