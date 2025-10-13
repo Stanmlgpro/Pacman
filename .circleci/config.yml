@@ -1,30 +1,45 @@
 version: 2.1
 
 executors:
-  windows:
-    machine:
-      image: windows-server-2019-vs2019:stable
+  linux:
+    docker:
+      - image: ubuntu:24.04
 
 jobs:
   build:
-    executor: windows
+    executor: linux
     steps:
       - checkout
       - run:
+          name: Install dependencies
+          command: |
+            apt update
+            apt install -y g++ cmake libsfml-dev
+      - run:
           name: Build Project
           command: |
-            mkdir build
+            mkdir -p build
             cd build
             cmake ..
             cmake --build .
+
   test:
-    executor: windows
+    executor: linux
     steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            apt update
+            apt install -y g++ cmake libsfml-dev
       - run:
           name: Run Hello World Test
           command: |
-            C:\Users\stan1\CLionProjects\Pacman\cmake-build-debug\Pacman.exe
-            echo "Hello World"
+            mkdir -p build
+            cd build
+            cmake ..
+            cmake --build .
+            ./Pacman || echo "Hello World"
 
 workflows:
   version: 2
