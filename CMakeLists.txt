@@ -25,6 +25,8 @@ add_executable(Pacman
         LevelState.cpp
         LevelState.h
         PausedState.cpp
-        PausedState.h)
+        PausedState.h
+        World.h
+        World.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

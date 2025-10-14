@@ -5,10 +5,12 @@
 #include "LevelState.h"
 #include "PausedState.h"
 #include "StateManager.h"
+#include "World.h"
 
 LevelState::LevelState(std::shared_ptr<StateManager> statemanager) {
     this->statemanager = statemanager;
-    std::cout << "in a level" << std::endl;
+    this->world = std::make_unique<World>("map.txt");
+    std::cout << "new level and world created" << std::endl;
 }
 
 void LevelState::HandleEvent(const sf::Event &e) {
@@ -24,6 +26,7 @@ void LevelState::HandleEvent(const sf::Event &e) {
 }
 
 void LevelState::Update(float dt) {
+
 }
 
 void LevelState::Render(sf::RenderWindow& window) {

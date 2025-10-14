@@ -6,6 +6,7 @@
 #define PACMAN_LEVELSTATE_H
 #include "State.h"
 
+class World;
 class LevelState final : public State {
 public:
     LevelState(std::shared_ptr<StateManager> statemanager);
@@ -16,7 +17,7 @@ public:
 
     ~LevelState() override;
 private:
-    // std::unique_ptr<World> world;
+    std::unique_ptr<World> world;
     std::shared_ptr<StateManager> statemanager;
 };
 
