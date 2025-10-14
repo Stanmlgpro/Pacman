@@ -8,6 +8,8 @@
 #include "Entity.h"
 #include <memory>
 
+#include "StateManager.h"
+
 class Game {
 public:
     Game();
@@ -16,7 +18,7 @@ public:
 
     ~Game();
 private:
-    std::vector<std::shared_ptr<Entity*>> entities;
+    std::unique_ptr<StateManager*> StateManager;
     float dt = 1;
 };
 

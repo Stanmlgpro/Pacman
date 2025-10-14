@@ -10,4 +10,6 @@ add_executable(Pacman
         Entity.h
         main.cpp
         Game.cpp
-        Game.h)
+        Game.h
+        StateManager.cpp
+        StateManager.h)
