@@ -7,13 +7,13 @@
 #include "LevelState.h"
 
 MenuState::MenuState(std::shared_ptr<StateManager> statemanager) {
-    std::cout << "in the menu" << std::endl;
     this->statemanager = statemanager;
 }
 
 void MenuState::HandleEvent(const sf::Event &e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Enter) {
+            std::cout << "making new level" << std::endl;
             statemanager->PushState(std::make_unique<LevelState>(statemanager));
         }
     }

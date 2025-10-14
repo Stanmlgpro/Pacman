@@ -15,6 +15,7 @@ PausedState::PausedState(std::shared_ptr<StateManager> statemanager) {
 void PausedState::HandleEvent(const sf::Event &e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
+            std::cout << "going to menu screen" << std::endl;
             statemanager->PopState();
             statemanager->PopState();
         }
