@@ -16,6 +16,14 @@ add_executable(Pacman
         Game.cpp
         Game.h
         StateManager.cpp
-        StateManager.h)
+        StateManager.h
+        State.cpp
+        State.h
+        MenuState.cpp
+        MenuState.h
+        LevelState.cpp
+        LevelState.h
+        PausedState.cpp
+        PausedState.h)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

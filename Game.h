@@ -4,10 +4,7 @@
 
 #ifndef PACMAN_GAME_H
 #define PACMAN_GAME_H
-#include <vector>
-#include "Entity.h"
 #include <memory>
-#include <SFML/Graphics.hpp>
 
 #include "StateManager.h"
 
@@ -16,14 +13,16 @@ public:
     Game();
 
     void run();
-    void Update(float dt);
-    void render();
 
     ~Game();
 private:
-    std::unique_ptr<StateManager*> Statemanager;
-    sf::RenderWindow* window;
-    float dt = 1;
+    void Update(float dt) const;
+    void Render();
+    void CheckInput();
+
+    std::shared_ptr<StateManager> state_manager;
+    sf::RenderWindow window;
+    sf::Clock time;
 };
 
 
