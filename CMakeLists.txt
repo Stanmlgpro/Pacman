@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 project(Pacman)
 
+set(SFML_DIR "/opt/SFML-2.6.1/lib/cmake/SFML")
+find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
+include_directories(/opt/SFML-2.6.1/include)
+
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
@@ -13,3 +17,5 @@ add_executable(Pacman
         Game.h
         StateManager.cpp
         StateManager.h)
+
+target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

@@ -7,6 +7,7 @@
 #include <vector>
 #include "Entity.h"
 #include <memory>
+#include <SFML/Graphics.hpp>
 
 #include "StateManager.h"
 
@@ -14,11 +15,14 @@ class Game {
 public:
     Game();
 
+    void run();
     void Update(float dt);
+    void render();
 
     ~Game();
 private:
-    std::unique_ptr<StateManager*> StateManager;
+    std::unique_ptr<StateManager*> Statemanager;
+    sf::RenderWindow* window;
     float dt = 1;
 };
 
