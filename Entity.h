@@ -5,6 +5,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 #include <memory>
+#include <vector>
 
 struct Position {
     float x;
@@ -15,12 +16,13 @@ class Entity {
 public:
     Entity() = default;
 
-    virtual void Update(float dt) = 0;
+    virtual void Update(float dt);
     virtual void Interact(std::shared_ptr<Entity> other) = 0;
 
     ~Entity() = default;
 private:
     Position position;
+    std::vector<int> direction;
 };
 
 

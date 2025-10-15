@@ -19,7 +19,8 @@ public:
 private:
     std::shared_ptr<Entity> pacman;
     std::vector<std::shared_ptr<Entity>> ghosts;
-    std::vector<std::shared_ptr<Entity>> non_movables;
+    std::vector<std::shared_ptr<Entity>> walls;
+    std::vector<std::shared_ptr<Entity>> consumables;
 };
 
 

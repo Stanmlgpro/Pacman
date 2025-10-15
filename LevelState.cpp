@@ -9,7 +9,7 @@
 
 LevelState::LevelState(std::shared_ptr<StateManager> statemanager) {
     this->statemanager = statemanager;
-    this->world = std::make_unique<World>("map.txt");
+    this->world = std::make_unique<World>("../map.txt");
     std::cout << "new level and world created" << std::endl;
 }
 
