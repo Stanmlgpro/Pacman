@@ -10,12 +10,7 @@ class Wall : public Entity {
 public:
     Wall(int x, int y);
 
-    void Update(float dt) override;
-    void Interact(std::shared_ptr<Entity> other) override;
-
-    ~Wall();
-private:
-    Position position;
+    ~Wall() override = default;
 };
 
 

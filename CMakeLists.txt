@@ -29,6 +29,12 @@ add_executable(Pacman
         World.h
         World.cpp
         Wall.cpp
-        Wall.h)
+        Wall.h
+        Orb.cpp
+        Orb.h
+        Ghost.cpp
+        Ghost.h
+        Pacman.cpp
+        Pacman.h)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

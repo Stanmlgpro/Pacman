@@ -8,3 +8,12 @@ void Entity::Update(float dt) {
     position.x += direction[0]*dt;
     position.y += direction[1]*dt;
 }
+
+Position Entity::getPosition() const {
+    return position;
+}
+
+void Entity::setPosition(float x, float y) {
+    position.x = x;
+    position.y = y;
+}
