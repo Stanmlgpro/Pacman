@@ -3,6 +3,9 @@
 //
 
 #include "Pacman.h"
+
+#include <SFML/System/Vector2.hpp>
+
 #include "Ghost.h"
 #include "Orb.h"
 #include "Wall.h"
@@ -10,6 +13,9 @@
 Pacman::Pacman(int x, int y) {
     position.x = x;
     position.y = y;
+    direction.reserve(2);
+    direction.push_back(-1);
+    direction.push_back(0);
 }
 
 std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::Interact(Pacman& pacman) {

@@ -6,7 +6,7 @@
 #define PACMAN_WALL_H
 #include "Entity.h"
 
-class Wall : public Entity {
+class Wall : public Entity, public std::enable_shared_from_this<Wall> {
 public:
     Wall(int x, int y);
 

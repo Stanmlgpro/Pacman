@@ -17,7 +17,7 @@ class Orb;
 class Ghost;
 class Pacman;
 
-class Entity : public std::enable_shared_from_this<Entity> {
+class Entity {
 public:
     Entity() = default;
 

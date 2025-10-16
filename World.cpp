@@ -8,6 +8,8 @@
 #include "Wall.h"
 #include "Pacman.h"
 #include <algorithm>
+#include "Ghost.h"
+#include "Orb.h"
 
 World::World(std::string filename) {
     std::ifstream file(filename);
@@ -18,19 +20,43 @@ World::World(std::string filename) {
     }
     int x = 0;
     int y = 0;
+    int id;
     while (getline(file, line)) {
+        wallGrid.push_back(std::vector<bool>());
         for (auto c : line) {
-            x++;
             if (c == '#') {
                 entities.push_back(std::make_shared<Wall>(x, y));
                 std::cout << "added wall at: " << x << ", " << y << std::endl;
+                wallGrid[y].push_back(true);
+
             }
+            if (c == '.') {
+                entities.push_back(std::make_shared<Orb>(x, y, false));
+                std::cout << "added little_orb at: " << x << ", " << y << std::endl;
+                wallGrid[y].push_back(false);
+            }
+            if (c == 'o') {
+                entities.push_back(std::make_shared<Orb>(x, y, true));
+                std::cout << "added big_orb at: " << x << ", " << y << std::endl;
+                wallGrid[y].push_back(false);
+            }
+            if (c == 'P') {
+                pacman = std::make_shared<Pacman>(x, y);
+                std::cout << "added pacman at: " << x << ", " << y << std::endl;
+                wallGrid[y].push_back(false);
+            }
+            if (c == 'G') {
+                entities.push_back(std::make_shared<Ghost>(x, y, pacman, wallGrid, id));
+                std::cout << "added ghost at: " << x << ", " << y << std::endl;
+                id++;
+                wallGrid[y].push_back(false);
+            }
+            x++;
         }
         y++;
         x = 0;
     }
     file.close();
-    pacman = std::make_shared<Pacman>(x, y);
 }
 
 bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
@@ -40,6 +66,7 @@ bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
     float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - entPos.x);
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - entPos.y);
 
+    std::cout << (dx < 0.5f && dy < 0.5f) << std::endl;
     return (dx < 0.5f && dy < 0.5f);
 }
 
@@ -53,4 +80,5 @@ void World::Update(float dt) const {
         e->Update(dt);
     }
     pacman->Update(dt);
+    std::cout << pacman->getPosition().x << ", " << pacman->getPosition().y << std::endl;
 }
