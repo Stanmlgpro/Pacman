@@ -26,7 +26,7 @@ void LevelState::HandleEvent(const sf::Event &e) {
 }
 
 void LevelState::Update(float dt) {
-
+    world->Update(dt);
 }
 
 void LevelState::Render(sf::RenderWindow& window) {

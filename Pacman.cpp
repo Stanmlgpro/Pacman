@@ -5,19 +5,24 @@
 #include "Pacman.h"
 #include "Ghost.h"
 #include "Orb.h"
+#include "Wall.h"
 
 Pacman::Pacman(int x, int y) {
     position.x = x;
     position.y = y;
 }
 
-void Pacman::InteractWithWall() {
+std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::Interact(Pacman& pacman) {
+    return std::make_tuple(nullptr, false, false);
+} //function that will never be called
+std::tuple<std::shared_ptr<Entity>, bool, bool>  Pacman::InteractWith(std::shared_ptr<Wall> wall) {
     moving = false;
+    return std::make_tuple(nullptr, false, false);
 }
-std::shared_ptr<Entity> Pacman::InteractWithOrb(std::shared_ptr<Entity> orb) {
-    return orb;
+std::tuple<std::shared_ptr<Entity>, bool, bool>  Pacman::InteractWith(std::shared_ptr<Orb> orb) {
+    return std::make_tuple(orb, true, true);
 }
-std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::InteractWithGhost(std::shared_ptr<Entity> ghost) {
+std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::InteractWith(std::shared_ptr<Ghost> ghost) {
     if (ghost->getFeared()) return std::make_tuple(ghost, false, false);
     lives--;
     if (lives == 0) return std::make_tuple(nullptr, false, true);

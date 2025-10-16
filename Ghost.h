@@ -8,9 +8,11 @@
 
 class Ghost : public Entity {
 public:
-    Ghost(int x, int y, std::shared_ptr<PacMan> pacman, std::vector<std::shared_ptr<Wall>> walls, int id);
+    Ghost(int x, int y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id);
 
     void CalculateNextTurn(float dt);
+
+    std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override;
 
     void Update(float dt) override;
 
@@ -19,8 +21,8 @@ public:
 
     ~Ghost() override = default;
 private:
-    std::shared_ptr<PacMan> pacman;
-    std::vector<std::shared_ptr<Wall>> walls;
+    std::shared_ptr<Pacman> pacman;
+    std::vector<std::vector<bool>> wallgrid;
     bool feared = false;
     int id;
 };

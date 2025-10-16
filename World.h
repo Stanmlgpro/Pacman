@@ -12,15 +12,14 @@ class World {
 public:
     explicit World(std::string filename);
 
-    void Update(float dt);
-    bool CollidesWithPacman(std::shared_ptr<Entity> entity) const;
+    void Update(float dt) const;
+    bool CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const;
 
     ~World() = default;
 private:
-    std::vector<std::shared_ptr<Entity>> walls;
-    std::vector<std::shared_ptr<Entity>> orbs;
-    std::vector<std::shared_ptr<Entity>> ghosts;
-    std::shared_ptr<Entity> pacman;
+    std::vector<std::shared_ptr<Entity>> entities;
+    std::shared_ptr<Pacman> pacman;
+    std::vector<std::vector<bool>> wallGrid;
 };
 
 

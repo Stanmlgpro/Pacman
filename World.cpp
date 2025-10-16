@@ -22,7 +22,7 @@ World::World(std::string filename) {
         for (auto c : line) {
             x++;
             if (c == '#') {
-                walls.push_back(std::make_shared<Wall>(x, y));
+                entities.push_back(std::make_shared<Wall>(x, y));
                 std::cout << "added wall at: " << x << ", " << y << std::endl;
             }
         }
@@ -30,39 +30,27 @@ World::World(std::string filename) {
         x = 0;
     }
     file.close();
+    entities.push_back(std::make_shared<Pacman>(x, y));
 }
 
-bool World::CollidesWithPacman(std::shared_ptr<Entity> entity) const {
+bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
     Position pacPos = pacman->getPosition();
     Position entPos = entity->getPosition();
 
-    float dx = std::abs(pacPos.x - entPos.x);
-    float dy = std::abs(pacPos.y - entPos.y);
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - entPos.x);
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - entPos.y);
 
     return (dx < 0.5f && dy < 0.5f);
 }
 
-void World::Update(float dt) {
-
+void World::Update(float dt) const {
     bool fearing = false;
-    for (auto wall : walls) {
-        if (CollidesWithPacman(wall)) pacman->InteractWithWall();
-    }
-    for (auto orb : orbs) {
-        if (CollidesWithPacman(orb)) {
-            auto to_remove = pacman->InteractWithOrb(orb);
-            fearing = orb->isBig();
-            if (to_remove) orbs.erase(std::remove(orbs.begin(), orbs.end(), to_remove), orbs.end());
+    for (auto e : entities) {
+        if (CollidesWithPacman(e, dt)) {
+            auto [to_remove, checker1, checker2] = e->Interact(*pacman);
+            std::cout << "pacman is colliding" << std::endl;
         }
-    }
-    for (auto ghost : ghosts) {
-        if (fearing) ghost->setFeared(true);
-        if (CollidesWithPacman(ghost)) {
-            auto result = pacman->InteractWithGhost(ghost);
-        }
+        e->Update(dt);
     }
     pacman->Update(dt);
-    for (auto ghost : ghosts) {
-        ghost->Update(dt);
-    }
 }

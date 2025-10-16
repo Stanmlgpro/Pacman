@@ -10,6 +10,8 @@ class Wall : public Entity {
 public:
     Wall(int x, int y);
 
+    std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override;
+
     ~Wall() override = default;
 };
 

@@ -17,3 +17,11 @@ void Entity::setPosition(float x, float y) {
     position.x = x;
     position.y = y;
 }
+
+std::vector<int> Entity::getDirection() const {
+    return direction;
+}
+
+void Entity::setDirection(std::vector<int> direction) {
+    this->direction = direction;
+}

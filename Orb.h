@@ -10,6 +10,8 @@ class Orb : public Entity {
 public:
     Orb(int x, int y, bool big);
 
+    std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override;
+
     bool isBig() const override;
 
     ~Orb() override = default;

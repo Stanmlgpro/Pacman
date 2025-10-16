@@ -3,12 +3,13 @@
 //
 
 #include "Ghost.h"
+#include "Pacman.h"
 
-Ghost::Ghost(int x, int y, std::shared_ptr<PacMan> pacman, std::vector<std::shared_ptr<Wall>> walls, int id) {
+Ghost::Ghost(int x, int y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) {
     position.x = x;
     position.y = y;
     this->pacman = pacman;
-    this->walls = walls;
+    this->wallgrid = wallgrid;
     this->id = id;
 }
 
@@ -17,6 +18,10 @@ void Ghost::CalculateNextTurn(float dt) {
     // If we aren't one of the ghost that use it just take a random value by chance
     // direction[0] = -1|0|1
     // direction[1] = -1|0|1
+}
+
+std::tuple<std::shared_ptr<Entity>, bool, bool> Ghost::Interact(Pacman& pacman) {
+    return pacman.InteractWith(std::static_pointer_cast<Ghost>(shared_from_this()));
 }
 
 void Ghost::Update(float dt) {

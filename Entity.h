@@ -15,25 +15,25 @@ struct Position {
 class Wall;
 class Orb;
 class Ghost;
-class PacMan;
+class Pacman;
 
-class Entity {
+class Entity : public std::enable_shared_from_this<Entity> {
 public:
     Entity() = default;
 
     virtual void Update(float dt);
+    virtual std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) = 0;
 
-    virtual void InteractWithWall() {};
-    virtual std::shared_ptr<Entity> InteractWithOrb(std::shared_ptr<Entity> orb) {return nullptr;};
-    virtual std::tuple<std::shared_ptr<Entity>, bool, bool> InteractWithGhost(std::shared_ptr<Entity> ghost) {return std::make_tuple(nullptr, false, false);};
+    virtual bool isBig() const {return true;}
 
-    virtual bool isBig() const {return true;};
-
-    virtual void setFeared(bool feared) {};
-    virtual bool getFeared() {return true;};
+    virtual void setFeared(bool feared) {}
+    virtual bool getFeared() {return true;}
 
     Position getPosition() const;
     void setPosition(float x, float y);
+
+    std::vector<int> getDirection() const;
+    void setDirection(std::vector<int> direction);
 
     virtual ~Entity() = default;
 protected:
