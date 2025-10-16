@@ -30,7 +30,7 @@ World::World(std::string filename) {
         x = 0;
     }
     file.close();
-    entities.push_back(std::make_shared<Pacman>(x, y));
+    pacman = std::make_shared<Pacman>(x, y);
 }
 
 bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
