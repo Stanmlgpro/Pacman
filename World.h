@@ -12,7 +12,7 @@ class World {
 public:
     explicit World(std::string filename);
 
-    void Update(float dt) const;
+    void Update(float dt);
     bool CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const;
 
     ~World() = default;

@@ -66,19 +66,25 @@ bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
     float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - entPos.x);
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - entPos.y);
 
-    std::cout << (dx < 0.5f && dy < 0.5f) << std::endl;
     return (dx < 0.5f && dy < 0.5f);
 }
 
-void World::Update(float dt) const {
+void World::Update(float dt) {
+    std::vector<std::shared_ptr<Entity>> removeables;
     bool fearing = false;
     for (auto e : entities) {
         if (CollidesWithPacman(e, dt)) {
             auto [to_remove, checker1, checker2] = e->Interact(*pacman);
-            std::cout << "pacman is colliding" << std::endl;
+            if (to_remove) removeables.push_back(to_remove);
+            if (checker1 && checker2) fearing = true;
+            if (checker1) {/* restart world*/}
+            if (checker2) {/* game over*/}
         }
         e->Update(dt);
     }
     pacman->Update(dt);
     std::cout << pacman->getPosition().x << ", " << pacman->getPosition().y << std::endl;
+    for (auto r : removeables) {
+        entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
+    }
 }

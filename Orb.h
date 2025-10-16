@@ -6,7 +6,7 @@
 #define PACMAN_ORB_H
 #include "Entity.h"
 
-class Orb : public Entity {
+class Orb : public Entity, public std::enable_shared_from_this<Orb> {
 public:
     Orb(int x, int y, bool big);
 

@@ -6,7 +6,7 @@
 #define PACMAN_GHOST_H
 #include "Entity.h"
 
-class Ghost : public Entity {
+class Ghost : public Entity, public std::enable_shared_from_this<Ghost> {
 public:
     Ghost(int x, int y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id);
 

@@ -6,7 +6,7 @@
 #define PACMAN_PACMAN_H
 #include "Entity.h"
 
-class Pacman : public Entity {
+class Pacman : public Entity, public std::enable_shared_from_this<Pacman> {
 public:
     Pacman(int x, int y);
 
