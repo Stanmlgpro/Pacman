@@ -8,10 +8,18 @@
 #include <string>
 #include "Entity.h"
 
+enum class my_enum {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
+
 class World {
 public:
     explicit World(std::string filename);
 
+    void MovePacman();
     void Update(float dt);
     bool CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const;
 

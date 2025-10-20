@@ -19,8 +19,10 @@ public:
 
     int getLives() const;
 
+    void setDirection(std::vector<int> direction) override;
     ~Pacman() override = default;
 private:
+    std::vector<int> direction_buffer;
     bool moving = true;
     int lives = 3;
 };
