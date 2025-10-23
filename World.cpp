@@ -66,7 +66,7 @@ bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
     float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - entPos.x);
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - entPos.y);
 
-    return (dx < 0.5f && dy < 0.5f);
+    return (dx < 1.f && dy < 1.f);
 }
 
 void World::Update(float dt) {
