@@ -38,6 +38,10 @@ std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::InteractWith(std::shared
     return std::make_tuple(nullptr, true, false);
 }
 
+void Pacman::setDirection(std::vector<int> direction) {
+    direction_buffer = direction;
+}
+
 void Pacman::Update(float dt) {
     if (moving) Entity::Update(dt);
     moving = true;

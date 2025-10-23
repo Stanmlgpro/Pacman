@@ -33,7 +33,7 @@ public:
     void setPosition(float x, float y);
 
     std::vector<int> getDirection() const;
-    void setDirection(std::vector<int> direction);
+    virtual void setDirection(std::vector<int> direction);
 
     virtual ~Entity() = default;
 protected:

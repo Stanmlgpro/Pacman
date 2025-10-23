@@ -5,8 +5,8 @@
 #ifndef PACMAN_LEVELSTATE_H
 #define PACMAN_LEVELSTATE_H
 #include "State.h"
+#include "World.h"
 
-class World;
 class LevelState final : public State {
 public:
     LevelState(std::shared_ptr<StateManager> statemanager);
