@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.28)
 project(Pacman)
 
-set(SFML_DIR "/opt/SFML-2.6.1/lib/cmake/SFML")
+#set(SFML_DIR "/opt/SFML-2.6.1/lib/cmake/SFML")
 set(CMAKE_CXX_FLAGS, "-Wall -Werror -fsanitize=address -g")
-#set(SFML_DIR "C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/cmake/SFML")
+set(SFML_DIR "C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/cmake/SFML")
 find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
 include_directories(/opt/SFML-2.6.1/include)
 

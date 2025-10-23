@@ -15,6 +15,11 @@ public:
     std::tuple<std::shared_ptr<Entity>, bool, bool> InteractWith(std::shared_ptr<Orb> orb); // returns true, true if we ate a big orb
     std::tuple<std::shared_ptr<Entity>, bool, bool> InteractWith(std::shared_ptr<Ghost> ghost); // returns ghost if needed to be destroyed bool1 : reset, bool2 : game over
 
+    void Up();
+    void Down();
+    void Left();
+    void Right();
+
     void Update(float dt) override;
 
     int getLives() const;
