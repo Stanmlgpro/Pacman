@@ -90,3 +90,13 @@ void World::Update(float dt) {
         entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
     }
 }
+
+std::vector<std::shared_ptr<Entity>> World::getEntities() {
+    return entities;
+}
+
+void World::Render() {
+    for (auto entity : entities) {
+        entity->Draw();
+    }
+}

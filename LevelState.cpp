@@ -31,6 +31,7 @@ void LevelState::Update(float dt) {
 }
 
 void LevelState::Render(sf::RenderWindow& window) {
+    world->Render();
 }
 
 LevelState::~LevelState() = default;

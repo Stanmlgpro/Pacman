@@ -6,6 +6,7 @@
 #define ENTITY_H
 #include <memory>
 #include <vector>
+#include "View.h"
 
 struct Position {
     float x;
@@ -22,9 +23,14 @@ public:
     Entity() = default;
 
     virtual void Update(float dt);
+
+    void Draw();
+
     virtual std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) = 0;
 
     virtual bool isBig() const {return true;}
+
+    void setView(std::unique_ptr<View> view);
 
     virtual void setFeared(bool feared) {}
     virtual bool getFeared() {return true;}
@@ -39,6 +45,7 @@ public:
 protected:
     Position position;
     std::vector<int> direction;
+    std::unique_ptr<View> view;
 };
 
 

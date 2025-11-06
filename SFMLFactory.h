@@ -14,7 +14,7 @@ class Pacman;
 
 class SFMLFactory : public EntityFactory {
 public:
-    SFMLFactory(sf::RenderWindow& window);
+    SFMLFactory(sf::RenderWindow& window, std::string texture_input);
     std::shared_ptr<Entity> createWall(int x, int y) override;
     std::shared_ptr<Entity> createGhost(int x, int y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id) override;
     std::shared_ptr<Entity> createOrb(int x, int y) override;
@@ -23,6 +23,7 @@ public:
     ~SFMLFactory() override = default;
 private:
     sf::RenderWindow& window;
+    sf::Texture texture;
 };
 
 #endif //SFMLFACTORY_H

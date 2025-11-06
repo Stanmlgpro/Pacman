@@ -9,7 +9,7 @@
 #include "MenuState.h"
 
 Game::Game() : window(sf::VideoMode(800, 600), "Pac-Man") {
-    entity_factory = std::make_unique<SFMLFactory>(window);
+    entity_factory = std::make_unique<SFMLFactory>(window, "../pacman.png");
     state_manager = std::make_unique<StateManager>(entity_factory);
     state_manager->PushState(MENU);
 }
@@ -29,7 +29,6 @@ void Game::CheckInput() {
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window.close();
-
         state_manager->HandleEvent(event);
     }
 }

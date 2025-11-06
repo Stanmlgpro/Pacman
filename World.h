@@ -24,6 +24,10 @@ public:
     void Update(float dt);
     bool CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const;
 
+    void Render();
+
+    std::vector<std::shared_ptr<Entity>> getEntities();
+
     ~World() = default;
 private:
     std::vector<std::shared_ptr<Entity>> entities;

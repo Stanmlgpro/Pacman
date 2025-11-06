@@ -7,11 +7,16 @@
 #include "Ghost.h"
 #include "Orb.h"
 #include "Pacman.h"
+#include "SFMLWallView.h"
 
-SFMLFactory::SFMLFactory(sf::RenderWindow& window) : window(window) {}
+SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input) : window(window) {
+    if (!texture.loadFromFile(texture_input))
+        throw std::runtime_error("Failed to load textures: " + texture_input);
+}
 
 std::shared_ptr<Entity> SFMLFactory::createWall(int x, int y) {
     auto wall = std::make_shared<Wall>(x, y);
+    wall->setView(std::make_unique<SFMLWallView>(texture, wall, window));
     return wall;
 }
 std::shared_ptr<Entity> SFMLFactory::createOrb(int x, int y) {

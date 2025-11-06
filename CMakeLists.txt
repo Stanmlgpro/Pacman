@@ -40,6 +40,11 @@ add_executable(Pacman
         Camera.cpp
         EntityFactory.h
         EntityFactory.cpp
-        SFMLFactory.cpp)
+        SFMLFactory.cpp
+        View.h
+        View.cpp
+        SFMLView.cpp
+        SFMLWallView.h
+        SFMLWallView.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)
