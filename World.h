@@ -9,7 +9,7 @@
 #include "Entity.h"
 
 class EntityFactory;
-enum class my_enum {
+enum MOVE {
     UP,
     DOWN,
     LEFT,
@@ -24,6 +24,7 @@ public:
     bool CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const;
 
     void Render();
+    void movePacman(MOVE movement);
 
     std::vector<std::shared_ptr<Entity>> getEntities();
 

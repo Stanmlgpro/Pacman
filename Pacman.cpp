@@ -13,7 +13,7 @@ Pacman::Pacman(float x, float y) {
     position.x = x;
     position.y = y;
     direction.reserve(2);
-    direction.push_back(-1);
+    direction.push_back(1);
     direction.push_back(0);
     direction_buffer.reserve(2);
     direction_buffer.push_back(0);
@@ -53,18 +53,18 @@ int Pacman::getLives() const {
 }
 
 void Pacman::Up() {
-    direction_buffer[0] = 0;
-    direction_buffer[1] = -1;
+    direction[0] = 0;
+    direction[1] = -1;
 }
 void Pacman::Down() {
-    direction_buffer[0] = 0;
-    direction_buffer[1] = 1;
+    direction[0] = 0;
+    direction[1] = 1;
 }
 void Pacman::Left() {
-    direction_buffer[0] = -1;
-    direction_buffer[1] = 0;
+    direction[0] = -1;
+    direction[1] = 0;
 }
 void Pacman::Right() {
-    direction_buffer[0] = 1;
-    direction_buffer[1] = 0;
+    direction[0] = 1;
+    direction[1] = 0;
 }

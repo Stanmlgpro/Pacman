@@ -44,17 +44,21 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
             float normX = (static_cast<float>(x) / (width - 1)) * 2.f - 1.f;
             float normY = (static_cast<float>(y) / (height - 1)) * 2.f - 1.f;
 
-            if (c == '#')
+            if (c == '#') {
                 entities.push_back(entity_factory->createWall(normX, normY));
-            else if (c == '.')
+            }
+            else if (c == '.') {
                 entities.push_back(entity_factory->createOrb(normX, normY));
-            else if (c == 'o')
+            }
+            else if (c == 'o') {
                 entities.push_back(entity_factory->createBigOrb(normX, normY));
-            else if (c == 'P')
+            }
+            else if (c == 'P') {
                 pacman = entity_factory->createPacman(normX, normY);
-            else if (c == 'G')
+            }
+            else if (c == 'G') {
                 entities.push_back(entity_factory->createGhost(normX, normY, pacman, wallGrid, id++));
-
+            }
             wallGrid[y].push_back(c == '#');
         }
         y++;
@@ -69,7 +73,7 @@ bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
     float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - entPos.x);
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - entPos.y);
 
-    return (dx < 1.f && dy < 1.f);
+    return (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size());
 }
 
 void World::Update() {
@@ -103,4 +107,20 @@ void World::Render() {
     for (auto entity : entities) {
         entity->Draw();
     }
+    pacman->Draw();
+}
+
+void World::movePacman(MOVE movement) {
+    if (movement == UP) {
+        pacman->Up();
+    }
+    if (movement == DOWN) {
+        pacman->Down();
+    }if (movement == LEFT) {
+        pacman->Left();
+    }
+    if (movement == RIGHT) {
+        pacman->Right();
+    }
+
 }

@@ -18,10 +18,14 @@ void LevelState::HandleEvent(const sf::Event &e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
             statemanager->PushState(PAUSED);
-        }
-        else {
-            std::cout << e.key.code << std::endl;
-            std::cout << "pressed while playing the game" << std::endl;
+        } else if (e.key.code == sf::Keyboard::Up) {
+            world->movePacman(UP);
+        } else if (e.key.code == sf::Keyboard::Down) {
+            world->movePacman(DOWN);
+        } else if (e.key.code == sf::Keyboard::Left) {
+            world->movePacman(LEFT);
+        } else if (e.key.code == sf::Keyboard::Right) {
+            world->movePacman(RIGHT);
         }
     }
 }

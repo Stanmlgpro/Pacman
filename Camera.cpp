@@ -13,7 +13,7 @@ Camera::Camera(float Screenheight, float Screenwidth) {
 
 Position Camera::worldToPixel(float normX, float normY) const {
     float pixelX = (normX + 1.f) * 0.5f * screenwidth;
-    float pixelY = (1.f - (normY + 1.f) * 0.5f) * screenheight;
+    float pixelY = (1.f - (-normY + 1.f) * 0.5f) * screenheight;
     return { pixelX, pixelY };
 }
 
