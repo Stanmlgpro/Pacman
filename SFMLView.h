@@ -10,7 +10,7 @@
 
 class SFMLView : public View {
 public:
-    SFMLView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window);
+    SFMLView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
     void Update(float dt) override = 0;
 

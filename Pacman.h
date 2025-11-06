@@ -8,7 +8,7 @@
 
 class Pacman : public Entity, public std::enable_shared_from_this<Pacman> {
 public:
-    Pacman(int x, int y);
+    Pacman(float x, float y);
 
     std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override; //should never be called
     std::tuple<std::shared_ptr<Entity>, bool, bool>  InteractWith(std::shared_ptr<Wall> wall);

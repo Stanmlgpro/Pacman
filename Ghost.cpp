@@ -5,7 +5,7 @@
 #include "Ghost.h"
 #include "Pacman.h"
 
-Ghost::Ghost(int x, int y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) {
+Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) {
     position.x = x;
     position.y = y;
     this->pacman = pacman;

@@ -6,7 +6,7 @@
 
 #include "Pacman.h"
 
-Orb::Orb(int x, int y, bool big) {
+Orb::Orb(float x, float y, bool big) {
     position.x = x;
     position.y = y;
     this->big = big;

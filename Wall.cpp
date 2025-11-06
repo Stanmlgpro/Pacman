@@ -5,7 +5,7 @@
 #include "Wall.h"
 #include "Pacman.h"
 
-Wall::Wall(int x, int y) {
+Wall::Wall(float x, float y) {
     position.x = x;
     position.y = y;
 }

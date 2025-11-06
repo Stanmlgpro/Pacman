@@ -6,17 +6,21 @@
 #define ENTITYFACTORY_H
 #include <memory>
 #include <vector>
+#include "Camera.h"
 
 class Entity;
 class Pacman;
 class EntityFactory {
 public:
-    virtual std::shared_ptr<Entity> createWall(int x, int y) = 0;
-    virtual std::shared_ptr<Entity> createGhost(int x, int y, std::shared_ptr<Pacman>, std::vector<std::vector<bool>> wallGrid, int id) = 0;
-    virtual std::shared_ptr<Entity> createOrb(int x, int y) = 0;
-    virtual std::shared_ptr<Entity> createBigOrb(int x, int y) = 0;
-    virtual std::shared_ptr<Pacman> createPacman(int x, int y) = 0;
+    virtual std::shared_ptr<Entity> createWall(float x, float y) = 0;
+    virtual std::shared_ptr<Entity> createGhost(float x, float y, std::shared_ptr<Pacman>, std::vector<std::vector<bool>> wallGrid, int id) = 0;
+    virtual std::shared_ptr<Entity> createOrb(float x, float y) = 0;
+    virtual std::shared_ptr<Entity> createBigOrb(float x, float y) = 0;
+    virtual std::shared_ptr<Pacman> createPacman(float x, float y) = 0;
+    virtual std::shared_ptr<Camera> getCamera() = 0;
     virtual ~EntityFactory() = default;
+protected:
+    std::shared_ptr<Camera> camera;
 };
 
 #endif //ENTITYFACTORY_H

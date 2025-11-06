@@ -8,7 +8,7 @@
 
 class Orb : public Entity, public std::enable_shared_from_this<Orb> {
 public:
-    Orb(int x, int y, bool big);
+    Orb(float x, float y, bool big);
 
     std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override;
 

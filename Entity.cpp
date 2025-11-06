@@ -14,7 +14,6 @@ void Entity::Update(float dt) {
 void Entity::Draw() {
     if (view) {
         view->Draw();
-        std::cout << "tried to draw an entity" << std::endl;
     }
 }
 

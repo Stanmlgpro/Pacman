@@ -8,8 +8,9 @@
 #include "SFMLFactory.h"
 #include "MenuState.h"
 
-Game::Game() : window(sf::VideoMode(800, 600), "Pac-Man") {
-    entity_factory = std::make_unique<SFMLFactory>(window, "../pacman.png");
+Game::Game() : window(sf::VideoMode(600, 800), "Pac-Man") {
+    auto camera = std::make_shared<Camera>(window.getSize().y, window.getSize().x);
+    entity_factory = std::make_unique<SFMLFactory>(window, "../pacman.png", camera);
     state_manager = std::make_unique<StateManager>(entity_factory);
     state_manager->PushState(MENU);
 }

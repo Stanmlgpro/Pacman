@@ -9,29 +9,34 @@
 #include "Pacman.h"
 #include "SFMLWallView.h"
 
-SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input) : window(window) {
+SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera) : window(window) {
+    this->camera = camera;
     if (!texture.loadFromFile(texture_input))
         throw std::runtime_error("Failed to load textures: " + texture_input);
 }
 
-std::shared_ptr<Entity> SFMLFactory::createWall(int x, int y) {
+std::shared_ptr<Entity> SFMLFactory::createWall(float x, float y) {
     auto wall = std::make_shared<Wall>(x, y);
-    wall->setView(std::make_unique<SFMLWallView>(texture, wall, window));
+    wall->setView(std::make_unique<SFMLWallView>(texture, wall, window, camera));
     return wall;
 }
-std::shared_ptr<Entity> SFMLFactory::createOrb(int x, int y) {
+std::shared_ptr<Entity> SFMLFactory::createOrb(float x, float y) {
     auto orb = std::make_shared<Orb>(x, y, false);
     return orb;
 }
-std::shared_ptr<Entity> SFMLFactory::createBigOrb(int x, int y) {
+std::shared_ptr<Entity> SFMLFactory::createBigOrb(float x, float y) {
     auto orb = std::make_shared<Orb>(x, y, true);
     return orb;
 }
-std::shared_ptr<Entity> SFMLFactory::createGhost(int x, int y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id) {
+std::shared_ptr<Entity> SFMLFactory::createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id) {
     auto ghost = std::make_shared<Ghost>(x, y, pacman, wallGrid, id);
     return ghost;
 }
-std::shared_ptr<Pacman> SFMLFactory::createPacman(int x, int y) {
+std::shared_ptr<Pacman> SFMLFactory::createPacman(float x, float y) {
     auto pacman = std::make_shared<Pacman>(x, y);
     return pacman;
+}
+
+std::shared_ptr<Camera> SFMLFactory::getCamera() {
+    return camera;
 }

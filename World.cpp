@@ -14,49 +14,49 @@
 
 World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
     this->entity_factory = entity_factory;
+
     std::ifstream file(filename);
     std::string line;
+    int width = 0;
+    int height = 0;
+    int id = 0;
 
+    while (getline(file, line)) {
+        width = std::max(width, static_cast<int>(line.size()));
+        height++;
+    }
+    file.close();
+
+    entity_factory->getCamera()->setMapSize(width, height);
+    file.open(filename);
     if (!file.is_open()) {
         std::cerr << "Error opening file\n";
+        return;
     }
-    int x = 0;
-    int y = 0;
-    int id = 0;
-    while (getline(file, line)) {
-        wallGrid.push_back(std::vector<bool>());
-        for (auto c : line) {
-            if (c == '#') {
-                entities.push_back(entity_factory->createWall(x, y));
-                std::cout << "added wall at: " << x << ", " << y << std::endl;
-                wallGrid[y].push_back(true);
 
-            }
-            if (c == '.') {
-                entities.push_back(entity_factory->createOrb(x, y));
-                std::cout << "added little_orb at: " << x << ", " << y << std::endl;
-                wallGrid[y].push_back(false);
-            }
-            if (c == 'o') {
-                entities.push_back(entity_factory->createBigOrb(x, y));
-                std::cout << "added big_orb at: " << x << ", " << y << std::endl;
-                wallGrid[y].push_back(false);
-            }
-            if (c == 'P') {
-                pacman = entity_factory->createPacman(x, y);
-                std::cout << "added pacman at: " << x << ", " << y << std::endl;
-                wallGrid[y].push_back(false);
-            }
-            if (c == 'G') {
-                entities.push_back(entity_factory->createGhost(x, y, pacman, wallGrid, id));
-                std::cout << "added ghost at: " << x << ", " << y << std::endl;
-                id++;
-                wallGrid[y].push_back(false);
-            }
-            x++;
+    int y = 0;
+    std::string line2;
+    while (getline(file, line2)) {
+        wallGrid.emplace_back();
+        for (int x = 0; x < static_cast<int>(line2.size()); x++) {
+            char c = line2[x];
+            float normX = (static_cast<float>(x) / (width - 1)) * 2.f - 1.f;
+            float normY = (static_cast<float>(y) / (height - 1)) * 2.f - 1.f;
+
+            if (c == '#')
+                entities.push_back(entity_factory->createWall(normX, normY));
+            else if (c == '.')
+                entities.push_back(entity_factory->createOrb(normX, normY));
+            else if (c == 'o')
+                entities.push_back(entity_factory->createBigOrb(normX, normY));
+            else if (c == 'P')
+                pacman = entity_factory->createPacman(normX, normY);
+            else if (c == 'G')
+                entities.push_back(entity_factory->createGhost(normX, normY, pacman, wallGrid, id++));
+
+            wallGrid[y].push_back(c == '#');
         }
         y++;
-        x = 0;
     }
     file.close();
 }
@@ -85,7 +85,6 @@ void World::Update(float dt) {
         e->Update(dt);
     }
     pacman->Update(dt);
-    std::cout << pacman->getPosition().x << ", " << pacman->getPosition().y << std::endl;
     for (auto r : removeables) {
         entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
     }
