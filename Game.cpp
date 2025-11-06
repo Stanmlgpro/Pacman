@@ -17,10 +17,8 @@ Game::Game() : window(sf::VideoMode(600, 800), "Pac-Man") {
 
 void Game::run() {
     while (window.isOpen()) {
-        const float dt = time.restart().asSeconds();
-
         CheckInput();
-        Update(dt);
+        Update();
         Render();
     }
 }
@@ -34,8 +32,8 @@ void Game::CheckInput() {
     }
 }
 
-void Game::Update(const float dt) const {
-    state_manager->Update(dt);
+void Game::Update() const {
+    state_manager->Update();
 }
 
 void Game::Render() {

@@ -20,8 +20,7 @@ class World {
 public:
     explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory);
 
-    void MovePacman();
-    void Update(float dt);
+    void Update();
     bool CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const;
 
     void Render();

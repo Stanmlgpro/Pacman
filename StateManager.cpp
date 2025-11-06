@@ -37,8 +37,8 @@ void StateManager::HandleEvent(const sf::Event& event) {
     }
 }
 
-void StateManager::Update(const float dt) {
-    if (!states.empty()) states.top()->Update(dt);
+void StateManager::Update() {
+    if (!states.empty()) states.top()->Update();
 }
 
 void StateManager::Render(sf::RenderWindow& window) {

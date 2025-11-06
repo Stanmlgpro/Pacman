@@ -11,6 +11,7 @@
 #include "Ghost.h"
 #include "Orb.h"
 #include "EntityFactory.h"
+#include "Stopwatch.h"
 
 World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
     this->entity_factory = entity_factory;
@@ -71,7 +72,11 @@ bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
     return (dx < 1.f && dy < 1.f);
 }
 
-void World::Update(float dt) {
+void World::Update() {
+    Stopwatch& stopwatch = Stopwatch::getInstance();
+    stopwatch.tick();
+    float dt = stopwatch.getDeltaTime();
+
     std::vector<std::shared_ptr<Entity>> removeables;
     bool fearing = false;
     for (auto e : entities) {

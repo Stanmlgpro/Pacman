@@ -16,7 +16,7 @@ public:
 
     ~Game();
 private:
-    void Update(float dt) const;
+    void Update() const;
     void Render();
     void CheckInput();
 

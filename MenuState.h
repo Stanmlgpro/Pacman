@@ -12,7 +12,7 @@ public:
     MenuState(std::shared_ptr<StateManager> statemanager);
 
     void HandleEvent(const sf::Event& e) override;
-    void Update(float dt) override;
+    void Update() override;
     void Render(sf::RenderWindow& window) override;
 
     ~MenuState() override;

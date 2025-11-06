@@ -26,8 +26,7 @@ void PausedState::HandleEvent(const sf::Event &e) {
     }
 }
 
-void PausedState::Update(float dt) {
-}
+void PausedState::Update() {}
 
 void PausedState::Render(sf::RenderWindow& window) {
 }

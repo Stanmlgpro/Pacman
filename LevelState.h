@@ -13,7 +13,7 @@ public:
     LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory);
 
     void HandleEvent(const sf::Event& e) override;
-    void Update(float dt) override;
+    void Update() override;
     void Render(sf::RenderWindow& window) override;
 
     ~LevelState() override;

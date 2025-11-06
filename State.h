@@ -15,7 +15,7 @@ public:
     explicit State() = default;
 
     virtual void HandleEvent(const sf::Event& e) = 0;
-    virtual void Update(float dt) = 0;
+    virtual void Update() = 0;
     virtual void Render(sf::RenderWindow& window) = 0;
 
     virtual ~State() = default;

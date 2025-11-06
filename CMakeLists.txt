@@ -45,6 +45,8 @@ add_executable(Pacman
         View.cpp
         SFMLView.cpp
         SFMLWallView.h
-        SFMLWallView.cpp)
+        SFMLWallView.cpp
+        Stopwatch.h
+        Stopwatch.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

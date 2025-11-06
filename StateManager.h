@@ -28,7 +28,7 @@ public:
     void PushState(StateID stateid);
     void PopState();
 
-    void Update(float dt);
+    void Update();
 
     void Render(sf::RenderWindow& window);
 

@@ -19,8 +19,7 @@ void MenuState::HandleEvent(const sf::Event &e) {
     }
 }
 
-void MenuState::Update(float dt) {
-}
+void MenuState::Update() {}
 
 void MenuState::Render(sf::RenderWindow& window) {
 }
