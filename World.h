@@ -8,6 +8,7 @@
 #include <string>
 #include "Entity.h"
 
+class EntityFactory;
 enum class my_enum {
     UP,
     DOWN,
@@ -17,7 +18,7 @@ enum class my_enum {
 
 class World {
 public:
-    explicit World(std::string filename);
+    explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory);
 
     void MovePacman();
     void Update(float dt);
@@ -28,6 +29,7 @@ private:
     std::vector<std::shared_ptr<Entity>> entities;
     std::shared_ptr<Pacman> pacman;
     std::vector<std::vector<bool>> wallGrid;
+    std::shared_ptr<EntityFactory> entity_factory;
 };
 
 

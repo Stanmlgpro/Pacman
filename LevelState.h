@@ -7,9 +7,10 @@
 #include "State.h"
 #include "World.h"
 
+class EntityFactory;
 class LevelState final : public State {
 public:
-    LevelState(std::shared_ptr<StateManager> statemanager);
+    LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory);
 
     void HandleEvent(const sf::Event& e) override;
     void Update(float dt) override;
@@ -19,6 +20,7 @@ public:
 private:
     std::unique_ptr<World> world;
     std::shared_ptr<StateManager> statemanager;
+    std::shared_ptr<EntityFactory> entity_factory;
 };
 
 #endif //PACMAN_LEVELSTATE_H

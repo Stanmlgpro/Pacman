@@ -10,8 +10,10 @@
 #include <algorithm>
 #include "Ghost.h"
 #include "Orb.h"
+#include "EntityFactory.h"
 
-World::World(std::string filename) {
+World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
+    this->entity_factory = entity_factory;
     std::ifstream file(filename);
     std::string line;
 
@@ -20,33 +22,33 @@ World::World(std::string filename) {
     }
     int x = 0;
     int y = 0;
-    int id;
+    int id = 0;
     while (getline(file, line)) {
         wallGrid.push_back(std::vector<bool>());
         for (auto c : line) {
             if (c == '#') {
-                entities.push_back(std::make_shared<Wall>(x, y));
+                entities.push_back(entity_factory->createWall(x, y));
                 std::cout << "added wall at: " << x << ", " << y << std::endl;
                 wallGrid[y].push_back(true);
 
             }
             if (c == '.') {
-                entities.push_back(std::make_shared<Orb>(x, y, false));
+                entities.push_back(entity_factory->createOrb(x, y));
                 std::cout << "added little_orb at: " << x << ", " << y << std::endl;
                 wallGrid[y].push_back(false);
             }
             if (c == 'o') {
-                entities.push_back(std::make_shared<Orb>(x, y, true));
+                entities.push_back(entity_factory->createBigOrb(x, y));
                 std::cout << "added big_orb at: " << x << ", " << y << std::endl;
                 wallGrid[y].push_back(false);
             }
             if (c == 'P') {
-                pacman = std::make_shared<Pacman>(x, y);
+                pacman = entity_factory->createPacman(x, y);
                 std::cout << "added pacman at: " << x << ", " << y << std::endl;
                 wallGrid[y].push_back(false);
             }
             if (c == 'G') {
-                entities.push_back(std::make_shared<Ghost>(x, y, pacman, wallGrid, id));
+                entities.push_back(entity_factory->createGhost(x, y, pacman, wallGrid, id));
                 std::cout << "added ghost at: " << x << ", " << y << std::endl;
                 id++;
                 wallGrid[y].push_back(false);

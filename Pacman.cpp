@@ -13,7 +13,7 @@ Pacman::Pacman(int x, int y) {
     position.x = x;
     position.y = y;
     direction.reserve(2);
-    direction.push_back(0);
+    direction.push_back(-1);
     direction.push_back(0);
     direction_buffer.reserve(2);
     direction_buffer.push_back(0);

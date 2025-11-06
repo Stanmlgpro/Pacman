@@ -3,11 +3,14 @@
 //
 
 #include "Game.h"
+
+#include "EntityFactory.h"
 #include "MenuState.h"
 
 Game::Game() : window(sf::VideoMode(800, 600), "Pac-Man") {
-    state_manager = std::make_unique<StateManager>();
-    state_manager->PushState(std::make_unique<MenuState>(state_manager));
+    entity_factory = std::make_unique<SFMLFactory>();
+    state_manager = std::make_unique<StateManager>(entity_factory);
+    state_manager->PushState(MENU);
 }
 
 void Game::run() {

@@ -7,16 +7,17 @@
 #include "StateManager.h"
 #include "World.h"
 
-LevelState::LevelState(std::shared_ptr<StateManager> statemanager) {
+LevelState::LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory) {
     this->statemanager = statemanager;
-    this->world = std::make_unique<World>("../map.txt");
+    this->entity_factory = entity_factory;
+    this->world = std::make_unique<World>("../map.txt", entity_factory);
     std::cout << "new level and world created" << std::endl;
 }
 
 void LevelState::HandleEvent(const sf::Event &e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
-            statemanager->PushState(std::make_unique<PausedState>(statemanager));
+            statemanager->PushState(PAUSED);
         }
         else {
             std::cout << e.key.code << std::endl;

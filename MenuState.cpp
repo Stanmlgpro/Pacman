@@ -14,7 +14,7 @@ void MenuState::HandleEvent(const sf::Event &e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Enter) {
             std::cout << "making new level" << std::endl;
-            statemanager->PushState(std::make_unique<LevelState>(statemanager));
+            statemanager->PushState(LEVEL);
         }
     }
 }

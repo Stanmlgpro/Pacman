@@ -36,6 +36,9 @@ add_executable(Pacman
         Ghost.cpp
         Ghost.h
         Pacman.cpp
-        Pacman.h)
+        Pacman.h
+        Camera.cpp
+        EntityFactory.h
+        EntityFactory.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

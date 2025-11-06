@@ -9,14 +9,23 @@
 #include <SFML/Graphics.hpp>
 #include "State.h"
 
+
+class EntityFactory;
+
+enum StateID {
+    MENU,
+    LEVEL,
+    PAUSED
+};
+class Game;
 class State;
-class StateManager {
+class StateManager : public std::enable_shared_from_this<StateManager> {
 public:
-    StateManager() = default;
+    StateManager(std::shared_ptr<EntityFactory> entity_factory);
 
     void HandleEvent(const sf::Event& event);
 
-    void PushState(std::unique_ptr<State> state);
+    void PushState(StateID stateid);
     void PopState();
 
     void Update(float dt);
@@ -26,6 +35,7 @@ public:
     ~StateManager() = default;
 private:
     std::stack<std::unique_ptr<State>> states{};
+    std::shared_ptr<EntityFactory> entity_factory;
 };
 
 
