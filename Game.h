@@ -7,6 +7,7 @@
 #include <memory>
 #include "StateManager.h"
 
+class Camera;
 class EntityFactory;
 class Game {
 public:
@@ -25,6 +26,7 @@ private:
     sf::Clock time;
 
     std::shared_ptr<EntityFactory> entity_factory;
+    std::shared_ptr<Camera> camera;
 };
 
 

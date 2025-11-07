@@ -8,8 +8,8 @@
 #include "SFMLFactory.h"
 #include "MenuState.h"
 
-Game::Game() : window(sf::VideoMode(600, 800), "Pac-Man") {
-    auto camera = std::make_shared<Camera>(window.getSize().y, window.getSize().x);
+Game::Game() : window(sf::VideoMode(500, 800), "Pac-Man") {
+    camera = std::make_shared<Camera>(window.getSize().x, window.getSize().y);
     entity_factory = std::make_unique<SFMLFactory>(window, "../pacman.png", camera);
     state_manager = std::make_unique<StateManager>(entity_factory);
     state_manager->PushState(MENU);
@@ -28,6 +28,10 @@ void Game::CheckInput() {
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window.close();
+        if (event.type == sf::Event::Resized) {
+            auto size = window.getSize();
+            camera->setScreenSize(static_cast<float>(size.x), static_cast<float>(size.y));
+        }
         state_manager->HandleEvent(event);
     }
 }

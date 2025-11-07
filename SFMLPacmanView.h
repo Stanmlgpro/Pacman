@@ -16,7 +16,6 @@ public:
     void Draw() override;
 private:
     sf::Sprite sprite;
-    sf::RectangleShape rect;
 };
 
 
