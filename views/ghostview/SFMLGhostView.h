@@ -12,10 +12,10 @@ public:
     SFMLGhostView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
     void Update(float dt) override;
-    void FindSprite();
+    virtual void FindSprite() = 0;
 
     void Draw() override;
-private:
+protected:
     sf::Sprite sprite;
     bool animation_bool;
     float animation_speed;

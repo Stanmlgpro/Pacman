@@ -5,7 +5,6 @@
 #include "Ghost.h"
 #include "entities/Pacman.h"
 #include "World.h"
-#include <iostream>
 
 Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) {
     position.x = x;

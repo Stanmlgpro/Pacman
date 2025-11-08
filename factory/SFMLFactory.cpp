@@ -10,7 +10,10 @@
 #include "views/SFMLWallView.h"
 #include "views/SFMLPacmanView.h"
 #include "views/SFMLOrbView.h"
-#include "views/ghostview/SFMLGhostView.h"
+#include "views/ghostview/SFMLLockedGhostView.h"
+#include "views/ghostview/SFMLChaseGhostView.h"
+#include "views/ghostview/SFMLPredictGhost1View.h"
+#include "views/ghostview/SFMLPredictGhost2View.h"
 
 SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera) : window(window) {
     this->camera = camera;
@@ -35,7 +38,20 @@ std::shared_ptr<Entity> SFMLFactory::createBigOrb(float x, float y) {
 }
 std::shared_ptr<Entity> SFMLFactory::createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id) {
     auto ghost = std::make_shared<Ghost>(x, y, pacman, wallGrid, id);
-    ghost->setView(std::make_unique<SFMLGhostView>(texture, ghost, window, camera));
+    switch (id) {
+    case 0:
+        ghost->setView(std::make_unique<SFMLLockedGhostView>(texture, ghost, window, camera));
+        break;
+    case 1:
+        ghost->setView(std::make_unique<SFMLChaseGhostView>(texture, ghost, window, camera));
+        break;
+    case 2:
+        ghost->setView(std::make_unique<SFMLPredictGhost1View>(texture, ghost, window, camera));
+        break;
+    case 3:
+        ghost->setView(std::make_unique<SFMLPredictGhost2View>(texture, ghost, window, camera));
+        break;
+    }
     return ghost;
 }
 std::shared_ptr<Pacman> SFMLFactory::createPacman(float speed, int mapwidth, int mapheight, float x, float y) {

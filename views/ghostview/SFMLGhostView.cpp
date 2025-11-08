@@ -24,31 +24,6 @@ void SFMLGhostView::Update(float dt) {
     FindSprite();
 }
 
-void SFMLGhostView::FindSprite() {
-    auto e = entity.lock();
-    if (!e) return;
-    int dirX = e->getDirection()[0];
-    int dirY = e->getDirection()[1];
-
-    sf::IntRect rect;
-    if (dirX == 0 && dirY == -1) {
-        rect = animation_bool ? sf::IntRect(0, 30, 15, 15) : sf::IntRect(15, 30, 15, 15);
-    }
-    else if (dirX == 0 && dirY == 1) {
-        rect = animation_bool ? sf::IntRect(0, 45, 15, 15) : sf::IntRect(15, 45, 15, 15);
-    }
-    else if (dirX == -1 && dirY == 0) {
-        rect = animation_bool ? sf::IntRect(0, 15, 15, 15) : sf::IntRect(15, 15, 15, 15);
-    }
-    else if (dirX == 1 && dirY == 0) {
-        rect = animation_bool ? sf::IntRect(0, 0, 15, 15) : sf::IntRect(15, 0, 15, 15);
-    }
-    else {
-        rect = sf::IntRect(0, 0, 15, 15);
-    }
-    sprite.setTextureRect(rect);
-}
-
 void SFMLGhostView::Draw() {
     FindSprite();
     auto e = entity.lock();

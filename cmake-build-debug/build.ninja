@@ -210,6 +210,34 @@ build CMakeFiles/Pacman.dir/views/ghostview/SFMLGhostView.cpp.obj: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles\Pacman.dir
   OBJECT_FILE_DIR = CMakeFiles\Pacman.dir\views\ghostview
 
+build CMakeFiles/Pacman.dir/views/ghostview/SFMLLockedGhostView.cpp.obj: CXX_COMPILER__Pacman_unscanned_Debug C$:/Users/stan1/CLionProjects/Pacman/views/ghostview/SFMLLockedGhostView.cpp || cmake_object_order_depends_target_Pacman
+  DEP_FILE = CMakeFiles\Pacman.dir\views\ghostview\SFMLLockedGhostView.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/opt/SFML-2.6.1/include -IC:/Users/stan1/CLionProjects/Pacman/. -isystem C:/Users/stan1/CLionProjects/sfml/2.6.2/include
+  OBJECT_DIR = CMakeFiles\Pacman.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pacman.dir\views\ghostview
+
+build CMakeFiles/Pacman.dir/views/ghostview/SFMLChaseGhostView.cpp.obj: CXX_COMPILER__Pacman_unscanned_Debug C$:/Users/stan1/CLionProjects/Pacman/views/ghostview/SFMLChaseGhostView.cpp || cmake_object_order_depends_target_Pacman
+  DEP_FILE = CMakeFiles\Pacman.dir\views\ghostview\SFMLChaseGhostView.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/opt/SFML-2.6.1/include -IC:/Users/stan1/CLionProjects/Pacman/. -isystem C:/Users/stan1/CLionProjects/sfml/2.6.2/include
+  OBJECT_DIR = CMakeFiles\Pacman.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pacman.dir\views\ghostview
+
+build CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost1View.cpp.obj: CXX_COMPILER__Pacman_unscanned_Debug C$:/Users/stan1/CLionProjects/Pacman/views/ghostview/SFMLPredictGhost1View.cpp || cmake_object_order_depends_target_Pacman
+  DEP_FILE = CMakeFiles\Pacman.dir\views\ghostview\SFMLPredictGhost1View.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/opt/SFML-2.6.1/include -IC:/Users/stan1/CLionProjects/Pacman/. -isystem C:/Users/stan1/CLionProjects/sfml/2.6.2/include
+  OBJECT_DIR = CMakeFiles\Pacman.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pacman.dir\views\ghostview
+
+build CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost2View.cpp.obj: CXX_COMPILER__Pacman_unscanned_Debug C$:/Users/stan1/CLionProjects/Pacman/views/ghostview/SFMLPredictGhost2View.cpp || cmake_object_order_depends_target_Pacman
+  DEP_FILE = CMakeFiles\Pacman.dir\views\ghostview\SFMLPredictGhost2View.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/opt/SFML-2.6.1/include -IC:/Users/stan1/CLionProjects/Pacman/. -isystem C:/Users/stan1/CLionProjects/sfml/2.6.2/include
+  OBJECT_DIR = CMakeFiles\Pacman.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pacman.dir\views\ghostview
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Pacman
@@ -218,7 +246,7 @@ build CMakeFiles/Pacman.dir/views/ghostview/SFMLGhostView.cpp.obj: CXX_COMPILER_
 #############################################
 # Link the executable Pacman.exe
 
-build Pacman.exe: CXX_EXECUTABLE_LINKER__Pacman_Debug CMakeFiles/Pacman.dir/entities/Entity.cpp.obj CMakeFiles/Pacman.dir/main.cpp.obj CMakeFiles/Pacman.dir/Game.cpp.obj CMakeFiles/Pacman.dir/states/StateManager.cpp.obj CMakeFiles/Pacman.dir/states/State.cpp.obj CMakeFiles/Pacman.dir/states/MenuState.cpp.obj CMakeFiles/Pacman.dir/states/LevelState.cpp.obj CMakeFiles/Pacman.dir/states/PausedState.cpp.obj CMakeFiles/Pacman.dir/World.cpp.obj CMakeFiles/Pacman.dir/entities/Wall.cpp.obj CMakeFiles/Pacman.dir/entities/Orb.cpp.obj CMakeFiles/Pacman.dir/entities/ghost/Ghost.cpp.obj CMakeFiles/Pacman.dir/entities/Pacman.cpp.obj CMakeFiles/Pacman.dir/Camera.cpp.obj CMakeFiles/Pacman.dir/factory/EntityFactory.cpp.obj CMakeFiles/Pacman.dir/factory/SFMLFactory.cpp.obj CMakeFiles/Pacman.dir/views/View.cpp.obj CMakeFiles/Pacman.dir/views/SFMLView.cpp.obj CMakeFiles/Pacman.dir/views/SFMLWallView.cpp.obj CMakeFiles/Pacman.dir/singleton/Stopwatch.cpp.obj CMakeFiles/Pacman.dir/views/SFMLPacmanView.cpp.obj CMakeFiles/Pacman.dir/views/SFMLOrbView.cpp.obj CMakeFiles/Pacman.dir/views/ghostview/SFMLGhostView.cpp.obj | C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-graphics-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-window-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-system-d.a
+build Pacman.exe: CXX_EXECUTABLE_LINKER__Pacman_Debug CMakeFiles/Pacman.dir/entities/Entity.cpp.obj CMakeFiles/Pacman.dir/main.cpp.obj CMakeFiles/Pacman.dir/Game.cpp.obj CMakeFiles/Pacman.dir/states/StateManager.cpp.obj CMakeFiles/Pacman.dir/states/State.cpp.obj CMakeFiles/Pacman.dir/states/MenuState.cpp.obj CMakeFiles/Pacman.dir/states/LevelState.cpp.obj CMakeFiles/Pacman.dir/states/PausedState.cpp.obj CMakeFiles/Pacman.dir/World.cpp.obj CMakeFiles/Pacman.dir/entities/Wall.cpp.obj CMakeFiles/Pacman.dir/entities/Orb.cpp.obj CMakeFiles/Pacman.dir/entities/ghost/Ghost.cpp.obj CMakeFiles/Pacman.dir/entities/Pacman.cpp.obj CMakeFiles/Pacman.dir/Camera.cpp.obj CMakeFiles/Pacman.dir/factory/EntityFactory.cpp.obj CMakeFiles/Pacman.dir/factory/SFMLFactory.cpp.obj CMakeFiles/Pacman.dir/views/View.cpp.obj CMakeFiles/Pacman.dir/views/SFMLView.cpp.obj CMakeFiles/Pacman.dir/views/SFMLWallView.cpp.obj CMakeFiles/Pacman.dir/singleton/Stopwatch.cpp.obj CMakeFiles/Pacman.dir/views/SFMLPacmanView.cpp.obj CMakeFiles/Pacman.dir/views/SFMLOrbView.cpp.obj CMakeFiles/Pacman.dir/views/ghostview/SFMLGhostView.cpp.obj CMakeFiles/Pacman.dir/views/ghostview/SFMLLockedGhostView.cpp.obj CMakeFiles/Pacman.dir/views/ghostview/SFMLChaseGhostView.cpp.obj CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost1View.cpp.obj CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost2View.cpp.obj | C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-graphics-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-window-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-system-d.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-graphics-d.a  C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-window-d.a  C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-system-d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Pacman.dir
