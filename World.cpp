@@ -36,14 +36,19 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
         return;
     }
 
+    float tileSizeX = 2.0f / static_cast<float>(width);
+    float tileSizeY = 2.0f / static_cast<float>(height);
+
     int y = 0;
     std::string line2;
     while (getline(file, line2)) {
         wallGrid.emplace_back();
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
             char c = line2[x];
-            float normX = (static_cast<float>(x) / (width - 1)) * 2.f - 1.f;
-            float normY = (static_cast<float>(y) / (height - 1)) * 2.f - 1.f;
+
+            // use cell center coordinates
+            float normX = -1.0f + tileSizeX * (static_cast<float>(x) + 0.5f);
+            float normY = -1.0f + tileSizeY * (static_cast<float>(y) + 0.5f);
 
             if (c == '#') {
                 entities.push_back(entity_factory->createWall(normX, normY));
@@ -65,14 +70,18 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
         y++;
     }
     file.close();
+    for (auto entity : entities) {
+        std::cout << entity->getPosition().x << ", " << entity->getPosition().y << std::endl;
+    }
 }
 
 std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Wall> wall) {
     Position pacPos = pacman->getPosition();
     Position wallPos = wall->getPosition();
 
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - wallPos.x);
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - wallPos.y);
+    float epsilon = 0.001f;
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - wallPos.x) + epsilon;
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - wallPos.y) + epsilon;
 
     if (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size()) pacman->setMoving(false);
     return nullptr;

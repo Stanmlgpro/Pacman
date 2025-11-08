@@ -7,8 +7,8 @@
 
 SFMLOrbView::SFMLOrbView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
     auto e = entity.lock();
-    if (e->isBig()) circ.setFillColor(sf::Color::Yellow);
-    else circ.setFillColor(sf::Color(0, 90, 90));
+    if (e->isBig()) circ.setFillColor(sf::Color::Magenta);
+    else circ.setFillColor(sf::Color::Yellow);
 
 }
 
