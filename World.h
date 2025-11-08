@@ -6,7 +6,7 @@
 #define WORLD_H
 #include <memory>
 #include <string>
-#include "Entity.h"
+#include "entities/Entity.h"
 
 class EntityFactory;
 enum MOVE {

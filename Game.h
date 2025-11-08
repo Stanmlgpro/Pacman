@@ -5,7 +5,7 @@
 #ifndef PACMAN_GAME_H
 #define PACMAN_GAME_H
 #include <memory>
-#include "StateManager.h"
+#include "states/StateManager.h"
 
 class Camera;
 class EntityFactory;

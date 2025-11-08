@@ -5,13 +5,13 @@
 #include "World.h"
 #include <fstream>
 #include <iostream>
-#include "Wall.h"
-#include "Pacman.h"
+#include "entities/Wall.h"
+#include "entities/Pacman.h"
 #include <algorithm>
-#include "Ghost.h"
-#include "Orb.h"
-#include "EntityFactory.h"
-#include "Stopwatch.h"
+#include "entities/Ghost.h"
+#include "entities/Orb.h"
+#include "factory/EntityFactory.h"
+#include "singleton/Stopwatch.h"
 
 World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
     this->entity_factory = entity_factory;

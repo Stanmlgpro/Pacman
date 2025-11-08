@@ -3,7 +3,7 @@
 //
 
 #include "Camera.h"
-#include "Entity.h"
+#include "entities/Entity.h"
 #include <iostream>
 
 Camera::Camera(float Screenwidth, float Screenheight) {

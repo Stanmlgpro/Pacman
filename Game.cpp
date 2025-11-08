@@ -4,9 +4,9 @@
 
 #include "Game.h"
 
-#include "EntityFactory.h"
-#include "SFMLFactory.h"
-#include "MenuState.h"
+#include "factory/EntityFactory.h"
+#include "factory/SFMLFactory.h"
+#include "states/MenuState.h"
 
 Game::Game() : window(sf::VideoMode(750, 800), "Pac-Man") {
     camera = std::make_shared<Camera>(window.getSize().x, window.getSize().y);

@@ -12,47 +12,48 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(Pacman
-        Entity.cpp
-        Entity.h
+        entities/Entity.cpp
+        entities/Entity.h
         main.cpp
         Game.cpp
         Game.h
-        StateManager.cpp
-        StateManager.h
-        State.cpp
-        State.h
-        MenuState.cpp
-        MenuState.h
-        LevelState.cpp
-        LevelState.h
-        PausedState.cpp
-        PausedState.h
+        states/StateManager.cpp
+        states/StateManager.h
+        states/State.cpp
+        states/State.h
+        states/MenuState.cpp
+        states/MenuState.h
+        states/LevelState.cpp
+        states/LevelState.h
+        states/PausedState.cpp
+        states/PausedState.h
         World.h
         World.cpp
-        Wall.cpp
-        Wall.h
-        Orb.cpp
-        Orb.h
-        Ghost.cpp
-        Ghost.h
-        Pacman.cpp
-        Pacman.h
+        entities/Wall.cpp
+        entities/Wall.h
+        entities/Orb.cpp
+        entities/Orb.h
+        entities/Ghost.cpp
+        entities/Ghost.h
+        entities/Pacman.cpp
+        entities/Pacman.h
         Camera.cpp
-        EntityFactory.h
-        EntityFactory.cpp
-        SFMLFactory.cpp
-        View.h
-        View.cpp
-        SFMLView.cpp
-        SFMLWallView.h
-        SFMLWallView.cpp
-        Stopwatch.h
-        Stopwatch.cpp
-        SFMLPacmanView.h
-        SFMLPacmanView.cpp
-        SFMLOrbView.h
-        SFMLOrbView.cpp
-        SFMLGhostView.h
-        SFMLGhostView.cpp)
+        factory/EntityFactory.h
+        factory/EntityFactory.cpp
+        factory/SFMLFactory.cpp
+        views/View.h
+        views/View.cpp
+        views/SFMLView.cpp
+        views/SFMLWallView.h
+        views/SFMLWallView.cpp
+        singleton/Stopwatch.h
+        singleton/Stopwatch.cpp
+        views/SFMLPacmanView.h
+        views/SFMLPacmanView.cpp
+        views/SFMLOrbView.h
+        views/SFMLOrbView.cpp
+        views/SFMLGhostView.h
+        views/SFMLGhostView.cpp
+        views/SFMLWallView.h)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)
