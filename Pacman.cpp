@@ -9,7 +9,7 @@
 #include "Orb.h"
 #include "Wall.h"
 
-Pacman::Pacman(float x, float y) {
+Pacman::Pacman(float speed, int mapwidth, int mapheight, float x, float y) : Entity(mapwidth, mapheight) {
     position.x = x;
     position.y = y;
     direction.reserve(2);
@@ -18,6 +18,7 @@ Pacman::Pacman(float x, float y) {
     direction_buffer.reserve(2);
     direction_buffer.push_back(0);
     direction_buffer.push_back(0);
+    this->speed = speed;
 }
 
 std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::Interact(Pacman& pacman) {
@@ -43,6 +44,10 @@ void Pacman::setDirection(std::vector<int> direction) {
 
 void Pacman::Update(float dt) {
     if (moving) {
+        auto sped = speed;
+        if (direction[0] == 1 or direction[0] == -1) sped /= mapwidth;
+        else sped /= mapheight;
+        dt *= sped;
         Entity::Update(dt);
     }
     moving = true;

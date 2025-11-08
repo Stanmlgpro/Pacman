@@ -10,20 +10,50 @@ SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::weak_ptr<Entity>
     sprite.setScale(1.f, 1.f);
     sprite.setOrigin(8.f,8.f);
     open = true;
-    animation_speed = 500;
+    animation_speed = 100;
     animation_counter = 0;
 }
 
-void SFMLPacmanView::Update(float dt) {}
-
-void SFMLPacmanView::Draw() {
+void SFMLPacmanView::Update(float dt) {
     animation_counter++;
     if (animation_counter > animation_speed) {
         open = not open;
         animation_counter = 0;
     }
-    if (open) sprite.setTextureRect(sf::IntRect(0, 0, 16, 16));
-    else sprite.setTextureRect(sf::IntRect(15, 0, 16, 16));
+    FindSprite();
+}
+
+void SFMLPacmanView::FindSprite() {
+    auto e = entity.lock();
+    if (!e) return;
+
+    int dirX = e->getDirection()[0];
+    int dirY = e->getDirection()[1];
+
+    sf::IntRect rect;
+
+    if (dirX == 0 && dirY == -1) {
+        rect = open ? sf::IntRect(0, 30, 15, 15) : sf::IntRect(15, 30, 15, 15);
+    }
+    else if (dirX == 0 && dirY == 1) {
+        rect = open ? sf::IntRect(0, 45, 15, 15) : sf::IntRect(15, 45, 15, 15);
+    }
+    else if (dirX == -1 && dirY == 0) {
+        rect = open ? sf::IntRect(0, 15, 15, 15) : sf::IntRect(15, 15, 15, 15);
+    }
+    else if (dirX == 1 && dirY == 0) {
+        rect = open ? sf::IntRect(0, 0, 15, 15) : sf::IntRect(15, 0, 15, 15);
+    }
+    else {
+        rect = sf::IntRect(0, 0, 15, 15);
+    }
+
+    sprite.setTextureRect(rect);
+}
+
+void SFMLPacmanView::Draw() {
+
+    FindSprite();
     auto e = entity.lock();
     if (!e) return;
 

@@ -21,6 +21,7 @@ class Pacman;
 class Entity {
 public:
     Entity() = default;
+    Entity(int mapwidth, int mapheight);
 
     virtual void Update(float dt);
 
@@ -46,6 +47,8 @@ protected:
     Position position;
     std::vector<int> direction;
     std::unique_ptr<View> view;
+    int mapwidth;
+    int mapheight;
 };
 
 

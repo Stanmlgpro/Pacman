@@ -5,6 +5,13 @@
 #include "Entity.h"
 #include <iostream>
 
+Entity::Entity(int mapwidth, int mapheight) {
+    this->mapwidth = mapwidth;
+    this->mapheight = mapheight;
+    position = {0.f, 0.f};
+    direction = {0, 0};
+}
+
 void Entity::Update(float dt) {
     if (direction.capacity() < 2) return;
     position.x += direction[0]*dt;

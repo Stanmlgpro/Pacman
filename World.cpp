@@ -54,7 +54,7 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
                 entities.push_back(entity_factory->createBigOrb(normX, normY));
             }
             else if (c == 'P') {
-                pacman = entity_factory->createPacman(normX, normY);
+                pacman = entity_factory->createPacman(10.f, width, height, normX, normY);
             }
             else if (c == 'G') {
                 entities.push_back(entity_factory->createGhost(normX, normY, pacman, wallGrid, id++));

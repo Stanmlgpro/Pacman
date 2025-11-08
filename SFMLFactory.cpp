@@ -33,8 +33,8 @@ std::shared_ptr<Entity> SFMLFactory::createGhost(float x, float y, std::shared_p
     auto ghost = std::make_shared<Ghost>(x, y, pacman, wallGrid, id);
     return ghost;
 }
-std::shared_ptr<Pacman> SFMLFactory::createPacman(float x, float y) {
-    auto pacman = std::make_shared<Pacman>(x, y);
+std::shared_ptr<Pacman> SFMLFactory::createPacman(float speed, int mapwidth, int mapheight, float x, float y) {
+    auto pacman = std::make_shared<Pacman>(speed, mapwidth, mapheight, x, y);
     pacman->setView(std::make_unique<SFMLPacmanView>(texture, pacman, window, camera));
     return pacman;
 }

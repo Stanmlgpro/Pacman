@@ -8,7 +8,7 @@
 
 class Pacman : public Entity, public std::enable_shared_from_this<Pacman> {
 public:
-    Pacman(float x, float y);
+    Pacman(float speed, int mapwidth, int mapheight, float x, float y);
 
     std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override; //should never be called
     std::tuple<std::shared_ptr<Entity>, bool, bool>  InteractWith(std::shared_ptr<Wall> wall);
@@ -30,6 +30,7 @@ private:
     std::vector<int> direction_buffer;
     bool moving = true;
     int lives = 3;
+    float speed;
 };
 
 
