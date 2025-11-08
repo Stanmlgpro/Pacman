@@ -24,7 +24,9 @@ public:
 
     int getLives() const;
 
-    void setDirection(std::vector<int> direction) override;
+    void setDirectionBuffer(std::vector<int> buffer);
+    std::vector<int> getDirectionBuffer() const;
+    float MoveDt(float dt) const;
     ~Pacman() override = default;
 private:
     std::vector<int> direction_buffer;

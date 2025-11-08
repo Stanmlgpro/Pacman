@@ -26,6 +26,9 @@ public:
     std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Ghost> ghost);
     std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Pacman> pacman);
 
+    bool WouldHitWall(const std::vector<int>& direction) const;
+    void TryBuffer();
+    std::vector<int> NormalizedToGrid(float normX, float normY) const;
     void Render();
     void movePacman(MOVE movement);
 

@@ -46,7 +46,6 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
             char c = line2[x];
 
-            // use cell center coordinates
             float normX = -1.0f + tileSizeX * (static_cast<float>(x) + 0.5f);
             float normY = -1.0f + tileSizeY * (static_cast<float>(y) + 0.5f);
 
@@ -70,16 +69,27 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
         y++;
     }
     file.close();
-    for (auto entity : entities) {
-        std::cout << entity->getPosition().x << ", " << entity->getPosition().y << std::endl;
-    }
+}
+
+std::vector<int> World::NormalizedToGrid(float normX, float normY) const {
+
+    int gridWidth = static_cast<int>(wallGrid[0].size());
+    int gridHeight = static_cast<int>(wallGrid.size());
+
+    float tileSizeX = 2.0f / static_cast<float>(gridWidth);
+    float tileSizeY = 2.0f / static_cast<float>(gridHeight);
+
+    int gridX = static_cast<int>((normX + 1.0f) / tileSizeX);
+    int gridY = static_cast<int>((normY + 1.0f) / tileSizeY);
+
+    return {gridX, gridY};
 }
 
 std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Wall> wall) {
     Position pacPos = pacman->getPosition();
     Position wallPos = wall->getPosition();
 
-    float epsilon = 0.001f;
+    float epsilon = 0.005f;
     float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - wallPos.x) + epsilon;
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - wallPos.y) + epsilon;
 
@@ -94,10 +104,9 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
     float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - orbPos.x);
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - orbPos.y);
 
-    // Adjust collision threshold based on orb size
-    float threshold = orb->isBig() ? 1.25f : 0.85f;
-    float collisionDistX = threshold / wallGrid[0].size();
-    float collisionDistY = threshold / wallGrid.size();
+    float size = orb->isBig() ? 1.25f : 0.85f;
+    float collisionDistX = size / wallGrid[0].size();
+    float collisionDistY = size / wallGrid.size();
 
     if (dx < collisionDistX && dy < collisionDistY) {
         if (orb->isBig()) fearmode = true;
@@ -114,14 +123,45 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Pacman> pacman
     return nullptr;
 }
 
+void World::TryBuffer() {
+    auto buffer = pacman->getDirectionBuffer();
+    if (buffer[0] == 0 && buffer[1] == 0) return;
+
+    Position pacPos = pacman->getPosition();
+    auto gridPos = NormalizedToGrid(pacPos.x, pacPos.y);
+    int currentGridX = static_cast<int>(gridPos[0]);
+    int currentGridY = static_cast<int>(gridPos[1]);
+
+    int targetGridX = currentGridX + buffer[0];
+    int targetGridY = currentGridY + buffer[1];
+
+    bool canMove = true;
+    if (targetGridX < 0 or targetGridX >= static_cast<int>(wallGrid[0].size()) or targetGridY < 0 or targetGridY >= static_cast<int>(wallGrid.size())) canMove = false;
+    else if (wallGrid[targetGridY][targetGridX]) canMove = false;
+
+    if (!canMove) return;
+
+    float tileSizeX = 2.0f / static_cast<float>(wallGrid[0].size());
+    float tileSizeY = 2.0f / static_cast<float>(wallGrid.size());
+
+    float cellCenterX = -1.0f + tileSizeX * (static_cast<float>(currentGridX) + 0.5f);
+    float cellCenterY = -1.0f + tileSizeY * (static_cast<float>(currentGridY) + 0.5f);
+
+    float distX = std::abs(pacPos.x - cellCenterX);
+    float distY = std::abs(pacPos.y - cellCenterY);
+
+    float epsilon = 0.005f;
+
+    if (distX < epsilon && distY < epsilon) pacman->setDirection(buffer);
+}
+
 void World::Update() {
     Stopwatch& stopwatch = Stopwatch::getInstance();
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
-
+    TryBuffer();
     std::vector<std::shared_ptr<Entity>> removeables;
-    bool fearing = false;
     for (auto e : entities) {
         removeables.push_back(e->Interact(*this));
         e->Update(dt);
@@ -146,14 +186,11 @@ void World::Render() {
 void World::movePacman(MOVE movement) {
     if (movement == UP) {
         pacman->Up();
-    }
-    if (movement == DOWN) {
+    } if (movement == DOWN) {
         pacman->Down();
-    }if (movement == LEFT) {
+    } if (movement == LEFT) {
         pacman->Left();
-    }
-    if (movement == RIGHT) {
+    } if (movement == RIGHT) {
         pacman->Right();
     }
-
 }
