@@ -89,8 +89,8 @@ void World::Update() {
             auto [to_remove, checker1, checker2] = e->Interact(*pacman);
             if (to_remove) removeables.push_back(to_remove);
             if (checker1 && checker2) fearing = true;
-            if (checker1) {/* restart world*/}
-            if (checker2) {/* game over*/}
+            else if (checker1) {/* restart world*/}
+            else if (checker2) {/* game over*/}
         }
         e->Update(dt);
     }

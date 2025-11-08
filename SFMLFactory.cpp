@@ -9,6 +9,7 @@
 #include "Pacman.h"
 #include "SFMLWallView.h"
 #include "SFMLPacmanView.h"
+#include "SFMLOrbView.h"
 
 SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera) : window(window) {
     this->camera = camera;
@@ -23,10 +24,12 @@ std::shared_ptr<Entity> SFMLFactory::createWall(float x, float y) {
 }
 std::shared_ptr<Entity> SFMLFactory::createOrb(float x, float y) {
     auto orb = std::make_shared<Orb>(x, y, false);
+    orb->setView(std::make_unique<SFMLOrbView>(texture, orb, window, camera));
     return orb;
 }
 std::shared_ptr<Entity> SFMLFactory::createBigOrb(float x, float y) {
     auto orb = std::make_shared<Orb>(x, y, true);
+    orb->setView(std::make_unique<SFMLOrbView>(texture, orb, window, camera));
     return orb;
 }
 std::shared_ptr<Entity> SFMLFactory::createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id) {

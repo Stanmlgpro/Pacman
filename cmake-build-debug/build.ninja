@@ -196,6 +196,13 @@ build CMakeFiles/Pacman.dir/SFMLPacmanView.cpp.obj: CXX_COMPILER__Pacman_unscann
   OBJECT_DIR = CMakeFiles\Pacman.dir
   OBJECT_FILE_DIR = CMakeFiles\Pacman.dir
 
+build CMakeFiles/Pacman.dir/SFMLOrbView.cpp.obj: CXX_COMPILER__Pacman_unscanned_Debug C$:/Users/stan1/CLionProjects/Pacman/SFMLOrbView.cpp || cmake_object_order_depends_target_Pacman
+  DEP_FILE = CMakeFiles\Pacman.dir\SFMLOrbView.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/opt/SFML-2.6.1/include -IC:/Users/stan1/CLionProjects/Pacman/. -isystem C:/Users/stan1/CLionProjects/sfml/2.6.2/include
+  OBJECT_DIR = CMakeFiles\Pacman.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pacman.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Pacman
@@ -204,7 +211,7 @@ build CMakeFiles/Pacman.dir/SFMLPacmanView.cpp.obj: CXX_COMPILER__Pacman_unscann
 #############################################
 # Link the executable Pacman.exe
 
-build Pacman.exe: CXX_EXECUTABLE_LINKER__Pacman_Debug CMakeFiles/Pacman.dir/Entity.cpp.obj CMakeFiles/Pacman.dir/main.cpp.obj CMakeFiles/Pacman.dir/Game.cpp.obj CMakeFiles/Pacman.dir/StateManager.cpp.obj CMakeFiles/Pacman.dir/State.cpp.obj CMakeFiles/Pacman.dir/MenuState.cpp.obj CMakeFiles/Pacman.dir/LevelState.cpp.obj CMakeFiles/Pacman.dir/PausedState.cpp.obj CMakeFiles/Pacman.dir/World.cpp.obj CMakeFiles/Pacman.dir/Wall.cpp.obj CMakeFiles/Pacman.dir/Orb.cpp.obj CMakeFiles/Pacman.dir/Ghost.cpp.obj CMakeFiles/Pacman.dir/Pacman.cpp.obj CMakeFiles/Pacman.dir/Camera.cpp.obj CMakeFiles/Pacman.dir/EntityFactory.cpp.obj CMakeFiles/Pacman.dir/SFMLFactory.cpp.obj CMakeFiles/Pacman.dir/View.cpp.obj CMakeFiles/Pacman.dir/SFMLView.cpp.obj CMakeFiles/Pacman.dir/SFMLWallView.cpp.obj CMakeFiles/Pacman.dir/Stopwatch.cpp.obj CMakeFiles/Pacman.dir/SFMLPacmanView.cpp.obj | C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-graphics-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-window-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-system-d.a
+build Pacman.exe: CXX_EXECUTABLE_LINKER__Pacman_Debug CMakeFiles/Pacman.dir/Entity.cpp.obj CMakeFiles/Pacman.dir/main.cpp.obj CMakeFiles/Pacman.dir/Game.cpp.obj CMakeFiles/Pacman.dir/StateManager.cpp.obj CMakeFiles/Pacman.dir/State.cpp.obj CMakeFiles/Pacman.dir/MenuState.cpp.obj CMakeFiles/Pacman.dir/LevelState.cpp.obj CMakeFiles/Pacman.dir/PausedState.cpp.obj CMakeFiles/Pacman.dir/World.cpp.obj CMakeFiles/Pacman.dir/Wall.cpp.obj CMakeFiles/Pacman.dir/Orb.cpp.obj CMakeFiles/Pacman.dir/Ghost.cpp.obj CMakeFiles/Pacman.dir/Pacman.cpp.obj CMakeFiles/Pacman.dir/Camera.cpp.obj CMakeFiles/Pacman.dir/EntityFactory.cpp.obj CMakeFiles/Pacman.dir/SFMLFactory.cpp.obj CMakeFiles/Pacman.dir/View.cpp.obj CMakeFiles/Pacman.dir/SFMLView.cpp.obj CMakeFiles/Pacman.dir/SFMLWallView.cpp.obj CMakeFiles/Pacman.dir/Stopwatch.cpp.obj CMakeFiles/Pacman.dir/SFMLPacmanView.cpp.obj CMakeFiles/Pacman.dir/SFMLOrbView.cpp.obj | C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-graphics-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-window-d.a C$:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-system-d.a
   FLAGS = -g
   LINK_LIBRARIES = C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-graphics-d.a  C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-window-d.a  C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/libsfml-system-d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Pacman.dir
