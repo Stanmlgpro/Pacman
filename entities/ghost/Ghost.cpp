@@ -3,7 +3,7 @@
 //
 
 #include "Ghost.h"
-#include "Pacman.h"
+#include "entities/Pacman.h"
 #include "World.h"
 #include <iostream>
 

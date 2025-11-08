@@ -4,7 +4,7 @@
 
 #ifndef SFMLGHOSTVIEW_H
 #define SFMLGHOSTVIEW_H
-#include "SFMLView.h"
+#include "views/SFMLView.h"
 
 
 class SFMLGhostView : public SFMLView {

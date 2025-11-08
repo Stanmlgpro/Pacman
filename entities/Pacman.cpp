@@ -5,7 +5,7 @@
 #include "Pacman.h"
 #include <iostream>
 
-#include "Ghost.h"
+#include "ghost/Ghost.h"
 #include "Orb.h"
 #include "Wall.h"
 #include "World.h"

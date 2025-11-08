@@ -33,8 +33,8 @@ add_executable(Pacman
         entities/Wall.h
         entities/Orb.cpp
         entities/Orb.h
-        entities/Ghost.cpp
-        entities/Ghost.h
+        entities/ghost/Ghost.cpp
+        entities/ghost/Ghost.h
         entities/Pacman.cpp
         entities/Pacman.h
         Camera.cpp
@@ -52,8 +52,8 @@ add_executable(Pacman
         views/SFMLPacmanView.cpp
         views/SFMLOrbView.h
         views/SFMLOrbView.cpp
-        views/SFMLGhostView.h
-        views/SFMLGhostView.cpp
+        views/ghostview/SFMLGhostView.h
+        views/ghostview/SFMLGhostView.cpp
         views/SFMLWallView.h)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

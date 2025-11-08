@@ -4,7 +4,7 @@
 
 #ifndef PACMAN_GHOST_H
 #define PACMAN_GHOST_H
-#include "Entity.h"
+#include "entities/Entity.h"
 
 class Ghost : public Entity, public std::enable_shared_from_this<Ghost> {
 public:

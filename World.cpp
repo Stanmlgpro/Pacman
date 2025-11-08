@@ -8,7 +8,7 @@
 #include "entities/Wall.h"
 #include "entities/Pacman.h"
 #include <algorithm>
-#include "entities/Ghost.h"
+#include "entities/ghost/Ghost.h"
 #include "entities/Orb.h"
 #include "factory/EntityFactory.h"
 #include "singleton/Stopwatch.h"

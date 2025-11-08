@@ -4,13 +4,13 @@
 
 #include "SFMLFactory.h"
 #include "entities/Wall.h"
-#include "entities/Ghost.h"
+#include "entities/ghost/Ghost.h"
 #include "entities/Orb.h"
 #include "entities/Pacman.h"
 #include "views/SFMLWallView.h"
 #include "views/SFMLPacmanView.h"
 #include "views/SFMLOrbView.h"
-#include "views/SFMLGhostView.h"
+#include "views/ghostview/SFMLGhostView.h"
 
 SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera) : window(window) {
     this->camera = camera;
