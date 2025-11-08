@@ -12,7 +12,7 @@ public:
 
     void CalculateNextTurn(float dt);
 
-    std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override;
+    std::shared_ptr<Entity> Interact(World& world) override;
 
     void Update(float dt) override;
 

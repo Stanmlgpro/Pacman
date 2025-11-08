@@ -4,6 +4,7 @@
 
 #include "Ghost.h"
 #include "Pacman.h"
+#include "World.h"
 
 Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) {
     position.x = x;
@@ -20,8 +21,8 @@ void Ghost::CalculateNextTurn(float dt) {
     // direction[1] = -1|0|1
 }
 
-std::tuple<std::shared_ptr<Entity>, bool, bool> Ghost::Interact(Pacman& pacman) {
-    return pacman.InteractWith(std::static_pointer_cast<Ghost>(shared_from_this()));
+std::shared_ptr<Entity> Ghost::Interact(World& world) {
+    return world.CollidesWithPacman(shared_from_this());
 }
 
 void Ghost::Update(float dt) {

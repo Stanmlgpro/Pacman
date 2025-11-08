@@ -16,6 +16,7 @@
 World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
     this->entity_factory = entity_factory;
 
+    dt = 0;
     std::ifstream file(filename);
     std::string line;
     int width = 0;
@@ -66,37 +67,59 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
     file.close();
 }
 
-bool World::CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const {
+std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Wall> wall) {
     Position pacPos = pacman->getPosition();
-    Position entPos = entity->getPosition();
+    Position wallPos = wall->getPosition();
 
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - entPos.x);
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - entPos.y);
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - wallPos.x);
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - wallPos.y);
 
-    return (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size());
+    if (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size()) pacman->setMoving(false);
+    return nullptr;
+}
+
+std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
+    Position pacPos = pacman->getPosition();
+    Position orbPos = orb->getPosition();
+
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - orbPos.x);
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - orbPos.y);
+
+    // Adjust collision threshold based on orb size
+    float threshold = orb->isBig() ? 1.25f : 0.85f;
+    float collisionDistX = threshold / wallGrid[0].size();
+    float collisionDistY = threshold / wallGrid.size();
+
+    if (dx < collisionDistX && dy < collisionDistY) {
+        if (orb->isBig()) fearmode = true;
+        return orb;
+    }
+    return nullptr;
+}
+
+std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) {
+    return nullptr;
+}
+
+std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Pacman> pacman) {
+    return nullptr;
 }
 
 void World::Update() {
     Stopwatch& stopwatch = Stopwatch::getInstance();
     stopwatch.tick();
-    float dt = stopwatch.getDeltaTime();
+    dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
 
     std::vector<std::shared_ptr<Entity>> removeables;
     bool fearing = false;
     for (auto e : entities) {
-        if (CollidesWithPacman(e, dt)) {
-            auto [to_remove, checker1, checker2] = e->Interact(*pacman);
-            if (to_remove) removeables.push_back(to_remove);
-            if (checker1 && checker2) fearing = true;
-            else if (checker1) {/* restart world*/}
-            else if (checker2) {/* game over*/}
-        }
+        removeables.push_back(e->Interact(*this));
         e->Update(dt);
     }
     pacman->Update(dt);
     for (auto r : removeables) {
-        entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
+        if (r) entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
     }
 }
 

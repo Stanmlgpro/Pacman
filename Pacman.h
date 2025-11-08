@@ -10,10 +10,7 @@ class Pacman : public Entity, public std::enable_shared_from_this<Pacman> {
 public:
     Pacman(float speed, int mapwidth, int mapheight, float x, float y);
 
-    std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) override; //should never be called
-    std::tuple<std::shared_ptr<Entity>, bool, bool>  InteractWith(std::shared_ptr<Wall> wall);
-    std::tuple<std::shared_ptr<Entity>, bool, bool> InteractWith(std::shared_ptr<Orb> orb); // returns true, true if we ate a big orb
-    std::tuple<std::shared_ptr<Entity>, bool, bool> InteractWith(std::shared_ptr<Ghost> ghost); // returns ghost if needed to be destroyed bool1 : reset, bool2 : game over
+    std::shared_ptr<Entity> Interact(World& world) override; //should never be called
 
     void Up();
     void Down();
@@ -21,6 +18,9 @@ public:
     void Right();
 
     void Update(float dt) override;
+
+    void setLives(int lives);
+    void setMoving(bool moving);
 
     int getLives() const;
 

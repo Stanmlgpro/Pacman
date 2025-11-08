@@ -3,8 +3,9 @@
 //
 
 #include "Orb.h"
-
 #include "Pacman.h"
+#include "World.h"
+#include <iostream>
 
 Orb::Orb(float x, float y, bool big) {
     position.x = x;
@@ -12,8 +13,8 @@ Orb::Orb(float x, float y, bool big) {
     this->big = big;
 }
 
-std::tuple<std::shared_ptr<Entity>, bool, bool> Orb::Interact(Pacman& pacman) {
-    return pacman.InteractWith(std::static_pointer_cast<Orb>(shared_from_this()));
+std::shared_ptr<Entity> Orb::Interact(World& world) {
+    return world.CollidesWithPacman(shared_from_this());
 }
 
 bool Orb::isBig() const {

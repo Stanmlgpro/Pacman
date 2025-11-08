@@ -17,6 +17,7 @@ class Wall;
 class Orb;
 class Ghost;
 class Pacman;
+class World;
 
 class Entity {
 public:
@@ -27,7 +28,7 @@ public:
 
     void Draw();
 
-    virtual std::tuple<std::shared_ptr<Entity>, bool, bool> Interact(Pacman& pacman) = 0;
+    virtual std::shared_ptr<Entity> Interact(World& world) = 0;
 
     virtual bool isBig() const {return true;}
 

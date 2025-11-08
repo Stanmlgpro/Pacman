@@ -8,6 +8,7 @@
 #include "Ghost.h"
 #include "Orb.h"
 #include "Wall.h"
+#include "World.h"
 
 Pacman::Pacman(float speed, int mapwidth, int mapheight, float x, float y) : Entity(mapwidth, mapheight) {
     position.x = x;
@@ -21,22 +22,9 @@ Pacman::Pacman(float speed, int mapwidth, int mapheight, float x, float y) : Ent
     this->speed = speed;
 }
 
-std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::Interact(Pacman& pacman) {
-    return std::make_tuple(nullptr, false, false);
+std::shared_ptr<Entity> Pacman::Interact(World& world) {
+    return world.CollidesWithPacman(shared_from_this());
 } //function that will never be called
-std::tuple<std::shared_ptr<Entity>, bool, bool>  Pacman::InteractWith(std::shared_ptr<Wall> wall) {
-    moving = false;
-    return std::make_tuple(nullptr, false, false);
-}
-std::tuple<std::shared_ptr<Entity>, bool, bool>  Pacman::InteractWith(std::shared_ptr<Orb> orb) {
-    return std::make_tuple(orb, true, true);
-}
-std::tuple<std::shared_ptr<Entity>, bool, bool> Pacman::InteractWith(std::shared_ptr<Ghost> ghost) {
-    if (ghost->getFeared()) return std::make_tuple(ghost, false, false);
-    lives--;
-    if (lives == 0) return std::make_tuple(nullptr, false, true);
-    return std::make_tuple(nullptr, true, false);
-}
 
 void Pacman::setDirection(std::vector<int> direction) {
     direction_buffer = direction;
@@ -57,7 +45,13 @@ void Pacman::Update(float dt) {
 int Pacman::getLives() const {
     return lives;
 }
+void Pacman::setLives(int lives) {
+    this->lives = lives;
+}
 
+void Pacman::setMoving(bool moving) {
+    this->moving = moving;
+}
 void Pacman::Up() {
     direction[0] = 0;
     direction[1] = -1;

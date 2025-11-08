@@ -4,12 +4,13 @@
 
 #include "Wall.h"
 #include "Pacman.h"
+#include "World.h"
 
 Wall::Wall(float x, float y) {
     position.x = x;
     position.y = y;
 }
 
-std::tuple<std::shared_ptr<Entity>, bool, bool> Wall::Interact(Pacman& pacman) {
-    return pacman.InteractWith(std::static_pointer_cast<Wall>(shared_from_this()));
+std::shared_ptr<Entity> Wall::Interact(World& world) {
+    return world.CollidesWithPacman(shared_from_this());
 }

@@ -21,7 +21,10 @@ public:
     explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory);
 
     void Update();
-    bool CollidesWithPacman(std::shared_ptr<Entity> entity, float dt) const;
+    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Wall> wall);
+    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Orb> orb);
+    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Ghost> ghost);
+    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Pacman> pacman);
 
     void Render();
     void movePacman(MOVE movement);
@@ -34,6 +37,8 @@ private:
     std::shared_ptr<Pacman> pacman;
     std::vector<std::vector<bool>> wallGrid;
     std::shared_ptr<EntityFactory> entity_factory;
+    float dt;
+    bool fearmode = false;
 };
 
 
