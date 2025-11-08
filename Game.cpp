@@ -28,15 +28,18 @@ void Game::CheckInput() {
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window.close();
+
         if (event.type == sf::Event::Resized) {
             auto size = window.getSize();
 
+            // Update camera with new screen size
             camera->setScreenSize(static_cast<float>(size.x), static_cast<float>(size.y));
 
-            sf::FloatRect visibleArea(0.f, 0.f, static_cast<float>(size.x), static_cast<float>(size.y));
-
-            window.setView(sf::View(visibleArea));
+            // Create a new view matching the new window size
+            sf::View view(sf::FloatRect(0.f, 0.f, static_cast<float>(size.x), static_cast<float>(size.y)));
+            window.setView(view);
         }
+
         state_manager->HandleEvent(event);
     }
 }
