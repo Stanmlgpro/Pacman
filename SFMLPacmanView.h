@@ -18,8 +18,8 @@ public:
 private:
     sf::Sprite sprite;
     bool open;
-    int animation_speed;
-    int animation_counter;
+    float animation_speed;
+    float animation_counter;
 };
 
 

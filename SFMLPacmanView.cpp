@@ -10,12 +10,12 @@ SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::weak_ptr<Entity>
     sprite.setScale(1.f, 1.f);
     sprite.setOrigin(8.f,8.f);
     open = true;
-    animation_speed = 100;
+    animation_speed = 0.1f;
     animation_counter = 0;
 }
 
 void SFMLPacmanView::Update(float dt) {
-    animation_counter++;
+    animation_counter+= dt;
     if (animation_counter > animation_speed) {
         open = not open;
         animation_counter = 0;

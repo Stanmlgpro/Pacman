@@ -28,6 +28,7 @@ std::shared_ptr<Entity> Pacman::Interact(World& world) {
 
 void Pacman::Update(float dt) {
     if (moving) Entity::Update(MoveDt(dt));
+    view->Update(dt);
     moving = true;
 }
 

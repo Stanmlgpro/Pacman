@@ -13,6 +13,7 @@ public:
     std::shared_ptr<Entity> Interact(World& world) override;
 
     bool isBig() const override;
+    void Update(float dt) override;
 
     ~Orb() override = default;
 private:

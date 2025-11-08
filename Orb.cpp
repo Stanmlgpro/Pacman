@@ -20,3 +20,7 @@ std::shared_ptr<Entity> Orb::Interact(World& world) {
 bool Orb::isBig() const {
     return big;
 }
+
+void Orb::Update(float dt) {
+    view->Update(dt);
+}

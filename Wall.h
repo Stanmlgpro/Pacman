@@ -11,6 +11,7 @@ public:
     Wall(float x, float y);
 
     std::shared_ptr<Entity> Interact(World& world) override;
+    void Update(float dt) override;
 
     ~Wall() override = default;
 };
