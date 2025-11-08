@@ -3,7 +3,6 @@
 //
 #include "SFMLPacmanView.h"
 #include "Entity.h"
-#include <iostream>
 
 SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
     sprite.setTexture(texture);

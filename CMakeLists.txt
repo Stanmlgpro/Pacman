@@ -51,6 +51,8 @@ add_executable(Pacman
         SFMLPacmanView.h
         SFMLPacmanView.cpp
         SFMLOrbView.h
-        SFMLOrbView.cpp)
+        SFMLOrbView.cpp
+        SFMLGhostView.h
+        SFMLGhostView.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)
