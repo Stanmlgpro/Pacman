@@ -31,11 +31,10 @@ void Game::CheckInput() {
         if (event.type == sf::Event::Resized) {
             auto size = window.getSize();
 
-            // Update your camera
             camera->setScreenSize(static_cast<float>(size.x), static_cast<float>(size.y));
 
-            // Fix SFML’s view so it matches your new logical coordinate system
             sf::FloatRect visibleArea(0.f, 0.f, static_cast<float>(size.x), static_cast<float>(size.y));
+
             window.setView(sf::View(visibleArea));
         }
         state_manager->HandleEvent(event);

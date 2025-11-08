@@ -46,6 +46,7 @@ void Pacman::Update(float dt) {
         Entity::Update(dt);
     }
     moving = true;
+
 }
 
 int Pacman::getLives() const {

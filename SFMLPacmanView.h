@@ -16,6 +16,9 @@ public:
     void Draw() override;
 private:
     sf::Sprite sprite;
+    bool open;
+    int animation_speed;
+    int animation_counter;
 };
 
 

@@ -80,6 +80,7 @@ void World::Update() {
     Stopwatch& stopwatch = Stopwatch::getInstance();
     stopwatch.tick();
     float dt = stopwatch.getDeltaTime();
+    if (dt > 0.06f) dt = 0.06f;
 
     std::vector<std::shared_ptr<Entity>> removeables;
     bool fearing = false;
