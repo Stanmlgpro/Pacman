@@ -40,10 +40,9 @@ private:
     std::shared_ptr<Pacman> pacman;
     std::vector<std::vector<bool>> wallGrid;
     std::shared_ptr<EntityFactory> entity_factory;
+    std::vector<std::shared_ptr<Entity>> to_add;
     float dt;
     bool fearmode = false;
-    float feartime = 6.f;
-    float fearcheck = 0.f;
 };
 
 

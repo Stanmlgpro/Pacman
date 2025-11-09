@@ -116,10 +116,17 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
 }
 
 std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) {
-    return nullptr;
-}
+    Position pacPos = pacman->getPosition();
+    Position ghostPos = ghost->getPosition();
 
-std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Pacman> pacman) {
+    float epsilon = 0.005f;
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - ghostPos.x) + epsilon;
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - ghostPos.y) + epsilon;
+
+    if (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size() && ghost->getFeared()) {
+        to_add.push_back(entity_factory->createGhost(ghost->getStartPos()[0], ghost->getStartPos()[1], pacman, wallGrid, ghost->getId()));
+        return ghost;
+    }
     return nullptr;
 }
 
@@ -160,24 +167,22 @@ void World::Update() {
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
-    if (fearmode) {
-        fearcheck += dt;
-        if (fearcheck >= feartime) {
-            fearmode = false;
-            fearcheck = 0.f;
-        }
-    }
     TryBuffer();
     std::vector<std::shared_ptr<Entity>> removeables;
     for (auto e : entities) {
-        e->setFeared(fearmode);
+        if (fearmode) e->setFeared(fearmode);
         removeables.push_back(e->Interact(*this));
         e->Update(dt);
     }
     pacman->Update(dt);
-    for (auto r : removeables) {
+    for (auto& r : removeables) {
         if (r) entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
     }
+    for (auto& e : to_add) {
+        entities.push_back(e);
+    }
+    to_add.clear();
+    fearmode = false;
 }
 
 std::vector<std::shared_ptr<Entity>> World::getEntities() {
@@ -202,3 +207,5 @@ void World::movePacman(MOVE movement) {
         pacman->Right();
     }
 }
+
+std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Pacman> pacman) { return nullptr; }

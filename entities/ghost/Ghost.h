@@ -19,12 +19,17 @@ public:
 
     void setFeared(bool feared);
     bool getFeared();
+    std::vector<float> getStartPos() const;
+    int getId() const;
 
     ~Ghost() override = default;
 protected:
     std::shared_ptr<Pacman> pacman;
     std::vector<std::vector<bool>> wallgrid;
+    std::vector<float> startpos;
     bool feared = false;
+    float feartime = 6.f;
+    float fearcheck = 0.f;
     int id;
 };
 

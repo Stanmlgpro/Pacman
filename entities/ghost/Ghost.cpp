@@ -9,6 +9,7 @@
 Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) {
     position.x = x;
     position.y = y;
+    startpos = {x, y};
     this->pacman = pacman;
     this->wallgrid = wallgrid;
     this->id = id;
@@ -21,6 +22,13 @@ std::shared_ptr<Entity> Ghost::Interact(World& world) {
 }
 
 void Ghost::Update(float dt) {
+    if (feared) {
+        fearcheck += dt;
+        if (fearcheck >= feartime) {
+            feared = false;
+            fearcheck = 0.f;
+        }
+    }
     CalculateNextTurn(dt);
     Entity::Update(dt);
     view->Update(dt);
@@ -31,4 +39,10 @@ void Ghost::setFeared(bool feared) {
 }
 bool Ghost::getFeared() {
     return feared;
+}
+std::vector<float> Ghost::getStartPos() const {
+    return startpos;
+}
+int Ghost::getId() const {
+    return id;
 }
