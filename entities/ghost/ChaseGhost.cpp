@@ -60,7 +60,7 @@ void ChaseGhost::CalculateNextTurn(float dt) {
     for (std::vector<int> dir_try : directions) {
         float dis = tryTurn(dir_try, dt);
         if (dis == -1.f) continue;
-        if (dis >= 0 && (best_distance == -1.f || dis < best_distance)) {
+        if (dis >= 0 && (best_distance == -1.f || feared ? dis > best_distance : dis < best_distance)) {
             best_distance = dis;
             direction = dir_try;
         }

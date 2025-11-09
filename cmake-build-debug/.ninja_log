@@ -103,3 +103,11 @@
 593	1109	7843542425965583	Pacman.exe	c346244b69e86b9a
 7	548	7843542663822926	CMakeFiles/Pacman.dir/entities/ghost/ChaseGhost.cpp.obj	14a32af6a3af89ef
 549	1073	7843542669245914	Pacman.exe	c346244b69e86b9a
+6	574	7843544469254498	CMakeFiles/Pacman.dir/entities/ghost/ChaseGhost.cpp.obj	14a32af6a3af89ef
+575	1125	7843544474944840	Pacman.exe	c346244b69e86b9a
+7	625	7843546476120551	CMakeFiles/Pacman.dir/entities/ghost/ChaseGhost.cpp.obj	14a32af6a3af89ef
+626	1234	7843546482320552	Pacman.exe	c346244b69e86b9a
+6	616	7843546806104894	CMakeFiles/Pacman.dir/entities/ghost/ChaseGhost.cpp.obj	14a32af6a3af89ef
+616	1160	7843546812206328	Pacman.exe	c346244b69e86b9a
+7	568	7843547456916224	CMakeFiles/Pacman.dir/entities/ghost/Ghost.cpp.obj	dfd2ebc5ac8164cb
+568	1079	7843547462532391	Pacman.exe	c346244b69e86b9a

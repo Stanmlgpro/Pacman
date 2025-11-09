@@ -28,7 +28,7 @@ void Ghost::Update(float dt) {
     if (feared) {
         fearcheck += dt;
         if (fearcheck >= feartime) {
-            feared = false;
+            setFeared(false);
             fearcheck = 0.f;
         }
     }
@@ -39,6 +39,8 @@ void Ghost::Update(float dt) {
 
 void Ghost::setFeared(bool feared) {
     this->feared = feared;
+    if (feared) speed /= 2.f;
+    else speed *= 2.f;
 }
 bool Ghost::getFeared() {
     return feared;
