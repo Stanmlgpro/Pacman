@@ -42,6 +42,8 @@ private:
     std::shared_ptr<EntityFactory> entity_factory;
     float dt;
     bool fearmode = false;
+    float feartime = 6.f;
+    float fearcheck = 0.f;
 };
 
 

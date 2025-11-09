@@ -7,6 +7,9 @@
 #include "entities/ghost/Ghost.h"
 #include "entities/Orb.h"
 #include "entities/Pacman.h"
+#include "entities/ghost/ChaseGhost.h"
+#include "entities/ghost/LockedGhost.h"
+#include "entities/ghost/PredictGhost.h"
 #include "views/SFMLWallView.h"
 #include "views/SFMLPacmanView.h"
 #include "views/SFMLOrbView.h"
@@ -37,18 +40,22 @@ std::shared_ptr<Entity> SFMLFactory::createBigOrb(float x, float y) {
     return orb;
 }
 std::shared_ptr<Entity> SFMLFactory::createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id) {
-    auto ghost = std::make_shared<Ghost>(x, y, pacman, wallGrid, id);
+    std::shared_ptr<Ghost> ghost;
     switch (id) {
     case 0:
+        ghost = std::make_shared<LockedGhost>(x, y, pacman, wallGrid, id);
         ghost->setView(std::make_unique<SFMLLockedGhostView>(texture, ghost, window, camera));
         break;
     case 1:
+        ghost = std::make_shared<ChaseGhost>(x, y, pacman, wallGrid, id);
         ghost->setView(std::make_unique<SFMLChaseGhostView>(texture, ghost, window, camera));
         break;
     case 2:
+        ghost = std::make_shared<PredictGhost>(x, y, pacman, wallGrid, id);
         ghost->setView(std::make_unique<SFMLPredictGhost1View>(texture, ghost, window, camera));
         break;
     case 3:
+        ghost = std::make_shared<PredictGhost>(x, y, pacman, wallGrid, id);
         ghost->setView(std::make_unique<SFMLPredictGhost2View>(texture, ghost, window, camera));
         break;
     }

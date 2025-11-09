@@ -160,9 +160,17 @@ void World::Update() {
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
+    if (fearmode) {
+        fearcheck += dt;
+        if (fearcheck >= feartime) {
+            fearmode = false;
+            fearcheck = 0.f;
+        }
+    }
     TryBuffer();
     std::vector<std::shared_ptr<Entity>> removeables;
     for (auto e : entities) {
+        e->setFeared(fearmode);
         removeables.push_back(e->Interact(*this));
         e->Update(dt);
     }

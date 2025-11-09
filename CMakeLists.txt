@@ -62,6 +62,12 @@ add_executable(Pacman
         views/ghostview/SFMLPredictGhost1View.h
         views/ghostview/SFMLPredictGhost1View.cpp
         views/ghostview/SFMLPredictGhost2View.h
-        views/ghostview/SFMLPredictGhost2View.cpp)
+        views/ghostview/SFMLPredictGhost2View.cpp
+        entities/ghost/ChaseGhost.h
+        entities/ghost/ChaseGhost.cpp
+        entities/ghost/LockedGhost.h
+        entities/ghost/LockedGhost.cpp
+        entities/ghost/PredictGhost.cpp
+        entities/ghost/PredictGhost.h)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)
