@@ -28,7 +28,7 @@ public:
 
     bool WouldHitWall(const std::vector<int>& direction) const;
     void TryBuffer();
-    std::vector<int> NormalizedToGrid(float normX, float normY) const;
+    static std::vector<int> NormalizedToGrid(float normX, float normY, std::vector<std::vector<bool>> wallGrid);
     void Render();
     void movePacman(MOVE movement);
 

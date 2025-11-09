@@ -19,9 +19,7 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
     dt = 0;
     std::ifstream file(filename);
     std::string line;
-    int width = 0;
-    int height = 0;
-    int id = 0;
+    int width = 0, height = 0;
 
     while (getline(file, line)) {
         width = std::max(width, static_cast<int>(line.size()));
@@ -39,39 +37,48 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
     float tileSizeX = 2.0f / static_cast<float>(width);
     float tileSizeY = 2.0f / static_cast<float>(height);
 
+    struct GhostSpawn {
+        float x, y;
+        int id;
+    };
+    std::vector<GhostSpawn> ghostSpawns;
+
     int y = 0;
     std::string line2;
+    int id = 0;
+
+    // --- First pass: create walls/orbs and record pacman & ghost spawn positions
     while (getline(file, line2)) {
         wallGrid.emplace_back();
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
             char c = line2[x];
-
-            float normX = -1.0f + tileSizeX * (static_cast<float>(x) + 0.5f);
-            float normY = -1.0f + tileSizeY * (static_cast<float>(y) + 0.5f);
+            float normX = -1.0f + tileSizeX * (x + 0.5f);
+            float normY = -1.0f + tileSizeY * (y + 0.5f);
 
             if (c == '#') {
                 entities.push_back(entity_factory->createWall(normX, normY));
-            }
-            else if (c == '.') {
+            } else if (c == '.') {
                 entities.push_back(entity_factory->createOrb(normX, normY));
-            }
-            else if (c == 'o') {
+            } else if (c == 'o') {
                 entities.push_back(entity_factory->createBigOrb(normX, normY));
-            }
-            else if (c == 'P') {
+            } else if (c == 'P') {
                 pacman = entity_factory->createPacman(10.f, width, height, normX, normY);
+            } else if (c == 'G') {
+                ghostSpawns.push_back({normX, normY, id++});
             }
-            else if (c == 'G') {
-                entities.push_back(entity_factory->createGhost(normX, normY, pacman, wallGrid, id++));
-            }
+
             wallGrid[y].push_back(c == '#');
         }
         y++;
     }
     file.close();
+
+    for (auto& g : ghostSpawns) {
+        entities.push_back(entity_factory->createGhost(g.x, g.y, pacman, wallGrid, g.id));
+    }
 }
 
-std::vector<int> World::NormalizedToGrid(float normX, float normY) const {
+std::vector<int> World::NormalizedToGrid(float normX, float normY, std::vector<std::vector<bool>> wallGrid) {
 
     int gridWidth = static_cast<int>(wallGrid[0].size());
     int gridHeight = static_cast<int>(wallGrid.size());
@@ -135,7 +142,7 @@ void World::TryBuffer() {
     if (buffer[0] == 0 && buffer[1] == 0) return;
 
     Position pacPos = pacman->getPosition();
-    auto gridPos = NormalizedToGrid(pacPos.x, pacPos.y);
+    auto gridPos = NormalizedToGrid(pacPos.x, pacPos.y, wallGrid);
     int currentGridX = static_cast<int>(gridPos[0]);
     int currentGridY = static_cast<int>(gridPos[1]);
 

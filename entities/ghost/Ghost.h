@@ -10,6 +10,7 @@ class Ghost : public Entity, public std::enable_shared_from_this<Ghost> {
 public:
     Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id);
 
+    virtual float tryTurn(std::vector<int> direction, float dt) = 0;
     virtual float distanceTurn(std::vector<int> direction, float dt) = 0;
     virtual void CalculateNextTurn(float dt) = 0;
 
@@ -21,6 +22,7 @@ public:
     bool getFeared();
     std::vector<float> getStartPos() const;
     int getId() const;
+    float MoveDt(float dt) const;
 
     ~Ghost() override = default;
 protected:
@@ -31,6 +33,7 @@ protected:
     float feartime = 6.f;
     float fearcheck = 0.f;
     int id;
+    float speed;
 };
 
 

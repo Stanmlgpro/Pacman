@@ -10,6 +10,7 @@ class ChaseGhost : public Ghost {
 public:
     ChaseGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id);
 
+    float tryTurn(std::vector<int> direction, float dt) override;
     float distanceTurn(std::vector<int> direction, float dt) override;
     void CalculateNextTurn(float dt) override;
 };
