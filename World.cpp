@@ -15,10 +15,17 @@
 #include "Score.h"
 
 World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
+    this->filename = filename;
     this->entity_factory = entity_factory;
     this->score = std::make_unique<Score>();
 
     dt = 0;
+    loadMap_reset();
+}
+
+void World::loadMap_reset() {
+    entities.clear();
+    wallGrid.clear();
     std::ifstream file(filename);
     std::string line;
     int width = 0, height = 0;
@@ -189,9 +196,11 @@ bool World::Update() {
     dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
     if (pacman->isDead()) pacman->reset();
+    bool new_level = true;
     TryBuffer();
     std::vector<std::shared_ptr<Entity>> removeables;
     for (auto e : entities) {
+        e->checkWin(new_level);
         if (fearmode) e->setFeared(fearmode);
         removeables.push_back(e->Interact(*this));
         if (!pacman->getDying()) {
@@ -199,11 +208,15 @@ bool World::Update() {
         }
     }
     pacman->Update(dt);
+    if (new_level) {
+        int lives = pacman->getLives();
+        loadMap_reset();
+        pacman->setLives(lives);
+        return false;
+    }
     for (auto& r : removeables) {
         if (r) {
-            if (r == pacman) {
-                return true;
-            }
+            if (r == pacman) return true;
             entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
         }
     }

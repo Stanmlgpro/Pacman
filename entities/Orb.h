@@ -14,6 +14,7 @@ public:
 
     bool isBig() const override;
     void Update(float dt) override;
+    void checkWin(bool& check) override;
 
     ~Orb() override = default;
 private:

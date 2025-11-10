@@ -24,3 +24,7 @@ bool Orb::isBig() const {
 void Orb::Update(float dt) {
     view->Update(dt);
 }
+
+void Orb::checkWin(bool& check) {
+    check = false;
+}

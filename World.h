@@ -22,6 +22,7 @@ class World {
 public:
     explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory);
 
+    void loadMap_reset();
     bool Update();
     std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Wall> wall);
     std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Orb> orb);
@@ -38,6 +39,7 @@ public:
 
     ~World() = default;
 private:
+    std::string filename;
     std::vector<std::shared_ptr<Entity>> entities;
     std::shared_ptr<Pacman> pacman;
     std::vector<std::vector<bool>> wallGrid;
