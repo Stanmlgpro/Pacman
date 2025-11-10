@@ -37,6 +37,7 @@ public:
 
     virtual void setFeared(bool feared) {}
     virtual bool getFeared() {return true;}
+    virtual float getFearCheck() const {};
 
     Position getPosition() const;
     void setPosition(float x, float y);

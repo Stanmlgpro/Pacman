@@ -13,6 +13,9 @@ SFMLGhostView::SFMLGhostView(const sf::Texture& texture, std::weak_ptr<Entity> e
     animation_bool = true;
     animation_speed = 0.1f;
     animation_counter = 0;
+    animation_bool_feared = true;
+    animation_speed_feared = 0.4f;
+    animation_counter_feared = 0;
 }
 
 void SFMLGhostView::Update(float dt) {
@@ -20,6 +23,16 @@ void SFMLGhostView::Update(float dt) {
     if (animation_counter > animation_speed) {
         animation_bool = not animation_bool;
         animation_counter = 0;
+    }
+    if (!entity.lock()->getFeared()) {
+        animation_counter_feared = 0;
+        animation_bool_feared = false;
+    } else {
+        animation_counter_feared += dt;
+        if (animation_counter_feared > animation_speed_feared) {
+            animation_bool_feared = not animation_bool_feared;
+            animation_counter_feared = 0;
+        }
     }
     FindSprite();
 }

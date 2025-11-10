@@ -65,10 +65,10 @@ std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
         return ret;
 
     if (openPaths == 2) {
-        bool left   = (gridX > 0) && !wallgrid[gridY][gridX - 1];
-        bool right  = (gridX < static_cast<int>(wallgrid[0].size()) - 1) && !wallgrid[gridY][gridX + 1];
-        bool up     = (gridY > 0) && !wallgrid[gridY - 1][gridX];
-        bool down   = (gridY < static_cast<int>(wallgrid.size()) - 1) && !wallgrid[gridY + 1][gridX];
+        bool left = (gridX > 0) && !wallgrid[gridY][gridX - 1];
+        bool right = (gridX < static_cast<int>(wallgrid[0].size()) - 1) && !wallgrid[gridY][gridX + 1];
+        bool up = (gridY > 0) && !wallgrid[gridY - 1][gridX];
+        bool down = (gridY < static_cast<int>(wallgrid.size()) - 1) && !wallgrid[gridY + 1][gridX];
 
         bool hasHorizontal = left || right;
         bool hasVertical   = up || down;
@@ -93,6 +93,7 @@ void Ghost::Update(float dt) {
         if (ChaseTime <= 0.f) {
             Chasing = true;
         }
+        view->Update(dt);
         return;
     }
     if (turnTimer > 0.f)
@@ -124,4 +125,7 @@ float Ghost::MoveDt(float dt) const {
     else sped /= mapheight;
     dt *= sped;
     return dt;
+}
+float Ghost::getFearCheck() const {
+    return fearcheck;
 }

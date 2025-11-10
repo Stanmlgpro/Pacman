@@ -20,6 +20,9 @@ protected:
     bool animation_bool;
     float animation_speed;
     float animation_counter;
+    bool animation_bool_feared;
+    float animation_speed_feared;
+    float animation_counter_feared;
 };
 
 

@@ -20,6 +20,7 @@ public:
 
     void setFeared(bool feared);
     bool getFeared();
+    float getFearCheck() const override;
     std::vector<float> getStartPos() const;
     int getId() const;
     float MoveDt(float dt) const;

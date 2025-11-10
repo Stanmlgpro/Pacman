@@ -14,8 +14,16 @@ void SFMLPredictGhost2View::FindSprite() {
     int dirY = e->getDirection()[1];
 
     sf::IntRect rect;
-    if (e->getFeared()) {
+    if (e->getFeared() and e->getFearCheck() < 4.f) {
         rect = animation_bool ? sf::IntRect(128, 64, 16, 16) : sf::IntRect(144, 64, 16, 16);
+    }
+    else if (e->getFeared()) {
+        if (animation_bool_feared) {
+            rect = animation_bool ? sf::IntRect(128, 64, 16, 16) : sf::IntRect(144, 64, 16, 16);
+        }
+        else {
+            rect = animation_bool ? sf::IntRect(160, 64, 16, 16) : sf::IntRect(176, 64, 16, 16);
+        }
     }
     else if (dirX == -1 && dirY == 0) {
         rect = animation_bool ? sf::IntRect(32, 96, 16, 16) : sf::IntRect(48, 96, 16, 16);
