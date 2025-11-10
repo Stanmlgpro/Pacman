@@ -20,7 +20,7 @@ class World {
 public:
     explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory);
 
-    void Update();
+    bool Update();
     std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Wall> wall);
     std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Orb> orb);
     std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Ghost> ghost);

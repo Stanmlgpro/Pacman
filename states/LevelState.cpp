@@ -31,7 +31,9 @@ void LevelState::HandleEvent(const sf::Event &e) {
 }
 
 void LevelState::Update() {
-    world->Update();
+    if (world->Update()) {
+        statemanager->PopState();
+    }
 }
 
 void LevelState::Render(sf::RenderWindow& window) {

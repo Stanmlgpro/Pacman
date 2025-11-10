@@ -135,6 +135,10 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) 
             to_add.push_back(entity_factory->createGhost(ghost->getStartPos().x, ghost->getStartPos().y, pacman, wallGrid, ghost->getId(), false));
             return ghost;
         }
+        pacman->setLives(pacman->getLives() - 1);
+        if (pacman->getLives() <= 0) {
+            return pacman;
+        }
         for (auto e : entities) {
             e->reset();
         }
@@ -175,7 +179,7 @@ void World::TryBuffer() {
     if (distX < epsilon && distY < epsilon) pacman->setDirection(buffer);
 }
 
-void World::Update() {
+bool World::Update() {
     Stopwatch& stopwatch = Stopwatch::getInstance();
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
@@ -192,13 +196,19 @@ void World::Update() {
     }
     pacman->Update(dt);
     for (auto& r : removeables) {
-        if (r) entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
+        if (r) {
+            if (r == pacman) {
+                return true;
+            }
+            entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
+        }
     }
     for (auto& e : to_add) {
         entities.push_back(e);
     }
     to_add.clear();
     fearmode = false;
+    return false;
 }
 
 std::vector<std::shared_ptr<Entity>> World::getEntities() {

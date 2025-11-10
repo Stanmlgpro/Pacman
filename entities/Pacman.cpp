@@ -102,3 +102,6 @@ bool Pacman::getDying() const {
 void Pacman::setDead(bool dead) {
     this->dead = dead;
 }
+bool Pacman::getDead() const {
+    return dead;
+}

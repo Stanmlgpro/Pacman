@@ -31,6 +31,7 @@ public:
 
     void setDying(bool dying);
     bool getDying() const override;
+    bool getDead() const;
     void setDead(bool dead);
     bool isDead() const;
     void reset() override;
