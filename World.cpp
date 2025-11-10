@@ -14,10 +14,10 @@
 #include "singleton/Stopwatch.h"
 #include "Score.h"
 
-World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
+World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::string player) {
     this->filename = filename;
     this->entity_factory = entity_factory;
-    this->score = std::make_unique<Score>();
+    this->score = std::make_unique<Score>(player);
 
     dt = 0;
     difficulty = 0;

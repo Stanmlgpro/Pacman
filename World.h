@@ -20,7 +20,7 @@ enum MOVE {
 
 class World {
 public:
-    explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory);
+    explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::string player);
 
     void loadMap_reset();
     bool Update();

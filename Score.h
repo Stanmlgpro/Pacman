@@ -4,10 +4,11 @@
 
 #ifndef SCORE_H
 #define SCORE_H
+#include <string>
 
 class Score {
 public:
-    Score();
+    Score(std::string player);
     void orbEaten(bool big);
     void ghostEaten();
     int getPoints() const;
@@ -16,6 +17,7 @@ public:
     ~Score();
 private:
     int score;
+    std::string player;
 };
 
 

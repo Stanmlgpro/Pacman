@@ -12,7 +12,7 @@ Game::Game() : window(sf::VideoMode(750, 800), "Pac-Man") {
     camera = std::make_shared<Camera>(window.getSize().x, window.getSize().y);
     entity_factory = std::make_unique<SFMLFactory>(window, "../pacman.png", camera);
     state_manager = std::make_unique<StateManager>(entity_factory);
-    state_manager->PushState(MENU);
+    state_manager->PushState(MENU, "");
 }
 
 void Game::run() {

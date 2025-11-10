@@ -12,13 +12,13 @@ StateManager::StateManager(std::shared_ptr<EntityFactory> entity_factory) {
     this->entity_factory = entity_factory;
 }
 
-void StateManager::PushState(StateID stateid) {
+void StateManager::PushState(StateID stateid, std::string player) {
     std::unique_ptr<State> state;
     if (stateid == StateID::MENU) {
         state = std::make_unique<MenuState>(shared_from_this());
     }
     if (stateid == StateID::LEVEL) {
-        state = std::make_unique<LevelState>(shared_from_this(), entity_factory);
+        state = std::make_unique<LevelState>(shared_from_this(), entity_factory, player);
     }
     if (stateid == StateID::PAUSED) {
         state = std::make_unique<PausedState>(shared_from_this());

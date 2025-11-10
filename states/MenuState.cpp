@@ -11,10 +11,21 @@ MenuState::MenuState(std::shared_ptr<StateManager> statemanager) {
 }
 
 void MenuState::HandleEvent(const sf::Event &e) {
-    if (e.type == sf::Event::KeyPressed) {
+    static std::string player = "";
+    if (e.type == sf::Event::TextEntered) {
+        char c = static_cast<char>(e.text.unicode);
+        if (e.text.unicode == 8) {
+            if (!player.empty()) player.pop_back();
+        }
+        else if ((std::isalnum(c) || c == '_' || c == '-') && player.size() < 16) {
+            player += c;
+        }
+        std::cout << player << std::endl;
+    }
+    else if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Enter) {
-            std::cout << "making new level" << std::endl;
-            statemanager->PushState(LEVEL);
+            std::cout << "Starting new level with player: " << player << std::endl;
+            statemanager->PushState(LEVEL, player);
         }
     }
 }
