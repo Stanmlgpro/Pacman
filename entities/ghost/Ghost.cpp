@@ -73,11 +73,11 @@ std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
         bool hasHorizontal = left || right;
         bool hasVertical   = up || down;
 
-        if (hasHorizontal && hasVertical)
-            return ret;
+        if (!(hasHorizontal && hasVertical))
+            return {};
     }
 
-    return {};
+    return ret;
 }
 
 void Ghost::Update(float dt) {
@@ -95,7 +95,11 @@ void Ghost::Update(float dt) {
         }
         return;
     }
-    CalculateNextTurn(MoveDt(dt));
+    if (turnTimer > 0.f)
+        turnTimer -= dt;
+
+    if (turnTimer <= 0.f)
+        CalculateNextTurn(MoveDt(dt));
     Entity::Update(MoveDt(dt));
     view->Update(dt);
 }

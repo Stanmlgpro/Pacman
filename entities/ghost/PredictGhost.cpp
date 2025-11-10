@@ -12,6 +12,12 @@ PredictGhost::PredictGhost(float x, float y, std::shared_ptr<Pacman> pacman, con
 }
 
 float PredictGhost::distanceTurn(std::vector<int> direction, float dt) {
+    if (feared) {
+        float newX = position.x + direction[0] * speed * dt;
+        float newY = position.y + direction[1] * speed * dt;
+        float dis = std::abs(newX - pacman->getPosition().x) + std::abs(newY - pacman->getPosition().y);
+        return dis;
+    }
     float newX = position.x + direction[0] * speed * dt;
     float newY = position.y + direction[1] * speed * dt;
     float newPacmanX = pacman->getPosition().x + pacman->getDirection()[0] * pacman->getSpeed() * 4 * dt;
@@ -23,16 +29,20 @@ float PredictGhost::distanceTurn(std::vector<int> direction, float dt) {
 void PredictGhost::CalculateNextTurn(float dt) {
     std::vector<int> direction;
     float best_distance = -1.f;
+    std::vector<std::vector<int>> best_directions;
 
-    for (std::vector<int> dir_try : IsAtIntersection()) {
+    for (const std::vector<int>& dir_try : IsAtIntersection()) {
         float dis = distanceTurn(dir_try, dt);
-        if (dis >= 0 && (best_distance == -1.f || (feared ? dis > best_distance : dis < best_distance))) {
+        if ((best_distance == -1.f) || (feared ? dis > best_distance : dis < best_distance)) {
             best_distance = dis;
-            direction = dir_try;
+            best_directions.clear();
+            best_directions.push_back(dir_try);
+        } else if (dis == best_distance) {
+            best_directions.push_back(dir_try);
         }
     }
-    if (direction.empty()) return;
-
-    std::cout << "calculated direction: " << direction[0] << ", " << direction[1] << std::endl;
-    this->direction = direction;
+    if (best_directions.empty()) return;
+    if (best_directions.size() == 1) this->direction = best_directions[0];
+    else this->direction = best_directions[random.get(0, best_directions.size() - 1)];
+    turnTimer = turnSpeed;
 }

@@ -36,6 +36,8 @@ protected:
     float speed;
     float ChaseTime;
     bool Chasing;
+    float turnSpeed = 0.1f;
+    float turnTimer = 0.f;
 };
 
 
