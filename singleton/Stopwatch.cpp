@@ -21,5 +21,13 @@ void Stopwatch::tick() {
 }
 
 float Stopwatch::getDeltaTime() const {
+    if (paused) return 0.f;
     return deltaTime;
+}
+
+void Stopwatch::pause() {
+    paused = true;
+}
+void Stopwatch::resume() {
+    paused = false;
 }

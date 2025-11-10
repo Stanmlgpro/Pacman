@@ -37,7 +37,9 @@ public:
 
     virtual void setFeared(bool feared) {}
     virtual bool getFeared() {return true;}
-    virtual float getFearCheck() const {};
+    virtual float getFearCheck() const {return 0.f;}
+    virtual void reset() {}
+    virtual bool getDying() const {return false;}
 
     Position getPosition() const;
     void setPosition(float x, float y);

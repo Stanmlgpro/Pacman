@@ -19,6 +19,7 @@ Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector
     mapwidth = static_cast<int>(wallgrid[0].size());
     mapheight = static_cast<int>(wallgrid.size());
     this->ChaseTime = chasetime;
+    this->ChaseTimer = chasetime;
     Chasing = false;
 }
 
@@ -89,8 +90,8 @@ void Ghost::Update(float dt) {
         }
     }
     if (!Chasing) {
-        ChaseTime -= dt;
-        if (ChaseTime <= 0.f) {
+        ChaseTimer -= dt;
+        if (ChaseTimer <= 0.f) {
             Chasing = true;
         }
         view->Update(dt);
@@ -113,7 +114,7 @@ void Ghost::setFeared(bool feared) {
 bool Ghost::getFeared() {
     return feared;
 }
-std::vector<float> Ghost::getStartPos() const {
+Position Ghost::getStartPos() const {
     return startpos;
 }
 int Ghost::getId() const {
@@ -131,4 +132,14 @@ float Ghost::getFearCheck() const {
 }
 void Ghost::setSpeed(float speed) {
     this->speed = speed;
+}
+void Ghost::setFearTime(float feartime) {
+    this->feartime = feartime;
+}
+void Ghost::reset() {
+    position = startpos;
+    feared = false;
+    fearcheck = 0.f;
+    Chasing = false;
+    ChaseTimer = ChaseTime;
 }

@@ -11,14 +11,14 @@
 #include "World.h"
 
 Pacman::Pacman(float speed, int mapwidth, int mapheight, float x, float y) : Entity(mapwidth, mapheight) {
-    position.x = x;
-    position.y = y;
+    position = {x ,y};
     direction.reserve(2);
     direction.push_back(1);
     direction.push_back(0);
     direction_buffer.reserve(2);
     direction_buffer.push_back(0);
     direction_buffer.push_back(0);
+    startpos = {x, y};
     this->speed = speed;
 }
 
@@ -27,9 +27,18 @@ std::shared_ptr<Entity> Pacman::Interact(World& world) {
 } //function that will never be called
 
 void Pacman::Update(float dt) {
-    if (moving) Entity::Update(MoveDt(dt));
+    if (!dying) {
+        if (moving) Entity::Update(MoveDt(dt));
+        moving = true;
+        dying_time = 0;
+    }
+    else {
+        dying_time += dt;
+        if (dying_time > 1.2f) {
+            setDead(true);
+        }
+    }
     view->Update(dt);
-    moving = true;
 }
 
 int Pacman::getLives() const {
@@ -74,4 +83,21 @@ float Pacman::MoveDt(float dt) const {
     else sped /= mapheight;
     dt *= sped;
     return dt;
+}
+void Pacman::reset() {
+    position = startpos;
+    dead = false;
+    dying = false;
+}
+bool Pacman::isDead() const {
+    return dead;
+}
+void Pacman::setDying(bool dying) {
+    this->dying = dying;
+}
+bool Pacman::getDying() const {
+    return dying;
+}
+void Pacman::setDead(bool dead) {
+    this->dead = dead;
 }

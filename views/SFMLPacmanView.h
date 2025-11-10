@@ -20,6 +20,7 @@ private:
     bool open;
     float animation_speed;
     float animation_counter;
+    float current_dying_frame = 0;
 };
 
 

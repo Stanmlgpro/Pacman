@@ -130,9 +130,15 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) 
     float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - ghostPos.x) + epsilon;
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - ghostPos.y) + epsilon;
 
-    if (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size() && ghost->getFeared()) {
-        to_add.push_back(entity_factory->createGhost(ghost->getStartPos()[0], ghost->getStartPos()[1], pacman, wallGrid, ghost->getId(), false));
-        return ghost;
+    if (dx < 1.5f/wallGrid[0].size() && dy < 1.5f/wallGrid.size()) {
+        if (ghost->getFeared()) {
+            to_add.push_back(entity_factory->createGhost(ghost->getStartPos().x, ghost->getStartPos().y, pacman, wallGrid, ghost->getId(), false));
+            return ghost;
+        }
+        for (auto e : entities) {
+            e->reset();
+        }
+        pacman->setDying(true);
     }
     return nullptr;
 }
@@ -174,12 +180,15 @@ void World::Update() {
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
+    if (pacman->isDead()) pacman->reset();
     TryBuffer();
     std::vector<std::shared_ptr<Entity>> removeables;
     for (auto e : entities) {
         if (fearmode) e->setFeared(fearmode);
         removeables.push_back(e->Interact(*this));
-        e->Update(dt);
+        if (!pacman->getDying()) {
+            e->Update(dt);
+        }
     }
     pacman->Update(dt);
     for (auto& r : removeables) {

@@ -21,22 +21,25 @@ public:
     void setFeared(bool feared);
     bool getFeared();
     float getFearCheck() const override;
-    std::vector<float> getStartPos() const;
+    Position getStartPos() const;
     int getId() const;
     float MoveDt(float dt) const;
     void setSpeed(float speed);
+    void setFearTime(float feartime);
+    void reset() override;
 
     ~Ghost() override = default;
 protected:
     std::shared_ptr<Pacman> pacman;
     std::vector<std::vector<bool>> wallgrid;
-    std::vector<float> startpos;
+    Position startpos;
     bool feared = false;
     float feartime = 6.f;
     float fearcheck = 0.f;
     int id;
     float speed;
     float ChaseTime;
+    float ChaseTimer;
     bool Chasing;
     float turnSpeed = 0.1f;
     float turnTimer = 0.f;

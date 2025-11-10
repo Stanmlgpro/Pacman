@@ -12,13 +12,15 @@ private:
     float deltaTime;
 
     Stopwatch();
-
+    bool paused = false;
 public:
     Stopwatch(const Stopwatch&) = delete;
     Stopwatch& operator=(const Stopwatch&) = delete;
 
     static Stopwatch& getInstance();
 
+    void pause();
+    void resume();
     void tick();
 
     float getDeltaTime() const;

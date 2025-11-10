@@ -3,6 +3,7 @@
 //
 #include "SFMLPacmanView.h"
 #include "entities/Entity.h"
+#include <iostream>
 
 SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
     sprite.setTexture(texture);
@@ -19,6 +20,8 @@ void SFMLPacmanView::Update(float dt) {
         open = not open;
         animation_counter = 0;
     }
+    if (entity.lock()->getDying()) current_dying_frame += dt * 10;
+    else current_dying_frame = 0;
     FindSprite();
 }
 
@@ -28,10 +31,15 @@ void SFMLPacmanView::FindSprite() {
 
     int dirX = e->getDirection()[0];
     int dirY = e->getDirection()[1];
-
+    bool dying = e->getDying();
     sf::IntRect rect;
 
-    if (dirX == 0 && dirY == -1) {
+    if (!dying) current_dying_frame = 0;
+    if (dying) {
+        int frame = std::floor(current_dying_frame);
+        rect = sf::IntRect(30 + 15 * frame, 0, 15, 15);
+    }
+    else if (dirX == 0 && dirY == -1) {
         rect = open ? sf::IntRect(0, 30, 15, 15) : sf::IntRect(15, 30, 15, 15);
     }
     else if (dirX == 0 && dirY == 1) {

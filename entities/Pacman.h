@@ -28,12 +28,23 @@ public:
     void setDirectionBuffer(std::vector<int> buffer);
     std::vector<int> getDirectionBuffer() const;
     float MoveDt(float dt) const;
+
+    void setDying(bool dying);
+    bool getDying() const override;
+    void setDead(bool dead);
+    bool isDead() const;
+    void reset() override;
+
     ~Pacman() override = default;
 private:
     std::vector<int> direction_buffer;
     bool moving = true;
     int lives = 3;
     float speed;
+    Position startpos;
+    bool dying = false;
+    bool dead = false;
+    float dying_time = 0.f;
 };
 
 
