@@ -142,4 +142,5 @@ void Ghost::reset() {
     fearcheck = 0.f;
     Chasing = false;
     ChaseTimer = ChaseTime;
+    direction = {0,0};
 }

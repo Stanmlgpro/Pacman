@@ -34,7 +34,7 @@ void Pacman::Update(float dt) {
     }
     else {
         dying_time += dt;
-        if (dying_time > 1.2f) {
+        if (dying_time > 1.6f) {
             setDead(true);
         }
     }
@@ -88,6 +88,7 @@ void Pacman::reset() {
     position = startpos;
     dead = false;
     dying = false;
+    direction = {0,0};
 }
 bool Pacman::isDead() const {
     return dead;
