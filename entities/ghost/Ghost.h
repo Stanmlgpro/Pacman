@@ -24,6 +24,7 @@ public:
     std::vector<float> getStartPos() const;
     int getId() const;
     float MoveDt(float dt) const;
+    void setSpeed(float speed);
 
     ~Ghost() override = default;
 protected:

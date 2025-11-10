@@ -129,3 +129,6 @@ float Ghost::MoveDt(float dt) const {
 float Ghost::getFearCheck() const {
     return fearcheck;
 }
+void Ghost::setSpeed(float speed) {
+    this->speed = speed;
+}
