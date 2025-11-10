@@ -7,6 +7,7 @@
 #include <memory>
 #include <vector>
 #include "./views/View.h"
+#include "../singleton/Random.h"
 
 struct Position {
     float x;
@@ -50,6 +51,7 @@ protected:
     std::unique_ptr<View> view;
     int mapwidth;
     int mapheight;
+    Random& random = Random::getInstance();
 };
 
 

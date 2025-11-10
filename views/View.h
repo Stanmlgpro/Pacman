@@ -6,6 +6,7 @@
 #define VIEW_H
 #include <memory>
 #include <Camera.h>
+#include "../singleton/Random.h"
 
 class Camera;
 class Entity;
@@ -19,6 +20,7 @@ public:
 protected:
     std::weak_ptr<Entity> entity;
     std::shared_ptr<Camera> camera;
+    Random& random = Random::getInstance();
 };
 
 
