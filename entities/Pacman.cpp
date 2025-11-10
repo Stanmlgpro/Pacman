@@ -35,6 +35,10 @@ void Pacman::Update(float dt) {
 int Pacman::getLives() const {
     return lives;
 }
+float Pacman::getSpeed() const {
+    return speed;
+}
+
 void Pacman::setLives(int lives) {
     this->lives = lives;
 }

@@ -23,6 +23,7 @@ public:
     void setMoving(bool moving);
 
     int getLives() const;
+    float getSpeed() const;
 
     void setDirectionBuffer(std::vector<int> buffer);
     std::vector<int> getDirectionBuffer() const;

@@ -9,7 +9,7 @@
 #include <iostream>
 
 ChaseGhost::ChaseGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) : Ghost(x, y, pacman, wallgrid, id) {
-    speed = 11.f;
+    speed = 9.f;
 }
 
 float ChaseGhost::distanceTurn(std::vector<int> direction, float dt) {
