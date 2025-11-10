@@ -133,6 +133,10 @@ float Ghost::getFearCheck() const {
 void Ghost::setSpeed(float speed) {
     this->speed = speed;
 }
+float Ghost::getSpeed() const {
+    return speed;
+}
+
 void Ghost::setFearTime(float feartime) {
     this->feartime = feartime;
 }

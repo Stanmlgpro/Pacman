@@ -24,22 +24,22 @@ SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, st
         throw std::runtime_error("Failed to load textures: " + texture_input);
 }
 
-std::shared_ptr<Entity> SFMLFactory::createWall(float x, float y) {
+std::shared_ptr<Wall> SFMLFactory::createWall(float x, float y) {
     auto wall = std::make_shared<Wall>(x, y);
     wall->setView(std::make_unique<SFMLWallView>(texture, wall, window, camera));
     return wall;
 }
-std::shared_ptr<Entity> SFMLFactory::createOrb(float x, float y) {
+std::shared_ptr<Orb> SFMLFactory::createOrb(float x, float y) {
     auto orb = std::make_shared<Orb>(x, y, false);
     orb->setView(std::make_unique<SFMLOrbView>(texture, orb, window, camera));
     return orb;
 }
-std::shared_ptr<Entity> SFMLFactory::createBigOrb(float x, float y) {
+std::shared_ptr<Orb> SFMLFactory::createBigOrb(float x, float y) {
     auto orb = std::make_shared<Orb>(x, y, true);
     orb->setView(std::make_unique<SFMLOrbView>(texture, orb, window, camera));
     return orb;
 }
-std::shared_ptr<Entity> SFMLFactory::createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) {
+std::shared_ptr<Ghost> SFMLFactory::createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) {
     std::shared_ptr<Ghost> ghost;
     switch (id) {
     case 0:

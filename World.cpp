@@ -20,10 +20,15 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
     this->score = std::make_unique<Score>();
 
     dt = 0;
+    difficulty = 0;
+    fear_time = 7;
+    ghost_speed_mul = 0.4;
     loadMap_reset();
 }
 
 void World::loadMap_reset() {
+    fear_time = fear_time * 0.9;
+    ghost_speed_mul = ghost_speed_mul * 1.5;
     entities.clear();
     wallGrid.clear();
     std::ifstream file(filename);
@@ -56,7 +61,6 @@ void World::loadMap_reset() {
     std::string line2;
     int id = 0;
 
-    // --- First pass: create walls/orbs and record pacman & ghost spawn positions
     while (getline(file, line2)) {
         wallGrid.emplace_back();
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
@@ -83,7 +87,10 @@ void World::loadMap_reset() {
     file.close();
 
     for (auto& g : ghostSpawns) {
-        entities.push_back(entity_factory->createGhost(g.x, g.y, pacman, wallGrid, g.id, true));
+        auto ghost = entity_factory->createGhost(g.x, g.y, pacman, wallGrid, g.id, true);
+        ghost->setFearTime(fear_time);
+        ghost->setSpeed(ghost->getSpeed() * ghost_speed_mul);
+        entities.push_back(ghost);
     }
 }
 
@@ -210,6 +217,7 @@ bool World::Update() {
     pacman->Update(dt);
     if (new_level) {
         int lives = pacman->getLives();
+        difficulty++;
         loadMap_reset();
         pacman->setLives(lives);
         return false;

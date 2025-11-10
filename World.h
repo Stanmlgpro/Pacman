@@ -47,7 +47,10 @@ private:
     std::vector<std::shared_ptr<Entity>> to_add;
     float dt;
     bool fearmode = false;
+    float ghost_speed_mul;
+    float fear_time;
     std::unique_ptr<Score> score;
+    int difficulty;
 };
 
 

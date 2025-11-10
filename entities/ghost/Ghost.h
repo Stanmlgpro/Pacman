@@ -25,6 +25,7 @@ public:
     int getId() const;
     float MoveDt(float dt) const;
     void setSpeed(float speed);
+    float getSpeed() const;
     void setFearTime(float feartime);
     void reset() override;
 

@@ -15,10 +15,10 @@ class Pacman;
 class SFMLFactory : public EntityFactory {
 public:
     SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera);
-    std::shared_ptr<Entity> createWall(float x, float y) override;
-    std::shared_ptr<Entity> createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) override;
-    std::shared_ptr<Entity> createOrb(float x, float y) override;
-    std::shared_ptr<Entity> createBigOrb(float x, float y) override;
+    std::shared_ptr<Wall> createWall(float x, float y) override;
+    std::shared_ptr<Ghost> createGhost(float x, float y, std::shared_ptr<Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) override;
+    std::shared_ptr<Orb> createOrb(float x, float y) override;
+    std::shared_ptr<Orb> createBigOrb(float x, float y) override;
     std::shared_ptr<Pacman> createPacman(float speed, int mapwidth, int mapheight, float x, float y) override;
 
     std::shared_ptr<Camera> getCamera();
