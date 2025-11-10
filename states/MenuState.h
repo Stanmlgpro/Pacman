@@ -18,6 +18,7 @@ public:
     ~MenuState() override;
 private:
     std::shared_ptr<StateManager> statemanager;
+    std::string player;
 };
 
 
