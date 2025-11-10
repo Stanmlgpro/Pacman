@@ -19,7 +19,6 @@ void MenuState::HandleEvent(const sf::Event &e) {
         else if ((std::isalnum(c) || c == '_' || c == '-') && player.size() < 16) {
             player += c;
         }
-        std::cout << player << std::endl;
     }
     else if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Enter) {
