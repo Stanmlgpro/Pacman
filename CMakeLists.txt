@@ -70,6 +70,8 @@ add_executable(Pacman
         entities/ghost/PredictGhost.cpp
         entities/ghost/PredictGhost.h
         singleton/Random.h
-        singleton/Random.cpp)
+        singleton/Random.cpp
+        Score.h
+        Score.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)

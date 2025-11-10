@@ -6,6 +6,8 @@
 #define WORLD_H
 #include <memory>
 #include <string>
+
+#include "Score.h"
 #include "entities/Entity.h"
 
 class EntityFactory;
@@ -43,6 +45,7 @@ private:
     std::vector<std::shared_ptr<Entity>> to_add;
     float dt;
     bool fearmode = false;
+    std::unique_ptr<Score> score;
 };
 
 

@@ -12,9 +12,11 @@
 #include "entities/Orb.h"
 #include "factory/EntityFactory.h"
 #include "singleton/Stopwatch.h"
+#include "Score.h"
 
 World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory) {
     this->entity_factory = entity_factory;
+    this->score = std::make_unique<Score>();
 
     dt = 0;
     std::ifstream file(filename);
@@ -117,6 +119,7 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
 
     if (dx < collisionDistX && dy < collisionDistY) {
         if (orb->isBig()) fearmode = true;
+        score->orbEaten(orb->isBig());
         return orb;
     }
     return nullptr;
@@ -133,6 +136,7 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) 
     if (dx < 1.5f/wallGrid[0].size() && dy < 1.5f/wallGrid.size()) {
         if (ghost->getFeared()) {
             to_add.push_back(entity_factory->createGhost(ghost->getStartPos().x, ghost->getStartPos().y, pacman, wallGrid, ghost->getId(), false));
+            score->ghostEaten();
             return ghost;
         }
         pacman->setLives(pacman->getLives() - 1);
