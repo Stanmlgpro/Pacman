@@ -66,5 +66,6 @@ void ChaseGhost::CalculateNextTurn(float dt) {
         }
     }
     if (direction.empty()) return;
+
     this->direction = direction;
 }
