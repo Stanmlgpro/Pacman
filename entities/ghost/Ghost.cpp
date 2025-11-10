@@ -24,7 +24,7 @@ std::shared_ptr<Entity> Ghost::Interact(World& world) {
     return world.CollidesWithPacman(shared_from_this());
 }
 
-bool Ghost::IsAtIntersection() const {
+std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
 
     auto gridPos = World::NormalizedToGrid(position.x, position.y, wallgrid);
     int gridX = static_cast<int>(gridPos[0]);
@@ -41,8 +41,9 @@ bool Ghost::IsAtIntersection() const {
     float epsilon = 0.001f;
 
     if (!(distX < epsilon && distY < epsilon))
-        return false;
+        return {};
 
+    std::vector<std::vector<int>> ret;
     std::vector<std::vector<int>> dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     int openPaths = 0;
 
@@ -52,19 +53,21 @@ bool Ghost::IsAtIntersection() const {
 
         if (nx < 0 || ny < 0 || ny >= static_cast<int>(wallgrid.size()) || nx >= static_cast<int>(wallgrid[0].size()))
             continue;
-        if (!wallgrid[ny][nx])
+        if (!wallgrid[ny][nx]) {
             openPaths++;
+            ret.push_back(d);
+        }
     }
 
     if (openPaths >= 3 or openPaths == 1)
-        return true;
+        return ret;
     if (openPaths == 2) {
         bool hasHorizontal = (!wallgrid[gridY][gridX - 1] || !wallgrid[gridY][gridX + 1]);
         bool hasVertical   = (!wallgrid[gridY - 1][gridX] || !wallgrid[gridY + 1][gridX]);
         if (hasHorizontal && hasVertical)
-            return true;
+            return ret;
     }
-    return false;
+    return {};
 }
 
 void Ghost::Update(float dt) {
@@ -75,10 +78,8 @@ void Ghost::Update(float dt) {
             fearcheck = 0.f;
         }
     }
-    if (IsAtIntersection()) {
-        CalculateNextTurn(MoveDt(dt));
-        Entity::Update(MoveDt(dt));
-    }
+    CalculateNextTurn(MoveDt(dt));
+    Entity::Update(MoveDt(dt));
     view->Update(dt);
 }
 
