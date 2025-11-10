@@ -25,20 +25,18 @@ std::shared_ptr<Entity> Ghost::Interact(World& world) {
 }
 
 std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
-
     auto gridPos = World::NormalizedToGrid(position.x, position.y, wallgrid);
     int gridX = static_cast<int>(gridPos[0]);
     int gridY = static_cast<int>(gridPos[1]);
 
     float tileSizeX = 2.0f / static_cast<float>(wallgrid[0].size());
     float tileSizeY = 2.0f / static_cast<float>(wallgrid.size());
-
     float cellCenterX = -1.0f + tileSizeX * (static_cast<float>(gridX) + 0.5f);
     float cellCenterY = -1.0f + tileSizeY * (static_cast<float>(gridY) + 0.5f);
 
     float distX = std::abs(position.x - cellCenterX);
     float distY = std::abs(position.y - cellCenterY);
-    float epsilon = 0.001f;
+    float epsilon = 0.003f;
 
     if (!(distX < epsilon && distY < epsilon))
         return {};
@@ -51,22 +49,32 @@ std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
         int nx = gridX + d[0];
         int ny = gridY + d[1];
 
-        if (nx < 0 || ny < 0 || ny >= static_cast<int>(wallgrid.size()) || nx >= static_cast<int>(wallgrid[0].size()))
+        if (ny < 0 || ny >= static_cast<int>(wallgrid.size()) ||
+            nx < 0 || nx >= static_cast<int>(wallgrid[0].size()))
             continue;
+
         if (!wallgrid[ny][nx]) {
             openPaths++;
             ret.push_back(d);
         }
     }
 
-    if (openPaths >= 3 or openPaths == 1)
+    if (openPaths >= 3 || openPaths == 1)
         return ret;
+
     if (openPaths == 2) {
-        bool hasHorizontal = (!wallgrid[gridY][gridX - 1] || !wallgrid[gridY][gridX + 1]);
-        bool hasVertical   = (!wallgrid[gridY - 1][gridX] || !wallgrid[gridY + 1][gridX]);
+        bool left   = (gridX > 0) && !wallgrid[gridY][gridX - 1];
+        bool right  = (gridX < static_cast<int>(wallgrid[0].size()) - 1) && !wallgrid[gridY][gridX + 1];
+        bool up     = (gridY > 0) && !wallgrid[gridY - 1][gridX];
+        bool down   = (gridY < static_cast<int>(wallgrid.size()) - 1) && !wallgrid[gridY + 1][gridX];
+
+        bool hasHorizontal = left || right;
+        bool hasVertical   = up || down;
+
         if (hasHorizontal && hasVertical)
             return ret;
     }
+
     return {};
 }
 
