@@ -7,7 +7,7 @@
 #include "World.h"
 #include <iostream>
 
-Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) {
+Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime) {
     position.x = x;
     position.y = y;
     startpos = {x, y};
@@ -18,6 +18,8 @@ Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector
     feared = false;
     mapwidth = static_cast<int>(wallgrid[0].size());
     mapheight = static_cast<int>(wallgrid.size());
+    this->ChaseTime = chasetime;
+    Chasing = false;
 }
 
 std::shared_ptr<Entity> Ghost::Interact(World& world) {
@@ -85,6 +87,13 @@ void Ghost::Update(float dt) {
             setFeared(false);
             fearcheck = 0.f;
         }
+    }
+    if (!Chasing) {
+        ChaseTime -= dt;
+        if (ChaseTime <= 0.f) {
+            Chasing = true;
+        }
+        return;
     }
     CalculateNextTurn(MoveDt(dt));
     Entity::Update(MoveDt(dt));

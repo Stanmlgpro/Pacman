@@ -8,7 +8,7 @@
 
 class LockedGhost : public Ghost {
 public:
-    LockedGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id);
+    LockedGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime);
 
     float distanceTurn(std::vector<int> direction, float dt) override;
     void CalculateNextTurn(float dt) override;

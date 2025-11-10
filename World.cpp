@@ -74,7 +74,7 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
     file.close();
 
     for (auto& g : ghostSpawns) {
-        entities.push_back(entity_factory->createGhost(g.x, g.y, pacman, wallGrid, g.id));
+        entities.push_back(entity_factory->createGhost(g.x, g.y, pacman, wallGrid, g.id, true));
     }
 }
 
@@ -131,7 +131,7 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) 
     float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - ghostPos.y) + epsilon;
 
     if (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size() && ghost->getFeared()) {
-        to_add.push_back(entity_factory->createGhost(ghost->getStartPos()[0], ghost->getStartPos()[1], pacman, wallGrid, ghost->getId()));
+        to_add.push_back(entity_factory->createGhost(ghost->getStartPos()[0], ghost->getStartPos()[1], pacman, wallGrid, ghost->getId(), false));
         return ghost;
     }
     return nullptr;

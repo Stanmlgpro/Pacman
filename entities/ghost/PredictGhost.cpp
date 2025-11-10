@@ -7,7 +7,7 @@
 #include "entities/Pacman.h"
 #include <iostream>
 
-PredictGhost::PredictGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id) : Ghost(x, y, pacman, wallgrid, id) {
+PredictGhost::PredictGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime) : Ghost(x, y, pacman, wallgrid, id, chasetime) {
     speed = 8.f;
 }
 

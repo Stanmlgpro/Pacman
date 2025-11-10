@@ -8,7 +8,7 @@
 
 class Ghost : public Entity, public std::enable_shared_from_this<Ghost> {
 public:
-    Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id);
+    Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime);
 
     std::vector<std::vector<int>> IsAtIntersection() const;
     virtual float distanceTurn(std::vector<int> direction, float dt) = 0;
@@ -34,6 +34,8 @@ protected:
     float fearcheck = 0.f;
     int id;
     float speed;
+    float ChaseTime;
+    bool Chasing;
 };
 
 
