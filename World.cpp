@@ -28,7 +28,7 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
 
 void World::loadMap_reset() {
     fear_time = fear_time * 0.9;
-    ghost_speed_mul = ghost_speed_mul * 1.5;
+    ghost_speed_mul = ghost_speed_mul * 1.3;
     entities.clear();
     wallGrid.clear();
     std::ifstream file(filename);
