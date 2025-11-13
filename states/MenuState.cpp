@@ -101,7 +101,7 @@ void MenuState::Render(sf::RenderWindow& window) {
         entry.setPosition(window.getSize().x / 2.f - entry.getGlobalBounds().width / 2.f, y);
         window.draw(entry);
         y += 35.f;
-        if (++rank > 10) break; // Show top 10
+        ++rank;
     }
 
     hint.setPosition(window.getSize().x / 2.f - hint.getGlobalBounds().width / 2.f, window.getSize().y - 70.f);
