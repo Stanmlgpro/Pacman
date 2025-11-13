@@ -1,4 +1,5 @@
+niggar: 3950
+niggar: 3790
+niggar: 3310
 Unknown: 3280
-Stan: 210
-fds: 170
-Unknown: 0
+niggar: 3240

@@ -51,6 +51,8 @@ private:
     bool fearmode = false;
     float ghost_speed_mul;
     float fear_time;
+    float fear_timer;
+    bool fear_sound = false;
     std::unique_ptr<Score> score;
     int difficulty;
 };

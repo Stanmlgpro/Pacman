@@ -133,9 +133,13 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
     float collisionDistY = size / wallGrid.size();
 
     if (dx < collisionDistX && dy < collisionDistY) {
-        if (orb->isBig()) fearmode = true;
+        if (orb->isBig()) {
+            fearmode = true;
+            world_sounds->FruitEaten();
+        }
+        else world_sounds->OrbEaten();
+
         score->orbEaten(orb->isBig());
-        world_sounds->OrbEaten();
         return orb;
     }
     return nullptr;
@@ -153,9 +157,11 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) 
         if (ghost->getFeared()) {
             to_add.push_back(entity_factory->createGhost(ghost->getStartPos().x, ghost->getStartPos().y, pacman, wallGrid, ghost->getId(), false));
             score->ghostEaten();
+            world_sounds->GhostEaten();
             return ghost;
         }
         pacman->setLives(pacman->getLives() - 1);
+        world_sounds->PacmanDying();
         if (pacman->getLives() <= 0) {
             return pacman;
         }
@@ -208,9 +214,21 @@ bool World::Update() {
     bool new_level = true;
     TryBuffer();
     std::vector<std::shared_ptr<Entity>> removeables;
+    if (fear_sound) {
+        world_sounds->FearMode();
+        fear_timer += dt;
+        if (fear_timer > fear_time) {
+            fear_sound = not fear_sound;
+            fear_timer = 0;
+            world_sounds->EndFearMode();
+        }
+    }
     for (auto e : entities) {
         e->checkWin(new_level);
-        if (fearmode) e->setFeared(fearmode);
+        if (fearmode) {
+            e->setFeared(fearmode);
+            fear_sound = true;
+        }
         removeables.push_back(e->Interact(*this));
         if (!pacman->getDying()) {
             e->Update(dt);
@@ -222,6 +240,7 @@ bool World::Update() {
         difficulty++;
         loadMap_reset();
         pacman->setLives(lives);
+        world_sounds->Start();
         return false;
     }
     for (auto& r : removeables) {
