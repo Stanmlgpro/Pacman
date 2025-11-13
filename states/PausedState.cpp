@@ -10,20 +10,18 @@
 PausedState::PausedState(std::shared_ptr<StateManager> statemanager) {
     this->statemanager = statemanager;
 
-#ifdef _WIN32
-    font.loadFromFile("C:/Windows/Fonts/arial.ttf");
-#else
-    font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
-#endif
+    #ifdef _WIN32
+        font.loadFromFile("C:/Windows/Fonts/arial.ttf");
+    #else
+        font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+    #endif
 
-    // --- Title ---
     title.setFont(font);
     title.setString("PAUSED");
     title.setCharacterSize(60);
     title.setFillColor(sf::Color::Yellow);
     title.setStyle(sf::Text::Bold);
 
-    // --- Hint text ---
     resumeHint.setFont(font);
     resumeHint.setString("Press ENTER to resume");
     resumeHint.setCharacterSize(30);
@@ -52,12 +50,11 @@ void PausedState::HandleEvent(const sf::Event &e) {
 void PausedState::Update() {}
 
 void PausedState::Render(sf::RenderWindow& window) {
-    // Semi-transparent overlay
+
     sf::RectangleShape overlay(sf::Vector2f(window.getSize().x, window.getSize().y));
     overlay.setFillColor(sf::Color(0, 0, 0, 150));
     window.draw(overlay);
 
-    // Center and draw texts
     title.setPosition(window.getSize().x / 2.f - title.getGlobalBounds().width / 2.f, 100.f);
     resumeHint.setPosition(window.getSize().x / 2.f - resumeHint.getGlobalBounds().width / 2.f, 250.f);
     menuHint.setPosition(window.getSize().x / 2.f - menuHint.getGlobalBounds().width / 2.f, 310.f);
