@@ -72,6 +72,10 @@ add_executable(Pacman
         singleton/Random.h
         singleton/Random.cpp
         Score.h
-        Score.cpp)
+        Score.cpp
+        sounds/WorldSound.h
+        sounds/WorldSound.cpp
+        sounds/SFMLWorldSounds.h
+        sounds/SFMLWorldSounds.cpp)
 
-target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system)
+target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system sfml-audio)

@@ -22,6 +22,8 @@ private:
     std::shared_ptr<StateManager> statemanager;
     std::shared_ptr<EntityFactory> entity_factory;
     std::string player;
+    sf::SoundBuffer munchBuffer;
+    sf::Sound munchSound;
 };
 
 #endif //PACMAN_LEVELSTATE_H

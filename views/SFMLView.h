@@ -7,6 +7,7 @@
 #include "View.h"
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class SFMLView : public View {
 public:
