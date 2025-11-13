@@ -14,10 +14,11 @@
 #include "singleton/Stopwatch.h"
 #include "Score.h"
 
-World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::string player) {
+World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player) {
     this->filename = filename;
     this->entity_factory = entity_factory;
     this->score = std::make_unique<Score>(player);
+    this->world_sounds = world_sounds;
 
     dt = 0;
     difficulty = 0;
@@ -75,7 +76,7 @@ void World::loadMap_reset() {
             } else if (c == 'o') {
                 entities.push_back(entity_factory->createBigOrb(normX, normY));
             } else if (c == 'P') {
-                pacman = entity_factory->createPacman(10.f, width, height, normX, normY);
+                pacman = entity_factory->createPacman(7.5f, width, height, normX, normY);
             } else if (c == 'G') {
                 ghostSpawns.push_back({normX, normY, id++});
             }
@@ -134,6 +135,7 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
     if (dx < collisionDistX && dy < collisionDistY) {
         if (orb->isBig()) fearmode = true;
         score->orbEaten(orb->isBig());
+        world_sounds->OrbEaten();
         return orb;
     }
     return nullptr;

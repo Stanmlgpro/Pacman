@@ -4,15 +4,15 @@
 
 #ifndef WORLDSOUND_H
 #define WORLDSOUND_H
-
+#include <SFML/Audio.hpp>
 
 
 class WorldSound {
 public:
-    virtual OrbEaten() = 0;
-    virtual GhostEaten() = 0;
-    virtual FearMode() = 0;
-    virtual PacmanDying () = 0;
+    virtual void OrbEaten() = 0;
+    virtual void GhostEaten() = 0;
+    virtual void FearMode() = 0;
+    virtual void PacmanDying () = 0;
 };
 
 

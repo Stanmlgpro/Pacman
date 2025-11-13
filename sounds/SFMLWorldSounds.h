@@ -8,7 +8,17 @@
 
 
 class SFMLWorldSounds : public WorldSound {
+public:
+    SFMLWorldSounds();
 
+    void OrbEaten() override;
+    void GhostEaten() override {}
+    void FearMode() override {}
+    void PacmanDying() override {}
+
+private:
+    sf::SoundBuffer munchBuffer;
+    sf::Sound munchSound;
 };
 
 

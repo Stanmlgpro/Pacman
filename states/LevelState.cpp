@@ -7,14 +7,12 @@
 #include "StateManager.h"
 #include "World.h"
 
-LevelState::LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory, std::string player) : player(player) {
+LevelState::LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player) : player(player) {
     this->statemanager = statemanager;
     this->entity_factory = entity_factory;
-    if (!munchBuffer.loadFromFile("C:/Users/stan1/CLionProjects/Pacman/munch_1.mp3")) {
-        std::cerr << "Failed to load sound!" << std::endl;
-    }
-    munchSound.setBuffer(munchBuffer);
-    this->world = std::make_unique<World>("../map.txt", entity_factory, player);
+    this->world_sounds = world_sounds;
+
+    this->world = std::make_unique<World>("../map.txt", entity_factory, world_sounds, player);
     std::cout << "new level and world created" << std::endl;
 }
 

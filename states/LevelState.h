@@ -7,10 +7,11 @@
 #include "State.h"
 #include "World.h"
 
+class SFMLWorldSounds;
 class EntityFactory;
 class LevelState final : public State {
 public:
-    LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory, std::string player);
+    LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player);
 
     void HandleEvent(const sf::Event& e) override;
     void Update() override;
@@ -21,9 +22,8 @@ private:
     std::unique_ptr<World> world;
     std::shared_ptr<StateManager> statemanager;
     std::shared_ptr<EntityFactory> entity_factory;
+    std::shared_ptr<WorldSound> world_sounds;
     std::string player;
-    sf::SoundBuffer munchBuffer;
-    sf::Sound munchSound;
 };
 
 #endif //PACMAN_LEVELSTATE_H

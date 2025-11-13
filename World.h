@@ -9,6 +9,7 @@
 
 #include "Score.h"
 #include "entities/Entity.h"
+#include "sounds/WorldSound.h"
 
 class EntityFactory;
 enum MOVE {
@@ -20,7 +21,7 @@ enum MOVE {
 
 class World {
 public:
-    explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::string player);
+    explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player);
 
     void loadMap_reset();
     bool Update();
@@ -44,6 +45,7 @@ private:
     std::shared_ptr<Pacman> pacman;
     std::vector<std::vector<bool>> wallGrid;
     std::shared_ptr<EntityFactory> entity_factory;
+    std::shared_ptr<WorldSound> world_sounds;
     std::vector<std::shared_ptr<Entity>> to_add;
     float dt;
     bool fearmode = false;

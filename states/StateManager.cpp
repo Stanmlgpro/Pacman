@@ -8,8 +8,9 @@
 #include "LevelState.h"
 #include "PausedState.h"
 
-StateManager::StateManager(std::shared_ptr<EntityFactory> entity_factory) {
+StateManager::StateManager(std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sound) {
     this->entity_factory = entity_factory;
+    this->world_sound = world_sound;
 }
 
 void StateManager::PushState(StateID stateid, std::string player) {
@@ -18,7 +19,7 @@ void StateManager::PushState(StateID stateid, std::string player) {
         state = std::make_unique<MenuState>(shared_from_this());
     }
     if (stateid == StateID::LEVEL) {
-        state = std::make_unique<LevelState>(shared_from_this(), entity_factory, player);
+        state = std::make_unique<LevelState>(shared_from_this(), entity_factory, world_sound, player);
     }
     if (stateid == StateID::PAUSED) {
         state = std::make_unique<PausedState>(shared_from_this());

@@ -10,6 +10,7 @@
 #include "State.h"
 
 
+class WorldSound;
 class EntityFactory;
 
 enum StateID {
@@ -21,7 +22,7 @@ class Game;
 class State;
 class StateManager : public std::enable_shared_from_this<StateManager> {
 public:
-    StateManager(std::shared_ptr<EntityFactory> entity_factory);
+    StateManager(std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sound);
 
     void HandleEvent(const sf::Event& event);
 
@@ -36,6 +37,7 @@ public:
 private:
     std::stack<std::unique_ptr<State>> states{};
     std::shared_ptr<EntityFactory> entity_factory;
+    std::shared_ptr<WorldSound> world_sound;
 };
 
 
