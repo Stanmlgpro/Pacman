@@ -9,18 +9,41 @@
 
 PausedState::PausedState(std::shared_ptr<StateManager> statemanager) {
     this->statemanager = statemanager;
-    std::cout << "in a Paused state" << std::endl;
+
+#ifdef _WIN32
+    font.loadFromFile("C:/Windows/Fonts/arial.ttf");
+#else
+    font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+#endif
+
+    // --- Title ---
+    title.setFont(font);
+    title.setString("PAUSED");
+    title.setCharacterSize(60);
+    title.setFillColor(sf::Color::Yellow);
+    title.setStyle(sf::Text::Bold);
+
+    // --- Hint text ---
+    resumeHint.setFont(font);
+    resumeHint.setString("Press ENTER to resume");
+    resumeHint.setCharacterSize(30);
+    resumeHint.setFillColor(sf::Color::White);
+
+    menuHint.setFont(font);
+    menuHint.setString("Press ESC to return to menu");
+    menuHint.setCharacterSize(30);
+    menuHint.setFillColor(sf::Color(180, 180, 180));
 }
 
 void PausedState::HandleEvent(const sf::Event &e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
-            std::cout << "going to menu screen" << std::endl;
-            statemanager->PopState();
-            statemanager->PopState();
+            std::cout << "Returning to menu..." << std::endl;
+            statemanager->PopState(); // remove pause
+            statemanager->PopState(); // remove level
         }
         else if (e.key.code == sf::Keyboard::Enter) {
-            std::cout << "going to play the level again" << std::endl;
+            std::cout << "Resuming game..." << std::endl;
             statemanager->PopState();
         }
     }
@@ -29,6 +52,19 @@ void PausedState::HandleEvent(const sf::Event &e) {
 void PausedState::Update() {}
 
 void PausedState::Render(sf::RenderWindow& window) {
+    // Semi-transparent overlay
+    sf::RectangleShape overlay(sf::Vector2f(window.getSize().x, window.getSize().y));
+    overlay.setFillColor(sf::Color(0, 0, 0, 150));
+    window.draw(overlay);
+
+    // Center and draw texts
+    title.setPosition(window.getSize().x / 2.f - title.getGlobalBounds().width / 2.f, 100.f);
+    resumeHint.setPosition(window.getSize().x / 2.f - resumeHint.getGlobalBounds().width / 2.f, 250.f);
+    menuHint.setPosition(window.getSize().x / 2.f - menuHint.getGlobalBounds().width / 2.f, 310.f);
+
+    window.draw(title);
+    window.draw(resumeHint);
+    window.draw(menuHint);
 }
 
 PausedState::~PausedState() = default;

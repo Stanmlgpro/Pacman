@@ -1,5 +1,2 @@
-Unknown: 4800
-Stqnmgpro: 4780
-Unknown: 3760
-Unknown: 3600
-Unknown: 3560
+Stan: 210
+fds: 170

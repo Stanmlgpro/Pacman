@@ -16,8 +16,11 @@ public:
 
     ~PausedState() override;
 private:
-    // std::unique_ptr<World> world;
     std::shared_ptr<StateManager> statemanager;
+    sf::Text title;
+    sf::Font font;
+    sf::Text resumeHint;
+    sf::Text menuHint;
 };
 
 
