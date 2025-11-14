@@ -46,7 +46,10 @@ void SFMLWorldSounds::GhostEaten() {
     ghosteatSound.play();
 }
 void SFMLWorldSounds::FearMode() {
-    fearSound.play();
+    std::cout << "fucking krr bug" << std::endl;
+    if (fearSound.getStatus() != sf::Sound::Playing)
+        std::cout << "playing" << std::endl;
+        fearSound.play();
 }
 void SFMLWorldSounds::EndFearMode() {
     fearSound.stop();

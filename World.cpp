@@ -214,20 +214,11 @@ bool World::Update() {
     bool new_level = true;
     TryBuffer();
     std::vector<std::shared_ptr<Entity>> removeables;
-    if (fear_sound) {
-        world_sounds->FearMode();
-        fear_timer += dt;
-        if (fear_timer > fear_time) {
-            fear_sound = not fear_sound;
-            fear_timer = 0;
-            world_sounds->EndFearMode();
-        }
-    }
     for (auto e : entities) {
         e->checkWin(new_level);
         if (fearmode) {
             e->setFeared(fearmode);
-            fear_sound = true;
+            world_sounds->FearMode();
         }
         removeables.push_back(e->Interact(*this));
         if (!pacman->getDying()) {
@@ -253,6 +244,14 @@ bool World::Update() {
         entities.push_back(e);
     }
     to_add.clear();
+    if (fearmode) fear_timer += dt;
+    if (fear_timer != 0) {
+        fear_timer += dt;
+        if (fear_timer > fear_time) {
+            fear_timer = 0;
+            world_sounds->EndFearMode();
+        }
+    }
     fearmode = false;
     return false;
 }
