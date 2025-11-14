@@ -13,6 +13,7 @@ ChaseGhost::ChaseGhost(float x, float y, std::shared_ptr<Pacman> pacman, const s
 }
 
 float ChaseGhost::distanceTurn(std::vector<int> direction, float dt) {
+    if (dying) return BreathFirstDistance(direction, startpos, dt);
     return BreathFirstDistance(direction, pacman->getPosition(), dt);
 }
 

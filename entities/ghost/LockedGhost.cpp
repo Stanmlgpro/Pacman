@@ -13,6 +13,7 @@ LockedGhost::LockedGhost(float x, float y, std::shared_ptr<Pacman> pacman, const
 }
 
 float LockedGhost::distanceTurn(std::vector<int> direction, float dt) {
+    if (dying) return BreathFirstDistance(direction, startpos, dt);
     if (feared) return BreathFirstDistance(direction, pacman->getPosition() ,dt);
     return 0.f;
 }

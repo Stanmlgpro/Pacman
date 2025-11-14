@@ -83,6 +83,12 @@ std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
 }
 
 void Ghost::Update(float dt) {
+    if (dying) {
+        float EPS = 0.01f;
+        if (std::abs(position.x - startpos.x) < EPS && std::abs(position.y - startpos.y) < EPS) {
+            setDying(false);
+        }
+    }
     if (feared) {
         fearcheck += dt;
         if (fearcheck >= feartime) {
@@ -140,10 +146,22 @@ void Ghost::setSpeed(float speed) {
 float Ghost::getSpeed() const {
     return speed;
 }
-
 void Ghost::setFearTime(float feartime) {
     this->feartime = feartime;
 }
+bool Ghost::getDying() const {
+    return dying;
+}
+
+void Ghost::setDying(bool dying) {
+    this->dying = dying;
+    if (dying) {
+        setFeared(false);
+        speed *= 4;
+    }
+    else speed /= 4;
+}
+
 void Ghost::reset() {
     position = startpos;
     feared = false;

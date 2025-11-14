@@ -30,6 +30,8 @@ public:
     void setSpeed(float speed);
     float getSpeed() const;
     void setFearTime(float feartime);
+    bool getDying() const override;
+    void setDying(bool dying);
     void reset() override;
 
     ~Ghost() override = default;
@@ -47,6 +49,7 @@ protected:
     bool Chasing;
     float turnSpeed = 0.1f;
     float turnTimer = 0.f;
+    bool dying = false;
 };
 
 
