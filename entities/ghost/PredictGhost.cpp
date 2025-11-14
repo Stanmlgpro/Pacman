@@ -14,10 +14,10 @@ PredictGhost::PredictGhost(float x, float y, std::shared_ptr<Pacman> pacman, con
 
 float PredictGhost::distanceTurn(std::vector<int> direction, float dt) {
     if (dying) return BreathFirstDistance(direction, startpos, dt);
-    if (feared) return ManhattanDistance(direction, pacman->getPosition(), dt);
+    if (feared) return BreathFirstDistance(direction, pacman->getPosition(), dt);
     float newPacmanX = pacman->getPosition().x + pacman->getDirection()[0] * pacman->getSpeed() * 4 * dt;
     float newPacmanY = pacman->getPosition().y + pacman->getDirection()[1] * pacman->getSpeed() * 4 * dt;
-    return ManhattanDistance(direction, Position{newPacmanX, newPacmanY}, dt);
+    return BreathFirstDistance(direction, Position{newPacmanX, newPacmanY}, dt);
 }
 
 void PredictGhost::CalculateNextTurn(float dt) {

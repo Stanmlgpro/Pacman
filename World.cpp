@@ -23,12 +23,14 @@ World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory
     dt = 0;
     difficulty = 0;
     fear_time = 7;
+    fear_timer = 0;
     ghost_speed_mul = 0.4;
     loadMap_reset();
 }
 
 void World::loadMap_reset() {
     fear_time = fear_time * 0.9;
+    fear_timer = 0;
     ghost_speed_mul = ghost_speed_mul * 1.3;
     entities.clear();
     wallGrid.clear();
@@ -233,7 +235,6 @@ bool World::Update() {
         loadMap_reset();
         pacman->setLives(lives);
         world_sounds->Start();
-        return false;
     }
     for (auto& r : removeables) {
         if (r) {
@@ -254,7 +255,6 @@ bool World::Update() {
         }
     }
     if (fear_timer == 0) world_sounds->EndFearMode();
-    std::cout << fear_timer << " " << fear_time << std::endl;
     fearmode = false;
     return false;
 }

@@ -12,6 +12,7 @@ public:
     void orbEaten(bool big);
     void ghostEaten();
     int getPoints() const;
+    void wright();
     void reset();
 
     ~Score();

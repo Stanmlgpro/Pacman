@@ -27,8 +27,7 @@ void Score::reset() {
 int Score::getPoints() const {
     return score;
 }
-
-Score::~Score() {
+void Score::wright() {
     std::vector<std::pair<std::string, int>> scores;
     std::ifstream inFile("../scoreboard.txt");
 
@@ -71,4 +70,7 @@ Score::~Score() {
     }
 
     outFile.close();
+}
+Score::~Score() {
+    wright();
 }
