@@ -10,6 +10,9 @@ class Ghost : public Entity, public std::enable_shared_from_this<Ghost> {
 public:
     Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime);
 
+    float ManhattanDistance(std::vector<int> direction, Position target, float dt);
+    int BFSGridDistance(int startX, int startY, int targetX, int targetY) const;
+    float BreathFirstDistance(std::vector<int> direction, Position target, float dt);
     std::vector<std::vector<int>> IsAtIntersection() const;
     virtual float distanceTurn(std::vector<int> direction, float dt) = 0;
     virtual void CalculateNextTurn(float dt) = 0;

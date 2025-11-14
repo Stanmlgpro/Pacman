@@ -13,10 +13,7 @@ ChaseGhost::ChaseGhost(float x, float y, std::shared_ptr<Pacman> pacman, const s
 }
 
 float ChaseGhost::distanceTurn(std::vector<int> direction, float dt) {
-    float newX = position.x + direction[0] * speed * dt;
-    float newY = position.y + direction[1] * speed * dt;
-    float dis = std::abs(newX - pacman->getPosition().x) + std::abs(newY - pacman->getPosition().y);
-    return dis;
+    return BreathFirstDistance(direction, pacman->getPosition(), dt);
 }
 
 void ChaseGhost::CalculateNextTurn(float dt) {

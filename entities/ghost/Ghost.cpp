@@ -6,6 +6,7 @@
 #include "entities/Pacman.h"
 #include "World.h"
 #include <iostream>
+#include <queue>
 
 Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime) {
     position.x = x;
@@ -150,4 +151,70 @@ void Ghost::reset() {
     Chasing = false;
     ChaseTimer = ChaseTime;
     direction = {0,0};
+}
+
+float Ghost::ManhattanDistance(std::vector<int> direction, Position target, float dt) {
+    float newX = position.x + direction[0] * speed * dt;
+    float newY = position.y + direction[1] * speed * dt;
+    float dis = std::abs(newX - target.x) + std::abs(newY - target.y);
+    return dis;
+}
+
+int Ghost::BFSGridDistance(int startX, int startY, int targetX, int targetY) const {
+    int rows = wallgrid.size();
+    int cols = wallgrid[0].size();
+
+    if (startX < 0 || startX >= cols || startY < 0 || startY >= rows) return INT_MAX;
+    if (targetX < 0 || targetX >= cols || targetY < 0 || targetY >= rows) return INT_MAX;
+    if (wallgrid[startY][startX] || wallgrid[targetY][targetX]) return INT_MAX;
+
+    std::queue<std::pair<int,int>> q;
+    std::vector<std::vector<int>> dist(rows, std::vector<int>(cols, -1));
+
+    q.push({startX, startY});
+    dist[startY][startX] = 0;
+
+    const std::vector<std::pair<int,int>> dirs = {
+        {1,0}, {-1,0}, {0,1}, {0,-1}
+    };
+
+    while (!q.empty()) {
+        auto [x, y] = q.front();
+        q.pop();
+
+        if (x == targetX && y == targetY)
+            return dist[y][x];
+
+        for (auto [dx, dy] : dirs) {
+            int nx = x + dx;
+            int ny = y + dy;
+
+            if (nx < 0 || nx >= cols || ny < 0 || ny >= rows)
+                continue;
+
+            if (!wallgrid[ny][nx] && dist[ny][nx] == -1) {
+                dist[ny][nx] = dist[y][x] + 1;
+                q.push({nx, ny});
+            }
+        }
+    }
+
+    return INT_MAX;
+}
+float Ghost::BreathFirstDistance(std::vector<int> direction, Position target, float dt)
+{
+    auto gpos = World::NormalizedToGrid(position.x, position.y, wallgrid);
+    int gx = static_cast<int>(gpos[0]);
+    int gy = static_cast<int>(gpos[1]);
+
+    int nextX = gx + direction[0];
+    int nextY = gy + direction[1];
+
+    auto tpos = World::NormalizedToGrid(target.x, target.y, wallgrid);
+    int tx = static_cast<int>(tpos[0]);
+    int ty = static_cast<int>(tpos[1]);
+
+    int d = BFSGridDistance(nextX, nextY, tx, ty);
+
+    return d;
 }
