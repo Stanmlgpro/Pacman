@@ -146,6 +146,7 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
 }
 
 std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) {
+    if (ghost->getDying()) return nullptr;
     Position pacPos = pacman->getPosition();
     Position ghostPos = ghost->getPosition();
 
@@ -155,10 +156,10 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) 
 
     if (dx < 1.5f/wallGrid[0].size() && dy < 1.5f/wallGrid.size()) {
         if (ghost->getFeared()) {
-            to_add.push_back(entity_factory->createGhost(ghost->getStartPos().x, ghost->getStartPos().y, pacman, wallGrid, ghost->getId(), false));
+            ghost->setDying(true);
             score->ghostEaten();
             world_sounds->GhostEaten();
-            return ghost;
+            return nullptr;
         }
         pacman->setLives(pacman->getLives() - 1);
         world_sounds->PacmanDying();
@@ -245,13 +246,15 @@ bool World::Update() {
     }
     to_add.clear();
     if (fearmode) fear_timer += dt;
-    if (fear_timer != 0) {
+    else if (fear_timer != 0) {
         fear_timer += dt;
         if (fear_timer > fear_time) {
             fear_timer = 0;
             world_sounds->EndFearMode();
         }
     }
+    if (fear_timer == 0) world_sounds->EndFearMode();
+    std::cout << fear_timer << " " << fear_time << std::endl;
     fearmode = false;
     return false;
 }

@@ -26,19 +26,24 @@ void SFMLPredictGhost1View::FindSprite() {
         }
     }
     else if (dirX == -1 && dirY == 0) {
-        rect = animation_bool ? sf::IntRect(32, 80, 16, 16) : sf::IntRect(48, 80, 16, 16);
+        if (e->getDying()) rect = sf::IntRect(144, 80, 16, 16);
+        else rect = animation_bool ? sf::IntRect(32, 80, 16, 16) : sf::IntRect(48, 80, 16, 16);
     }
     else if (dirX == 0 && dirY == 1) {
-        rect = animation_bool ? sf::IntRect(96, 80, 16, 16) : sf::IntRect(112, 80, 16, 16);
+        if (e->getDying()) rect = sf::IntRect(176, 80, 16, 16);
+        else rect = animation_bool ? sf::IntRect(96, 80, 16, 16) : sf::IntRect(112, 80, 16, 16);
     }
     else if (dirX == 0 && dirY == -1) {
-        rect = animation_bool ? sf::IntRect(64, 80, 16, 16) : sf::IntRect(80, 80, 16, 16);
+        if (e->getDying()) rect = sf::IntRect(160, 80, 16, 16);
+        else rect = animation_bool ? sf::IntRect(64, 80, 16, 16) : sf::IntRect(80, 80, 16, 16);
     }
     else if (dirX == 1 && dirY == 0) {
-        rect = animation_bool ? sf::IntRect(0, 80, 16, 16) : sf::IntRect(16, 80, 16, 16);
+        if (e->getDying()) rect = sf::IntRect(128, 80, 16, 16);
+        else rect = animation_bool ? sf::IntRect(0, 80, 16, 16) : sf::IntRect(16, 80, 16, 16);
     }
     else {
-        rect = animation_bool ? sf::IntRect(0, 80, 16, 16) : sf::IntRect(16, 80, 16, 16);
+        if (e->getDying()) rect = sf::IntRect(128, 80, 16, 16);
+        else rect = animation_bool ? sf::IntRect(0, 80, 16, 16) : sf::IntRect(16, 80, 16, 16);
     }
     sprite.setTextureRect(rect);
 }
