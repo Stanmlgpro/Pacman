@@ -1,5 +1,2 @@
-niggar: 5530
-Unknown: 4060
-niggar: 3770
-Unknown: 3660
-niggar: 1710
+Unknown: 1590
+stan: 530
