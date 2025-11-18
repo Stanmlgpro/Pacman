@@ -27,7 +27,7 @@ public:
 
     virtual void Update(float dt);
 
-    void Draw();
+    void Draw() const;
 
     virtual std::shared_ptr<Entity> Interact(World& world) = 0;
 

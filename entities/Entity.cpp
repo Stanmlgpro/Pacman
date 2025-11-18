@@ -19,10 +19,8 @@ void Entity::Update(float dt) {
 
 }
 
-void Entity::Draw() {
-    if (view) {
-        view->Draw();
-    }
+void Entity::Draw() const {
+    if (view) view->Draw();
 }
 
 void Entity::setView(std::unique_ptr<View> view) {
