@@ -17,10 +17,13 @@ public:
 
     Position getSpritePixelSize() const;
 private:
-    float screenheight;
     float screenwidth;
+    float screenheight;
     float mapwidth;
     float mapheight;
+    float hudTop;
+    float hudBottom;
+    float usableHeight;
 };
 
 

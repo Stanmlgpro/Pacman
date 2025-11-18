@@ -44,6 +44,7 @@ protected:
     float fearcheck = 0.f;
     int id;
     float speed;
+    float original_speed;
     float ChaseTime;
     float ChaseTimer;
     bool Chasing;

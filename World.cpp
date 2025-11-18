@@ -14,7 +14,8 @@
 #include "singleton/Stopwatch.h"
 #include "Score.h"
 
-World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player) {
+World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory,
+             std::shared_ptr<WorldSound> world_sounds, std::string player) {
     this->filename = filename;
     this->entity_factory = entity_factory;
     this->score = std::make_unique<Score>(player);
@@ -73,13 +74,17 @@ void World::loadMap_reset() {
 
             if (c == '#') {
                 entities.push_back(entity_factory->createWall(normX, normY));
-            } else if (c == '.') {
+            }
+            else if (c == '.') {
                 entities.push_back(entity_factory->createOrb(normX, normY));
-            } else if (c == 'o') {
+            }
+            else if (c == 'o') {
                 entities.push_back(entity_factory->createBigOrb(normX, normY));
-            } else if (c == 'P') {
+            }
+            else if (c == 'P') {
                 pacman = entity_factory->createPacman(7.5f, width, height, normX, normY);
-            } else if (c == 'G') {
+            }
+            else if (c == 'G') {
                 ghostSpawns.push_back({normX, normY, id++});
             }
 
@@ -98,7 +103,6 @@ void World::loadMap_reset() {
 }
 
 std::vector<int> World::NormalizedToGrid(float normX, float normY, std::vector<std::vector<bool>> wallGrid) {
-
     int gridWidth = static_cast<int>(wallGrid[0].size());
     int gridHeight = static_cast<int>(wallGrid.size());
 
@@ -116,10 +120,10 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Wall> wall) {
     Position wallPos = wall->getPosition();
 
     float epsilon = 0.005f;
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - wallPos.x) + epsilon;
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - wallPos.y) + epsilon;
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - wallPos.x) + epsilon;
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - wallPos.y) + epsilon;
 
-    if (dx < 2.f/wallGrid[0].size() && dy < 2.f/wallGrid.size()) pacman->setMoving(false);
+    if (dx < 2.f / wallGrid[0].size() && dy < 2.f / wallGrid.size()) pacman->setMoving(false);
     return nullptr;
 }
 
@@ -127,8 +131,8 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
     Position pacPos = pacman->getPosition();
     Position orbPos = orb->getPosition();
 
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - orbPos.x);
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - orbPos.y);
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
 
     float size = orb->isBig() ? 1.25f : 0.85f;
     float collisionDistX = size / wallGrid[0].size();
@@ -153,10 +157,10 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) 
     Position ghostPos = ghost->getPosition();
 
     float epsilon = 0.005f;
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0]*dt - ghostPos.x) + epsilon;
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1]*dt - ghostPos.y) + epsilon;
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - ghostPos.x) + epsilon;
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - ghostPos.y) + epsilon;
 
-    if (dx < 1.5f/wallGrid[0].size() && dy < 1.5f/wallGrid.size()) {
+    if (dx < 1.5f / wallGrid[0].size() && dy < 1.5f / wallGrid.size()) {
         if (ghost->getFeared()) {
             ghost->setDying(true);
             score->ghostEaten();
@@ -189,7 +193,8 @@ void World::TryBuffer() {
     int targetGridY = currentGridY + buffer[1];
 
     bool canMove = true;
-    if (targetGridX < 0 or targetGridX >= static_cast<int>(wallGrid[0].size()) or targetGridY < 0 or targetGridY >= static_cast<int>(wallGrid.size())) canMove = false;
+    if (targetGridX < 0 or targetGridX >= static_cast<int>(wallGrid[0].size()) or targetGridY < 0 or targetGridY >=
+        static_cast<int>(wallGrid.size())) canMove = false;
     else if (wallGrid[targetGridY][targetGridX]) canMove = false;
 
     if (!canMove) return;
@@ -273,11 +278,14 @@ void World::Render() {
 void World::movePacman(MOVE movement) {
     if (movement == UP) {
         pacman->Up();
-    } if (movement == DOWN) {
+    }
+    if (movement == DOWN) {
         pacman->Down();
-    } if (movement == LEFT) {
+    }
+    if (movement == LEFT) {
         pacman->Left();
-    } if (movement == RIGHT) {
+    }
+    if (movement == RIGHT) {
         pacman->Right();
     }
 }

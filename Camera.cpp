@@ -7,18 +7,22 @@
 #include <iostream>
 
 Camera::Camera(float Screenwidth, float Screenheight) {
+    hudTop = 0.f;
+    hudBottom = 0.f;
     screenwidth = Screenwidth;
     screenheight = Screenheight;
+    usableHeight = Screenheight - hudTop - hudBottom;
 }
 
 Position Camera::getSpritePixelSize() const {
     if (mapwidth <= 0 || mapheight <= 0) return {0,0};
     float tilePixel = std::min(screenwidth  / static_cast<float>(mapwidth),
-                               screenheight / static_cast<float>(mapheight));
+                               usableHeight / static_cast<float>(mapheight));
     return { tilePixel, tilePixel };
 }
 
 Position Camera::worldToPixel(float normX, float normY) const {
+
     // clamp norm just in case
     if (normX < -1.f) normX = -1.f;
     if (normX >  1.f) normX =  1.f;
@@ -33,7 +37,7 @@ Position Camera::worldToPixel(float normX, float normY) const {
     float mapPixelH = tilePixel * static_cast<float>(mapheight);
 
     float offsetX = (screenwidth  - mapPixelW) / 2.f;
-    float offsetY = (screenheight - mapPixelH) / 2.f;
+    float offsetY = (usableHeight - mapPixelH) / 2.f;
 
     float px = offsetX + ((normX + 1.f) * 0.5f) * mapPixelW;
     float py = offsetY + ((normY + 1.f) * 0.5f) * mapPixelH;
@@ -49,5 +53,5 @@ void Camera::setMapSize(int MapWidth, int MapHeight) {
 
 void Camera::setScreenSize(float Screenwidth, float Screenheight) {
     screenwidth = Screenwidth;
-    screenheight = Screenheight;
+    usableHeight = Screenheight - hudTop - hudBottom;
 }

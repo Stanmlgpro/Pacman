@@ -157,9 +157,9 @@ void Ghost::setDying(bool dying) {
     this->dying = dying;
     if (dying) {
         setFeared(false);
-        speed *= 4;
+        speed = 10.f;
     }
-    else speed /= 4;
+    else speed = original_speed;
 }
 
 void Ghost::reset() {
