@@ -9,8 +9,7 @@
 #include <algorithm>
 
 LockedGhost::LockedGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime) : Ghost(x, y, pacman, wallgrid, id, chasetime) {
-    speed = 8.5f;
-    original_speed = speed;
+    setSpeed(8.5f);
 }
 
 float LockedGhost::distanceTurn(std::vector<int> direction, float dt) {
