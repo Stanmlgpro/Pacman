@@ -25,10 +25,10 @@ public:
 
     void loadMap_reset();
     bool Update();
-    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Wall> wall);
-    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Orb> orb);
-    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Ghost> ghost);
-    std::shared_ptr<Entity> CollidesWithPacman(std::shared_ptr<Pacman> pacman);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Wall> wall);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orb> orb);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman);
 
     bool WouldHitWall(const std::vector<int>& direction) const;
     void TryBuffer();
@@ -36,17 +36,17 @@ public:
     void Render();
     void movePacman(MOVE movement);
 
-    std::vector<std::shared_ptr<Entity>> getEntities();
+    std::vector<std::shared_ptr<entities::Entity>> getEntities();
 
     ~World() = default;
 private:
     std::string filename;
-    std::vector<std::shared_ptr<Entity>> entities;
-    std::shared_ptr<Pacman> pacman;
+    std::vector<std::shared_ptr<entities::Entity>> entities;
+    std::shared_ptr<entities::Pacman> pacman;
     std::vector<std::vector<bool>> wallGrid;
     std::shared_ptr<EntityFactory> entity_factory;
     std::shared_ptr<WorldSound> world_sounds;
-    std::vector<std::shared_ptr<Entity>> to_add;
+    std::vector<std::shared_ptr<entities::Entity>> to_add;
     float dt;
     bool fearmode = false;
     float ghost_speed_mul;

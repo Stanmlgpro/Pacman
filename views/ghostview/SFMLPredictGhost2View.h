@@ -9,7 +9,7 @@
 
 class SFMLPredictGhost2View : public SFMLGhostView {
 public:
-    SFMLPredictGhost2View(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    SFMLPredictGhost2View(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
     void FindSprite() override;
 };

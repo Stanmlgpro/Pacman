@@ -9,7 +9,7 @@
 
 class SFMLGhostView : public SFMLView {
 public:
-    SFMLGhostView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    SFMLGhostView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
     void Update(float dt) override;
     virtual void FindSprite() = 0;

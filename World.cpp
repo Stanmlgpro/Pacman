@@ -115,7 +115,7 @@ std::vector<int> World::NormalizedToGrid(float normX, float normY, std::vector<s
     return {gridX, gridY};
 }
 
-std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Wall> wall) {
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Wall> wall) {
     Position pacPos = pacman->getPosition();
     Position wallPos = wall->getPosition();
 
@@ -127,7 +127,7 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Wall> wall) {
     return nullptr;
 }
 
-std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Orb> orb) {
     Position pacPos = pacman->getPosition();
     Position orbPos = orb->getPosition();
 
@@ -151,7 +151,7 @@ std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Orb> orb) {
     return nullptr;
 }
 
-std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Ghost> ghost) {
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost) {
     if (ghost->getDying()) return nullptr;
     Position pacPos = pacman->getPosition();
     Position ghostPos = ghost->getPosition();
@@ -221,7 +221,7 @@ bool World::Update() {
     if (pacman->isDead()) pacman->reset();
     bool new_level = true;
     TryBuffer();
-    std::vector<std::shared_ptr<Entity>> removeables;
+    std::vector<std::shared_ptr<entities::Entity>> removeables;
     for (auto e : entities) {
         e->checkWin(new_level);
         if (fearmode) {
@@ -264,7 +264,7 @@ bool World::Update() {
     return false;
 }
 
-std::vector<std::shared_ptr<Entity>> World::getEntities() {
+std::vector<std::shared_ptr<entities::Entity>> World::getEntities() {
     return entities;
 }
 
@@ -290,4 +290,4 @@ void World::movePacman(MOVE movement) {
     }
 }
 
-std::shared_ptr<Entity> World::CollidesWithPacman(std::shared_ptr<Pacman> pacman) { return nullptr; }
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman) { return nullptr; }

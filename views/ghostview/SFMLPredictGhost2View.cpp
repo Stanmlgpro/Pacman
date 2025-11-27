@@ -5,7 +5,7 @@
 #include "SFMLPredictGhost2View.h"
 #include "entities/Entity.h"
 
-SFMLPredictGhost2View::SFMLPredictGhost2View(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLGhostView(texture, entity, window, camera){}
+SFMLPredictGhost2View::SFMLPredictGhost2View(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLGhostView(texture, entity, window, camera){}
 
 void SFMLPredictGhost2View::FindSprite() {
     auto e = entity.lock();

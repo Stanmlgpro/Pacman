@@ -5,7 +5,7 @@
 #ifndef SFMLWORLDSOUNDS_H
 #define SFMLWORLDSOUNDS_H
 #include "WorldSound.h"
-
+#include <SFML/Audio.hpp>
 
 class SFMLWorldSounds : public WorldSound {
 public:

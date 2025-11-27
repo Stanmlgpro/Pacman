@@ -8,17 +8,20 @@
 #include <Camera.h>
 #include "../singleton/Random.h"
 
+namespace entities {
+    class Entity;
+}
+
 class Camera;
-class Entity;
 class View {
 public:
-    View(std::weak_ptr<Entity> entity, std::shared_ptr<Camera> camera);
+    View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera);
 
     virtual void Update(float dt) = 0;
 
     virtual void Draw() = 0;
 protected:
-    std::weak_ptr<Entity> entity;
+    std::weak_ptr<entities::Entity> entity;
     std::shared_ptr<Camera> camera;
     Random& random = Random::getInstance();
 };

@@ -5,7 +5,7 @@
 #include "SFMLLockedGhostView.h"
 #include "entities/Entity.h"
 
-SFMLLockedGhostView::SFMLLockedGhostView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLGhostView(texture, entity, window, camera){}
+SFMLLockedGhostView::SFMLLockedGhostView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLGhostView(texture, entity, window, camera){}
 
 void SFMLLockedGhostView::FindSprite() {
     auto e = entity.lock();

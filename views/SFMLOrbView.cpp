@@ -5,7 +5,7 @@
 #include "SFMLOrbView.h"
 #include "entities/Entity.h"
 
-SFMLOrbView::SFMLOrbView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
+SFMLOrbView::SFMLOrbView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
     auto e = entity.lock();
     if (!e->isBig()) {
         circ.setFillColor(sf::Color::Yellow);

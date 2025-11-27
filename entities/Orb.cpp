@@ -7,24 +7,26 @@
 #include "World.h"
 #include <iostream>
 
-Orb::Orb(float x, float y, bool big) {
-    position.x = x;
-    position.y = y;
-    this->big = big;
-}
+namespace entities {
+    Orb::Orb(float x, float y, bool big) {
+        position.x = x;
+        position.y = y;
+        this->big = big;
+    }
 
-std::shared_ptr<Entity> Orb::Interact(World& world) {
-    return world.CollidesWithPacman(shared_from_this());
-}
+    std::shared_ptr<Entity> Orb::Interact(World& world) {
+        return world.CollidesWithPacman(shared_from_this());
+    }
 
-bool Orb::isBig() const {
-    return big;
-}
+    bool Orb::isBig() const {
+        return big;
+    }
 
-void Orb::Update(float dt) {
-    view->Update(dt);
-}
+    void Orb::Update(float dt) {
+        view->Update(dt);
+    }
 
-void Orb::checkWin(bool& check) {
-    check = false;
+    void Orb::checkWin(bool& check) {
+        check = false;
+    }
 }

@@ -4,7 +4,6 @@
 
 #ifndef WORLDSOUND_H
 #define WORLDSOUND_H
-#include <SFML/Audio.hpp>
 
 
 class WorldSound {

@@ -9,7 +9,7 @@
 
 class SFMLPacmanView : public SFMLView {
 public:
-    SFMLPacmanView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    SFMLPacmanView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
     void Update(float dt) override;
     void FindSprite();

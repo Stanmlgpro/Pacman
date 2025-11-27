@@ -6,7 +6,7 @@
 #include "entities/Entity.h"
 #include <iostream>
 
-SFMLGhostView::SFMLGhostView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
+SFMLGhostView::SFMLGhostView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
     sprite.setTexture(texture);
     sprite.setScale(1.f, 1.f);
     sprite.setOrigin(8.f,8.f);

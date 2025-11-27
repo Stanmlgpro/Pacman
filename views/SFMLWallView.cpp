@@ -5,7 +5,7 @@
 #include "SFMLWallView.h"
 #include "entities/Entity.h"
 
-SFMLWallView::SFMLWallView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
+SFMLWallView::SFMLWallView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
     rect.setFillColor(sf::Color(0, 0, 180));
 }
 

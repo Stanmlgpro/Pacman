@@ -5,7 +5,7 @@
 #include "SFMLChaseGhostView.h"
 #include "entities/Entity.h"
 
-SFMLChaseGhostView::SFMLChaseGhostView(const sf::Texture& texture, std::weak_ptr<Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLGhostView(texture, entity, window, camera){}
+SFMLChaseGhostView::SFMLChaseGhostView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLGhostView(texture, entity, window, camera){}
 
 void SFMLChaseGhostView::FindSprite() {
     auto e = entity.lock();
