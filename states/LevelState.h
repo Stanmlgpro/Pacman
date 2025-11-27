@@ -8,10 +8,13 @@
 #include "World.h"
 
 class SFMLWorldSounds;
-class EntityFactory;
+namespace factory {
+    class EntityFactory;
+}
+
 class LevelState final : public State {
 public:
-    LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player);
+    LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player);
 
     void HandleEvent(const sf::Event& e) override;
     void Update() override;
@@ -21,7 +24,7 @@ public:
 private:
     std::unique_ptr<World> world;
     std::shared_ptr<StateManager> statemanager;
-    std::shared_ptr<EntityFactory> entity_factory;
+    std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<WorldSound> world_sounds;
     std::string player;
 };

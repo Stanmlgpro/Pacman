@@ -4,6 +4,8 @@
 
 #include "EntityFactory.h"
 
-std::shared_ptr<Camera> EntityFactory::getCamera() {
-    return camera;
+namespace factory {
+    std::shared_ptr<Camera> EntityFactory::getCamera() {
+        return camera;
+    }
 }

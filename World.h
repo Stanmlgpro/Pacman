@@ -11,7 +11,10 @@
 #include "entities/Entity.h"
 #include "sounds/WorldSound.h"
 
-class EntityFactory;
+namespace factory {
+    class EntityFactory;
+}
+
 enum MOVE {
     UP,
     DOWN,
@@ -21,7 +24,7 @@ enum MOVE {
 
 class World {
 public:
-    explicit World(std::string filename, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player);
+    explicit World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player);
 
     void loadMap_reset();
     bool Update();
@@ -44,7 +47,7 @@ private:
     std::vector<std::shared_ptr<entities::Entity>> entities;
     std::shared_ptr<entities::Pacman> pacman;
     std::vector<std::vector<bool>> wallGrid;
-    std::shared_ptr<EntityFactory> entity_factory;
+    std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<WorldSound> world_sounds;
     std::vector<std::shared_ptr<entities::Entity>> to_add;
     float dt;

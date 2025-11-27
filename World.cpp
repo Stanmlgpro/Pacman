@@ -14,8 +14,7 @@
 #include "singleton/Stopwatch.h"
 #include "Score.h"
 
-World::World(std::string filename, std::shared_ptr<EntityFactory> entity_factory,
-             std::shared_ptr<WorldSound> world_sounds, std::string player) {
+World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player) {
     this->filename = filename;
     this->entity_factory = entity_factory;
     this->score = std::make_unique<Score>(player);

@@ -7,7 +7,7 @@
 #include "StateManager.h"
 #include "World.h"
 
-LevelState::LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player) : player(player) {
+LevelState::LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player) : player(player) {
     this->statemanager = statemanager;
     this->entity_factory = entity_factory;
     this->world_sounds = world_sounds;

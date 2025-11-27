@@ -8,7 +8,7 @@
 #include "LevelState.h"
 #include "PausedState.h"
 
-StateManager::StateManager(std::shared_ptr<EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sound) {
+StateManager::StateManager(std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sound) {
     this->entity_factory = entity_factory;
     this->world_sound = world_sound;
 }

@@ -10,7 +10,10 @@
 #include "states/StateManager.h"
 
 class Camera;
-class EntityFactory;
+namespace factory {
+    class EntityFactory;
+}
+
 class Game {
 public:
     Game();
@@ -27,7 +30,7 @@ private:
     sf::RenderWindow window;
     sf::Clock time;
 
-    std::shared_ptr<EntityFactory> entity_factory;
+    std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<Camera> camera;
 
     std::shared_ptr<WorldSound> world_sound;
