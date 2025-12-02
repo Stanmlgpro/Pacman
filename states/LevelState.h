@@ -7,7 +7,6 @@
 #include "State.h"
 #include "World.h"
 
-class SFMLWorldSounds;
 namespace factory {
     class EntityFactory;
 }
@@ -27,6 +26,9 @@ private:
     std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<WorldSound> world_sounds;
     std::string player;
+    sf::Font font;
+    sf::Text scoreText;
+    sf::Text livesText;
 };
 
 #endif //PACMAN_LEVELSTATE_H

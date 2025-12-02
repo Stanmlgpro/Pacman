@@ -71,6 +71,7 @@ void Score::wright() {
 
     outFile.close();
 }
+
 Score::~Score() {
     wright();
 }

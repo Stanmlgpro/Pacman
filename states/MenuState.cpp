@@ -74,7 +74,7 @@ std::vector<ScoreEntry> MenuState::loadHighscores(const std::string& filename) {
 }
 
 void MenuState::Update() {
-
+    highscores = loadHighscores("../scoreboard.txt");
 }
 
 void MenuState::Render(sf::RenderWindow& window) {

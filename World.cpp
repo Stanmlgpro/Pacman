@@ -5,11 +5,11 @@
 #include "World.h"
 #include <fstream>
 #include <iostream>
-#include "entities/Wall.h"
-#include "entities/Pacman.h"
 #include <algorithm>
 #include "entities/ghost/Ghost.h"
 #include "entities/Orb.h"
+#include "entities/Wall.h"
+#include "entities/Pacman.h"
 #include "factory/EntityFactory.h"
 #include "singleton/Stopwatch.h"
 #include "Score.h"
@@ -290,3 +290,10 @@ void World::movePacman(MOVE movement) {
 }
 
 std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman) { return nullptr; }
+
+int World::getLives() const {
+    return pacman->getLives();
+}
+int World::getScore() const {
+    return score->getPoints();
+}

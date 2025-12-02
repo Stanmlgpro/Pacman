@@ -15,6 +15,21 @@ LevelState::LevelState(std::shared_ptr<StateManager> statemanager, std::shared_p
     this->world = std::make_unique<World>("../map.txt", entity_factory, world_sounds, player);
     world_sounds->Start();
     std::cout << "new level and world created" << std::endl;
+
+    #ifdef _WIN32
+        font.loadFromFile("C:/Windows/Fonts/arial.ttf");
+    #else
+        font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+    #endif
+
+    scoreText.setFont(font);
+    scoreText.setCharacterSize(24);
+    scoreText.setFillColor(sf::Color::White);
+    scoreText.setPosition(10, 10);
+
+    livesText.setFont(font);
+    livesText.setCharacterSize(20);
+    livesText.setFillColor(sf::Color::Yellow);
 }
 
 void LevelState::HandleEvent(const sf::Event &e) {
@@ -34,6 +49,8 @@ void LevelState::HandleEvent(const sf::Event &e) {
 }
 
 void LevelState::Update() {
+    scoreText.setString("Score: " + std::to_string(world->getScore()));
+    livesText.setString("Lives: " + std::to_string(world->getLives()));
     if (world->Update()) {
         statemanager->PopState();
     }
@@ -41,6 +58,13 @@ void LevelState::Update() {
 
 void LevelState::Render(sf::RenderWindow& window) {
     world->Render();
+
+    sf::FloatRect worldBounds = window.getView().getViewport();
+    sf::Vector2u windowSize = window.getSize();
+    livesText.setPosition(windowSize.x - 120, windowSize.y - 40);
+
+    window.draw(scoreText);
+    window.draw(livesText);
 }
 
 LevelState::~LevelState() = default;

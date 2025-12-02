@@ -33,13 +33,14 @@ public:
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman);
 
-    bool WouldHitWall(const std::vector<int>& direction) const;
     void TryBuffer();
     static std::vector<int> NormalizedToGrid(float normX, float normY, std::vector<std::vector<bool>> wallGrid);
     void Render();
     void movePacman(MOVE movement);
 
     std::vector<std::shared_ptr<entities::Entity>> getEntities();
+    int getLives() const;
+    int getScore() const;
 
     ~World() = default;
 private:
