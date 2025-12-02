@@ -23,12 +23,12 @@ LevelState::LevelState(std::shared_ptr<StateManager> statemanager, std::shared_p
     #endif
 
     scoreText.setFont(font);
-    scoreText.setCharacterSize(24);
+    //scoreText.setCharacterSize(24);
     scoreText.setFillColor(sf::Color::White);
     scoreText.setPosition(10, 10);
 
     livesText.setFont(font);
-    livesText.setCharacterSize(20);
+    //livesText.setCharacterSize(20);
     livesText.setFillColor(sf::Color::Yellow);
 }
 
@@ -45,6 +45,9 @@ void LevelState::HandleEvent(const sf::Event &e) {
         } else if (e.key.code == sf::Keyboard::Right) {
             world->movePacman(RIGHT);
         }
+    }
+    else if (e.type == sf::Event::Resized) {
+        Resize(e.size.width, e.size.height);
     }
 }
 
@@ -65,6 +68,13 @@ void LevelState::Render(sf::RenderWindow& window) {
 
     window.draw(scoreText);
     window.draw(livesText);
+}
+
+void LevelState::Resize(unsigned int width, unsigned int height) {
+    const unsigned int newTextSize = std::min(height, width) / 25;
+
+    scoreText.setCharacterSize(newTextSize);
+    livesText.setCharacterSize(newTextSize);
 }
 
 LevelState::~LevelState() = default;
