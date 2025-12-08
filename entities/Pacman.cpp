@@ -28,6 +28,13 @@ namespace entities {
     } //function that will never be called
 
     void Pacman::Update(float dt) {
+        if (!damagable) {
+            invincibility_timer += dt;
+            if (invincibility_timer > invincibility_duration) {
+                damagable = true;
+                invincibility_timer = 0.f;
+            }
+        }
         if (!dying) {
             if (moving) Entity::Update(MoveDt(dt));
             moving = true;
@@ -50,7 +57,8 @@ namespace entities {
     }
 
     void Pacman::setLives(int lives) {
-        this->lives = lives;
+        if (damagable) this->lives = lives;
+        damagable = false;
     }
 
     void Pacman::setMoving(bool moving) {
@@ -106,4 +114,8 @@ namespace entities {
     bool Pacman::getDead() const {
         return dead;
     }
+    bool Pacman::isDamagable() const {
+        return damagable;
+    }
+
 }

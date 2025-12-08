@@ -166,8 +166,8 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
             world_sounds->GhostEaten();
             return nullptr;
         }
+        if (pacman->isDamagable()) world_sounds->PacmanDying();
         pacman->setLives(pacman->getLives() - 1);
-        world_sounds->PacmanDying();
         if (pacman->getLives() <= 0) {
             return pacman;
         }

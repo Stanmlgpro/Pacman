@@ -35,6 +35,7 @@ namespace entities {
         bool getDead() const;
         void setDead(bool dead);
         bool isDead() const;
+        bool isDamagable() const;
         void reset() override;
 
         ~Pacman() override = default;
@@ -47,6 +48,9 @@ namespace entities {
         bool dying = false;
         bool dead = false;
         float dying_time = 0.f;
+        float invincibility_timer = 0.f;
+        float invincibility_duration = 2.f;
+        bool damagable = true;
     };
 }
 
