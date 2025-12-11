@@ -13,19 +13,20 @@ namespace entities {
 }
 
 class Camera;
-class View {
-public:
-    View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera);
+namespace views {
+    class View {
+    public:
+        View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera);
 
-    virtual void Update(float dt) = 0;
+        virtual void Update(float dt) = 0;
 
-    virtual void Draw() = 0;
-protected:
-    std::weak_ptr<entities::Entity> entity;
-    std::shared_ptr<Camera> camera;
-    Random& random = Random::getInstance();
-};
-
+        virtual void Draw() = 0;
+    protected:
+        std::weak_ptr<entities::Entity> entity;
+        std::shared_ptr<Camera> camera;
+        singleton::Random& random = singleton::Random::getInstance();
+    };
+}
 
 
 #endif //VIEW_H

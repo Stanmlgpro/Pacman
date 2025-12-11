@@ -6,19 +6,19 @@
 #define SFMLWALLVIEW_H
 #include <views/SFMLView.h>
 
+namespace views {
+    class SFMLWallView : public SFMLView {
+    public:
+        SFMLWallView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
-class SFMLWallView : public SFMLView {
-public:
-    SFMLWallView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+        void Update(float dt) override;
 
-    void Update(float dt) override;
-
-    void Draw() override;
-private:
-    sf::Sprite sprite;
-    sf::RectangleShape rect;
-};
-
+        void Draw() override;
+    private:
+        sf::Sprite sprite;
+        sf::RectangleShape rect;
+    };
+}
 
 
 #endif //SFMLWALLVIEW_H

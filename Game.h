@@ -26,14 +26,14 @@ private:
     void Render();
     void CheckInput();
 
-    std::shared_ptr<StateManager> state_manager;
+    std::shared_ptr<states::StateManager> state_manager;
     sf::RenderWindow window;
     sf::Clock time;
 
     std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<Camera> camera;
 
-    std::shared_ptr<WorldSound> world_sound;
+    std::shared_ptr<sounds::WorldSound> world_sound;
 };
 
 

@@ -34,7 +34,7 @@ namespace entities {
 
         virtual bool isBig() const {return true;}
 
-        void setView(std::unique_ptr<View> view);
+        void setView(std::unique_ptr<views::View> view);
 
         virtual void setFeared(bool feared) {}
         virtual bool getFeared() {return true;}
@@ -53,10 +53,10 @@ namespace entities {
     protected:
         Position position;
         std::vector<int> direction;
-        std::unique_ptr<View> view;
+        std::unique_ptr<views::View> view;
         int mapwidth;
         int mapheight;
-        Random& random = Random::getInstance();
+        singleton::Random& random = singleton::Random::getInstance();
     };
 }
 

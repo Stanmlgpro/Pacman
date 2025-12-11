@@ -27,17 +27,17 @@ namespace factory {
 
     std::shared_ptr<entities::Wall> SFMLFactory::createWall(float x, float y) {
         auto wall = std::make_shared<entities::Wall>(x, y);
-        wall->setView(std::make_unique<SFMLWallView>(texture, wall, window, camera));
+        wall->setView(std::make_unique<views::SFMLWallView>(texture, wall, window, camera));
         return wall;
     }
     std::shared_ptr<entities::Orb> SFMLFactory::createOrb(float x, float y) {
         auto orb = std::make_shared<entities::Orb>(x, y, false);
-        orb->setView(std::make_unique<SFMLOrbView>(texture, orb, window, camera));
+        orb->setView(std::make_unique<views::SFMLOrbView>(texture, orb, window, camera));
         return orb;
     }
     std::shared_ptr<entities::Orb> SFMLFactory::createBigOrb(float x, float y) {
         auto orb = std::make_shared<entities::Orb>(x, y, true);
-        orb->setView(std::make_unique<SFMLOrbView>(texture, orb, window, camera));
+        orb->setView(std::make_unique<views::SFMLOrbView>(texture, orb, window, camera));
         return orb;
     }
     std::shared_ptr<entities::Ghost> SFMLFactory::createGhost(float x, float y, std::shared_ptr<entities::Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) {
@@ -45,26 +45,26 @@ namespace factory {
         switch (id) {
         case 0:
             ghost = std::make_shared<entities::LockedGhost>(x, y, pacman, wallGrid, id, 0.f);
-            ghost->setView(std::make_unique<SFMLLockedGhostView>(texture, ghost, window, camera));
+            ghost->setView(std::make_unique<views::SFMLLockedGhostView>(texture, ghost, window, camera));
             break;
         case 1:
             ghost = std::make_shared<entities::ChaseGhost>(x, y, pacman, wallGrid, id, 0.f);
-            ghost->setView(std::make_unique<SFMLChaseGhostView>(texture, ghost, window, camera));
+            ghost->setView(std::make_unique<views::SFMLChaseGhostView>(texture, ghost, window, camera));
             break;
         case 2:
             ghost = std::make_shared<entities::PredictGhost>(x, y, pacman, wallGrid, id, first_time ? 5.f : 0.f);
-            ghost->setView(std::make_unique<SFMLPredictGhost1View>(texture, ghost, window, camera));
+            ghost->setView(std::make_unique<views::SFMLPredictGhost1View>(texture, ghost, window, camera));
             break;
         case 3:
             ghost = std::make_shared<entities::PredictGhost>(x, y, pacman, wallGrid, id, first_time ? 10.f : 0.f);
-            ghost->setView(std::make_unique<SFMLPredictGhost2View>(texture, ghost, window, camera));
+            ghost->setView(std::make_unique<views::SFMLPredictGhost2View>(texture, ghost, window, camera));
             break;
         }
         return ghost;
     }
     std::shared_ptr<entities::Pacman> SFMLFactory::createPacman(float speed, int mapwidth, int mapheight, float x, float y) {
         auto pacman = std::make_shared<entities::Pacman>(speed, mapwidth, mapheight, x, y);
-        pacman->setView(std::make_unique<SFMLPacmanView>(texture, pacman, window, camera));
+        pacman->setView(std::make_unique<views::SFMLPacmanView>(texture, pacman, window, camera));
         return pacman;
     }
 

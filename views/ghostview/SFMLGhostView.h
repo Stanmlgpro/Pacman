@@ -6,25 +6,24 @@
 #define SFMLGHOSTVIEW_H
 #include "views/SFMLView.h"
 
+namespace views {
+    class SFMLGhostView : public SFMLView {
+    public:
+        SFMLGhostView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
-class SFMLGhostView : public SFMLView {
-public:
-    SFMLGhostView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+        void Update(float dt) override;
+        virtual void FindSprite() = 0;
 
-    void Update(float dt) override;
-    virtual void FindSprite() = 0;
-
-    void Draw() override;
-protected:
-    sf::Sprite sprite;
-    bool animation_bool;
-    float animation_speed;
-    float animation_counter;
-    bool animation_bool_feared;
-    float animation_speed_feared;
-    float animation_counter_feared;
-};
-
-
+        void Draw() override;
+    protected:
+        sf::Sprite sprite;
+        bool animation_bool;
+        float animation_speed;
+        float animation_counter;
+        bool animation_bool_feared;
+        float animation_speed_feared;
+        float animation_counter_feared;
+    };
+}
 
 #endif //SFMLGHOSTVIEW_H

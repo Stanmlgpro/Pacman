@@ -3,9 +3,9 @@
 //
 
 #include "View.h"
-
-View::View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera) {
-    this->entity = entity;
-    this->camera = camera;
+namespace views {
+    View::View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera) {
+        this->entity = entity;
+        this->camera = camera;
+    }
 }
-

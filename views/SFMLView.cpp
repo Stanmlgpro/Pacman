@@ -3,5 +3,6 @@
 //
 
 #include "SFMLView.h"
-
-SFMLView::SFMLView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : View(std::move(entity), std::move(camera)), texture(texture), window(window) {}
+namespace views {
+    SFMLView::SFMLView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : View(std::move(entity), std::move(camera)), texture(texture), window(window) {}
+}

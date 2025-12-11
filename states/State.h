@@ -7,21 +7,21 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <iostream>
+namespace states {
+    class StateManager;
 
-class StateManager;
+    class State {
+    public:
+        explicit State() = default;
 
-class State {
-public:
-    explicit State() = default;
+        virtual void HandleEvent(const sf::Event& e) = 0;
+        virtual void Update() = 0;
+        virtual void Render(sf::RenderWindow& window) = 0;
 
-    virtual void HandleEvent(const sf::Event& e) = 0;
-    virtual void Update() = 0;
-    virtual void Render(sf::RenderWindow& window) = 0;
-
-    virtual ~State() = default;
-private:
-    std::shared_ptr<StateManager> statemanager;
-};
-
+        virtual ~State() = default;
+    private:
+        std::shared_ptr<StateManager> statemanager;
+    };
+}
 
 #endif //PACMAN_STATE_H

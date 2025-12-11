@@ -14,7 +14,7 @@
 #include "singleton/Stopwatch.h"
 #include "Score.h"
 
-World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<WorldSound> world_sounds, std::string player) {
+World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<sounds::WorldSound> world_sounds, std::string player) {
     this->filename = filename;
     this->entity_factory = entity_factory;
     this->score = std::make_unique<Score>(player);
@@ -168,13 +168,13 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
         }
         if (pacman->isDamagable()) world_sounds->PacmanDying();
         pacman->setLives(pacman->getLives() - 1);
+        pacman->setDying(true);
         if (pacman->getLives() <= 0) {
             return pacman;
         }
         for (auto e : entities) {
             e->reset();
         }
-        pacman->setDying(true);
     }
     return nullptr;
 }
@@ -213,7 +213,8 @@ void World::TryBuffer() {
 }
 
 bool World::Update() {
-    Stopwatch& stopwatch = Stopwatch::getInstance();
+    if (gamelost && !pacman->getDying()) return true;
+    singleton::Stopwatch& stopwatch = singleton::Stopwatch::getInstance();
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
@@ -242,7 +243,7 @@ bool World::Update() {
     }
     for (auto& r : removeables) {
         if (r) {
-            if (r == pacman) return true;
+            if (r == pacman) gamelost = true;
             entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
         }
     }

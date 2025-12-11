@@ -8,20 +8,20 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+namespace views {
+    class SFMLView : public View {
+    public:
+        SFMLView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
-class SFMLView : public View {
-public:
-    SFMLView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+        void Update(float dt) override = 0;
 
-    void Update(float dt) override = 0;
+        void Draw() override = 0;
 
-    void Draw() override = 0;
-
-protected:
-    sf::Texture texture;
-    sf::RenderWindow& window;
-};
-
+    protected:
+        sf::Texture texture;
+        sf::RenderWindow& window;
+    };
+}
 
 
 #endif //SFMLVIEW_H

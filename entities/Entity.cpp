@@ -14,7 +14,7 @@ namespace entities {
     }
 
     void Entity::Update(float dt) {
-        if (direction.capacity() < 2) return;
+        if (direction.size() < 2) return;
         position.x += direction[0]*dt;
         position.y += direction[1]*dt;
 
@@ -24,7 +24,7 @@ namespace entities {
         if (view) view->Draw();
     }
 
-    void Entity::setView(std::unique_ptr<View> view) {
+    void Entity::setView(std::unique_ptr<views::View> view) {
         this->view = std::move(view);
     }
 

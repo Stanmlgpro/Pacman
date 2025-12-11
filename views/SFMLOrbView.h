@@ -6,20 +6,20 @@
 #define SFMLORBVIEW_H
 #include <views/SFMLView.h>
 
+namespace views {
+    class SFMLOrbView : public SFMLView {
+    public:
+        SFMLOrbView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
-class SFMLOrbView : public SFMLView {
-public:
-    SFMLOrbView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+        void Update(float dt) override;
+        void FindSprite();
 
-    void Update(float dt) override;
-    void FindSprite();
-
-    void Draw() override;
-private:
-    sf::Sprite sprite;
-    sf::CircleShape circ;
-};
-
+        void Draw() override;
+    private:
+        sf::Sprite sprite;
+        sf::CircleShape circ;
+    };
+}
 
 
 #endif //SFMLORBVIEW_H

@@ -5,23 +5,23 @@
 #ifndef PACMAN_PAUSEDSTATE_H
 #define PACMAN_PAUSEDSTATE_H
 #include "State.h"
+namespace states {
+    class PausedState final : public State {
+    public:
+        PausedState(std::shared_ptr<StateManager> statemanager);
 
-class PausedState final : public State {
-public:
-    PausedState(std::shared_ptr<StateManager> statemanager);
+        void HandleEvent(const sf::Event& e) override;
+        void Update() override;
+        void Render(sf::RenderWindow& window) override;
 
-    void HandleEvent(const sf::Event& e) override;
-    void Update() override;
-    void Render(sf::RenderWindow& window) override;
-
-    ~PausedState() override;
-private:
-    std::shared_ptr<StateManager> statemanager;
-    sf::Text title;
-    sf::Font font;
-    sf::Text resumeHint;
-    sf::Text menuHint;
-};
-
+        ~PausedState() override;
+    private:
+        std::shared_ptr<StateManager> statemanager;
+        sf::Text title;
+        sf::Font font;
+        sf::Text resumeHint;
+        sf::Text menuHint;
+    };
+}
 
 #endif //PACMAN_PAUSEDSTATE_H

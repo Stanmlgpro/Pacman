@@ -4,15 +4,16 @@
 #include <random>
 #include "Random.h"
 
-Random::Random() : gen(std::random_device{}()) {}
+namespace singleton {
+    Random::Random() : gen(std::random_device{}()) {}
 
-Random& Random::getInstance() {
-    static Random instance;
-    return instance;
+    Random& Random::getInstance() {
+        static Random instance;
+        return instance;
+    }
+
+    int Random::get(int min, int max) {
+        std::uniform_int_distribution<int> dist(min, max);
+        return dist(gen);
+    }
 }
-
-int Random::get(int min, int max) {
-    std::uniform_int_distribution<int> dist(min, max);
-    return dist(gen);
-}
-
