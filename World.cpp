@@ -7,8 +7,8 @@
 #include <iostream>
 #include <algorithm>
 #include "entities/ghost/Ghost.h"
-#include "entities/Orb.h"
-#include "entities/PowerOrb.h"
+#include "entities/collectable/Orb.h"
+#include "entities/collectable/PowerOrb.h"
 #include "entities/Wall.h"
 #include "entities/Pacman.h"
 #include "factory/EntityFactory.h"

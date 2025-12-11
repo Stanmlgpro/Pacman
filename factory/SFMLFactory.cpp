@@ -4,19 +4,18 @@
 
 #include "SFMLFactory.h"
 
-#include <entities/PowerOrb.h>
-
 #include "entities/Wall.h"
 #include "entities/ghost/Ghost.h"
-#include "entities/Orb.h"
+#include "entities/collectable/Orb.h"
+#include <entities/collectable/PowerOrb.h>
 #include "entities/Pacman.h"
 #include "entities/ghost/ChaseGhost.h"
 #include "entities/ghost/LockedGhost.h"
 #include "entities/ghost/PredictGhost.h"
 #include "views/SFMLWallView.h"
 #include "views/SFMLPacmanView.h"
-#include "views/SFMLOrbView.h"
-#include "views/SFMLPowerOrbView.h"
+#include "views/collectableview/SFMLOrbView.h"
+#include "views/collectableview/SFMLPowerOrbView.h"
 #include "views/ghostview/SFMLLockedGhostView.h"
 #include "views/ghostview/SFMLChaseGhostView.h"
 #include "views/ghostview/SFMLPredictGhost1View.h"

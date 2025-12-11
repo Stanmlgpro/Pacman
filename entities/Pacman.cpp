@@ -6,8 +6,6 @@
 #include <iostream>
 
 #include "ghost/Ghost.h"
-#include "Orb.h"
-#include "Wall.h"
 #include "World.h"
 
 namespace entities {
