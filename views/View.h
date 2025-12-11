@@ -12,6 +12,7 @@ namespace entities {
     class Entity;
 }
 
+class World;
 class Camera;
 namespace views {
     class View {
