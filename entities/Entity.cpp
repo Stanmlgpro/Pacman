@@ -4,6 +4,7 @@
 
 #include "Entity.h"
 #include <iostream>
+#include <utility>
 
 namespace entities {
     Entity::Entity(int mapwidth, int mapheight) {
@@ -42,6 +43,14 @@ namespace entities {
     }
 
     void Entity::setDirection(std::vector<int> direction) {
-        this->direction = direction;
+        this->direction = std::move(direction);
+    }
+
+    float Entity::getCollsionSize() const {
+        return CollisionSize;
+    }
+
+    void Entity::setCollisionSize(float size) {
+        CollisionSize = size;
     }
 }

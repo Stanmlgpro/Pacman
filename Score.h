@@ -8,8 +8,9 @@
 
 class Score {
 public:
-    Score(std::string player);
-    void orbEaten(bool big);
+    explicit Score(std::string player);
+    void orbEaten();
+    void PowerOrbEaten();
     void ghostEaten();
     int getPoints() const;
     void wright();

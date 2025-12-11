@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "entities/ghost/Ghost.h"
 #include "entities/Orb.h"
+#include "entities/PowerOrb.h"
 #include "entities/Wall.h"
 #include "entities/Pacman.h"
 #include "factory/EntityFactory.h"
@@ -78,7 +79,7 @@ void World::loadMap_reset() {
                 entities.push_back(entity_factory->createOrb(normX, normY));
             }
             else if (c == 'o') {
-                entities.push_back(entity_factory->createBigOrb(normX, normY));
+                entities.push_back(entity_factory->createPowerOrb(normX, normY));
             }
             else if (c == 'P') {
                 pacman = entity_factory->createPacman(7.5f, width, height, normX, normY);
@@ -122,7 +123,7 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - wallPos.x) + epsilon;
     float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - wallPos.y) + epsilon;
 
-    if (dx < 2.f / wallGrid[0].size() && dy < 2.f / wallGrid.size()) pacman->setMoving(false);
+    if (dx < wall->getCollsionSize() / wallGrid[0].size() && dy < wall->getCollsionSize() / wallGrid.size()) pacman->setMoving(false);
     return nullptr;
 }
 
@@ -133,19 +134,32 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
     float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
 
-    float size = orb->isBig() ? 1.25f : 0.85f;
-    float collisionDistX = size / wallGrid[0].size();
-    float collisionDistY = size / wallGrid.size();
+    float collisionDistX = orb->getCollsionSize() / wallGrid[0].size();
+    float collisionDistY = orb->getCollsionSize() / wallGrid.size();
 
     if (dx < collisionDistX && dy < collisionDistY) {
-        if (orb->isBig()) {
-            fearmode = true;
-            world_sounds->FruitEaten();
-        }
-        else world_sounds->OrbEaten();
-
-        score->orbEaten(orb->isBig());
+        world_sounds->OrbEaten();
+        score->orbEaten();
         return orb;
+    }
+    return nullptr;
+}
+
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::PowerOrb> powerorb) {
+    Position pacPos = pacman->getPosition();
+    Position orbPos = powerorb->getPosition();
+
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
+
+    float collisionDistX = powerorb->getCollsionSize() / wallGrid[0].size();
+    float collisionDistY = powerorb->getCollsionSize() / wallGrid.size();
+
+    if (dx < collisionDistX && dy < collisionDistY) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        fearmode = true;
+        return powerorb;
     }
     return nullptr;
 }
@@ -159,7 +173,7 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - ghostPos.x) + epsilon;
     float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - ghostPos.y) + epsilon;
 
-    if (dx < 1.5f / wallGrid[0].size() && dy < 1.5f / wallGrid.size()) {
+    if (dx < ghost->getCollsionSize() / wallGrid[0].size() && dy < ghost->getCollsionSize() / wallGrid.size()) {
         if (ghost->getFeared()) {
             ghost->setDying(true);
             score->ghostEaten();

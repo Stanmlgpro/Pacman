@@ -4,16 +4,19 @@
 
 #include "Score.h"
 #include <fstream>
+#include <utility>
 #include <vector>
 #include <algorithm>
 #include <iostream>
 #include <sstream>
 
-Score::Score(std::string player) : score(0), player(player) {}
+Score::Score(std::string player) : score(0), player(std::move(player)) {}
 
-void Score::orbEaten(bool big) {
-    if (big) score += 50;
-    else score += 10;
+void Score::orbEaten() {
+    score += 10;
+}
+void Score::PowerOrbEaten() {
+    score += 50;
 }
 
 void Score::ghostEaten() {

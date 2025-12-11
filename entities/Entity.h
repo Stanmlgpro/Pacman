@@ -18,6 +18,7 @@ namespace entities {
 
     class Wall;
     class Orb;
+    class PowerOrb;
     class Ghost;
     class Pacman;
 
@@ -26,13 +27,11 @@ namespace entities {
         Entity() = default;
         Entity(int mapwidth, int mapheight);
 
-        virtual void Update(float dt);
+        virtual void Update(float dt) = 0;
 
         void Draw() const;
 
         virtual std::shared_ptr<Entity> Interact(World& world) = 0;
-
-        virtual bool isBig() const {return true;}
 
         void setView(std::unique_ptr<views::View> view);
 
@@ -47,16 +46,19 @@ namespace entities {
         void setPosition(float x, float y);
 
         std::vector<int> getDirection() const;
-        virtual void setDirection(std::vector<int> direction);
+        void setDirection(std::vector<int> direction);
 
+        float getCollsionSize() const;
+        void setCollisionSize(float size);
         virtual ~Entity() = default;
     protected:
-        Position position;
+        Position position{};
         std::vector<int> direction;
         std::unique_ptr<views::View> view;
         int mapwidth;
         int mapheight;
         singleton::Random& random = singleton::Random::getInstance();
+        float CollisionSize = 0.0f;
     };
 }
 

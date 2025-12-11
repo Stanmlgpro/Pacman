@@ -23,6 +23,7 @@ namespace entities {
         this->ChaseTime = chasetime;
         this->ChaseTimer = chasetime;
         Chasing = false;
+        setCollisionSize(1.5f);
     }
 
     std::shared_ptr<Entity> Ghost::Interact(World& world) {

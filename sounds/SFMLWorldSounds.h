@@ -14,7 +14,7 @@ namespace sounds {
 
         void Start() override;
         void OrbEaten() override;
-        void FruitEaten() override;
+        void PowerOrbEaten() override;
         void GhostEaten() override;
         void FearMode() override;
         void EndFearMode() override;
@@ -25,8 +25,8 @@ namespace sounds {
         sf::Sound startSound;
         sf::SoundBuffer munchBuffer;
         sf::Sound munchSound;
-        sf::SoundBuffer munchfruitBuffer;
-        sf::Sound munchfruitSound;
+        sf::SoundBuffer munchpowerorbBuffer;
+        sf::Sound munchpowerorbSound;
         sf::SoundBuffer ghosteatBuffer;
         sf::Sound ghosteatSound;
         sf::SoundBuffer fearBuffer;

@@ -8,18 +8,14 @@
 #include <iostream>
 
 namespace entities {
-    Orb::Orb(float x, float y, bool big) {
+    Orb::Orb(float x, float y) {
         position.x = x;
         position.y = y;
-        this->big = big;
+        setCollisionSize(0.85f);
     }
 
     std::shared_ptr<Entity> Orb::Interact(World& world) {
         return world.CollidesWithPacman(shared_from_this());
-    }
-
-    bool Orb::isBig() const {
-        return big;
     }
 
     void Orb::Update(float dt) {

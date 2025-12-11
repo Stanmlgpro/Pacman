@@ -3,6 +3,9 @@
 //
 
 #include "SFMLFactory.h"
+
+#include <entities/PowerOrb.h>
+
 #include "entities/Wall.h"
 #include "entities/ghost/Ghost.h"
 #include "entities/Orb.h"
@@ -13,6 +16,7 @@
 #include "views/SFMLWallView.h"
 #include "views/SFMLPacmanView.h"
 #include "views/SFMLOrbView.h"
+#include "views/SFMLPowerOrbView.h"
 #include "views/ghostview/SFMLLockedGhostView.h"
 #include "views/ghostview/SFMLChaseGhostView.h"
 #include "views/ghostview/SFMLPredictGhost1View.h"
@@ -31,14 +35,14 @@ namespace factory {
         return wall;
     }
     std::shared_ptr<entities::Orb> SFMLFactory::createOrb(float x, float y) {
-        auto orb = std::make_shared<entities::Orb>(x, y, false);
+        auto orb = std::make_shared<entities::Orb>(x, y);
         orb->setView(std::make_unique<views::SFMLOrbView>(texture, orb, window, camera));
         return orb;
     }
-    std::shared_ptr<entities::Orb> SFMLFactory::createBigOrb(float x, float y) {
-        auto orb = std::make_shared<entities::Orb>(x, y, true);
-        orb->setView(std::make_unique<views::SFMLOrbView>(texture, orb, window, camera));
-        return orb;
+    std::shared_ptr<entities::PowerOrb> SFMLFactory::createPowerOrb(float x, float y) {
+        auto powerorb = std::make_shared<entities::PowerOrb>(x, y);
+        powerorb->setView(std::make_unique<views::SFMLPowerOrbView>(texture, powerorb, window, camera));
+        return powerorb;
     }
     std::shared_ptr<entities::Ghost> SFMLFactory::createGhost(float x, float y, std::shared_ptr<entities::Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) {
         std::shared_ptr<entities::Ghost> ghost;

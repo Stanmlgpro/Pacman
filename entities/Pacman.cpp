@@ -21,6 +21,7 @@ namespace entities {
         direction_buffer.push_back(0);
         startpos = {x, y};
         this->speed = speed;
+        setCollisionSize(2.0f);
     }
 
     std::shared_ptr<Entity> Pacman::Interact(World& world) {

@@ -21,7 +21,7 @@ namespace factory {
         std::shared_ptr<entities::Wall> createWall(float x, float y) override;
         std::shared_ptr<entities::Ghost> createGhost(float x, float y, std::shared_ptr<entities::Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) override;
         std::shared_ptr<entities::Orb> createOrb(float x, float y) override;
-        std::shared_ptr<entities::Orb> createBigOrb(float x, float y) override;
+        std::shared_ptr<entities::PowerOrb> createPowerOrb(float x, float y) override;
         std::shared_ptr<entities::Pacman> createPacman(float speed, int mapwidth, int mapheight, float x, float y) override;
 
         std::shared_ptr<Camera> getCamera();

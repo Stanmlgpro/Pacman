@@ -15,10 +15,10 @@ namespace sounds {
             std::cerr << "Failed to load sound!" << std::endl;
         }
         munchSound.setBuffer(munchBuffer);
-        if (!munchfruitBuffer.loadFromFile("../sounds/pacman_eatfruit.wav")) {
+        if (!munchpowerorbBuffer.loadFromFile("../sounds/pacman_eatfruit.wav")) {
             std::cerr << "Failed to load sound!" << std::endl;
         }
-        munchfruitSound.setBuffer(munchfruitBuffer);
+        munchpowerorbSound.setBuffer(munchpowerorbBuffer);
         if (!ghosteatBuffer.loadFromFile("../sounds/pacman_eatghost.wav")) {
             std::cerr << "Failed to load sound!" << std::endl;
         }
@@ -40,8 +40,8 @@ namespace sounds {
     void SFMLWorldSounds::OrbEaten() {
         munchSound.play();
     }
-    void SFMLWorldSounds::FruitEaten() {
-        munchfruitSound.play();
+    void SFMLWorldSounds::PowerOrbEaten() {
+        munchpowerorbSound.play();
     }
     void SFMLWorldSounds::GhostEaten() {
         ghosteatSound.play();

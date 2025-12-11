@@ -30,6 +30,7 @@ public:
     bool Update();
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Wall> wall);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orb> orb);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::PowerOrb> powerorb);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman);
 

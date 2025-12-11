@@ -10,7 +10,7 @@ namespace sounds {
     public:
         virtual void Start() = 0;
         virtual void OrbEaten() = 0;
-        virtual void FruitEaten() = 0;
+        virtual void PowerOrbEaten() = 0;
         virtual void GhostEaten() = 0;
         virtual void FearMode() = 0;
         virtual void EndFearMode() = 0;

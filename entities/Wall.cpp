@@ -10,6 +10,7 @@ namespace entities {
     Wall::Wall(float x, float y) {
         position.x = x;
         position.y = y;
+        setCollisionSize(2.0f);
     }
 
     std::shared_ptr<Entity> Wall::Interact(World& world) {
