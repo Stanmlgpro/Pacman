@@ -165,6 +165,7 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
         world_sounds->PowerOrbEaten();
         score->PowerOrbEaten();
         world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
         fearmode = true;
         return powerorb;
     }
@@ -307,7 +308,6 @@ bool World::Update() {
             world_sounds->EndFearMode();
         }
     }
-    if (fear_timer == 0) world_sounds->EndFearMode();
     fearmode = false;
     world_view->setScore(score->getPoints());
     world_view->setLives(pacman->getLives());

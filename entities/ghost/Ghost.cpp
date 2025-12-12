@@ -116,6 +116,10 @@ namespace entities {
     }
 
     void Ghost::setFeared(bool feared) {
+        if (this->feared and feared) {
+            fearcheck = 0.f;
+            return;
+        }
         this->feared = feared;
         if (feared) {
             fearcheck = 0;

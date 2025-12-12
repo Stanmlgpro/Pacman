@@ -47,7 +47,7 @@ namespace sounds {
         ghosteatSound.play();
     }
     void SFMLWorldSounds::FearMode() {
-        if (fearSound.getStatus() != sf::Sound::Playing) fearSound.play();
+        fearSound.play();
     }
     void SFMLWorldSounds::EndFearMode() {
         fearSound.stop();

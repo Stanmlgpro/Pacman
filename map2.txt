@@ -1,27 +1,31 @@
-################################################################
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#ooooooooooooooooooooooooooooooPooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo#
-################################################################
+############################
+#o..........##...........#o#
+#.####.####.##.####.####.#.#
+#.####.####.##.####.####.#.#
+#..........................#
+#.####.##.########.##.####.#
+#......##....##....##......#
+######.#####.##.#####.######
+     #.#####.##.#####.#
+     #.##          ##.#
+######.## ###  ### ##.######
+ .........##GGGG##.........
+######.##.########.##.######
+     #.##..........##.#
+     #.##.########.##.#
+######.##.########.##.######
+#............##............#
+#.####.##.##.##.##.##.####.#
+#.####.##.##.##.##.##.####.#
+#o..##.......P........##..o#
+###.##.##.########.##.##.###
+#......##....##....##......#
+#.####.###.#.##.#.###.####.#
+#.####.###.#.##.#.###.####.#
+#..........................#
+#.##.##.##.######.##.##.##.#
+#.##.##.##.######.##.##.##.#
+#....##.##...##...##.##....#
+#.#####.##.#.##.#.##.#####.#
+#o........................o#
+############################
