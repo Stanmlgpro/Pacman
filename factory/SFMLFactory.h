@@ -13,7 +13,9 @@ namespace entities {
     class Entity;
     class Pacman;
 }
-
+namespace sprites {
+    class SpriteAtlas;
+}
 namespace factory {
     class SFMLFactory : public EntityFactory {
     public:
@@ -27,6 +29,7 @@ namespace factory {
         std::shared_ptr<Camera> getCamera();
         ~SFMLFactory() override = default;
     private:
+        std::shared_ptr<sprites::SpriteAtlas> atlas;
         sf::RenderWindow& window;
         sf::Texture texture;
     };

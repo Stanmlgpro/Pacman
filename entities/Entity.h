@@ -6,6 +6,8 @@
 #define ENTITY_H
 #include <memory>
 #include <vector>
+#include <SFML/System/Vector2.hpp>
+
 #include "./views/View.h"
 #include "../singleton/Random.h"
 

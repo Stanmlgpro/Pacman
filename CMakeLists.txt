@@ -47,6 +47,7 @@ add_executable(Pacman
         sounds/WorldSound.cpp
         sounds/SFMLWorldSounds.cpp
         entities/collectable/PowerOrb.cpp
-        views/collectableview/SFMLPowerOrbView.cpp)
+        views/collectableview/SFMLPowerOrbView.cpp
+        factory/SpriteAtlas.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system sfml-audio)

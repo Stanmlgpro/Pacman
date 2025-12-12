@@ -6,10 +6,7 @@
 #include "entities/Entity.h"
 #include <iostream>
 namespace views {
-    SFMLGhostView::SFMLGhostView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
-        sprite.setTexture(texture);
-        sprite.setScale(1.f, 1.f);
-        sprite.setOrigin(8.f,8.f);
+    SFMLGhostView::SFMLGhostView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, atlas, entity, window, camera) {
         animation_bool = true;
         animation_speed = 0.1f;
         animation_counter = 0;

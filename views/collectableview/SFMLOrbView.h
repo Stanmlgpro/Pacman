@@ -9,13 +9,12 @@
 namespace views {
     class SFMLOrbView : public SFMLView {
     public:
-        SFMLOrbView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+        SFMLOrbView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
         void Update(float dt) override;
+        void FindSprite() override;
 
         void Draw() override;
-    private:
-        sf::CircleShape circ;
     };
 }
 

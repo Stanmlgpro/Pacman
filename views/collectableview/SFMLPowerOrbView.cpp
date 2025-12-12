@@ -4,19 +4,17 @@
 
 #include "SFMLPowerOrbView.h"
 #include "entities/Entity.h"
+#include <iostream>
 namespace views {
-    SFMLPowerOrbView::SFMLPowerOrbView(const sf::Texture& texture, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, entity, window, camera) {
-        sprite.setTexture(texture);
-        sprite.setScale(1.f, 1.f);
-        sprite.setOrigin(8.f,8.f);
-
+    SFMLPowerOrbView::SFMLPowerOrbView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : SFMLView(texture, atlas, entity, window, camera) {
         FindSprite();
+        sprite.setOrigin(4.f, 4.f);
     }
 
     void SFMLPowerOrbView::Update(float dt) {}
 
     void SFMLPowerOrbView::FindSprite() {
-        sprite.setTextureRect(sf::IntRect(16 * random.get(0, 4), 128, 16, 16));
+        sprite.setTextureRect(atlas->get(sprites::Sprite_ID::ORB_BIG));
     }
 
     void SFMLPowerOrbView::Draw() {
@@ -28,6 +26,7 @@ namespace views {
 
         sprite.setScale(screensize.x / 16.f, screensize.y / 16.f);
         sprite.setPosition(screenpos.x, screenpos.y);
+        sprite.setOrigin(4.f, 4.f);
 
         window.draw(sprite);
     }
