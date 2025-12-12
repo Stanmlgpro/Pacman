@@ -46,7 +46,7 @@ public:
     int getLives() const;
     int getScore() const;
 
-    ~World() = default;
+    ~World();
 private:
     std::string filename;
     std::vector<std::shared_ptr<entities::Entity>> entities;
@@ -64,6 +64,9 @@ private:
     float fear_timer;
     std::unique_ptr<Score> score;
     int difficulty;
+    int combo = -1;
+    float combo_timer;
+    float combo_time;
 };
 
 

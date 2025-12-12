@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <iostream>
 #include <sstream>
+#include <cmath>
 
 Score::Score(std::string player) : score(0), player(std::move(player)) {}
 
@@ -16,11 +17,11 @@ void Score::orbEaten() {
     score += 10;
 }
 void Score::PowerOrbEaten() {
-    score += 50;
+    score += 100;
 }
 
-void Score::ghostEaten() {
-    score += 200;
+void Score::ghostEaten(int combo) {
+    score += 200 * std::pow(2, combo);
 }
 
 void Score::reset() {

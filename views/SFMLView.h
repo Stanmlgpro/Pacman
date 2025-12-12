@@ -21,6 +21,7 @@ namespace views {
 
     protected:
         sf::Sprite sprite;
+        sf::Texture texture;
         std::shared_ptr<sprites::SpriteAtlas> atlas;
         sf::RenderWindow& window;
     };

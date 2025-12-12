@@ -6,10 +6,14 @@
 #define VIEW_H
 #include <memory>
 #include <Camera.h>
+#include <entities/Position.h>
 #include "../singleton/Random.h"
 
 namespace entities {
     class Entity;
+}
+namespace sprites {
+    enum class Sprite_ID;
 }
 
 class World;
@@ -22,6 +26,7 @@ namespace views {
         virtual void Update(float dt) = 0;
         virtual void setLives(int lives) {};
         virtual void setScore(int score) {};
+        virtual void ItemEaten(sprites::Sprite_ID ID, Position position) {};
 
         virtual void Draw() = 0;
     protected:

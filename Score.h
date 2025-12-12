@@ -11,7 +11,7 @@ public:
     explicit Score(std::string player);
     void orbEaten();
     void PowerOrbEaten();
-    void ghostEaten();
+    void ghostEaten(int combo);
     int getPoints() const;
     void wright();
     void reset();

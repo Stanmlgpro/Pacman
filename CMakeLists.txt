@@ -49,6 +49,8 @@ add_executable(Pacman
         entities/collectable/PowerOrb.cpp
         views/collectableview/SFMLPowerOrbView.cpp
         factory/SpriteAtlas.cpp
-        views/SFMLWorldView.cpp)
+        views/SFMLWorldView.cpp
+        factory/Sprite_IDs.h
+        entities/Position.h)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system sfml-audio)

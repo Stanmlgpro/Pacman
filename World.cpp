@@ -15,6 +15,7 @@
 #include "singleton/Stopwatch.h"
 #include "Score.h"
 #include "views/View.h"
+#include "factory/Sprite_IDs.h"
 
 World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<sounds::WorldSound> world_sounds, std::string player) {
     this->filename = filename;
@@ -28,12 +29,15 @@ World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entit
     fear_time = 7;
     fear_timer = 0;
     ghost_speed_mul = 0.4;
+    combo_time = 3.f;
     loadMap_reset();
 }
 
 void World::loadMap_reset() {
     fear_time = fear_time * 0.9;
     fear_timer = 0;
+    combo_timer = 0;
+    combo = -1;
     ghost_speed_mul = ghost_speed_mul * 1.3;
     entities.clear();
     wallGrid.clear();
@@ -160,6 +164,7 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     if (dx < collisionDistX && dy < collisionDistY) {
         world_sounds->PowerOrbEaten();
         score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
         fearmode = true;
         return powerorb;
     }
@@ -178,8 +183,28 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     if (dx < ghost->getCollsionSize() / wallGrid[0].size() && dy < ghost->getCollsionSize() / wallGrid.size()) {
         if (ghost->getFeared()) {
             ghost->setDying(true);
-            score->ghostEaten();
+            if (combo == -1 || combo_timer < combo_time) {
+                combo++;
+            } else {
+                combo++;
+            }
+            if (combo > 3) combo = 4;
+            score->ghostEaten(combo);
             world_sounds->GhostEaten();
+            switch (combo) {
+                case 0:
+                    world_view->ItemEaten(sprites::Sprite_ID::GHOST_EYES_RIGHT, ghost->getPosition());
+                    break;
+                case 1:
+                    world_view->ItemEaten(sprites::Sprite_ID::GHOST_EYES_LEFT, ghost->getPosition());
+                    break;
+                case 2:
+                    world_view->ItemEaten(sprites::Sprite_ID::GHOST_EYES_UP, ghost->getPosition());
+                    break;
+                case 3:
+                    world_view->ItemEaten(sprites::Sprite_ID::GHOST_EYES_DOWN, ghost->getPosition());
+                    break;
+            }
             return nullptr;
         }
         if (pacman->isDamagable()) world_sounds->PacmanDying();
@@ -235,6 +260,13 @@ bool World::Update() {
     dt = stopwatch.getDeltaTime();
     if (dt > 0.06f) dt = 0.06f;
     if (pacman->isDead()) pacman->reset();
+    if (combo != -1) {
+        combo_timer += dt;
+        if (combo_timer > combo_time) {
+            combo = -1;
+            combo_timer = 0;
+        }
+    }
     bool new_level = true;
     TryBuffer();
     std::vector<std::shared_ptr<entities::Entity>> removeables;
@@ -317,4 +349,7 @@ int World::getLives() const {
 }
 int World::getScore() const {
     return score->getPoints();
+}
+World::~World(){
+    world_sounds->EndFearMode();
 }

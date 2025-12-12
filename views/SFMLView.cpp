@@ -6,6 +6,7 @@
 namespace views {
     SFMLView::SFMLView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera) : View(std::move(entity), std::move(camera)), atlas(atlas), window(window) {
         sprite.setTexture(texture);
+        this->texture = texture;
         sprite.setScale(1.f, 1.f);
         sprite.setOrigin(8.f,8.f);
     }

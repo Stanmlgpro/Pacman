@@ -7,15 +7,12 @@
 #include <memory>
 #include <vector>
 #include <SFML/System/Vector2.hpp>
+#include "../entities/Position.h"
 
 #include "./views/View.h"
 #include "../singleton/Random.h"
 
 class World;
-struct Position {
-    float x;
-    float y;
-};
 namespace entities {
 
     class Wall;
