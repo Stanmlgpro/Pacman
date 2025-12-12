@@ -4,6 +4,7 @@
 
 #include "PowerOrb.h"
 #include "World.h"
+#include <iostream>
 
 namespace entities {
     PowerOrb::PowerOrb(float x, float y) {
