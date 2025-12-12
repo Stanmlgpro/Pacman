@@ -14,6 +14,9 @@
 namespace factory {
     class EntityFactory;
 }
+namespace views {
+    class View;
+}
 
 enum MOVE {
     UP,
@@ -22,7 +25,7 @@ enum MOVE {
     RIGHT
 };
 
-class World {
+class World : public std::enable_shared_from_this<World> {
 public:
     explicit World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<sounds::WorldSound> world_sounds, std::string player);
 
@@ -51,6 +54,7 @@ private:
     std::vector<std::vector<bool>> wallGrid;
     std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<sounds::WorldSound> world_sounds;
+    std::unique_ptr<views::View> world_view;
     std::vector<std::shared_ptr<entities::Entity>> to_add;
     float dt;
     bool fearmode = false;

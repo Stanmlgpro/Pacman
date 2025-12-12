@@ -25,6 +25,7 @@ namespace factory {
         std::shared_ptr<entities::Orb> createOrb(float x, float y) override;
         std::shared_ptr<entities::PowerOrb> createPowerOrb(float x, float y) override;
         std::shared_ptr<entities::Pacman> createPacman(float speed, int mapwidth, int mapheight, float x, float y) override;
+        std::unique_ptr<views::View> createWorldView() override;
 
         std::shared_ptr<Camera> getCamera();
         ~SFMLFactory() override = default;

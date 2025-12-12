@@ -20,6 +20,8 @@ namespace views {
         View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera);
 
         virtual void Update(float dt) = 0;
+        virtual void setLives(int lives) {};
+        virtual void setScore(int score) {};
 
         virtual void Draw() = 0;
     protected:

@@ -97,6 +97,7 @@ namespace entities {
         dead = false;
         dying = false;
         direction = {0,0};
+        direction_buffer = {0,0};
     }
     bool Pacman::isDead() const {
         return dead;

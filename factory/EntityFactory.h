@@ -22,6 +22,7 @@ namespace factory {
         virtual std::shared_ptr<entities::Orb> createOrb(float x, float y) = 0;
         virtual std::shared_ptr<entities::PowerOrb> createPowerOrb(float x, float y) = 0;
         virtual std::shared_ptr<entities::Pacman> createPacman(float speed, int mapwidth, int mapheight, float x, float y) = 0;
+        virtual std::unique_ptr<views::View> createWorldView() = 0;
         virtual std::shared_ptr<Camera> getCamera() = 0;
         virtual ~EntityFactory() = default;
     protected:

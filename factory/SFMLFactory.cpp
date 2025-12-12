@@ -21,7 +21,9 @@
 #include "views/ghostview/SFMLChaseGhostView.h"
 #include "views/ghostview/SFMLPredictGhost1View.h"
 #include "views/ghostview/SFMLPredictGhost2View.h"
+#include "views/SFMLWorldView.h"
 
+#include <iostream>
 namespace factory {
     SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera) : window(window) {
         this->camera = camera;
@@ -70,6 +72,10 @@ namespace factory {
         auto pacman = std::make_shared<entities::Pacman>(speed, mapwidth, mapheight, x, y);
         pacman->setView(std::make_unique<views::SFMLPacmanView>(texture, atlas, pacman, window, camera));
         return pacman;
+    }
+
+    std::unique_ptr<views::View> SFMLFactory::createWorldView() {
+        return std::make_unique<views::SFMLWorldView>(texture, atlas, window, camera);
     }
 
     std::shared_ptr<Camera> SFMLFactory::getCamera() {

@@ -14,12 +14,14 @@
 #include "factory/EntityFactory.h"
 #include "singleton/Stopwatch.h"
 #include "Score.h"
+#include "views/View.h"
 
 World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<sounds::WorldSound> world_sounds, std::string player) {
     this->filename = filename;
     this->entity_factory = entity_factory;
     this->score = std::make_unique<Score>(player);
     this->world_sounds = world_sounds;
+    this->world_view = std::move(entity_factory->createWorldView());
 
     dt = 0;
     difficulty = 0;
@@ -275,6 +277,9 @@ bool World::Update() {
     }
     if (fear_timer == 0) world_sounds->EndFearMode();
     fearmode = false;
+    world_view->setScore(score->getPoints());
+    world_view->setLives(pacman->getLives());
+    world_view->Update(dt);
     return false;
 }
 
@@ -287,6 +292,7 @@ void World::Render() {
         entity->Draw();
     }
     pacman->Draw();
+    world_view->Draw();
 }
 
 void World::movePacman(MOVE movement) {
