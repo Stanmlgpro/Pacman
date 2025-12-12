@@ -9,6 +9,7 @@
 #include "entities/ghost/Ghost.h"
 #include "entities/collectable/Orb.h"
 #include "entities/collectable/PowerOrb.h"
+#include "entities/collectable/Fruit.h"
 #include "entities/Pacman.h"
 #include "entities/ghost/ChaseGhost.h"
 #include "entities/ghost/LockedGhost.h"
@@ -45,6 +46,53 @@ namespace factory {
         auto powerorb = std::make_shared<entities::PowerOrb>(x, y);
         powerorb->setView(std::make_unique<views::SFMLPowerOrbView>(texture, atlas, powerorb, window, camera));
         return powerorb;
+    }
+    std::shared_ptr<entities::Fruit> SFMLFactory::createFruit(float x, float y) {
+        int rand_num = singleton::Random::getInstance().get(0, 7);
+        switch (rand_num) {
+            case 0: {
+                auto fruit = std::make_shared<entities::Cherry>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            case 1: {
+                auto fruit = std::make_shared<entities::Strawberry>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            case 2: {
+                auto fruit = std::make_shared<entities::Orange>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            case 3: {
+                auto fruit = std::make_shared<entities::Apple>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            case 4: {
+                auto fruit = std::make_shared<entities::Melon>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            case 5: {
+                auto fruit = std::make_shared<entities::Galaxian>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            case 6: {
+                auto fruit = std::make_shared<entities::Bell>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            case 7: {
+                auto fruit = std::make_shared<entities::Key>(x, y);
+                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                return fruit;
+            }
+            default:
+                return nullptr;
+        }
     }
     std::shared_ptr<entities::Ghost> SFMLFactory::createGhost(float x, float y, std::shared_ptr<entities::Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) {
         std::shared_ptr<entities::Ghost> ghost;

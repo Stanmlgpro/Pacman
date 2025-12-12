@@ -24,6 +24,7 @@ namespace factory {
         std::shared_ptr<entities::Ghost> createGhost(float x, float y, std::shared_ptr<entities::Pacman> pacman, std::vector<std::vector<bool>> wallGrid, int id, bool first_time) override;
         std::shared_ptr<entities::Orb> createOrb(float x, float y) override;
         std::shared_ptr<entities::PowerOrb> createPowerOrb(float x, float y) override;
+        std::shared_ptr<entities::Fruit> createFruit(float x, float y) override;
         std::shared_ptr<entities::Pacman> createPacman(float speed, int mapwidth, int mapheight, float x, float y) override;
         std::unique_ptr<views::View> createWorldView() override;
 

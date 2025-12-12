@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <entities/collectable/Fruit.h>
 #include "entities/ghost/Ghost.h"
 #include "entities/collectable/Orb.h"
 #include "entities/collectable/PowerOrb.h"
@@ -86,6 +87,9 @@ void World::loadMap_reset() {
             }
             else if (c == 'o') {
                 entities.push_back(entity_factory->createPowerOrb(normX, normY));
+            }
+            else if (c == 'F') {
+                entities.push_back(entity_factory->createFruit(normX, normY));
             }
             else if (c == 'P') {
                 pacman = entity_factory->createPacman(7.5f, width, height, normX, normY);
@@ -171,8 +175,107 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     }
     return nullptr;
 }
+bool World::CollidesWithPacmanB(std::shared_ptr<entities::Fruit> fruit) {
+    Position pacPos = pacman->getPosition();
+    Position orbPos = fruit->getPosition();
 
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost) {
+    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
+    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
+
+    float collisionDistX = fruit->getCollsionSize() / wallGrid[0].size();
+    float collisionDistY = fruit->getCollsionSize() / wallGrid.size();
+
+    return (dx < collisionDistX && dy < collisionDistY);
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Cherry> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Strawberry> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Orange> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Apple> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Melon> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Galaxian> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Bell> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Key> fruit) {
+    if (CollidesWithPacmanB(fruit)) {
+        world_sounds->PowerOrbEaten();
+        score->PowerOrbEaten();
+        world_view->ItemEaten(sprites::Sprite_ID::ORB_BIG, pacman->getPosition());
+        fear_timer = 0;
+        fearmode = true;
+        return fruit;
+    }
+    return nullptr;
+}
+std::shared_ptr<entities::Entity> World::World::CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost) {
     if (ghost->getDying()) return nullptr;
     Position pacPos = pacman->getPosition();
     Position ghostPos = ghost->getPosition();

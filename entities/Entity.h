@@ -20,6 +20,7 @@ namespace entities {
     class PowerOrb;
     class Ghost;
     class Pacman;
+    class Fruit;
 
     class Entity {
     public:

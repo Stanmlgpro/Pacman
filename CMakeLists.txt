@@ -51,6 +51,7 @@ add_executable(Pacman
         factory/SpriteAtlas.cpp
         views/SFMLWorldView.cpp
         factory/Sprite_IDs.h
-        entities/Position.h)
+        entities/Position.h
+        entities/collectable/Fruit.cpp)
 
 target_link_libraries(Pacman PRIVATE sfml-graphics sfml-window sfml-system sfml-audio)

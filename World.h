@@ -6,6 +6,7 @@
 #define WORLD_H
 #include <memory>
 #include <string>
+#include <entities/collectable/Fruit.h>
 
 #include "Score.h"
 #include "entities/Entity.h"
@@ -34,6 +35,15 @@ public:
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Wall> wall);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orb> orb);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::PowerOrb> powerorb);
+    bool CollidesWithPacmanB(std::shared_ptr<entities::Fruit> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Cherry> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Strawberry> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orange> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Apple> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Melon> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Galaxian> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Bell> fruit);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Key> fruit);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman);
 
