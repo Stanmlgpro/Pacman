@@ -42,6 +42,7 @@ void World::loadMap_reset() {
     ghost_speed_mul = ghost_speed_mul * 1.3;
     entities.clear();
     wallGrid.clear();
+    world_sounds->EndFearMode();
     std::ifstream file(filename);
     std::string line;
     int width = 0, height = 0;

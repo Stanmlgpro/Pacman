@@ -16,6 +16,7 @@ Score::Score(std::string player) : score(0), player(std::move(player)) {}
 void Score::orbEaten() {
     if (last_orb_eaten > 5.f) {
         score += 5;
+        last_orb_eaten = 0.f;
         return;
     }
     score += 10 - static_cast<int>(last_orb_eaten);
@@ -71,7 +72,13 @@ int Score::getPoints() const {
 
 void Score::Update(float dt) {
     last_orb_eaten += dt;
-    if (last_orb_eaten > 1.f) {
+    if (last_orb_eaten > 5.f) {
+        decrease_timer += dt;
+        if (decrease_timer >= 0.1f) {
+            score = std::max(0, score - 1);
+            decrease_timer = 0.f;
+        }
+    } else if (last_orb_eaten > 1.f) {
         decrease_timer += dt;
         if (decrease_timer >= 0.33f) {
             score = std::max(0, score - 1);
