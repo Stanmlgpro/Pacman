@@ -347,14 +347,6 @@ build CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost2View.cpp.o: CX
   OBJECT_DIR = CMakeFiles/pacman_sfml.dir
   OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/ghostview
 
-build CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/sounds/SFMLWorldSounds.cpp || cmake_object_order_depends_target_pacman_sfml
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
-  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/sounds
-
 build CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLPowerOrbView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/collectableview/SFMLPowerOrbView.cpp || cmake_object_order_depends_target_pacman_sfml
   CONFIG = Debug
   DEP_FILE = CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLPowerOrbView.cpp.o.d
@@ -379,6 +371,14 @@ build CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLFruitView.cpp.o: CXX_
   OBJECT_DIR = CMakeFiles/pacman_sfml.dir
   OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/collectableview
 
+build CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/sounds/SFMLWorldSounds.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/sounds
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target pacman_sfml
@@ -387,7 +387,7 @@ build CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLFruitView.cpp.o: CXX_
 #############################################
 # Link the static library libpacman_sfml.a
 
-build libpacman_sfml.a: CXX_STATIC_LIBRARY_LINKER__pacman_sfml_Debug CMakeFiles/pacman_sfml.dir/Game.cpp.o CMakeFiles/pacman_sfml.dir/states/StateManager.cpp.o CMakeFiles/pacman_sfml.dir/states/State.cpp.o CMakeFiles/pacman_sfml.dir/states/MenuState.cpp.o CMakeFiles/pacman_sfml.dir/states/LevelState.cpp.o CMakeFiles/pacman_sfml.dir/states/PausedState.cpp.o CMakeFiles/pacman_sfml.dir/factory/SFMLFactory.cpp.o CMakeFiles/pacman_sfml.dir/factory/SpriteAtlas.cpp.o CMakeFiles/pacman_sfml.dir/views/View.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLWallView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLPacmanView.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLOrbView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLLockedGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLChaseGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost1View.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost2View.cpp.o CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLPowerOrbView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLWorldView.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLFruitView.cpp.o || libpacman_core.a
+build libpacman_sfml.a: CXX_STATIC_LIBRARY_LINKER__pacman_sfml_Debug CMakeFiles/pacman_sfml.dir/Game.cpp.o CMakeFiles/pacman_sfml.dir/states/StateManager.cpp.o CMakeFiles/pacman_sfml.dir/states/State.cpp.o CMakeFiles/pacman_sfml.dir/states/MenuState.cpp.o CMakeFiles/pacman_sfml.dir/states/LevelState.cpp.o CMakeFiles/pacman_sfml.dir/states/PausedState.cpp.o CMakeFiles/pacman_sfml.dir/factory/SFMLFactory.cpp.o CMakeFiles/pacman_sfml.dir/factory/SpriteAtlas.cpp.o CMakeFiles/pacman_sfml.dir/views/View.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLWallView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLPacmanView.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLOrbView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLLockedGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLChaseGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost1View.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost2View.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLPowerOrbView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLWorldView.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLFruitView.cpp.o CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o || libpacman_core.a
   CONFIG = Debug
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/pacman_sfml.dir
