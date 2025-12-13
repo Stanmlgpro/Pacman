@@ -116,9 +116,9 @@ namespace sprites {
         spriteRects[static_cast<int>(Sprite_ID::BLUE_500)] = sf::IntRect(488, 144, 16, 16);
         spriteRects[static_cast<int>(Sprite_ID::BLUE_700)] = sf::IntRect(504, 144, 16, 16);
         spriteRects[static_cast<int>(Sprite_ID::BLUE_1000)] = sf::IntRect(520, 144, 18, 16);
-        spriteRects[static_cast<int>(Sprite_ID::BLUE_2000)] = sf::IntRect(518, 160, 120, 16);
-        spriteRects[static_cast<int>(Sprite_ID::BLUE_3000)] = sf::IntRect(518, 176, 120, 16);
-        spriteRects[static_cast<int>(Sprite_ID::BLUE_5000)] = sf::IntRect(518, 192, 120, 16);
+        spriteRects[static_cast<int>(Sprite_ID::BLUE_2000)] = sf::IntRect(518, 160, 20, 16);
+        spriteRects[static_cast<int>(Sprite_ID::BLUE_3000)] = sf::IntRect(518, 176, 20, 16);
+        spriteRects[static_cast<int>(Sprite_ID::BLUE_5000)] = sf::IntRect(518, 192, 20, 16);
     }
 
     sf::IntRect SpriteAtlas::get(Sprite_ID id) const {

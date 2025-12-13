@@ -19,6 +19,36 @@ void Score::orbEaten() {
 void Score::PowerOrbEaten() {
     score += 100;
 }
+void Score::FruitEaten(sprites::Sprite_ID ID) {
+    switch (ID) {
+        case sprites::Sprite_ID::FRUIT_CHERRY:
+            score += 100;
+            break;
+        case sprites::Sprite_ID::FRUIT_STRAWBERRY:
+            score += 300;
+            break;
+        case sprites::Sprite_ID::FRUIT_ORANGE:
+            score += 500;
+            break;
+        case sprites::Sprite_ID::FRUIT_APPLE:
+            score += 700;
+            break;
+        case sprites::Sprite_ID::FRUIT_MELON:
+            score += 1000;
+            break;
+        case sprites::Sprite_ID::FRUIT_GALAXIAN:
+            score += 2000;
+            break;
+        case sprites::Sprite_ID::FRUIT_BELL:
+            score += 3000;
+            break;
+        case sprites::Sprite_ID::FRUIT_KEY:
+            score += 5000;
+            break;
+        default:
+            break;
+    }
+}
 
 void Score::ghostEaten(int combo) {
     score += 200 * std::pow(2, combo);

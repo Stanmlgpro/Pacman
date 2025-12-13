@@ -18,6 +18,7 @@
 #include "views/SFMLPacmanView.h"
 #include "views/collectableview/SFMLOrbView.h"
 #include "views/collectableview/SFMLPowerOrbView.h"
+#include "views/collectableview/SFMLFruitView.h"
 #include "views/ghostview/SFMLLockedGhostView.h"
 #include "views/ghostview/SFMLChaseGhostView.h"
 #include "views/ghostview/SFMLPredictGhost1View.h"
@@ -52,42 +53,42 @@ namespace factory {
         switch (rand_num) {
             case 0: {
                 auto fruit = std::make_shared<entities::Cherry>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLCherryView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             case 1: {
                 auto fruit = std::make_shared<entities::Strawberry>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLStrawberryView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             case 2: {
                 auto fruit = std::make_shared<entities::Orange>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLOrangeView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             case 3: {
                 auto fruit = std::make_shared<entities::Apple>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLAppleView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             case 4: {
                 auto fruit = std::make_shared<entities::Melon>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLMelonView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             case 5: {
                 auto fruit = std::make_shared<entities::Galaxian>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLGalaxianView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             case 6: {
                 auto fruit = std::make_shared<entities::Bell>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLBellView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             case 7: {
                 auto fruit = std::make_shared<entities::Key>(x, y);
-                fruit->setView(std::make_unique<views::SFMLOrbView>(texture, atlas, fruit, window, camera));
+                fruit->setView(std::make_unique<views::SFMLKeyView>(texture, atlas, fruit, window, camera));
                 return fruit;
             }
             default:

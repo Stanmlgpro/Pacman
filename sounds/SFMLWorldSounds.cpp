@@ -15,15 +15,19 @@ namespace sounds {
             std::cerr << "Failed to load sound!" << std::endl;
         }
         munchSound.setBuffer(munchBuffer);
-        if (!munchpowerorbBuffer.loadFromFile("../sounds/pacman_eatfruit.wav")) {
+        if (!munchpowerorbBuffer.loadFromFile("../sounds/pacman_eatpowerpellet.wav")) {
             std::cerr << "Failed to load sound!" << std::endl;
         }
         munchpowerorbSound.setBuffer(munchpowerorbBuffer);
+        if (!munchFruitBuffer.loadFromFile("../sounds/pacman_eatfruit.mp3")) {
+            std::cerr << "Failed to load sound!" << std::endl;
+        }
+        munchFruitSound.setBuffer(munchFruitBuffer);
         if (!ghosteatBuffer.loadFromFile("../sounds/pacman_eatghost.wav")) {
             std::cerr << "Failed to load sound!" << std::endl;
         }
         ghosteatSound.setBuffer(ghosteatBuffer);
-        if (!fearBuffer.loadFromFile("../sounds/pacman_extrapac.wav")) {
+        if (!fearBuffer.loadFromFile("../sounds/fearmode.mp3")) {
             std::cerr << "Failed to load sound!" << std::endl;
         }
         fearSound.setBuffer(fearBuffer);
@@ -42,6 +46,9 @@ namespace sounds {
     }
     void SFMLWorldSounds::PowerOrbEaten() {
         munchpowerorbSound.play();
+    }
+    void SFMLWorldSounds::FruitEaten() {
+        munchFruitSound.play();
     }
     void SFMLWorldSounds::GhostEaten() {
         ghosteatSound.play();
