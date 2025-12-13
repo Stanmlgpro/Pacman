@@ -18,10 +18,14 @@ public:
     void wright();
     void reset();
 
+    void Update(float dt);
+
     ~Score();
 private:
     int score;
     std::string player;
+    float last_orb_eaten = 0.f;
+    float decrease_timer = 0.f;
 };
 
 

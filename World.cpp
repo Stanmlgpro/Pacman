@@ -335,6 +335,7 @@ bool World::Update() {
     world_view->setScore(score->getPoints());
     world_view->setLives(pacman->getLives());
     world_view->Update(dt);
+    score->Update(dt);
     return false;
 }
 

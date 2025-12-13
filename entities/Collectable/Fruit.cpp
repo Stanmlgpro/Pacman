@@ -19,41 +19,41 @@ namespace entities {
 
     Cherry::Cherry(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Cherry::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_CHERRY);
     }
 
     Strawberry::Strawberry(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Strawberry::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_STRAWBERRY);
     }
 
     Orange::Orange(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Orange::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_ORANGE);
     }
 
     Apple::Apple(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Apple::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_APPLE);
     }
 
     Melon::Melon(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Melon::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_MELON);
     }
 
     Galaxian::Galaxian(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Galaxian::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_GALAXIAN);
     }
 
     Bell::Bell(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Bell::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_BELL);
     }
 
     Key::Key(float x, float y) : Fruit(x, y) {}
     std::shared_ptr<Entity> Key::Interact(World& world) {
-        return world.CollidesWithPacman(shared_from_this());
+        return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_KEY);
     }
 }

@@ -14,10 +14,16 @@
 Score::Score(std::string player) : score(0), player(std::move(player)) {}
 
 void Score::orbEaten() {
-    score += 10;
+    if (last_orb_eaten > 5.f) {
+        score += 5;
+        return;
+    }
+    score += 10 - static_cast<int>(last_orb_eaten);
+    last_orb_eaten = 0.f;
 }
 void Score::PowerOrbEaten() {
     score += 100;
+    last_orb_eaten = 0.f;
 }
 void Score::FruitEaten(sprites::Sprite_ID ID) {
     switch (ID) {
@@ -48,6 +54,7 @@ void Score::FruitEaten(sprites::Sprite_ID ID) {
         default:
             break;
     }
+    last_orb_eaten = 0.f;
 }
 
 void Score::ghostEaten(int combo) {
@@ -61,6 +68,18 @@ void Score::reset() {
 int Score::getPoints() const {
     return score;
 }
+
+void Score::Update(float dt) {
+    last_orb_eaten += dt;
+    if (last_orb_eaten > 1.f) {
+        decrease_timer += dt;
+        if (decrease_timer >= 0.33f) {
+            score = std::max(0, score - 1);
+            decrease_timer = 0.f;
+        }
+    }
+}
+
 void Score::wright() {
     std::vector<std::pair<std::string, int>> scores;
     std::ifstream inFile("../scoreboard.txt");
