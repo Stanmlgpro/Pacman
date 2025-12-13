@@ -6,6 +6,7 @@
 #include "PausedState.h"
 #include "LevelState.h"
 #include "MenuState.h"
+
 namespace states {
     PausedState::PausedState(std::shared_ptr<StateManager> statemanager) {
         this->statemanager = statemanager;

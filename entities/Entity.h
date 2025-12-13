@@ -6,7 +6,6 @@
 #define ENTITY_H
 #include <memory>
 #include <vector>
-#include <SFML/System/Vector2.hpp>
 #include "../entities/Position.h"
 
 #include "./views/View.h"

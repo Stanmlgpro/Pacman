@@ -205,13 +205,17 @@ namespace entities {
         };
 
         while (!q.empty()) {
-            auto [x, y] = q.front();
+            auto entry = q.front();
+            const auto x = entry.first;
+            const auto y = entry.second;
             q.pop();
 
             if (x == targetX && y == targetY)
                 return dist[y][x];
 
-            for (auto [dx, dy] : dirs) {
+            for (auto entry: dirs) {
+                const auto dx = entry.first;
+                const auto dy = entry.second;
                 int nx = x + dx;
                 int ny = y + dy;
 

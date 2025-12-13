@@ -4,9 +4,12 @@
 
 #ifndef PACMAN_STATE_H
 #define PACMAN_STATE_H
-#include <SFML/Graphics.hpp>
 #include <memory>
 #include <iostream>
+namespace sf {
+    class RenderWindow;
+    class Event;
+}
 namespace states {
     class StateManager;
 

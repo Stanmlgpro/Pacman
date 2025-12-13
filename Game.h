@@ -5,9 +5,10 @@
 #ifndef PACMAN_GAME_H
 #define PACMAN_GAME_H
 #include <memory>
-
 #include "sounds/WorldSound.h"
 #include "states/StateManager.h"
+#include <SFML/Graphics.hpp>
+#include "states/State.h"
 
 class Camera;
 namespace factory {

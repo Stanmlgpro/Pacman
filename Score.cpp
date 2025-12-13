@@ -125,7 +125,9 @@ void Score::wright() {
         return;
     }
 
-    for (const auto& [name, sc] : scores) {
+    for (const auto& entry : scores) {
+        const auto& name = entry.first;
+        const auto& sc   = entry.second;
         outFile << name << ": " << sc << "\n";
     }
 

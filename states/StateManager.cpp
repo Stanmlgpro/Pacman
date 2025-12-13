@@ -7,6 +7,9 @@
 #include "MenuState.h"
 #include "LevelState.h"
 #include "PausedState.h"
+#include <SFML/Graphics.hpp>
+#include "sounds/WorldSound.h"
+
 namespace states {
     StateManager::StateManager(std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<sounds::WorldSound> world_sound) {
         this->entity_factory = entity_factory;

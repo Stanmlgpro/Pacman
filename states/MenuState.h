@@ -5,6 +5,7 @@
 #ifndef PACMAN_MENUSTATE_H
 #define PACMAN_MENUSTATE_H
 #include "State.h"
+#include "SFML/Graphics.hpp"
 namespace states {
     struct ScoreEntry {
         std::string name;

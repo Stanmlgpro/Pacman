@@ -6,10 +6,11 @@
 #define PACMAN_STATEMANAGER_H
 #include <memory>
 #include <stack>
-#include <SFML/Graphics.hpp>
-#include "State.h"
-#include "sounds/WorldSound.h"
 
+namespace sf {
+    class RenderWindow;
+    class Event;
+}
 namespace sounds {
     class WorldSound;
 }
@@ -17,6 +18,7 @@ namespace factory {
     class EntityFactory;
 }
 namespace states {
+    class State;
     enum StateID {
         MENU,
         LEVEL,

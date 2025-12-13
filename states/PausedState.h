@@ -5,6 +5,7 @@
 #ifndef PACMAN_PAUSEDSTATE_H
 #define PACMAN_PAUSEDSTATE_H
 #include "State.h"
+#include "SFML/Graphics.hpp"
 namespace states {
     class PausedState final : public State {
     public:

@@ -41,333 +41,377 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/stan/CLionProjects/Pacman/cmake-build-debug/
 # =============================================================================
+# Object build statements for STATIC_LIBRARY target pacman_core
+
+
+#############################################
+# Order-only phony target for pacman_core
+
+build cmake_object_order_depends_target_pacman_core: phony || .
+
+build CMakeFiles/pacman_core.dir/entities/Entity.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/Entity.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/Entity.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities
+
+build CMakeFiles/pacman_core.dir/World.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/World.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/World.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir
+
+build CMakeFiles/pacman_core.dir/entities/Wall.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/Wall.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/Wall.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities
+
+build CMakeFiles/pacman_core.dir/entities/collectable/Orb.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/collectable/Orb.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/collectable/Orb.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/collectable
+
+build CMakeFiles/pacman_core.dir/entities/ghost/Ghost.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/Ghost.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/ghost/Ghost.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/ghost
+
+build CMakeFiles/pacman_core.dir/entities/Pacman.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/Pacman.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/Pacman.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities
+
+build CMakeFiles/pacman_core.dir/Camera.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/Camera.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/Camera.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir
+
+build CMakeFiles/pacman_core.dir/singleton/Stopwatch.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/singleton/Stopwatch.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/singleton/Stopwatch.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/singleton
+
+build CMakeFiles/pacman_core.dir/entities/ghost/ChaseGhost.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/ChaseGhost.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/ghost/ChaseGhost.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/ghost
+
+build CMakeFiles/pacman_core.dir/entities/ghost/LockedGhost.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/LockedGhost.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/ghost/LockedGhost.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/ghost
+
+build CMakeFiles/pacman_core.dir/entities/ghost/PredictGhost.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/PredictGhost.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/ghost/PredictGhost.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/ghost
+
+build CMakeFiles/pacman_core.dir/singleton/Random.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/singleton/Random.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/singleton/Random.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/singleton
+
+build CMakeFiles/pacman_core.dir/Score.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/Score.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/Score.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir
+
+build CMakeFiles/pacman_core.dir/sounds/WorldSound.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/sounds/WorldSound.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/sounds/WorldSound.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/sounds
+
+build CMakeFiles/pacman_core.dir/entities/collectable/PowerOrb.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/collectable/PowerOrb.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/collectable/PowerOrb.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/collectable
+
+build CMakeFiles/pacman_core.dir/entities/collectable/Fruit.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/collectable/Fruit.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/entities/collectable/Fruit.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/collectable
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target pacman_core
+
+
+#############################################
+# Link the static library libpacman_core.a
+
+build libpacman_core.a: CXX_STATIC_LIBRARY_LINKER__pacman_core_Debug CMakeFiles/pacman_core.dir/entities/Entity.cpp.o CMakeFiles/pacman_core.dir/World.cpp.o CMakeFiles/pacman_core.dir/entities/Wall.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/Orb.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/Ghost.cpp.o CMakeFiles/pacman_core.dir/entities/Pacman.cpp.o CMakeFiles/pacman_core.dir/Camera.cpp.o CMakeFiles/pacman_core.dir/singleton/Stopwatch.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/ChaseGhost.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/LockedGhost.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/PredictGhost.cpp.o CMakeFiles/pacman_core.dir/singleton/Random.cpp.o CMakeFiles/pacman_core.dir/Score.cpp.o CMakeFiles/pacman_core.dir/sounds/WorldSound.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/PowerOrb.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/Fruit.cpp.o
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libpacman_core.a
+  TARGET_PDB = pacman_core.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target pacman_sfml
+
+
+#############################################
+# Order-only phony target for pacman_sfml
+
+build cmake_object_order_depends_target_pacman_sfml: phony || cmake_object_order_depends_target_pacman_core
+
+build CMakeFiles/pacman_sfml.dir/Game.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/Game.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/Game.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir
+
+build CMakeFiles/pacman_sfml.dir/states/StateManager.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/states/StateManager.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/states/StateManager.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/states
+
+build CMakeFiles/pacman_sfml.dir/states/State.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/states/State.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/states/State.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/states
+
+build CMakeFiles/pacman_sfml.dir/states/MenuState.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/states/MenuState.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/states/MenuState.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/states
+
+build CMakeFiles/pacman_sfml.dir/states/LevelState.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/states/LevelState.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/states/LevelState.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/states
+
+build CMakeFiles/pacman_sfml.dir/states/PausedState.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/states/PausedState.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/states/PausedState.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/states
+
+build CMakeFiles/pacman_sfml.dir/factory/SFMLFactory.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/factory/SFMLFactory.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/factory/SFMLFactory.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/factory
+
+build CMakeFiles/pacman_sfml.dir/factory/SpriteAtlas.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/factory/SpriteAtlas.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/factory/SpriteAtlas.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/factory
+
+build CMakeFiles/pacman_sfml.dir/views/View.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/View.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/View.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views
+
+build CMakeFiles/pacman_sfml.dir/views/SFMLView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/SFMLView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views
+
+build CMakeFiles/pacman_sfml.dir/views/SFMLWallView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLWallView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/SFMLWallView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views
+
+build CMakeFiles/pacman_sfml.dir/views/SFMLPacmanView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLPacmanView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/SFMLPacmanView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views
+
+build CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLOrbView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/collectableview/SFMLOrbView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLOrbView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/collectableview
+
+build CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLGhostView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLGhostView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLGhostView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/ghostview
+
+build CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLLockedGhostView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLLockedGhostView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLLockedGhostView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/ghostview
+
+build CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLChaseGhostView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLChaseGhostView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLChaseGhostView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/ghostview
+
+build CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost1View.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLPredictGhost1View.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost1View.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/ghostview
+
+build CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost2View.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLPredictGhost2View.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost2View.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/ghostview
+
+build CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/sounds/SFMLWorldSounds.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/sounds
+
+build CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLPowerOrbView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/collectableview/SFMLPowerOrbView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLPowerOrbView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/collectableview
+
+build CMakeFiles/pacman_sfml.dir/views/SFMLWorldView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLWorldView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/SFMLWorldView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views
+
+build CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLFruitView.cpp.o: CXX_COMPILER__pacman_sfml_unscanned_Debug /home/stan/CLionProjects/Pacman/views/collectableview/SFMLFruitView.cpp || cmake_object_order_depends_target_pacman_sfml
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLFruitView.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman -isystem /opt/SFML-2.6.1/include
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_sfml.dir/views/collectableview
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target pacman_sfml
+
+
+#############################################
+# Link the static library libpacman_sfml.a
+
+build libpacman_sfml.a: CXX_STATIC_LIBRARY_LINKER__pacman_sfml_Debug CMakeFiles/pacman_sfml.dir/Game.cpp.o CMakeFiles/pacman_sfml.dir/states/StateManager.cpp.o CMakeFiles/pacman_sfml.dir/states/State.cpp.o CMakeFiles/pacman_sfml.dir/states/MenuState.cpp.o CMakeFiles/pacman_sfml.dir/states/LevelState.cpp.o CMakeFiles/pacman_sfml.dir/states/PausedState.cpp.o CMakeFiles/pacman_sfml.dir/factory/SFMLFactory.cpp.o CMakeFiles/pacman_sfml.dir/factory/SpriteAtlas.cpp.o CMakeFiles/pacman_sfml.dir/views/View.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLWallView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLPacmanView.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLOrbView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLLockedGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLChaseGhostView.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost1View.cpp.o CMakeFiles/pacman_sfml.dir/views/ghostview/SFMLPredictGhost2View.cpp.o CMakeFiles/pacman_sfml.dir/sounds/SFMLWorldSounds.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLPowerOrbView.cpp.o CMakeFiles/pacman_sfml.dir/views/SFMLWorldView.cpp.o CMakeFiles/pacman_sfml.dir/views/collectableview/SFMLFruitView.cpp.o || libpacman_core.a
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/pacman_sfml.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libpacman_sfml.a
+  TARGET_PDB = pacman_sfml.a.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target Pacman
 
 
 #############################################
 # Order-only phony target for Pacman
 
-build cmake_object_order_depends_target_Pacman: phony || .
-
-build CMakeFiles/Pacman.dir/entities/Entity.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/Entity.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/Entity.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities
+build cmake_object_order_depends_target_Pacman: phony || cmake_object_order_depends_target_pacman_core cmake_object_order_depends_target_pacman_sfml
 
 build CMakeFiles/Pacman.dir/main.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/main.cpp || cmake_object_order_depends_target_Pacman
   CONFIG = Debug
   DEP_FILE = CMakeFiles/Pacman.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
+  INCLUDES = -I/opt/SFML-2.6.1/include
   OBJECT_DIR = CMakeFiles/Pacman.dir
   OBJECT_FILE_DIR = CMakeFiles/Pacman.dir
-
-build CMakeFiles/Pacman.dir/Game.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/Game.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/Game.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir
-
-build CMakeFiles/Pacman.dir/states/StateManager.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/states/StateManager.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/states/StateManager.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/states
-
-build CMakeFiles/Pacman.dir/states/State.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/states/State.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/states/State.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/states
-
-build CMakeFiles/Pacman.dir/states/MenuState.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/states/MenuState.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/states/MenuState.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/states
-
-build CMakeFiles/Pacman.dir/states/LevelState.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/states/LevelState.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/states/LevelState.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/states
-
-build CMakeFiles/Pacman.dir/states/PausedState.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/states/PausedState.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/states/PausedState.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/states
-
-build CMakeFiles/Pacman.dir/World.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/World.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/World.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir
-
-build CMakeFiles/Pacman.dir/entities/Wall.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/Wall.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/Wall.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities
-
-build CMakeFiles/Pacman.dir/entities/collectable/Orb.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/collectable/Orb.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/collectable/Orb.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities/collectable
-
-build CMakeFiles/Pacman.dir/entities/ghost/Ghost.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/Ghost.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/ghost/Ghost.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities/ghost
-
-build CMakeFiles/Pacman.dir/entities/Pacman.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/Pacman.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/Pacman.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities
-
-build CMakeFiles/Pacman.dir/Camera.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/Camera.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/Camera.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir
-
-build CMakeFiles/Pacman.dir/factory/EntityFactory.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/factory/EntityFactory.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/factory/EntityFactory.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/factory
-
-build CMakeFiles/Pacman.dir/factory/SFMLFactory.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/factory/SFMLFactory.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/factory/SFMLFactory.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/factory
-
-build CMakeFiles/Pacman.dir/views/View.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/View.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/View.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views
-
-build CMakeFiles/Pacman.dir/views/SFMLView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/SFMLView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views
-
-build CMakeFiles/Pacman.dir/views/SFMLWallView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLWallView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/SFMLWallView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views
-
-build CMakeFiles/Pacman.dir/singleton/Stopwatch.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/singleton/Stopwatch.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/singleton/Stopwatch.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/singleton
-
-build CMakeFiles/Pacman.dir/views/SFMLPacmanView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLPacmanView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/SFMLPacmanView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views
-
-build CMakeFiles/Pacman.dir/views/collectableview/SFMLOrbView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/collectableview/SFMLOrbView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/collectableview/SFMLOrbView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/collectableview
-
-build CMakeFiles/Pacman.dir/views/ghostview/SFMLGhostView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLGhostView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/ghostview/SFMLGhostView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/ghostview
-
-build CMakeFiles/Pacman.dir/views/ghostview/SFMLLockedGhostView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLLockedGhostView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/ghostview/SFMLLockedGhostView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/ghostview
-
-build CMakeFiles/Pacman.dir/views/ghostview/SFMLChaseGhostView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLChaseGhostView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/ghostview/SFMLChaseGhostView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/ghostview
-
-build CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost1View.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLPredictGhost1View.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost1View.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/ghostview
-
-build CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost2View.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/ghostview/SFMLPredictGhost2View.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost2View.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/ghostview
-
-build CMakeFiles/Pacman.dir/entities/ghost/ChaseGhost.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/ChaseGhost.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/ghost/ChaseGhost.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities/ghost
-
-build CMakeFiles/Pacman.dir/entities/ghost/LockedGhost.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/LockedGhost.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/ghost/LockedGhost.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities/ghost
-
-build CMakeFiles/Pacman.dir/entities/ghost/PredictGhost.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/ghost/PredictGhost.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/ghost/PredictGhost.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities/ghost
-
-build CMakeFiles/Pacman.dir/singleton/Random.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/singleton/Random.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/singleton/Random.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/singleton
-
-build CMakeFiles/Pacman.dir/Score.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/Score.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/Score.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir
-
-build CMakeFiles/Pacman.dir/sounds/WorldSound.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/sounds/WorldSound.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/sounds/WorldSound.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/sounds
-
-build CMakeFiles/Pacman.dir/sounds/SFMLWorldSounds.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/sounds/SFMLWorldSounds.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/sounds/SFMLWorldSounds.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/sounds
-
-build CMakeFiles/Pacman.dir/entities/collectable/PowerOrb.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/collectable/PowerOrb.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/collectable/PowerOrb.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities/collectable
-
-build CMakeFiles/Pacman.dir/views/collectableview/SFMLPowerOrbView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/collectableview/SFMLPowerOrbView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/collectableview/SFMLPowerOrbView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/collectableview
-
-build CMakeFiles/Pacman.dir/factory/SpriteAtlas.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/factory/SpriteAtlas.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/factory/SpriteAtlas.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/factory
-
-build CMakeFiles/Pacman.dir/views/SFMLWorldView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/SFMLWorldView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/SFMLWorldView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views
-
-build CMakeFiles/Pacman.dir/entities/collectable/Fruit.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/entities/collectable/Fruit.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/entities/collectable/Fruit.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/entities/collectable
-
-build CMakeFiles/Pacman.dir/views/collectableview/SFMLFruitView.cpp.o: CXX_COMPILER__Pacman_unscanned_Debug /home/stan/CLionProjects/Pacman/views/collectableview/SFMLFruitView.cpp || cmake_object_order_depends_target_Pacman
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Pacman.dir/views/collectableview/SFMLFruitView.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I/home/stan/CLionProjects/Pacman/. -isystem /opt/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles/Pacman.dir
-  OBJECT_FILE_DIR = CMakeFiles/Pacman.dir/views/collectableview
 
 
 # =============================================================================
@@ -377,12 +421,12 @@ build CMakeFiles/Pacman.dir/views/collectableview/SFMLFruitView.cpp.o: CXX_COMPI
 #############################################
 # Link the executable Pacman
 
-build Pacman: CXX_EXECUTABLE_LINKER__Pacman_Debug CMakeFiles/Pacman.dir/entities/Entity.cpp.o CMakeFiles/Pacman.dir/main.cpp.o CMakeFiles/Pacman.dir/Game.cpp.o CMakeFiles/Pacman.dir/states/StateManager.cpp.o CMakeFiles/Pacman.dir/states/State.cpp.o CMakeFiles/Pacman.dir/states/MenuState.cpp.o CMakeFiles/Pacman.dir/states/LevelState.cpp.o CMakeFiles/Pacman.dir/states/PausedState.cpp.o CMakeFiles/Pacman.dir/World.cpp.o CMakeFiles/Pacman.dir/entities/Wall.cpp.o CMakeFiles/Pacman.dir/entities/collectable/Orb.cpp.o CMakeFiles/Pacman.dir/entities/ghost/Ghost.cpp.o CMakeFiles/Pacman.dir/entities/Pacman.cpp.o CMakeFiles/Pacman.dir/Camera.cpp.o CMakeFiles/Pacman.dir/factory/EntityFactory.cpp.o CMakeFiles/Pacman.dir/factory/SFMLFactory.cpp.o CMakeFiles/Pacman.dir/views/View.cpp.o CMakeFiles/Pacman.dir/views/SFMLView.cpp.o CMakeFiles/Pacman.dir/views/SFMLWallView.cpp.o CMakeFiles/Pacman.dir/singleton/Stopwatch.cpp.o CMakeFiles/Pacman.dir/views/SFMLPacmanView.cpp.o CMakeFiles/Pacman.dir/views/collectableview/SFMLOrbView.cpp.o CMakeFiles/Pacman.dir/views/ghostview/SFMLGhostView.cpp.o CMakeFiles/Pacman.dir/views/ghostview/SFMLLockedGhostView.cpp.o CMakeFiles/Pacman.dir/views/ghostview/SFMLChaseGhostView.cpp.o CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost1View.cpp.o CMakeFiles/Pacman.dir/views/ghostview/SFMLPredictGhost2View.cpp.o CMakeFiles/Pacman.dir/entities/ghost/ChaseGhost.cpp.o CMakeFiles/Pacman.dir/entities/ghost/LockedGhost.cpp.o CMakeFiles/Pacman.dir/entities/ghost/PredictGhost.cpp.o CMakeFiles/Pacman.dir/singleton/Random.cpp.o CMakeFiles/Pacman.dir/Score.cpp.o CMakeFiles/Pacman.dir/sounds/WorldSound.cpp.o CMakeFiles/Pacman.dir/sounds/SFMLWorldSounds.cpp.o CMakeFiles/Pacman.dir/entities/collectable/PowerOrb.cpp.o CMakeFiles/Pacman.dir/views/collectableview/SFMLPowerOrbView.cpp.o CMakeFiles/Pacman.dir/factory/SpriteAtlas.cpp.o CMakeFiles/Pacman.dir/views/SFMLWorldView.cpp.o CMakeFiles/Pacman.dir/entities/collectable/Fruit.cpp.o CMakeFiles/Pacman.dir/views/collectableview/SFMLFruitView.cpp.o | /opt/SFML-2.6.1/lib/libsfml-graphics-d.so.2.6.1 /opt/SFML-2.6.1/lib/libsfml-window-d.so.2.6.1 /opt/SFML-2.6.1/lib/libsfml-audio-d.so.2.6.1 /opt/SFML-2.6.1/lib/libsfml-system-d.so.2.6.1
+build Pacman: CXX_EXECUTABLE_LINKER__Pacman_Debug CMakeFiles/Pacman.dir/main.cpp.o | libpacman_sfml.a libpacman_core.a /opt/SFML-2.6.1/lib/libsfml-graphics-d.so.2.6.1 /opt/SFML-2.6.1/lib/libsfml-window-d.so.2.6.1 /opt/SFML-2.6.1/lib/libsfml-audio-d.so.2.6.1 /opt/SFML-2.6.1/lib/libsfml-system-d.so.2.6.1 || libpacman_core.a libpacman_sfml.a
   CONFIG = Debug
   DEP_FILE = CMakeFiles/Pacman.dir/link.d
   FLAGS = -g
   LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/Pacman.dir/link.d
-  LINK_LIBRARIES = -Wl,-rpath,/opt/SFML-2.6.1/lib  /opt/SFML-2.6.1/lib/libsfml-graphics-d.so.2.6.1  /opt/SFML-2.6.1/lib/libsfml-window-d.so.2.6.1  /opt/SFML-2.6.1/lib/libsfml-audio-d.so.2.6.1  /opt/SFML-2.6.1/lib/libsfml-system-d.so.2.6.1
+  LINK_LIBRARIES = -Wl,-rpath,/opt/SFML-2.6.1/lib  libpacman_sfml.a  libpacman_core.a  /opt/SFML-2.6.1/lib/libsfml-graphics-d.so.2.6.1  /opt/SFML-2.6.1/lib/libsfml-window-d.so.2.6.1  /opt/SFML-2.6.1/lib/libsfml-audio-d.so.2.6.1  /opt/SFML-2.6.1/lib/libsfml-system-d.so.2.6.1
   OBJECT_DIR = CMakeFiles/Pacman.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -415,6 +459,10 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build pacman_core: phony libpacman_core.a
+
+build pacman_sfml: phony libpacman_sfml.a
+
 # =============================================================================
 # Folder targets.
 
@@ -423,7 +471,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/stan/CLionProjects/Pacman/cmake-build-debug
 
-build all: phony Pacman
+build all: phony libpacman_core.a libpacman_sfml.a Pacman
 
 # =============================================================================
 # Built-in targets
