@@ -7,6 +7,7 @@
 #include "World.h"
 #include <iostream>
 #include <queue>
+#include <climits>
 
 namespace entities {
     Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime) {
