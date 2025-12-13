@@ -27,6 +27,7 @@ namespace entities {
         Entity() = default;
         Entity(int mapwidth, int mapheight);
 
+        static float wrap(float v);
         virtual void Update(float dt) = 0;
 
         void Draw() const;

@@ -14,11 +14,23 @@ namespace entities {
         direction = {0, 0};
     }
 
+    float Entity::wrap(float v) {
+        constexpr float min = -1.0f;
+        constexpr float max =  1.0f;
+        constexpr float range = max - min;
+
+        v = std::fmod(v - min, range);
+        if (v < 0.0f) v += range;
+        return v + min;
+    }
+
     void Entity::Update(float dt) {
         if (direction.size() < 2) return;
         position.x += direction[0]*dt;
         position.y += direction[1]*dt;
 
+        position.x = wrap(position.x);
+        position.y = wrap(position.y);
     }
 
     void Entity::Draw() const {

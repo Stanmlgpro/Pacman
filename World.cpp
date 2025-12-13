@@ -175,7 +175,8 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     }
     return nullptr;
 }
-bool World::CollidesWithPacmanB(std::shared_ptr<entities::Fruit> fruit) {
+
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Fruit> fruit, sprites::Sprite_ID ID) {
     Position pacPos = pacman->getPosition();
     Position orbPos = fruit->getPosition();
 
@@ -185,81 +186,16 @@ bool World::CollidesWithPacmanB(std::shared_ptr<entities::Fruit> fruit) {
     float collisionDistX = fruit->getCollsionSize() / wallGrid[0].size();
     float collisionDistY = fruit->getCollsionSize() / wallGrid.size();
 
-    return (dx < collisionDistX && dy < collisionDistY);
-}
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Cherry> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
+    if (dx < collisionDistX && dy < collisionDistY) {
         world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_CHERRY);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_CHERRY, pacman->getPosition());
+        score->FruitEaten(ID);
+        world_view->ItemEaten(ID, pacman->getPosition());
         return fruit;
     }
     return nullptr;
 }
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Strawberry> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
-        world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_STRAWBERRY);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_STRAWBERRY, pacman->getPosition());
-        return fruit;
-    }
-    return nullptr;
-}
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Orange> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
-        world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_ORANGE);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_ORANGE, pacman->getPosition());
-        return fruit;
-    }
-    return nullptr;
-}
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Apple> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
-        world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_APPLE);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_APPLE, pacman->getPosition());
-        return fruit;
-    }
-    return nullptr;
-}
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Melon> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
-        world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_MELON);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_MELON, pacman->getPosition());
-        return fruit;
-    }
-    return nullptr;
-}
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Galaxian> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
-        world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_GALAXIAN);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_GALAXIAN, pacman->getPosition());
-        return fruit;
-    }
-    return nullptr;
-}
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Bell> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
-        world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_BELL);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_BELL, pacman->getPosition());
-        return fruit;
-    }
-    return nullptr;
-}
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Key> fruit) {
-    if (CollidesWithPacmanB(fruit)) {
-        world_sounds->FruitEaten();
-        score->FruitEaten(sprites::Sprite_ID::FRUIT_KEY);
-        world_view->ItemEaten(sprites::Sprite_ID::FRUIT_KEY, pacman->getPosition());
-        return fruit;
-    }
-    return nullptr;
-}
-std::shared_ptr<entities::Entity> World::World::CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost) {
+
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost) {
     if (ghost->getDying()) return nullptr;
     Position pacPos = pacman->getPosition();
     Position ghostPos = ghost->getPosition();
