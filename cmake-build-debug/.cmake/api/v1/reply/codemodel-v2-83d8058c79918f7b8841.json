@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Pacman",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Pacman::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Pacman-Debug-1c6dc0fc8415fd330641.json",
+					"name" : "Pacman",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pacman_core::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pacman_core-Debug-9501c6eb2fe8e03a1d2f.json",
+					"name" : "pacman_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pacman_sfml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pacman_sfml-Debug-c34d93f9b03ee50bf929.json",
+					"name" : "pacman_sfml",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/stan1/CLionProjects/Pacman/cmake-build-debug",
+		"source" : "C:/Users/stan1/CLionProjects/Pacman"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
