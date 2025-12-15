@@ -6,8 +6,8 @@
 #define POSITION_H
 
 struct Position {
-    float x;
-    float y;
+  float x;
+  float y;
 };
 
-#endif //POSITION_H
+#endif // POSITION_H

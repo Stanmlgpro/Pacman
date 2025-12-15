@@ -7,51 +7,53 @@
 #include "Entity.h"
 
 namespace entities {
-    class Pacman : public Entity, public std::enable_shared_from_this<Pacman> {
-    public:
-        Pacman(float speed, int mapwidth, int mapheight, float x, float y);
+class Pacman : public Entity, public std::enable_shared_from_this<Pacman> {
+public:
+  Pacman(float speed, int mapwidth, int mapheight, float x, float y);
 
-        std::shared_ptr<Entity> Interact(World& world) override; //should never be called
+  std::shared_ptr<Entity>
+  Interact(World &world) override; // should never be called
 
-        void Up();
-        void Down();
-        void Left();
-        void Right();
+  void Up();
+  void Down();
+  void Left();
+  void Right();
 
-        void Update(float dt) override;
+  void Update(float dt) override;
 
-        void setLives(int lives);
-        void setMoving(bool moving);
+  void setLives(int lives);
+  void setMoving(bool moving);
 
-        int getLives() const;
-        float getSpeed() const;
+  int getLives() const;
+  float getSpeed() const;
 
-        void setDirectionBuffer(std::vector<int> buffer);
-        std::vector<int> getDirectionBuffer() const;
-        float MoveDt(float dt) const;
+  void setDirectionBuffer(std::vector<int> buffer);
+  std::vector<int> getDirectionBuffer() const;
+  float MoveDt(float dt) const;
 
-        void setDying(bool dying);
-        bool getDying() const override;
-        bool getDead() const;
-        void setDead(bool dead);
-        bool isDead() const;
-        bool isDamagable() const;
-        void reset() override;
+  void setDying(bool dying);
+  bool getDying() const override;
+  bool getDead() const;
+  void setDead(bool dead);
+  bool isDead() const;
+  bool isDamagable() const;
+  void reset() override;
 
-        ~Pacman() override = default;
-    private:
-        std::vector<int> direction_buffer;
-        bool moving = true;
-        int lives = 3;
-        float speed;
-        Position startpos;
-        bool dying = false;
-        bool dead = false;
-        float dying_time = 0.f;
-        float invincibility_timer = 0.f;
-        float invincibility_duration = 2.f;
-        bool damagable = true;
-    };
-}
+  ~Pacman() override = default;
 
-#endif //PACMAN_PACMAN_H
+private:
+  std::vector<int> direction_buffer;
+  bool moving = true;
+  int lives = 3;
+  float speed;
+  Position startpos;
+  bool dying = false;
+  bool dead = false;
+  float dying_time = 0.f;
+  float invincibility_timer = 0.f;
+  float invincibility_duration = 2.f;
+  bool damagable = true;
+};
+} // namespace entities
+
+#endif // PACMAN_PACMAN_H

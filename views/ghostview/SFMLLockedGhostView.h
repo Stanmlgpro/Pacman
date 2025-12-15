@@ -7,11 +7,14 @@
 #include "SFMLGhostView.h"
 
 namespace views {
-    class SFMLLockedGhostView : public SFMLGhostView {
-    public:
-        SFMLLockedGhostView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+class SFMLLockedGhostView : public SFMLGhostView {
+public:
+  SFMLLockedGhostView(const sf::Texture &texture,
+                      std::shared_ptr<sprites::SpriteAtlas> atlas,
+                      std::weak_ptr<entities::Entity> entity,
+                      sf::RenderWindow &window, std::shared_ptr<Camera> camera);
 
-        void FindSprite() override;
-    };
-}
-#endif //SFMLLOCKEDGHOSTVIEW_H
+  void FindSprite() override;
+};
+} // namespace views
+#endif // SFMLLOCKEDGHOSTVIEW_H

@@ -4,38 +4,38 @@
 
 #ifndef PACMAN_GAME_H
 #define PACMAN_GAME_H
-#include <memory>
 #include "sounds/WorldSound.h"
+#include "states/State.h"
 #include "states/StateManager.h"
 #include <SFML/Graphics.hpp>
-#include "states/State.h"
+#include <memory>
 
 class Camera;
 namespace factory {
-    class EntityFactory;
+class EntityFactory;
 }
 
 class Game {
 public:
-    Game();
+  Game();
 
-    void run();
+  void run();
 
-    ~Game();
+  ~Game();
+
 private:
-    void Update() const;
-    void Render();
-    void CheckInput();
+  void Update() const;
+  void Render();
+  void CheckInput();
 
-    std::shared_ptr<states::StateManager> state_manager;
-    sf::RenderWindow window;
-    sf::Clock time;
+  std::shared_ptr<states::StateManager> state_manager;
+  sf::RenderWindow window;
+  sf::Clock time;
 
-    std::shared_ptr<factory::EntityFactory> entity_factory;
-    std::shared_ptr<Camera> camera;
+  std::shared_ptr<factory::EntityFactory> entity_factory;
+  std::shared_ptr<Camera> camera;
 
-    std::shared_ptr<sounds::WorldSound> world_sound;
+  std::shared_ptr<sounds::WorldSound> world_sound;
 };
 
-
-#endif //PACMAN_GAME_H
+#endif // PACMAN_GAME_H

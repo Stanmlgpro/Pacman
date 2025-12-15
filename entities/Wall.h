@@ -7,15 +7,15 @@
 #include "Entity.h"
 
 namespace entities {
-    class Wall : public Entity, public std::enable_shared_from_this<Wall> {
-    public:
-        Wall(float x, float y);
+class Wall : public Entity, public std::enable_shared_from_this<Wall> {
+public:
+  Wall(float x, float y);
 
-        std::shared_ptr<Entity> Interact(World& world) override;
-        void Update(float dt) override;
+  std::shared_ptr<Entity> Interact(World &world) override;
+  void Update(float dt) override;
 
-        ~Wall() override = default;
-    };
-}
+  ~Wall() override = default;
+};
+} // namespace entities
 
-#endif //PACMAN_WALL_H
+#endif // PACMAN_WALL_H

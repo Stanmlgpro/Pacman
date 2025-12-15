@@ -7,17 +7,17 @@
 #include "./entities/Entity.h"
 
 namespace entities {
-    class Orb : public Entity, public std::enable_shared_from_this<Orb> {
-    public:
-        Orb(float x, float y);
+class Orb : public Entity, public std::enable_shared_from_this<Orb> {
+public:
+  Orb(float x, float y);
 
-        std::shared_ptr<Entity> Interact(World& world) override;
+  std::shared_ptr<Entity> Interact(World &world) override;
 
-        void Update(float dt) override;
-        void checkWin(bool& check) override;
+  void Update(float dt) override;
+  void checkWin(bool &check) override;
 
-        ~Orb() override = default;
-    };
-}
+  ~Orb() override = default;
+};
+} // namespace entities
 
-#endif //PACMAN_ORB_H
+#endif // PACMAN_ORB_H

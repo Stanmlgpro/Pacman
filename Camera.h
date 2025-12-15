@@ -8,24 +8,23 @@
 struct Position;
 class Camera {
 public:
-    Camera(float Screenwidth, float Screenheight);
+  Camera(float Screenwidth, float Screenheight);
 
-    Position worldToPixel(float normX, float normY) const;
+  Position worldToPixel(float normX, float normY) const;
 
-    void setMapSize(int MapWidth, int MapHeight);
-    void setScreenSize(float Screenwidth, float Screenheight);
+  void setMapSize(int MapWidth, int MapHeight);
+  void setScreenSize(float Screenwidth, float Screenheight);
 
-    Position getSpritePixelSize() const;
+  Position getSpritePixelSize() const;
+
 private:
-    float screenwidth;
-    float screenheight;
-    float mapwidth;
-    float mapheight;
-    float hudTop;
-    float hudBottom;
-    float usableHeight;
+  float screenwidth;
+  float screenheight;
+  float mapwidth;
+  float mapheight;
+  float hudTop;
+  float hudBottom;
+  float usableHeight;
 };
 
-
-
-#endif //CAMERA_H
+#endif // CAMERA_H

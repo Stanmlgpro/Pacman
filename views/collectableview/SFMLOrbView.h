@@ -7,16 +7,18 @@
 #include <views/SFMLView.h>
 
 namespace views {
-    class SFMLOrbView : public SFMLView {
-    public:
-        SFMLOrbView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas, std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+class SFMLOrbView : public SFMLView {
+public:
+  SFMLOrbView(const sf::Texture &texture,
+              std::shared_ptr<sprites::SpriteAtlas> atlas,
+              std::weak_ptr<entities::Entity> entity, sf::RenderWindow &window,
+              std::shared_ptr<Camera> camera);
 
-        void Update(float dt) override;
-        void FindSprite() override;
+  void Update(float dt) override;
+  void FindSprite() override;
 
-        void Draw() override;
-    };
-}
+  void Draw() override;
+};
+} // namespace views
 
-
-#endif //SFMLORBVIEW_H
+#endif // SFMLORBVIEW_H

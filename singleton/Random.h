@@ -7,20 +7,20 @@
 #include <random>
 
 namespace singleton {
-    class Random {
-    private:
-        std::mt19937 gen;
+class Random {
+private:
+  std::mt19937 gen;
 
-        Random();
-    public:
-        Random(const Random&) = delete;
-        Random& operator=(const Random&) = delete;
+  Random();
 
-        int get(int min, int max);
+public:
+  Random(const Random &) = delete;
+  Random &operator=(const Random &) = delete;
 
-        static Random& getInstance();
-    };
-}
+  int get(int min, int max);
 
+  static Random &getInstance();
+};
+} // namespace singleton
 
-#endif //RANDOM_H
+#endif // RANDOM_H

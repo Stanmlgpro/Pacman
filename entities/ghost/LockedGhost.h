@@ -7,14 +7,15 @@
 #include "entities/ghost/Ghost.h"
 
 namespace entities {
-    class LockedGhost : public Ghost {
-    public:
-        LockedGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime);
+class LockedGhost : public Ghost {
+public:
+  LockedGhost(float x, float y, std::shared_ptr<Pacman> pacman,
+              const std::vector<std::vector<bool>> &wallgrid, int id,
+              float chasetime);
 
-        float distanceTurn(std::vector<int> direction, float dt) override;
-        void CalculateNextTurn(float dt) override;
-    };
-}
+  float distanceTurn(std::vector<int> direction, float dt) override;
+  void CalculateNextTurn(float dt) override;
+};
+} // namespace entities
 
-
-#endif //LOCKEDGHOST_H
+#endif // LOCKEDGHOST_H

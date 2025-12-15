@@ -8,43 +8,41 @@
 #include <stack>
 
 namespace sf {
-    class RenderWindow;
-    class Event;
-}
+class RenderWindow;
+class Event;
+} // namespace sf
 namespace sounds {
-    class WorldSound;
+class WorldSound;
 }
 namespace factory {
-    class EntityFactory;
+class EntityFactory;
 }
 namespace states {
-    class State;
-    enum StateID {
-        MENU,
-        LEVEL,
-        PAUSED
-    };
-    class Game;
-    class State;
-    class StateManager : public std::enable_shared_from_this<StateManager> {
-    public:
-        StateManager(std::shared_ptr<factory::EntityFactory> entity_factory, std::shared_ptr<sounds::WorldSound> world_sound);
+class State;
+enum StateID { MENU, LEVEL, PAUSED };
+class Game;
+class State;
+class StateManager : public std::enable_shared_from_this<StateManager> {
+public:
+  StateManager(std::shared_ptr<factory::EntityFactory> entity_factory,
+               std::shared_ptr<sounds::WorldSound> world_sound);
 
-        void HandleEvent(const sf::Event& event);
+  void HandleEvent(const sf::Event &event);
 
-        void PushState(StateID stateid, std::string player);
-        void PopState();
+  void PushState(StateID stateid, std::string player);
+  void PopState();
 
-        void Update();
+  void Update();
 
-        void Render(sf::RenderWindow& window);
+  void Render(sf::RenderWindow &window);
 
-        ~StateManager() = default;
-    private:
-        std::stack<std::unique_ptr<State>> states{};
-        std::shared_ptr<factory::EntityFactory> entity_factory;
-        std::shared_ptr<sounds::WorldSound> world_sound;
-    };
-}
+  ~StateManager() = default;
 
-#endif //PACMAN_STATEMANAGER_H
+private:
+  std::stack<std::unique_ptr<State>> states{};
+  std::shared_ptr<factory::EntityFactory> entity_factory;
+  std::shared_ptr<sounds::WorldSound> world_sound;
+};
+} // namespace states
+
+#endif // PACMAN_STATEMANAGER_H

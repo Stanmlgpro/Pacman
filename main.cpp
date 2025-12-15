@@ -2,11 +2,11 @@
 // Created by stan1 on 13/10/2025.
 //
 
-#include <iostream>
 #include "Game.h"
+#include <iostream>
 
 int main() {
-    Game game;
-    game.run();
-    return 0;
+  Game game;
+  game.run();
+  return 0;
 }

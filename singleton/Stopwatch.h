@@ -7,25 +7,26 @@
 #include <chrono>
 
 namespace singleton {
-    class Stopwatch {
-    private:
-        std::chrono::high_resolution_clock::time_point lastTime;
-        float deltaTime;
+class Stopwatch {
+private:
+  std::chrono::high_resolution_clock::time_point lastTime;
+  float deltaTime;
 
-        Stopwatch();
-        bool paused = false;
-    public:
-        Stopwatch(const Stopwatch&) = delete;
-        Stopwatch& operator=(const Stopwatch&) = delete;
+  Stopwatch();
+  bool paused = false;
 
-        static Stopwatch& getInstance();
+public:
+  Stopwatch(const Stopwatch &) = delete;
+  Stopwatch &operator=(const Stopwatch &) = delete;
 
-        void pause();
-        void resume();
-        void tick();
+  static Stopwatch &getInstance();
 
-        float getDeltaTime() const;
-    };
-}
+  void pause();
+  void resume();
+  void tick();
 
-#endif //STOPWATCH_H
+  float getDeltaTime() const;
+};
+} // namespace singleton
+
+#endif // STOPWATCH_H
