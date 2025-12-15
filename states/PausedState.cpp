@@ -66,7 +66,5 @@ void PausedState::Render(sf::RenderWindow& window) {
     window.draw(menuHint);
 }
 
-PausedState::~PausedState() {
-    std::cout << "here" << std::endl;
-};
+PausedState::~PausedState() { std::cout << "here" << std::endl; };
 } // namespace states
