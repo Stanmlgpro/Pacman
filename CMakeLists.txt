@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 #set(SFML_DIR "/opt/SFML-2.6.1/lib/cmake/SFML")
 set(SFML_DIR "C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/cmake/SFML")
+add_compile_options(-Wall -Werror)
 find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
 
 add_library(pacman_core

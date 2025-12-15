@@ -39,7 +39,9 @@ void PausedState::HandleEvent(const sf::Event& e) {
         if (e.key.code == sf::Keyboard::Escape) {
             std::cout << "Returning to menu..." << std::endl;
             statemanager->PopState(); // remove pause
+            std::cout << "Pop2" << std::endl;
             statemanager->PopState(); // remove level
+            std::cout << "Pops done" << std::endl;
         } else if (e.key.code == sf::Keyboard::Enter) {
             std::cout << "Resuming game..." << std::endl;
             statemanager->PopState();
@@ -64,5 +66,7 @@ void PausedState::Render(sf::RenderWindow& window) {
     window.draw(menuHint);
 }
 
-PausedState::~PausedState() = default;
+PausedState::~PausedState() {
+    std::cout << "here" << std::endl;
+};
 } // namespace states

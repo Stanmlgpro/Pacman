@@ -35,8 +35,8 @@ std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
     int gridX = static_cast<int>(gridPos[0]);
     int gridY = static_cast<int>(gridPos[1]);
 
-    float tileSizeX = 2.0f / static_cast<float>(wallgrid[0].size());
-    float tileSizeY = 2.0f / static_cast<float>(wallgrid.size());
+    float tileSizeX = 2.0f / static_cast<float>(mapwidth);
+    float tileSizeY = 2.0f / static_cast<float>(mapheight);
     float cellCenterX = -1.0f + tileSizeX * (static_cast<float>(gridX) + 0.5f);
     float cellCenterY = -1.0f + tileSizeY * (static_cast<float>(gridY) + 0.5f);
 
@@ -151,7 +151,7 @@ void Ghost::setDying(bool dying) {
     this->dying = dying;
     if (dying) {
         setFeared(false);
-        speed = 10.f;
+        speed = 15.f;
     } else
         speed = original_speed;
 }

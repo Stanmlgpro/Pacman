@@ -36,6 +36,7 @@ void StateManager::PushState(StateID stateid, std::string player) {
 void StateManager::PopState() {
     if (!states.empty())
         states.pop();
+    std::cout << states.size() << std::endl;
 }
 
 void StateManager::HandleEvent(const sf::Event& event) {
