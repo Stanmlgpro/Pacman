@@ -9,14 +9,14 @@
 namespace entities {
 class PowerOrb : public Entity, public std::enable_shared_from_this<PowerOrb> {
 public:
-  PowerOrb(float x, float y);
+    PowerOrb(float x, float y);
 
-  std::shared_ptr<Entity> Interact(World &world) override;
+    std::shared_ptr<Entity> Interact(World& world) override;
 
-  void Update(float dt) override;
-  void checkWin(bool &check) override;
+    void Update(float dt) override;
+    void checkWin(bool& check) override;
 
-  ~PowerOrb() override = default;
+    ~PowerOrb() override = default;
 };
 } // namespace entities
 

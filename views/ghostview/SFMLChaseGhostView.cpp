@@ -5,63 +5,61 @@
 #include "SFMLChaseGhostView.h"
 #include "entities/Entity.h"
 namespace views {
-SFMLChaseGhostView::SFMLChaseGhostView(
-    const sf::Texture &texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
-    std::weak_ptr<entities::Entity> entity, sf::RenderWindow &window,
-    std::shared_ptr<Camera> camera)
+SFMLChaseGhostView::SFMLChaseGhostView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
+                                       std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
+                                       std::shared_ptr<Camera> camera)
     : SFMLGhostView(texture, atlas, entity, window, camera) {}
 
 void SFMLChaseGhostView::FindSprite() {
-  auto e = entity.lock();
-  if (!e)
-    return;
-  int dirX = e->getDirection()[0];
-  int dirY = e->getDirection()[1];
+    auto e = entity.lock();
+    if (!e)
+        return;
+    int dirX = e->getDirection()[0];
+    int dirY = e->getDirection()[1];
 
-  sf::IntRect rect;
-  if (e->getFeared() and e->getFearCheck() < 4.f) {
-    rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_1)
-                          : atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_2);
-  } else if (e->getFeared()) {
-    if (animation_bool_feared) {
-      rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_1)
-                            : atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_2);
+    sf::IntRect rect;
+    if (e->getFeared() and e->getFearCheck() < 4.f) {
+        rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_1)
+                              : atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_2);
+    } else if (e->getFeared()) {
+        if (animation_bool_feared) {
+            rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_1)
+                                  : atlas->get(sprites::Sprite_ID::GHOST_FEAR_BLUE_2);
+        } else {
+            rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_FEAR_FLASH_1)
+                                  : atlas->get(sprites::Sprite_ID::GHOST_FEAR_FLASH_2);
+        }
+    } else if (dirX == -1 && dirY == 0) {
+        if (e->getDying())
+            rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_LEFT);
+        else
+            rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_LEFT_1)
+                                  : atlas->get(sprites::Sprite_ID::GHOST_RED_LEFT_2);
+    } else if (dirX == 0 && dirY == 1) {
+        if (e->getDying())
+            rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_DOWN);
+        else
+            rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_DOWN_1)
+                                  : atlas->get(sprites::Sprite_ID::GHOST_RED_DOWN_2);
+    } else if (dirX == 0 && dirY == -1) {
+        if (e->getDying())
+            rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_UP);
+        else
+            rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_UP_1)
+                                  : atlas->get(sprites::Sprite_ID::GHOST_RED_UP_2);
+    } else if (dirX == 1 && dirY == 0) {
+        if (e->getDying())
+            rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_RIGHT);
+        else
+            rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_1)
+                                  : atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_2);
     } else {
-      rect = animation_bool
-                 ? atlas->get(sprites::Sprite_ID::GHOST_FEAR_FLASH_1)
-                 : atlas->get(sprites::Sprite_ID::GHOST_FEAR_FLASH_2);
+        if (e->getDying())
+            rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_RIGHT);
+        else
+            rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_1)
+                                  : atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_2);
     }
-  } else if (dirX == -1 && dirY == 0) {
-    if (e->getDying())
-      rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_LEFT);
-    else
-      rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_LEFT_1)
-                            : atlas->get(sprites::Sprite_ID::GHOST_RED_LEFT_2);
-  } else if (dirX == 0 && dirY == 1) {
-    if (e->getDying())
-      rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_DOWN);
-    else
-      rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_DOWN_1)
-                            : atlas->get(sprites::Sprite_ID::GHOST_RED_DOWN_2);
-  } else if (dirX == 0 && dirY == -1) {
-    if (e->getDying())
-      rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_UP);
-    else
-      rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_UP_1)
-                            : atlas->get(sprites::Sprite_ID::GHOST_RED_UP_2);
-  } else if (dirX == 1 && dirY == 0) {
-    if (e->getDying())
-      rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_RIGHT);
-    else
-      rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_1)
-                            : atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_2);
-  } else {
-    if (e->getDying())
-      rect = atlas->get(sprites::Sprite_ID::GHOST_EYES_RIGHT);
-    else
-      rect = animation_bool ? atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_1)
-                            : atlas->get(sprites::Sprite_ID::GHOST_RED_RIGHT_2);
-  }
-  sprite.setTextureRect(rect);
+    sprite.setTextureRect(rect);
 }
 } // namespace views

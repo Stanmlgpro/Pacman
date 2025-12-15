@@ -9,16 +9,14 @@
 
 namespace entities {
 Orb::Orb(float x, float y) {
-  position.x = x;
-  position.y = y;
-  setCollisionSize(0.85f);
+    position.x = x;
+    position.y = y;
+    setCollisionSize(0.85f);
 }
 
-std::shared_ptr<Entity> Orb::Interact(World &world) {
-  return world.CollidesWithPacman(shared_from_this());
-}
+std::shared_ptr<Entity> Orb::Interact(World& world) { return world.CollidesWithPacman(shared_from_this()); }
 
 void Orb::Update(float dt) { view->Update(dt); }
 
-void Orb::checkWin(bool &check) { check = false; }
+void Orb::checkWin(bool& check) { check = false; }
 } // namespace entities

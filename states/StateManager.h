@@ -24,24 +24,24 @@ class Game;
 class State;
 class StateManager : public std::enable_shared_from_this<StateManager> {
 public:
-  StateManager(std::shared_ptr<factory::EntityFactory> entity_factory,
-               std::shared_ptr<sounds::WorldSound> world_sound);
+    StateManager(std::shared_ptr<factory::EntityFactory> entity_factory,
+                 std::shared_ptr<sounds::WorldSound> world_sound);
 
-  void HandleEvent(const sf::Event &event);
+    void HandleEvent(const sf::Event& event);
 
-  void PushState(StateID stateid, std::string player);
-  void PopState();
+    void PushState(StateID stateid, std::string player);
+    void PopState();
 
-  void Update();
+    void Update();
 
-  void Render(sf::RenderWindow &window);
+    void Render(sf::RenderWindow& window);
 
-  ~StateManager() = default;
+    ~StateManager() = default;
 
 private:
-  std::stack<std::unique_ptr<State>> states{};
-  std::shared_ptr<factory::EntityFactory> entity_factory;
-  std::shared_ptr<sounds::WorldSound> world_sound;
+    std::stack<std::unique_ptr<State>> states{};
+    std::shared_ptr<factory::EntityFactory> entity_factory;
+    std::shared_ptr<sounds::WorldSound> world_sound;
 };
 } // namespace states
 

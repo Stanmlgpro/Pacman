@@ -9,23 +9,21 @@
 namespace views {
 class SFMLGhostView : public SFMLView {
 public:
-  SFMLGhostView(const sf::Texture &texture,
-                std::shared_ptr<sprites::SpriteAtlas> atlas,
-                std::weak_ptr<entities::Entity> entity,
-                sf::RenderWindow &window, std::shared_ptr<Camera> camera);
+    SFMLGhostView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
+                  std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
-  void Update(float dt) override;
-  void FindSprite() override = 0;
+    void Update(float dt) override;
+    void FindSprite() override = 0;
 
-  void Draw() override;
+    void Draw() override;
 
 protected:
-  bool animation_bool;
-  float animation_speed;
-  float animation_counter;
-  bool animation_bool_feared;
-  float animation_speed_feared;
-  float animation_counter_feared;
+    bool animation_bool;
+    float animation_speed;
+    float animation_counter;
+    bool animation_bool_feared;
+    float animation_speed_feared;
+    float animation_counter_feared;
 };
 } // namespace views
 

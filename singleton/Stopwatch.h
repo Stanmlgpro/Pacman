@@ -9,23 +9,23 @@
 namespace singleton {
 class Stopwatch {
 private:
-  std::chrono::high_resolution_clock::time_point lastTime;
-  float deltaTime;
+    std::chrono::high_resolution_clock::time_point lastTime;
+    float deltaTime;
 
-  Stopwatch();
-  bool paused = false;
+    Stopwatch();
+    bool paused = false;
 
 public:
-  Stopwatch(const Stopwatch &) = delete;
-  Stopwatch &operator=(const Stopwatch &) = delete;
+    Stopwatch(const Stopwatch&) = delete;
+    Stopwatch& operator=(const Stopwatch&) = delete;
 
-  static Stopwatch &getInstance();
+    static Stopwatch& getInstance();
 
-  void pause();
-  void resume();
-  void tick();
+    void pause();
+    void resume();
+    void tick();
 
-  float getDeltaTime() const;
+    float getDeltaTime() const;
 };
 } // namespace singleton
 

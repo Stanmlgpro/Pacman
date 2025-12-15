@@ -9,19 +9,17 @@
 namespace views {
 class SFMLWallView : public SFMLView {
 public:
-  SFMLWallView(const sf::Texture &texture,
-               std::shared_ptr<sprites::SpriteAtlas> atlas,
-               std::weak_ptr<entities::Entity> entity, sf::RenderWindow &window,
-               std::shared_ptr<Camera> camera);
+    SFMLWallView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
+                 std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
-  void Update(float dt) override;
-  void FindSprite() override {}
+    void Update(float dt) override;
+    void FindSprite() override {}
 
-  void Draw() override;
+    void Draw() override;
 
 private:
-  sf::Sprite sprite;
-  sf::RectangleShape rect;
+    sf::Sprite sprite;
+    sf::RectangleShape rect;
 };
 } // namespace views
 

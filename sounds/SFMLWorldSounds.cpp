@@ -7,36 +7,35 @@
 
 namespace sounds {
 SFMLWorldSounds::SFMLWorldSounds() {
-  if (!startBuffer.loadFromFile("../sounds/pacman_beginning.wav")) {
-    std::cerr << "Failed to load sound!" << std::endl;
-  }
-  startSound.setBuffer(startBuffer);
-  if (!munchBuffer.loadFromFile("../sounds/munch_1.mp3")) {
-    std::cerr << "Failed to load sound!" << std::endl;
-  }
-  munchSound.setBuffer(munchBuffer);
-  if (!munchpowerorbBuffer.loadFromFile(
-          "../sounds/pacman_eatpowerpellet.wav")) {
-    std::cerr << "Failed to load sound!" << std::endl;
-  }
-  munchpowerorbSound.setBuffer(munchpowerorbBuffer);
-  if (!munchFruitBuffer.loadFromFile("../sounds/pacman_eatfruit.mp3")) {
-    std::cerr << "Failed to load sound!" << std::endl;
-  }
-  munchFruitSound.setBuffer(munchFruitBuffer);
-  if (!ghosteatBuffer.loadFromFile("../sounds/pacman_eatghost.wav")) {
-    std::cerr << "Failed to load sound!" << std::endl;
-  }
-  ghosteatSound.setBuffer(ghosteatBuffer);
-  if (!fearBuffer.loadFromFile("../sounds/fearmode.mp3")) {
-    std::cerr << "Failed to load sound!" << std::endl;
-  }
-  fearSound.setBuffer(fearBuffer);
-  fearSound.setLoop(true);
-  if (!pacmandieBuffer.loadFromFile("../sounds/pacman_death.wav")) {
-    std::cerr << "Failed to load sound!" << std::endl;
-  }
-  pacmandieSound.setBuffer(pacmandieBuffer);
+    if (!startBuffer.loadFromFile("../sounds/pacman_beginning.wav")) {
+        std::cerr << "Failed to load sound!" << std::endl;
+    }
+    startSound.setBuffer(startBuffer);
+    if (!munchBuffer.loadFromFile("../sounds/munch_1.mp3")) {
+        std::cerr << "Failed to load sound!" << std::endl;
+    }
+    munchSound.setBuffer(munchBuffer);
+    if (!munchpowerorbBuffer.loadFromFile("../sounds/pacman_eatpowerpellet.wav")) {
+        std::cerr << "Failed to load sound!" << std::endl;
+    }
+    munchpowerorbSound.setBuffer(munchpowerorbBuffer);
+    if (!munchFruitBuffer.loadFromFile("../sounds/pacman_eatfruit.mp3")) {
+        std::cerr << "Failed to load sound!" << std::endl;
+    }
+    munchFruitSound.setBuffer(munchFruitBuffer);
+    if (!ghosteatBuffer.loadFromFile("../sounds/pacman_eatghost.wav")) {
+        std::cerr << "Failed to load sound!" << std::endl;
+    }
+    ghosteatSound.setBuffer(ghosteatBuffer);
+    if (!fearBuffer.loadFromFile("../sounds/fearmode.mp3")) {
+        std::cerr << "Failed to load sound!" << std::endl;
+    }
+    fearSound.setBuffer(fearBuffer);
+    fearSound.setLoop(true);
+    if (!pacmandieBuffer.loadFromFile("../sounds/pacman_death.wav")) {
+        std::cerr << "Failed to load sound!" << std::endl;
+    }
+    pacmandieSound.setBuffer(pacmandieBuffer);
 }
 
 void SFMLWorldSounds::Start() { startSound.play(); }

@@ -15,16 +15,16 @@ class StateManager;
 
 class State {
 public:
-  explicit State() = default;
+    explicit State() = default;
 
-  virtual void HandleEvent(const sf::Event &e) = 0;
-  virtual void Update() = 0;
-  virtual void Render(sf::RenderWindow &window) = 0;
+    virtual void HandleEvent(const sf::Event& e) = 0;
+    virtual void Update() = 0;
+    virtual void Render(sf::RenderWindow& window) = 0;
 
-  virtual ~State() = default;
+    virtual ~State() = default;
 
 private:
-  std::shared_ptr<StateManager> statemanager;
+    std::shared_ptr<StateManager> statemanager;
 };
 } // namespace states
 

@@ -9,21 +9,19 @@
 namespace views {
 class SFMLPacmanView : public SFMLView {
 public:
-  SFMLPacmanView(const sf::Texture &texture,
-                 std::shared_ptr<sprites::SpriteAtlas> atlas,
-                 std::weak_ptr<entities::Entity> entity,
-                 sf::RenderWindow &window, std::shared_ptr<Camera> camera);
+    SFMLPacmanView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
+                   std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
 
-  void Update(float dt) override;
-  void FindSprite() override;
+    void Update(float dt) override;
+    void FindSprite() override;
 
-  void Draw() override;
+    void Draw() override;
 
 private:
-  bool open;
-  float animation_speed;
-  float animation_counter;
-  float current_dying_frame = 0;
+    bool open;
+    float animation_speed;
+    float animation_counter;
+    float current_dying_frame = 0;
 };
 } // namespace views
 

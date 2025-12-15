@@ -10,14 +10,14 @@
 namespace sprites {
 class SpriteAtlas {
 public:
-  explicit SpriteAtlas(const sf::Texture &texture);
+    explicit SpriteAtlas(const sf::Texture& texture);
 
-  void load();
-  sf::IntRect get(Sprite_ID id) const;
+    void load();
+    sf::IntRect get(Sprite_ID id) const;
 
 private:
-  sf::Texture texture;
-  std::vector<sf::IntRect> spriteRects;
+    sf::Texture texture;
+    std::vector<sf::IntRect> spriteRects;
 };
 } // namespace sprites
 

@@ -9,17 +9,17 @@
 namespace singleton {
 class Random {
 private:
-  std::mt19937 gen;
+    std::mt19937 gen;
 
-  Random();
+    Random();
 
 public:
-  Random(const Random &) = delete;
-  Random &operator=(const Random &) = delete;
+    Random(const Random&) = delete;
+    Random& operator=(const Random&) = delete;
 
-  int get(int min, int max);
+    int get(int min, int max);
 
-  static Random &getInstance();
+    static Random& getInstance();
 };
 } // namespace singleton
 

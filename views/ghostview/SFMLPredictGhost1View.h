@@ -9,13 +9,11 @@
 namespace views {
 class SFMLPredictGhost1View : public SFMLGhostView {
 public:
-  SFMLPredictGhost1View(const sf::Texture &texture,
-                        std::shared_ptr<sprites::SpriteAtlas> atlas,
-                        std::weak_ptr<entities::Entity> entity,
-                        sf::RenderWindow &window,
-                        std::shared_ptr<Camera> camera);
+    SFMLPredictGhost1View(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
+                          std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
+                          std::shared_ptr<Camera> camera);
 
-  void FindSprite() override;
+    void FindSprite() override;
 };
 } // namespace views
 
