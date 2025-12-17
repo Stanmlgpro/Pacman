@@ -19,24 +19,27 @@ SFMLWorldView::SFMLWorldView(const sf::Texture& texture, std::shared_ptr<sprites
                              sf::RenderWindow& window, std::shared_ptr<Camera> camera)
     : SFMLView(texture, atlas, std::weak_ptr<entities::Entity>(), window, camera), score(0), lives(3) {
     FindSprite();
+    sprite.setTexture(texture);
+    sprite.setScale(1.f, 1.f);
+    sprite.setOrigin(0.f, 0.f);
+
+    life1 = sprite;
+    life2 = sprite;
+    life3 = sprite;
 
 #ifdef _WIN32
-    font.loadFromFile("C:/Windows/Fonts/arial.ttf");
+    font.loadFromFile("C:/Windows/Fonts/lucon.ttf"); // Lucida Console
 #else
-    font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+    font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf");
 #endif
 
     scoreText.setFont(font);
-    scoreText.setFillColor(sf::Color::White);
-    scoreText.setPosition(10, 10);
-
-    livesText.setFont(font);
-    livesText.setFillColor(sf::Color::Yellow);
+    scoreText.setLetterSpacing(1.1f);
+    scoreText.setFillColor(sf::Color::Yellow);
 }
 
 void SFMLWorldView::Update(float dt) {
-    scoreText.setString("Score: " + std::to_string(score));
-    livesText.setString("Lives: " + std::to_string(lives));
+    scoreText.setString("Score:" + std::to_string(score));
     std::for_each(scoreEntries.begin(), scoreEntries.end(), [this, dt](ScoreEntry& entry) {
         entry.Update(dt);
         if (entry.lifetime <= 0.f) {
@@ -51,20 +54,31 @@ void SFMLWorldView::Update(float dt) {
     toRemove.clear();
 }
 
-void SFMLWorldView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::BLUE_100)); }
+void SFMLWorldView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::PACMAN_RIGHT_2)); }
 
 void SFMLWorldView::Draw() {
     auto screensize = camera->getSpritePixelSize();
-    auto screenpos = camera->worldToPixel(0.82, 1.2);
-    scoreText.setScale(screensize.x / 64.f, screensize.y / 64.f);
+    auto screenpos = camera->worldToPixel(0.4, 1.2);
+    scoreText.setScale(screensize.x / 32.f, screensize.y / 32.f);
     scoreText.setPosition(screenpos.x, screenpos.y);
-    screenpos = camera->worldToPixel(-1, 1.2);
-    livesText.setScale(screensize.x / 64.f, screensize.y / 64.f);
-    livesText.setPosition(screenpos.x, screenpos.y);
     window.draw(scoreText);
-    window.draw(livesText);
+
+    screenpos = camera->worldToPixel(-1, 1);
+    life1.setPosition(screenpos.x, screenpos.y);
+    life1.setScale(screensize.x / 16.f, screensize.y / 16.f);
+    screenpos = camera->worldToPixel(-0.9, 1);
+    life2.setPosition(screenpos.x, screenpos.y);
+    life2.setScale(screensize.x / 16.f, screensize.y / 16.f);
+    screenpos = camera->worldToPixel(-0.8, 1);
+    life3.setPosition(screenpos.x, screenpos.y);
+    life3.setScale(screensize.x / 16.f, screensize.y / 16.f);
+
+    if (lives > 0) window.draw(life1);
+    if (lives > 1) window.draw(life2);
+    if (lives > 2) window.draw(life3);
+
     for (auto& entry : scoreEntries) {
-        screenpos = camera->worldToPixel(entry.position.x, entry.position.y);
+        auto screenpos = camera->worldToPixel(entry.position.x, entry.position.y);
         entry.setScale(screensize.x / 16.f, screensize.y / 16.f);
         entry.setPosition(screenpos.x, screenpos.y);
         entry.Draw(window);

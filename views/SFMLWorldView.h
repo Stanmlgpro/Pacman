@@ -40,7 +40,9 @@ public:
 private:
     sf::Font font;
     sf::Text scoreText;
-    sf::Text livesText;
+    sf::Sprite life1;
+    sf::Sprite life2;
+    sf::Sprite life3;
     int score;
     int lives;
     std::vector<ScoreEntry> scoreEntries;
