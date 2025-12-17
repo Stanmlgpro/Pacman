@@ -10,8 +10,7 @@
 #include "StateManager.h"
 #include "World.h"
 namespace states {
-LevelState::LevelState(std::shared_ptr<StateManager> statemanager,
-                       std::shared_ptr<factory::EntityFactory> entity_factory,
+LevelState::LevelState(std::weak_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory,
                        std::shared_ptr<sounds::WorldSound> world_sounds, std::string player)
     : player(player) {
     this->statemanager = statemanager;
@@ -26,7 +25,7 @@ LevelState::LevelState(std::shared_ptr<StateManager> statemanager,
 void LevelState::HandleEvent(const sf::Event& e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
-            statemanager->PushState(PAUSED, "");
+            statemanager.lock()->PushState(PAUSED, "");
         } else if (e.key.code == sf::Keyboard::Up) {
             world->movePacman(UP);
         } else if (e.key.code == sf::Keyboard::Down) {
@@ -41,11 +40,9 @@ void LevelState::HandleEvent(const sf::Event& e) {
 
 void LevelState::Update() {
     if (world->Update()) {
-        statemanager->PopState();
+        statemanager.lock()->PopState(1);
     }
 }
 
 void LevelState::Render(sf::RenderWindow& window) { world->Render(); }
-
-LevelState::~LevelState() = default;
 } // namespace states

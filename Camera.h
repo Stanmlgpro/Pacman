@@ -17,6 +17,8 @@ public:
 
     Position getSpritePixelSize() const;
 
+    ~Camera() = default;
+
 private:
     float screenwidth;
     float screenheight;

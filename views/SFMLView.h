@@ -20,6 +20,8 @@ public:
 
     void Draw() override = 0;
 
+    ~SFMLView() override = default;
+
 protected:
     sf::Sprite sprite;
     sf::Texture texture;

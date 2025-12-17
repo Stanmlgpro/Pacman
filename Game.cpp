@@ -54,5 +54,3 @@ void Game::Render() {
     state_manager->Render(window);
     window.display();
 }
-
-Game::~Game() = default;

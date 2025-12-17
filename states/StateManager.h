@@ -30,7 +30,7 @@ public:
     void HandleEvent(const sf::Event& event);
 
     void PushState(StateID stateid, std::string player);
-    void PopState();
+    void PopState(int amount);
 
     void Update();
 

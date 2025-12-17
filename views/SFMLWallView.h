@@ -17,6 +17,8 @@ public:
 
     void Draw() override;
 
+    ~SFMLWallView() override = default;
+
 private:
     sf::Sprite sprite;
     sf::RectangleShape rect;

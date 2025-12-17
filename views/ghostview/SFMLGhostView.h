@@ -17,6 +17,8 @@ public:
 
     void Draw() override;
 
+    ~SFMLGhostView() override = default;
+
 protected:
     bool animation_bool;
     float animation_speed;

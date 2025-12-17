@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 namespace states {
-MenuState::MenuState(std::shared_ptr<StateManager> statemanager) {
+MenuState::MenuState(std::weak_ptr<StateManager> statemanager) {
     this->statemanager = statemanager;
 
 #ifdef _WIN32
@@ -42,7 +42,7 @@ void MenuState::HandleEvent(const sf::Event& e) {
     } else if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Enter) {
             std::cout << "Starting new level with player: " << player << std::endl;
-            statemanager->PushState(LEVEL, (player != "") ? player : "Unknown");
+            statemanager.lock()->PushState(LEVEL, (player != "") ? player : "Unknown");
         }
     }
 }
@@ -102,6 +102,4 @@ void MenuState::Render(sf::RenderWindow& window) {
     hint.setPosition(window.getSize().x / 2.f - hint.getGlobalBounds().width / 2.f, window.getSize().y - 70.f);
     window.draw(hint);
 }
-
-MenuState::~MenuState() = default;
 } // namespace states

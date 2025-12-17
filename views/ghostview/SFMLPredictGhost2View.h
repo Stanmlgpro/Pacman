@@ -14,6 +14,8 @@ public:
                           std::shared_ptr<Camera> camera);
 
     void FindSprite() override;
+
+    ~SFMLPredictGhost2View() override = default;
 };
 } // namespace views
 

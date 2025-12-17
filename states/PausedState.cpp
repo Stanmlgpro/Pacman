@@ -8,7 +8,7 @@
 #include "StateManager.h"
 
 namespace states {
-PausedState::PausedState(std::shared_ptr<StateManager> statemanager) {
+PausedState::PausedState(std::weak_ptr<StateManager> statemanager) {
     this->statemanager = statemanager;
 
 #ifdef _WIN32
@@ -38,13 +38,11 @@ void PausedState::HandleEvent(const sf::Event& e) {
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
             std::cout << "Returning to menu..." << std::endl;
-            statemanager->PopState(); // remove pause
-            std::cout << "Pop2" << std::endl;
-            statemanager->PopState(); // remove level
+            statemanager.lock()->PopState(2); // remove pause
             std::cout << "Pops done" << std::endl;
         } else if (e.key.code == sf::Keyboard::Enter) {
             std::cout << "Resuming game..." << std::endl;
-            statemanager->PopState();
+            statemanager.lock()->PopState(1);
         }
     }
 }
@@ -65,8 +63,4 @@ void PausedState::Render(sf::RenderWindow& window) {
     window.draw(resumeHint);
     window.draw(menuHint);
 }
-
-PausedState::~PausedState() {
-    std::cout << "here" << std::endl;
-};
 } // namespace states

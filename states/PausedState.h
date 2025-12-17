@@ -9,16 +9,15 @@
 namespace states {
 class PausedState final : public State {
 public:
-    PausedState(std::shared_ptr<StateManager> statemanager);
+    PausedState(std::weak_ptr<StateManager> statemanager);
 
     void HandleEvent(const sf::Event& e) override;
     void Update() override;
     void Render(sf::RenderWindow& window) override;
 
-    ~PausedState() override;
+    ~PausedState() override = default;
 
 private:
-    std::shared_ptr<StateManager> statemanager;
     sf::Text title;
     sf::Font font;
     sf::Text resumeHint;
