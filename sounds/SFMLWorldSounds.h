@@ -23,6 +23,7 @@ public:
     void EndGame() override;
 
     ~SFMLWorldSounds() override;
+
 private:
     sf::SoundBuffer startBuffer;
     sf::Sound startSound;

@@ -43,15 +43,27 @@ SFMLWorldSounds::SFMLWorldSounds() {
     ghostWalkSound.setLoop(true);
 }
 
-void SFMLWorldSounds::Start() { startSound.play(); ghostWalkSound.play(); }
+void SFMLWorldSounds::Start() {
+    startSound.play();
+    ghostWalkSound.play();
+}
 void SFMLWorldSounds::OrbEaten() { munchSound.play(); }
 void SFMLWorldSounds::PowerOrbEaten() { munchpowerorbSound.play(); }
 void SFMLWorldSounds::FruitEaten() { munchFruitSound.play(); }
 void SFMLWorldSounds::GhostEaten() { ghosteatSound.play(); }
-void SFMLWorldSounds::FearMode() { fearSound.play(); ghostWalkSound.stop(); }
-void SFMLWorldSounds::EndFearMode() { fearSound.stop(); ghostWalkSound.play(); }
+void SFMLWorldSounds::FearMode() {
+    fearSound.play();
+    ghostWalkSound.stop();
+}
+void SFMLWorldSounds::EndFearMode() {
+    fearSound.stop();
+    ghostWalkSound.play();
+}
 void SFMLWorldSounds::PacmanDying() { pacmandieSound.play(); }
-void SFMLWorldSounds::EndGame() { ghostWalkSound.stop(); fearSound.stop();}
+void SFMLWorldSounds::EndGame() {
+    ghostWalkSound.stop();
+    fearSound.stop();
+}
 
 SFMLWorldSounds::~SFMLWorldSounds() = default;
 } // namespace sounds
