@@ -33,6 +33,7 @@ public:
     std::shared_ptr<Camera> getCamera() override;
 
     ~SFMLFactory() override = default;
+
 private:
     std::shared_ptr<sprites::SpriteAtlas> atlas;
     sf::RenderWindow& window;
