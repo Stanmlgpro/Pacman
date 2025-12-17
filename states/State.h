@@ -22,8 +22,8 @@ public:
     virtual void Render(sf::RenderWindow& window) = 0;
 
     virtual ~State() = default;
-private:
-    std::shared_ptr<StateManager> statemanager;
+protected:
+    std::weak_ptr<StateManager> statemanager;
 };
 } // namespace states
 

@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 namespace states {
-    MenuState::MenuState(std::shared_ptr<StateManager> statemanager) {
+    MenuState::MenuState(std::weak_ptr<StateManager> statemanager) {
         this->statemanager = statemanager;
 
 #ifdef _WIN32
@@ -42,7 +42,7 @@ namespace states {
         } else if (e.type == sf::Event::KeyPressed) {
             if (e.key.code == sf::Keyboard::Enter) {
                 std::cout << "Starting new level with player: " << player << std::endl;
-                statemanager->PushState(LEVEL, (player != "") ? player : "Unknown");
+                statemanager.lock()->PushState(LEVEL, (player != "") ? player : "Unknown");
             }
         }
     }

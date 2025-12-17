@@ -14,7 +14,7 @@ class EntityFactory;
 namespace states {
 class LevelState final : public State {
 public:
-    LevelState(std::shared_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory,
+    LevelState(std::weak_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory,
                std::shared_ptr<sounds::WorldSound> world_sounds, std::string player);
 
     void HandleEvent(const sf::Event& e) override;
@@ -24,7 +24,6 @@ public:
     ~LevelState() override = default;
 private:
     std::unique_ptr<World> world;
-    std::shared_ptr<StateManager> statemanager;
     std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<sounds::WorldSound> world_sounds;
     std::string player;

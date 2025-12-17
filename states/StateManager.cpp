@@ -56,4 +56,5 @@ void StateManager::Render(sf::RenderWindow& window) {
     if (!states.empty())
         states.top()->Render(window);
 }
+
 } // namespace states

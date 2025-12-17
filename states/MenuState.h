@@ -14,7 +14,7 @@ struct ScoreEntry {
 
 class MenuState final : public State {
 public:
-    MenuState(std::shared_ptr<StateManager> statemanager);
+    MenuState(std::weak_ptr<StateManager> statemanager);
 
     static std::vector<ScoreEntry> loadHighscores(const std::string& filename);
     void HandleEvent(const sf::Event& e) override;
@@ -23,7 +23,6 @@ public:
 
     ~MenuState() override = default;
 private:
-    std::shared_ptr<StateManager> statemanager;
     std::string player;
     sf::Text title;
     sf::Font font;
