@@ -55,10 +55,10 @@ void SFMLWorldView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Spr
 
 void SFMLWorldView::Draw() {
     auto screensize = camera->getSpritePixelSize();
-    auto screenpos = camera->worldToPixel(-0.98, -0.98);
+    auto screenpos = camera->worldToPixel(0.82, 1.2);
     scoreText.setScale(screensize.x / 64.f, screensize.y / 64.f);
     scoreText.setPosition(screenpos.x, screenpos.y);
-    screenpos = camera->worldToPixel(-0.98, 0.84);
+    screenpos = camera->worldToPixel(-1, 1.2);
     livesText.setScale(screensize.x / 64.f, screensize.y / 64.f);
     livesText.setPosition(screenpos.x, screenpos.y);
     window.draw(scoreText);

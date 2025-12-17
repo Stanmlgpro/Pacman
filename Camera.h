@@ -8,7 +8,7 @@
 struct Position;
 class Camera {
 public:
-    Camera(float Screenwidth, float Screenheight);
+    Camera() = default;
 
     Position worldToPixel(float normX, float normY) const;
 
@@ -22,8 +22,6 @@ private:
     float screenheight;
     float mapwidth;
     float mapheight;
-    float hudTop;
-    float hudBottom;
     float usableHeight;
 };
 

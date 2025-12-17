@@ -382,4 +382,4 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
 
 int World::getLives() const { return pacman->getLives(); }
 int World::getScore() const { return score->getPoints(); }
-World::~World() { world_sounds->EndFearMode(); }
+World::~World() { world_sounds->EndGame(); }

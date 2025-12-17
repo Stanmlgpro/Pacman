@@ -6,14 +6,6 @@
 #include "entities/Entity.h"
 #include <iostream>
 
-Camera::Camera(float Screenwidth, float Screenheight) {
-    hudTop = 0.f;
-    hudBottom = 0.f;
-    screenwidth = Screenwidth;
-    screenheight = Screenheight;
-    usableHeight = Screenheight - hudTop - hudBottom;
-}
-
 Position Camera::getSpritePixelSize() const {
     if (mapwidth <= 0 || mapheight <= 0)
         return {0, 0};
@@ -58,5 +50,5 @@ void Camera::setMapSize(int MapWidth, int MapHeight) {
 
 void Camera::setScreenSize(float Screenwidth, float Screenheight) {
     screenwidth = Screenwidth;
-    usableHeight = Screenheight - hudTop - hudBottom;
+    usableHeight = Screenheight - 100.f;
 }

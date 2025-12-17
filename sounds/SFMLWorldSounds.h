@@ -20,7 +20,9 @@ public:
     void FearMode() override;
     void EndFearMode() override;
     void PacmanDying() override;
+    void EndGame() override;
 
+    ~SFMLWorldSounds() override;
 private:
     sf::SoundBuffer startBuffer;
     sf::Sound startSound;
@@ -36,6 +38,8 @@ private:
     sf::Sound fearSound;
     sf::SoundBuffer pacmandieBuffer;
     sf::Sound pacmandieSound;
+    sf::SoundBuffer ghostWalkBuffer;
+    sf::Sound ghostWalkSound;
 };
 } // namespace sounds
 
