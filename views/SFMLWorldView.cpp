@@ -73,9 +73,12 @@ void SFMLWorldView::Draw() {
     life3.setPosition(screenpos.x, screenpos.y);
     life3.setScale(screensize.x / 16.f, screensize.y / 16.f);
 
-    if (lives > 0) window.draw(life1);
-    if (lives > 1) window.draw(life2);
-    if (lives > 2) window.draw(life3);
+    if (lives > 0)
+        window.draw(life1);
+    if (lives > 1)
+        window.draw(life2);
+    if (lives > 2)
+        window.draw(life3);
 
     for (auto& entry : scoreEntries) {
         auto screenpos = camera->worldToPixel(entry.position.x, entry.position.y);
