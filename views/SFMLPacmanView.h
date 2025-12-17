@@ -17,6 +17,7 @@ public:
 
     void Draw() override;
 
+    ~SFMLPacmanView() override = default;
 private:
     bool open;
     float animation_speed;

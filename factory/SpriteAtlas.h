@@ -15,6 +15,7 @@ public:
     void load();
     sf::IntRect get(Sprite_ID id) const;
 
+    ~SpriteAtlas() = default;
 private:
     sf::Texture texture;
     std::vector<sf::IntRect> spriteRects;

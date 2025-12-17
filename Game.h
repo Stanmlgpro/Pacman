@@ -21,8 +21,7 @@ public:
 
     void run();
 
-    ~Game();
-
+    ~Game() = default;
 private:
     void Update() const;
     void Render();

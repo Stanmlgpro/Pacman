@@ -35,6 +35,7 @@ public:
 
     void Draw() override;
 
+    ~SFMLWorldView() override = default;
 private:
     sf::Font font;
     sf::Text scoreText;

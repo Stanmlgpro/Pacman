@@ -21,7 +21,6 @@ public:
     void Update(float dt);
 
     ~Score();
-
 private:
     int score;
     std::string player;

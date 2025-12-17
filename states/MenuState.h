@@ -21,8 +21,7 @@ public:
     void Update() override;
     void Render(sf::RenderWindow& window) override;
 
-    ~MenuState() override;
-
+    ~MenuState() override = default;
 private:
     std::shared_ptr<StateManager> statemanager;
     std::string player;

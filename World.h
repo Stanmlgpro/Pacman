@@ -45,7 +45,6 @@ public:
     int getScore() const;
 
     ~World();
-
 private:
     std::string filename;
     std::vector<std::shared_ptr<entities::Entity>> entities;

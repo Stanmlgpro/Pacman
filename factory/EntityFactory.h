@@ -28,6 +28,7 @@ public:
                                                            float y) = 0;
     virtual std::unique_ptr<views::View> createWorldView() = 0;
     virtual std::shared_ptr<Camera> getCamera() = 0;
+
     virtual ~EntityFactory() = default;
 
 protected:

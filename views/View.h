@@ -30,6 +30,7 @@ public:
 
     virtual void Draw() = 0;
 
+    virtual ~View() = default;
 protected:
     std::weak_ptr<entities::Entity> entity;
     std::shared_ptr<Camera> camera;

@@ -30,14 +30,13 @@ public:
     void HandleEvent(const sf::Event& event);
 
     void PushState(StateID stateid, std::string player);
-    void PopState();
+    void PopState(int amount);
 
     void Update();
 
     void Render(sf::RenderWindow& window);
 
     ~StateManager() = default;
-
 private:
     std::stack<std::unique_ptr<State>> states{};
     std::shared_ptr<factory::EntityFactory> entity_factory;

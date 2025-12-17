@@ -15,7 +15,7 @@ public:
     void Update() override;
     void Render(sf::RenderWindow& window) override;
 
-    ~PausedState() override;
+    ~PausedState() override = default;
 
 private:
     std::shared_ptr<StateManager> statemanager;

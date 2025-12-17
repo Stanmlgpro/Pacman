@@ -16,6 +16,8 @@ public:
     void FindSprite() override;
 
     void Draw() override;
+
+    ~SFMLOrbView() override = default;
 };
 } // namespace views
 

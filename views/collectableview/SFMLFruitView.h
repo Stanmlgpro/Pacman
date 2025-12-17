@@ -15,6 +15,8 @@ public:
     void Update(float dt) override;
 
     void Draw() override;
+
+    ~SFMLFruitView() override = default;
 };
 
 class SFMLCherryView : public SFMLFruitView {

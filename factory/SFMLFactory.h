@@ -30,9 +30,9 @@ public:
     std::shared_ptr<entities::Pacman> createPacman(float speed, int mapwidth, int mapheight, float x, float y) override;
     std::unique_ptr<views::View> createWorldView() override;
 
-    std::shared_ptr<Camera> getCamera();
-    ~SFMLFactory() override = default;
+    std::shared_ptr<Camera> getCamera() override;
 
+    ~SFMLFactory() override = default;
 private:
     std::shared_ptr<sprites::SpriteAtlas> atlas;
     sf::RenderWindow& window;

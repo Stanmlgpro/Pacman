@@ -16,6 +16,8 @@ public:
     void FindSprite() override;
 
     void Draw() override;
+
+    ~SFMLPowerOrbView() override = default;
 };
 } // namespace views
 
