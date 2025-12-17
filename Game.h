@@ -22,6 +22,7 @@ public:
     void run();
 
     ~Game() = default;
+
 private:
     void Update() const;
     void Render();

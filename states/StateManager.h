@@ -37,6 +37,7 @@ public:
     void Render(sf::RenderWindow& window);
 
     ~StateManager() = default;
+
 private:
     std::stack<std::unique_ptr<State>> states{};
     std::shared_ptr<factory::EntityFactory> entity_factory;

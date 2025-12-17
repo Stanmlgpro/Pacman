@@ -22,6 +22,7 @@ public:
     void PacmanDying() override;
 
     ~SFMLWorldSounds() override = default;
+
 private:
     sf::SoundBuffer startBuffer;
     sf::Sound startSound;

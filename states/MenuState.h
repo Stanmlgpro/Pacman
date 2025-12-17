@@ -22,6 +22,7 @@ public:
     void Render(sf::RenderWindow& window) override;
 
     ~MenuState() override = default;
+
 private:
     std::shared_ptr<StateManager> statemanager;
     std::string player;

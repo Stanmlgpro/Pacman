@@ -22,6 +22,7 @@ public:
     void Render(sf::RenderWindow& window) override;
 
     ~LevelState() override = default;
+
 private:
     std::unique_ptr<World> world;
     std::shared_ptr<StateManager> statemanager;
