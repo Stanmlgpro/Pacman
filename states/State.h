@@ -22,6 +22,7 @@ public:
     virtual void Render(sf::RenderWindow& window) = 0;
 
     virtual ~State() = default;
+
 protected:
     std::weak_ptr<StateManager> statemanager;
 };
