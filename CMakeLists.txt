@@ -3,9 +3,8 @@ project(Pacman)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SFML_DIR "/opt/SFML-2.6.1/lib/cmake/SFML")
-#set(SFML_DIR "C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/cmake/SFML")
-add_compile_options(-Wall -Werror)
+#set(SFML_DIR "/opt/SFML-2.6.1/lib/cmake/SFML")
+set(SFML_DIR "C:/Users/stan1/CLionProjects/sfml/2.6.2/lib/cmake/SFML")
 find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
 
 add_library(pacman_core
@@ -52,8 +51,8 @@ add_library(pacman_sfml
         sounds/SFMLWorldSounds.cpp
 )
 
-target_include_directories(pacman_sfml PUBLIC /opt/SFML-2.6.1/include)
-#target_include_directories(pacman_sfml PUBLIC C:/Users/stan1/CLionProjects/sfml/2.6.2/include)
+#target_include_directories(pacman_sfml PUBLIC /opt/SFML-2.6.1/include)
+target_include_directories(pacman_sfml PUBLIC C:/Users/stan1/CLionProjects/sfml/2.6.2/include)
 
 target_include_directories(pacman_core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(pacman_sfml PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
