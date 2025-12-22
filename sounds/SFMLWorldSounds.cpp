@@ -41,6 +41,7 @@ SFMLWorldSounds::SFMLWorldSounds() {
     }
     ghostWalkSound.setBuffer(ghostWalkBuffer);
     ghostWalkSound.setLoop(true);
+    ghostWalkSound.setVolume(20);
 }
 
 void SFMLWorldSounds::Start() {
