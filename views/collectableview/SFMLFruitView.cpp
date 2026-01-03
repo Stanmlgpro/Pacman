@@ -40,7 +40,7 @@ SFMLCherryView::SFMLCherryView(const sf::Texture& texture, std::shared_ptr<sprit
     // create an SFMLFruitView object and find the correct sprite
     FindSprite();
 }
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLCherryView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::FRUIT_CHERRY)); }
 
 SFMLStrawberryView::SFMLStrawberryView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
@@ -50,7 +50,7 @@ SFMLStrawberryView::SFMLStrawberryView(const sf::Texture& texture, std::shared_p
     : SFMLFruitView(texture, atlas, entity, window, camera) {
     FindSprite();
 }
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLStrawberryView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::FRUIT_STRAWBERRY)); }
 
 SFMLMelonView::SFMLMelonView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
@@ -60,7 +60,7 @@ SFMLMelonView::SFMLMelonView(const sf::Texture& texture, std::shared_ptr<sprites
     : SFMLFruitView(texture, atlas, entity, window, camera) {
     FindSprite();
 }
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLMelonView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::FRUIT_MELON)); }
 
 SFMLAppleView::SFMLAppleView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
@@ -70,7 +70,7 @@ SFMLAppleView::SFMLAppleView(const sf::Texture& texture, std::shared_ptr<sprites
     : SFMLFruitView(texture, atlas, entity, window, camera) {
     FindSprite();
 }
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLAppleView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::FRUIT_APPLE)); }
 
 SFMLOrangeView::SFMLOrangeView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
@@ -89,7 +89,7 @@ SFMLGalaxianView::SFMLGalaxianView(const sf::Texture& texture, std::shared_ptr<s
     : SFMLFruitView(texture, atlas, entity, window, camera) {
     FindSprite();
 }
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLGalaxianView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::FRUIT_GALAXIAN)); }
 
 SFMLBellView::SFMLBellView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
@@ -99,7 +99,7 @@ SFMLBellView::SFMLBellView(const sf::Texture& texture, std::shared_ptr<sprites::
     : SFMLFruitView(texture, atlas, entity, window, camera) {
     FindSprite();
 }
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLBellView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::FRUIT_BELL)); }
 
 SFMLKeyView::SFMLKeyView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
@@ -109,6 +109,6 @@ SFMLKeyView::SFMLKeyView(const sf::Texture& texture, std::shared_ptr<sprites::Sp
     : SFMLFruitView(texture, atlas, entity, window, camera) {
     FindSprite();
 }
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLKeyView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::FRUIT_KEY)); }
 } // namespace views

@@ -8,16 +8,18 @@
 
 namespace views {
 bool ScoreEntry::operator==(const ScoreEntry& other) const {
-    return position.x == other.position.x && position.y == other.position.y && spriteID == other.spriteID; // simple copy constructor
+    return position.x == other.position.x && position.y == other.position.y &&
+           spriteID == other.spriteID; // simple copy constructor
 }
-void ScoreEntry::Draw(sf::RenderWindow& window) const { window.draw(sprite); } // draw the entry
+void ScoreEntry::Draw(sf::RenderWindow& window) const { window.draw(sprite); }             // draw the entry
 void ScoreEntry::setScale(float scaleX, float scaleY) { sprite.setScale(scaleX, scaleY); } // set the scale
-void ScoreEntry::setPosition(float x, float y) { sprite.setPosition(x, y); } // set the position
+void ScoreEntry::setPosition(float x, float y) { sprite.setPosition(x, y); }               // set the position
 void ScoreEntry::Update(float dt) { lifetime -= dt; } // decrease the lifetime each update
 
 SFMLWorldView::SFMLWorldView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                              sf::RenderWindow& window, std::shared_ptr<Camera> camera)
-    : SFMLView(texture, atlas, std::weak_ptr<entities::Entity>(), window, camera), score(0), lives(3) { // create an SFMLView object
+    : SFMLView(texture, atlas, std::weak_ptr<entities::Entity>(), window, camera), score(0),
+      lives(3) {  // create an SFMLView object
     FindSprite(); // find the correct sprite
     // set texture, scale, origin
     sprite.setTexture(texture);
@@ -62,7 +64,9 @@ void SFMLWorldView::Update(float dt) {
     toRemove.clear(); // clear the remove vector
 }
 
-void SFMLWorldView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::PACMAN_RIGHT_2)); } // set the correct sprite for the lives
+void SFMLWorldView::FindSprite() {
+    sprite.setTextureRect(atlas->get(sprites::Sprite_ID::PACMAN_RIGHT_2));
+} // set the correct sprite for the lives
 
 void SFMLWorldView::Draw() {
     // set the score text position, scaling using the camera class
@@ -99,7 +103,7 @@ void SFMLWorldView::Draw() {
         entry.Draw(window);
     }
 }
-    // simple setters
+// simple setters
 void SFMLWorldView::setLives(int lives) { this->lives = lives; }
 void SFMLWorldView::setScore(int score) { this->score = score; }
 void SFMLWorldView::addScoreEntry(sprites::Sprite_ID ID, float lifetime, Position position) {

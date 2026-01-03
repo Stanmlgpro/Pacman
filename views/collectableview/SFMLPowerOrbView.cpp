@@ -18,7 +18,7 @@ SFMLPowerOrbView::SFMLPowerOrbView(const sf::Texture& texture, std::shared_ptr<s
 }
 
 void SFMLPowerOrbView::Update(float dt) {}
-    // report the correct SpritID to the atlas based on the class to find the correct sprite
+// report the correct SpritID to the atlas based on the class to find the correct sprite
 void SFMLPowerOrbView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::ORB_BIG)); }
 
 void SFMLPowerOrbView::Draw() {
