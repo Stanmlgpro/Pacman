@@ -19,7 +19,7 @@ namespace entities {
 class Ghost : public Entity, public std::enable_shared_from_this<Ghost> {
 public:
     /**
-     * @brief Creates a PowerOrb object.
+     * @brief Creates a Ghost object.
      * @param x X Position
      * @param y Y Position
      * @param pacman pacman object to get its status

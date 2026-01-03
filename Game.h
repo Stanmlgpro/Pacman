@@ -9,23 +9,45 @@
 #include "states/StateManager.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
-
+/**
+ * @file Game.h
+ * @brief Game Class
+ */
 class Camera;
 namespace factory {
 class EntityFactory;
 }
-
+/**
+ * @class Game
+ * @brief Main class that sets up the system
+ */
 class Game {
 public:
+    /**
+ * @brief Creates a Game object.
+ */
     Game();
-
+    /**
+     * @brief runs the game loop
+     *
+     * checks for SFML events and updates then renders the state_manager
+     */
     void run();
 
     ~Game() = default;
 
 private:
+    /**
+    *@brief updates the state_manager
+    */
     void Update() const;
+    /**
+    *@brief renders the state_manager
+    */
     void Render();
+    /**
+    * @brief checks for SFML event
+    */
     void CheckInput();
 
     std::shared_ptr<states::StateManager> state_manager;
