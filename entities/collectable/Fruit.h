@@ -5,17 +5,32 @@
 #ifndef FRUIT_H
 #define FRUIT_H
 #include "./entities/Entity.h"
-
+/**
+ * @file Fruit.h
+ * @brief Fruit Class and all its Children
+ */
 namespace entities {
+/**
+ * @class Fruit
+ * @brief Fruit class to inherit from to have different Scoring and Views for each.
+ *
+ * Collectable for Pacman that gives scoring.
+ */
 class Fruit : public Entity {
 public:
+/**
+ * @brief Creates a Fruit object.
+ * @param x X Position
+ * @param y Y Position
+ */
     Fruit(float x, float y);
 
+    /// Overrides Entity::Update
     void Update(float dt) override;
 
     ~Fruit() override = default;
 };
-
+    /// Overrides Entity::Interact
 class Cherry : public Fruit, public std::enable_shared_from_this<Cherry> {
 public:
     Cherry(float x, float y);

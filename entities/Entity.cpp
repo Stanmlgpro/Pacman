@@ -8,6 +8,7 @@
 
 namespace entities {
 Entity::Entity(int mapwidth, int mapheight) {
+    // set all variables
     this->mapwidth = mapwidth;
     this->mapheight = mapheight;
     position = {0.f, 0.f};
@@ -15,31 +16,37 @@ Entity::Entity(int mapwidth, int mapheight) {
 }
 
 float Entity::wrap(float v) {
+    // get the range via the maximum and minimum floats
     constexpr float min = -1.0f;
     constexpr float max = 1.0f;
     constexpr float range = max - min;
 
+    // used modulo to wrap the float
     v = std::fmod(v - min, range);
+    // and return it after making sure it is between the range again
     if (v < 0.0f)
         v += range;
     return v + min;
 }
 
 void Entity::Update(float dt) {
+    // check for incorrect directions
     if (direction.size() < 2)
         return;
+    // update the position
     position.x += direction[0] * dt;
     position.y += direction[1] * dt;
-
+    // and wrap the position
     position.x = wrap(position.x);
     position.y = wrap(position.y);
 }
 
 void Entity::Draw() const {
+    // draw the view if present
     if (view)
         view->Draw();
 }
-
+// simple setters and getters
 void Entity::setView(std::unique_ptr<views::View> view) { this->view = std::move(view); }
 
 Position Entity::getPosition() const { return position; }

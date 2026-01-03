@@ -8,6 +8,7 @@
 
 namespace entities {
 Fruit::Fruit(float x, float y) {
+    // Create A fruit and give at a position and collsion
     position.x = x;
     position.y = y;
     setCollisionSize(1.25f);
@@ -15,6 +16,7 @@ Fruit::Fruit(float x, float y) {
 
 void Fruit::Update(float dt) { view->Update(dt); }
 
+    // Override Interact functions to signal back to the world which entity we are dealing with
 Cherry::Cherry(float x, float y) : Fruit(x, y) {}
 std::shared_ptr<Entity> Cherry::Interact(World& world) {
     return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_CHERRY);

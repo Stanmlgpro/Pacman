@@ -4,7 +4,14 @@
 
 #ifndef POSITION_H
 #define POSITION_H
-
+/**
+ * @file Position.h
+ * @brief Position struct
+ */
+/**
+* @struct Position
+* @brief Positions struct
+*/
 struct Position {
     float x;
     float y;
