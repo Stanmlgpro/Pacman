@@ -285,7 +285,8 @@ void World::TryBuffer() {
 }
 
 bool World::Update() {
-    if (gamelost && !pacman->getDying()) return true;
+    if (gamelost && !pacman->getDying())
+        return true;
     singleton::Stopwatch& stopwatch = singleton::Stopwatch::getInstance();
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();

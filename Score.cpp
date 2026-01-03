@@ -60,10 +60,7 @@ void Score::FruitEaten(sprites::Sprite_ID ID) {
 
 void Score::ghostEaten(int combo) { score += 200 * std::pow(2, combo); }
 
-void Score::levelWon() {
-    score += 1000;
-};
-
+void Score::levelWon() { score += 1000; };
 
 void Score::reset() { score = 0; }
 
