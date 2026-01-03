@@ -19,10 +19,10 @@ namespace entities {
 class Orb : public Entity, public std::enable_shared_from_this<Orb> {
 public:
     /**
- * @brief Creates a Orb object.
- * @param x X Position
- * @param y Y Position
- */
+     * @brief Creates a Orb object.
+     * @param x X Position
+     * @param y Y Position
+     */
     Orb(float x, float y);
 
     /// Override Entity::Interact

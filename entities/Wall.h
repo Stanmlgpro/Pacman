@@ -10,17 +10,17 @@
  * @brief Wall Class
  */
 namespace entities {
-    /**
+/**
  * @class Wall
  * @brief Wall class to create the boundaries
  */
 class Wall : public Entity, public std::enable_shared_from_this<Wall> {
 public:
     /**
-* @brief Creates a Wall object.
-* @param x X Position
-* @param y Y Position
-*/
+     * @brief Creates a Wall object.
+     * @param x X Position
+     * @param y Y Position
+     */
     Wall(float x, float y);
 
     /// Override Entity::Interact

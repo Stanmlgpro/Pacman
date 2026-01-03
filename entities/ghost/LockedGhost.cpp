@@ -76,7 +76,8 @@ void LockedGhost::CalculateNextTurn(float dt) {
     }
     int rand = random.get(0, possible_dir.size() - 1);
     direction = possible_dir[rand];
-    // a little delay before checking if we are able to make turns again (prevents verry gittery behaviour at large gaps)
+    // a little delay before checking if we are able to make turns again (prevents verry gittery behaviour at large
+    // gaps)
     turnTimer = turnSpeed;
 }
 } // namespace entities

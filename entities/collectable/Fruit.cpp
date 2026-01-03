@@ -16,7 +16,7 @@ Fruit::Fruit(float x, float y) {
 
 void Fruit::Update(float dt) { view->Update(dt); }
 
-    // Override Interact functions to signal back to the world which entity we are dealing with
+// Override Interact functions to signal back to the world which entity we are dealing with
 Cherry::Cherry(float x, float y) : Fruit(x, y) {}
 std::shared_ptr<Entity> Cherry::Interact(World& world) {
     return world.CollidesWithPacman(shared_from_this(), sprites::Sprite_ID::FRUIT_CHERRY);

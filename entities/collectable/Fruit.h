@@ -18,11 +18,11 @@ namespace entities {
  */
 class Fruit : public Entity {
 public:
-/**
- * @brief Creates a Fruit object.
- * @param x X Position
- * @param y Y Position
- */
+    /**
+     * @brief Creates a Fruit object.
+     * @param x X Position
+     * @param y Y Position
+     */
     Fruit(float x, float y);
 
     /// Overrides Entity::Update
@@ -30,7 +30,7 @@ public:
 
     ~Fruit() override = default;
 };
-    /// Overrides Entity::Interact
+/// Overrides Entity::Interact
 class Cherry : public Fruit, public std::enable_shared_from_this<Cherry> {
 public:
     Cherry(float x, float y);

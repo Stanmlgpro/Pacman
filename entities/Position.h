@@ -9,9 +9,9 @@
  * @brief Position struct
  */
 /**
-* @struct Position
-* @brief Positions struct
-*/
+ * @struct Position
+ * @brief Positions struct
+ */
 struct Position {
     float x;
     float y;

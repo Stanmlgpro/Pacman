@@ -16,9 +16,9 @@ Orb::Orb(float x, float y) {
 }
 
 std::shared_ptr<Entity> Orb::Interact(World& world) { return world.CollidesWithPacman(shared_from_this()); }
-    // Update the view
+// Update the view
 void Orb::Update(float dt) { view->Update(dt); }
 
-    // Make sure we cannot have won yet if any Orbs are still present
+// Make sure we cannot have won yet if any Orbs are still present
 void Orb::checkWin(bool& check) { check = false; }
 } // namespace entities

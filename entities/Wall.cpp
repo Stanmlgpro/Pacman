@@ -15,6 +15,6 @@ Wall::Wall(float x, float y) {
 }
 
 std::shared_ptr<Entity> Wall::Interact(World& world) { return world.CollidesWithPacman(shared_from_this()); }
-    // Update the view
+// Update the view
 void Wall::Update(float dt) { view->Update(dt); }
 } // namespace entities
