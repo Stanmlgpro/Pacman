@@ -13,16 +13,21 @@ namespace states {
 LevelState::LevelState(std::weak_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory,
                        std::shared_ptr<sounds::WorldSound> world_sounds, std::string player)
     : player(player) {
+    // initiate variables
     this->statemanager = statemanager;
     this->entity_factory = entity_factory;
     this->world_sounds = world_sounds;
 
+    // load the world based on a txt file
     this->world = std::make_unique<World>("../map.txt", entity_factory, world_sounds, player);
+    // start sound
     world_sounds->Start();
     std::cout << "new level and world created" << std::endl;
 }
 
 void LevelState::HandleEvent(const sf::Event& e) {
+    // propagate events through the World
+    // or simply pop a paused state on Escape
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
             statemanager.lock()->PushState(PAUSED, "");
@@ -39,10 +44,11 @@ void LevelState::HandleEvent(const sf::Event& e) {
 }
 
 void LevelState::Update() {
+    // propagate the update function
     if (world->Update()) {
         statemanager.lock()->PopState(1);
     }
 }
-
+// propagate the render function
 void LevelState::Render(sf::RenderWindow& window) { world->Render(); }
 } // namespace states

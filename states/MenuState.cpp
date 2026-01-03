@@ -10,14 +10,16 @@
 #include <sstream>
 namespace states {
 MenuState::MenuState(std::weak_ptr<StateManager> statemanager) {
+    // initiate variables
     this->statemanager = statemanager;
 
+    // load the correct font based on OS
 #ifdef _WIN32
     font.loadFromFile("C:/Windows/Fonts/arial.ttf");
 #else
     font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
 #endif
-
+    // create the State visuals
     title = sf::Text("PAC-MAN", font, 60);
     title.setFillColor(sf::Color::Yellow);
     title.setStyle(sf::Text::Bold);
@@ -31,6 +33,7 @@ MenuState::MenuState(std::weak_ptr<StateManager> statemanager) {
 }
 
 void MenuState::HandleEvent(const sf::Event& e) {
+    // Update the player name on Text entering
     if (e.type == sf::Event::TextEntered) {
         char c = static_cast<char>(e.text.unicode);
         if (e.text.unicode == 8) {
@@ -39,21 +42,25 @@ void MenuState::HandleEvent(const sf::Event& e) {
         } else if ((std::isalnum(c) || c == '_' || c == '-') && player.size() < 32) {
             player += c;
         }
+        // start a level on Enter (create a level state, which will in turn create a world)
     } else if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Enter) {
             std::cout << "Starting new level with player: " << player << std::endl;
+            // check for no player input and make an "Unknown" player
             statemanager.lock()->PushState(LEVEL, (player != "") ? player : "Unknown");
         }
     }
 }
 
 std::vector<ScoreEntry> MenuState::loadHighscores(const std::string& filename) {
+    // load the highscores from the file
     std::ifstream file(filename);
     std::vector<ScoreEntry> scores;
 
     if (!file.is_open())
         return scores;
 
+    // load line by line cutting on ":" to get the score and player seperate
     std::string line;
     while (std::getline(file, line)) {
         std::istringstream iss(line);
@@ -66,15 +73,17 @@ std::vector<ScoreEntry> MenuState::loadHighscores(const std::string& filename) {
         }
     }
 
+    // sort from highest to lowest
     std::sort(scores.begin(), scores.end(), [](const auto& a, const auto& b) { return b.score < a.score; });
 
-    return scores;
+    return scores; // return
 }
 
+    // Update the highscores each call
 void MenuState::Update() { highscores = loadHighscores("../scoreboard.txt"); }
 
 void MenuState::Render(sf::RenderWindow& window) {
-
+    // render the Title, Playername, Highscores and Enter button text
     title.setPosition(window.getSize().x / 2.f - title.getGlobalBounds().width / 2.f, 50.f);
     window.draw(title);
 
@@ -88,6 +97,7 @@ void MenuState::Render(sf::RenderWindow& window) {
 
     float y = 280.f;
     int rank = 1;
+    // create the scoreboard
     for (const auto& s : highscores) {
         std::stringstream ss;
         ss << rank << ". " << s.name << " - " << s.score;
@@ -99,6 +109,7 @@ void MenuState::Render(sf::RenderWindow& window) {
         ++rank;
     }
 
+    // add the Enter text
     hint.setPosition(window.getSize().x / 2.f - hint.getGlobalBounds().width / 2.f, window.getSize().y - 70.f);
     window.draw(hint);
 }

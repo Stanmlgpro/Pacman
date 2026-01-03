@@ -9,14 +9,16 @@
 
 namespace states {
 PausedState::PausedState(std::weak_ptr<StateManager> statemanager) {
+    // initiate variables
     this->statemanager = statemanager;
-
+    // load the correct font based on OS
 #ifdef _WIN32
     font.loadFromFile("C:/Windows/Fonts/arial.ttf");
 #else
     font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
 #endif
 
+    // create the State visuals
     title.setFont(font);
     title.setString("PAUSED");
     title.setCharacterSize(60);
@@ -35,6 +37,7 @@ PausedState::PausedState(std::weak_ptr<StateManager> statemanager) {
 }
 
 void PausedState::HandleEvent(const sf::Event& e) {
+    // pop and push the correct states based on the key pressed
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
             std::cout << "Returning to menu..." << std::endl;
@@ -47,10 +50,10 @@ void PausedState::HandleEvent(const sf::Event& e) {
     }
 }
 
-void PausedState::Update() {}
+void PausedState::Update() {} // paused state has nothing to update
 
 void PausedState::Render(sf::RenderWindow& window) {
-
+    // render the Hinting text
     sf::RectangleShape overlay(sf::Vector2f(window.getSize().x, window.getSize().y));
     overlay.setFillColor(sf::Color(0, 0, 0, 150));
     window.draw(overlay);
@@ -59,6 +62,7 @@ void PausedState::Render(sf::RenderWindow& window) {
     resumeHint.setPosition(window.getSize().x / 2.f - resumeHint.getGlobalBounds().width / 2.f, 250.f);
     menuHint.setPosition(window.getSize().x / 2.f - menuHint.getGlobalBounds().width / 2.f, 310.f);
 
+    // draw the text
     window.draw(title);
     window.draw(resumeHint);
     window.draw(menuHint);
