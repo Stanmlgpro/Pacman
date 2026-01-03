@@ -50,7 +50,7 @@ private:
     bool dead = false;
     float dying_time = 0.f;
     float invincibility_timer = 0.f;
-    float invincibility_duration = 2.f;
+    float invincibility_duration = 0.01f;
     bool damagable = true;
 };
 } // namespace entities

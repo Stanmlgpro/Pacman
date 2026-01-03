@@ -44,6 +44,7 @@ void Pacman::Update(float dt) {
         if (dying_time > 1.6f) {
             setDead(true);
         }
+        damagable = false;
     }
     view->Update(dt);
 }
@@ -95,7 +96,7 @@ void Pacman::reset() {
 bool Pacman::isDead() const { return dead; }
 void Pacman::setDying(bool dying) { this->dying = dying; }
 bool Pacman::getDying() const { return dying; }
-void Pacman::setDead(bool dead) { this->dead = dead; }
+void Pacman::setDead(bool dead) { this->dead = dead; this->dying = false;}
 bool Pacman::getDead() const { return dead; }
 bool Pacman::isDamagable() const { return damagable; }
 
