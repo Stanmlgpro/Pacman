@@ -9,7 +9,7 @@ SFMLWallView::SFMLWallView(const sf::Texture& texture, std::shared_ptr<sprites::
                            std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                            std::shared_ptr<Camera> camera)
     : SFMLView(texture, atlas, entity, window, camera) { // create an SFMLView object
-    rect.setFillColor(sf::Color(0, 0, 180)); // set the rectangle color
+    rect.setFillColor(sf::Color(0, 0, 180));             // set the rectangle color
 }
 
 void SFMLWallView::Update(float dt) {}

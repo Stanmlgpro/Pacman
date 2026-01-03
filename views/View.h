@@ -22,7 +22,7 @@ enum class Sprite_ID;
 class World;
 class Camera;
 namespace views {
-    /**
+/**
  * @class View
  * @brief Main View class
  *
@@ -31,10 +31,10 @@ namespace views {
 class View {
 public:
     /**
- * @brief Creates a View object.
- * @param entity weak pointer to the entity of which this view belongs to
- * @param camera camera to calculate the correct position to draw the sprites
- */
+     * @brief Creates a View object.
+     * @param entity weak pointer to the entity of which this view belongs to
+     * @param camera camera to calculate the correct position to draw the sprites
+     */
     View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera);
     /**
      * @brief Updates the view
@@ -49,8 +49,8 @@ public:
     /// @}
 
     /**
-    * @brief Draws the view
-    */
+     * @brief Draws the view
+     */
     virtual void Draw() = 0;
 
     virtual ~View() = default;

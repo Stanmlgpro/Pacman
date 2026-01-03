@@ -10,7 +10,7 @@
  * @brief SFMLFruitView Class
  */
 namespace views {
-    /**
+/**
  * @class SFMLFruitView
  * @brief Main FruitView class
  *
@@ -19,13 +19,13 @@ namespace views {
 class SFMLFruitView : public SFMLView {
 public:
     /**
- * @brief Creates a SFMLFruitView object.
- * @param texture texture of which to get the sprites
- * @param atlas atlast from where we get the correct rectangles to get our sprites from
- * @param entity weak pointer to the entity of which this view belongs to
- * @param window window to draw the sprites onto
- * @param camera camera to calculate the correct position to draw the sprites
- */
+     * @brief Creates a SFMLFruitView object.
+     * @param texture texture of which to get the sprites
+     * @param atlas atlast from where we get the correct rectangles to get our sprites from
+     * @param entity weak pointer to the entity of which this view belongs to
+     * @param window window to draw the sprites onto
+     * @param camera camera to calculate the correct position to draw the sprites
+     */
     SFMLFruitView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                   std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
     /// Overrides SFMLView::Update
@@ -36,7 +36,7 @@ public:
     ~SFMLFruitView() override = default;
 };
 
-    /**
+/**
  * @class SFMLCherryView
  * @brief Cherry fruit
  */
@@ -47,7 +47,7 @@ public:
     /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-    /**
+/**
  * @class SFMLStrawberryView
  * @brief Strawberry fruit
  */
@@ -59,7 +59,7 @@ public:
     /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-    /**
+/**
  * @class SFMLMelonView
  * @brief Melon fruit
  */
@@ -70,7 +70,7 @@ public:
     /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-    /**
+/**
  * @class SFMLAppleView
  * @brief Apple fruit
  */
@@ -81,7 +81,7 @@ public:
     /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-    /**
+/**
  * @class SFMLOrangeView
  * @brief Orange fruit
  */
@@ -92,7 +92,7 @@ public:
     /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-    /**
+/**
  * @class SFMLGalaxianView
  * @brief Galaxian fruit
  */
@@ -103,7 +103,7 @@ public:
     /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-    /**
+/**
  * @class SFMLBellView
  * @brief Bell fruit
  */
@@ -114,7 +114,7 @@ public:
     /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-    /**
+/**
  * @class SFMLKeyView
  * @brief Key fruit
  */
