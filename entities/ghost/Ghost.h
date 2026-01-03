@@ -66,7 +66,7 @@ public:
     /**
      * @brief Function to see available directions
      *
-     * checks all directions and chooses all the possible, then also chooses if we are at a valid intersection
+     * checks all directions and chooses all the possible, then also decides whether we are at a valid intersection
      *
      * @return returns all valid directions to check
      */
