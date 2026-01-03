@@ -91,7 +91,7 @@ void Pacman::Right() {
 // more simple getters / setters
 void Pacman::setDirectionBuffer(std::vector<int> buffer) { direction_buffer = buffer; }
 std::vector<int> Pacman::getDirectionBuffer() const { return direction_buffer; }
-float Ghost::MoveDt(float dt) const {
+float Pacman::MoveDt(float dt) const {
     // create a local variable so we keep our original speed in tact
     auto sped = speed;
     // create even movement in every direction

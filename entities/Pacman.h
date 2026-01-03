@@ -88,9 +88,13 @@ public:
      */
     void setDying(bool dying);
     /**
-     * @return returns Speed
+     * @return returns whether we are dying
      */
     bool getDying() const override;
+    /**
+     * @return returns Speed
+     */
+    float getSpeed() const;
     /**
      * @brief Sets if we are dead
      * @param dead
