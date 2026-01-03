@@ -5,7 +5,7 @@
 #include <random>
 
 namespace singleton {
-    // initiate the distribution
+// initiate the distribution
 Random::Random() : gen(std::random_device{}()) {}
 
 Random& Random::getInstance() {

@@ -22,26 +22,26 @@ class EntityFactory;
 }
 namespace states {
 class State;
-    /**
-* @enum StateID
-* @brief types of states
-*/
+/**
+ * @enum StateID
+ * @brief types of states
+ */
 enum StateID { MENU, LEVEL, PAUSED };
 class Game;
 class State;
-    /**
-* @class StateManager
-* @brief Manages a State stack
-*
-* updates the top state and renders/updates the top of its state stack
-*/
+/**
+ * @class StateManager
+ * @brief Manages a State stack
+ *
+ * updates the top state and renders/updates the top of its state stack
+ */
 class StateManager : public std::enable_shared_from_this<StateManager> {
 public:
     /**
-* @brief Creates a StateManager object.
-* @param entity_factory Reference to the entity_factory so we can give it the states
-* @param world_sound Reference to the world_sounds so we can give it the states
-*/
+     * @brief Creates a StateManager object.
+     * @param entity_factory Reference to the entity_factory so we can give it the states
+     * @param world_sound Reference to the world_sounds so we can give it the states
+     */
     StateManager(std::shared_ptr<factory::EntityFactory> entity_factory,
                  std::shared_ptr<sounds::WorldSound> world_sound);
     /**
@@ -62,24 +62,24 @@ public:
      */
     void PushState(StateID stateid, std::string player);
     /**
- * @brief Pops states
- *
- * pops 'amount' amount of states from the stack
- *
- * @param amount amount of states to pop
- */
+     * @brief Pops states
+     *
+     * pops 'amount' amount of states from the stack
+     *
+     * @param amount amount of states to pop
+     */
     void PopState(int amount);
     /**
- * @brief Updates states
- *
- * Updates the top State
- */
+     * @brief Updates states
+     *
+     * Updates the top State
+     */
     void Update();
     /**
- * @brief Renders states
- *
- * Renders the top State
- */
+     * @brief Renders states
+     *
+     * Renders the top State
+     */
     void Render(sf::RenderWindow& window);
 
     ~StateManager() = default;

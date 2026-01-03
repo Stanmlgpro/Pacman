@@ -9,10 +9,10 @@
  * @brief Sprite_ID Class
  */
 namespace sprites {
-    /**
-* @enum Sprite_ID
-* @brief full enum of all possible sprites
-*/
+/**
+ * @enum Sprite_ID
+ * @brief full enum of all possible sprites
+ */
 enum class Sprite_ID {
 
     // PACMAN
@@ -124,6 +124,6 @@ enum class Sprite_ID {
     // COUNT
     COUNT // <- to resize vector correctly
 };
-}
+} // namespace sprites
 
 #endif // SPRITE_IDS_H

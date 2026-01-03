@@ -11,19 +11,19 @@
  * @brief SFMLWorldSounds Class
  */
 namespace sounds {
-    /**
-* @class SFMLWorldSounds
-* @brief derives from the WorldSound
-*
-* Implements all the pure virtual functions and plays specific SFML sounds
-*/
+/**
+ * @class SFMLWorldSounds
+ * @brief derives from the WorldSound
+ *
+ * Implements all the pure virtual functions and plays specific SFML sounds
+ */
 class SFMLWorldSounds : public WorldSound {
 public:
     /**
-* @brief Creates an SFMLFactory object.
-*
-* Reads in all sound buffers and connects them to a playable sound
-*/
+     * @brief Creates an SFMLFactory object.
+     *
+     * Reads in all sound buffers and connects them to a playable sound
+     */
     SFMLWorldSounds();
 
     /// Overrides WorldSound::Start

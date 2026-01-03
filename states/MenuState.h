@@ -15,19 +15,19 @@ struct ScoreEntry {
     std::string name;
     int score;
 };
-    /**
-* @class MenuState
-* @brief MenuState class Inherited from base State
-*
-* start screen in which the scores are displayed and the player can input their name
-*/
+/**
+ * @class MenuState
+ * @brief MenuState class Inherited from base State
+ *
+ * start screen in which the scores are displayed and the player can input their name
+ */
 class MenuState final : public State {
 
 public:
     /**
-* @brief Creates a LevelState object.
-* @param statemanager Reference to the statemanager so we can pop and push states
-*/
+     * @brief Creates a LevelState object.
+     * @param statemanager Reference to the statemanager so we can pop and push states
+     */
     MenuState(std::weak_ptr<StateManager> statemanager);
     /**
      * @brief Loads the highscores
