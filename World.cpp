@@ -93,13 +93,14 @@ void World::loadMap_reset() {
     int id = 0;
 
     while (getline(file, line2)) { // read the file line by line
-        wallGrid.emplace_back(); // add another row to the wallgrid for each line
+        wallGrid.emplace_back();   // add another row to the wallgrid for each line
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
-            char c = line2[x]; // read the specific character
+            char c = line2[x];                            // read the specific character
             float normX = -1.0f + tileSizeX * (x + 0.5f); // calculate the x value
-            float normY = -1.0f + tileSizeY * (y + 0.5f);// calculate the y value
+            float normY = -1.0f + tileSizeY * (y + 0.5f); // calculate the y value
 
-            // create an entity using the entity->factory for each matching symbol (apart from ghosts ofc as explained previously)
+            // create an entity using the entity->factory for each matching symbol (apart from ghosts ofc as explained
+            // previously)
             if (c == '#') {
                 entities.push_back(entity_factory->createWall(normX, normY));
             } else if (c == '.') {
@@ -338,7 +339,8 @@ void World::TryBuffer() {
     // if it is close enough
     float epsilon = 0.005f;
     if (distX < epsilon && distY < epsilon)
-        pacman->setDirection(buffer); // we can take the direction buffer and swap it out for the current actual direciton
+        pacman->setDirection(
+            buffer); // we can take the direction buffer and swap it out for the current actual direciton
 }
 
 bool World::Update() {
@@ -361,15 +363,17 @@ bool World::Update() {
             combo_timer = 0;
         }
     }
-    bool new_level = true; // set this bool to true to later call the checkWin function with the see if the level is over
+    bool new_level =
+        true;    // set this bool to true to later call the checkWin function with the see if the level is over
     TryBuffer(); // try the direction buffer currently in pacman
-    std::vector<std::shared_ptr<entities::Entity>> removeables; // vector to add all items that should be removed into
-                                                                // to prevent deleting from a vector we are looping through
+    std::vector<std::shared_ptr<entities::Entity>>
+        removeables; // vector to add all items that should be removed into
+                     // to prevent deleting from a vector we are looping through
     // loop through all the entites
     for (auto e : entities) {
-        e->checkWin(new_level); // check if any orbs, powerorbs are still in the level to set the boolean to false
-        if (fearmode) { // if fearmode should be activated
-            e->setFeared(fearmode); // set the entities to fearmode (only has effect on ghosts)
+        e->checkWin(new_level);       // check if any orbs, powerorbs are still in the level to set the boolean to false
+        if (fearmode) {               // if fearmode should be activated
+            e->setFeared(fearmode);   // set the entities to fearmode (only has effect on ghosts)
             world_sounds->FearMode(); // and play the fearmode sound
         }
         // add any items that should be removed to the removables vector
@@ -397,7 +401,7 @@ bool World::Update() {
     // loop through all the entities that should be removed
     for (auto& r : removeables) {
         if (r) {
-            if (r == pacman) // if pacman is in them
+            if (r == pacman)     // if pacman is in them
                 gamelost = true; // we lost the level
             // otherwise we can safely remove the entity from the entities vector
             entities.erase(std::remove(entities.begin(), entities.end(), r), entities.end());
@@ -423,12 +427,12 @@ bool World::Update() {
             world_sounds->EndFearMode();
         }
     }
-    fearmode = false; // reset feaer mode
+    fearmode = false;                         // reset feaer mode
     world_view->setScore(score->getPoints()); // give world view the scoring
     world_view->setLives(pacman->getLives()); // give world view the amount of lives
-    world_view->Update(dt); // update the world view
-    score->Update(dt); // update the scoring
-    return false; // return a default false to indicate the game is not over
+    world_view->Update(dt);                   // update the world view
+    score->Update(dt);                        // update the scoring
+    return false;                             // return a default false to indicate the game is not over
 }
 
 // simple getter
@@ -465,7 +469,7 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     return nullptr;
 }
 
-//simple getters
+// simple getters
 int World::getLives() const { return pacman->getLives(); }
 int World::getScore() const { return score->getPoints(); }
 
