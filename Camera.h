@@ -18,8 +18,8 @@ struct Position;
 class Camera {
 public:
     /**
- * @brief Creates a Camera object.
- */
+     * @brief Creates a Camera object.
+     */
     Camera() = default;
     /**
      * @brief Calculates the screen coordinates from world coordinates
@@ -35,9 +35,9 @@ public:
      */
     void setMapSize(int MapWidth, int MapHeight);
     /**
-    * @brief Sets ScreenSize
-    * @param Screenwidth, Screenheight
-    */
+     * @brief Sets ScreenSize
+     * @param Screenwidth, Screenheight
+     */
     void setScreenSize(float Screenwidth, float Screenheight);
     /**
      * @brief Returns a square size the sprites need to have
