@@ -8,61 +8,71 @@
 
 namespace views {
 bool ScoreEntry::operator==(const ScoreEntry& other) const {
-    return position.x == other.position.x && position.y == other.position.y && spriteID == other.spriteID;
+    return position.x == other.position.x && position.y == other.position.y && spriteID == other.spriteID; // simple copy constructor
 }
-void ScoreEntry::Draw(sf::RenderWindow& window) const { window.draw(sprite); }
-void ScoreEntry::setScale(float scaleX, float scaleY) { sprite.setScale(scaleX, scaleY); }
-void ScoreEntry::setPosition(float x, float y) { sprite.setPosition(x, y); }
-void ScoreEntry::Update(float dt) { lifetime -= dt; }
+void ScoreEntry::Draw(sf::RenderWindow& window) const { window.draw(sprite); } // draw the entry
+void ScoreEntry::setScale(float scaleX, float scaleY) { sprite.setScale(scaleX, scaleY); } // set the scale
+void ScoreEntry::setPosition(float x, float y) { sprite.setPosition(x, y); } // set the position
+void ScoreEntry::Update(float dt) { lifetime -= dt; } // decrease the lifetime each update
 
 SFMLWorldView::SFMLWorldView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                              sf::RenderWindow& window, std::shared_ptr<Camera> camera)
-    : SFMLView(texture, atlas, std::weak_ptr<entities::Entity>(), window, camera), score(0), lives(3) {
-    FindSprite();
+    : SFMLView(texture, atlas, std::weak_ptr<entities::Entity>(), window, camera), score(0), lives(3) { // create an SFMLView object
+    FindSprite(); // find the correct sprite
+    // set texture, scale, origin
     sprite.setTexture(texture);
     sprite.setScale(1.f, 1.f);
     sprite.setOrigin(0.f, 0.f);
 
+    // create the 3 pacman life sprites
     life1 = sprite;
     life2 = sprite;
     life3 = sprite;
 
+    // load the correct score font
 #ifdef _WIN32
     font.loadFromFile("C:/Windows/Fonts/lucon.ttf"); // Lucida Console
 #else
     font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf");
 #endif
 
+    // modify the font
     scoreText.setFont(font);
     scoreText.setLetterSpacing(1.1f);
     scoreText.setFillColor(sf::Color::Yellow);
 }
 
 void SFMLWorldView::Update(float dt) {
+    // update the score
     scoreText.setString("Score:" + std::to_string(score));
+    // update each entry
     std::for_each(scoreEntries.begin(), scoreEntries.end(), [this, dt](ScoreEntry& entry) {
         entry.Update(dt);
+        // remove if its lifetime is over
         if (entry.lifetime <= 0.f) {
             toRemove.push_back(entry);
         }
     });
+    // remove all entries that needed to be removed
     for (const auto& entry : toRemove) {
         scoreEntries.erase(std::remove_if(scoreEntries.begin(), scoreEntries.end(),
                                           [&entry](const ScoreEntry& e) { return e == entry; }),
                            scoreEntries.end());
     }
-    toRemove.clear();
+    toRemove.clear(); // clear the remove vector
 }
 
-void SFMLWorldView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::PACMAN_RIGHT_2)); }
+void SFMLWorldView::FindSprite() { sprite.setTextureRect(atlas->get(sprites::Sprite_ID::PACMAN_RIGHT_2)); } // set the correct sprite for the lives
 
 void SFMLWorldView::Draw() {
+    // set the score text position, scaling using the camera class
     auto screensize = camera->getSpritePixelSize();
     auto screenpos = camera->worldToPixel(0.4, 1.2);
     scoreText.setScale(screensize.x / 32.f, screensize.y / 32.f);
     scoreText.setPosition(screenpos.x, screenpos.y);
-    window.draw(scoreText);
+    window.draw(scoreText); // draw it on the screen
 
+    // set the correct life1,2,3 positions and scaling using the camera class
     screenpos = camera->worldToPixel(-1, 1);
     life1.setPosition(screenpos.x, screenpos.y);
     life1.setScale(screensize.x / 16.f, screensize.y / 16.f);
@@ -73,6 +83,7 @@ void SFMLWorldView::Draw() {
     life3.setPosition(screenpos.x, screenpos.y);
     life3.setScale(screensize.x / 16.f, screensize.y / 16.f);
 
+    // and draw them based on how many lives we have left
     if (lives > 0)
         window.draw(life1);
     if (lives > 1)
@@ -80,6 +91,7 @@ void SFMLWorldView::Draw() {
     if (lives > 2)
         window.draw(life3);
 
+    // draw each score entry based on its position found by the camera class
     for (auto& entry : scoreEntries) {
         auto screenpos = camera->worldToPixel(entry.position.x, entry.position.y);
         entry.setScale(screensize.x / 16.f, screensize.y / 16.f);
@@ -87,9 +99,11 @@ void SFMLWorldView::Draw() {
         entry.Draw(window);
     }
 }
+    // simple setters
 void SFMLWorldView::setLives(int lives) { this->lives = lives; }
 void SFMLWorldView::setScore(int score) { this->score = score; }
 void SFMLWorldView::addScoreEntry(sprites::Sprite_ID ID, float lifetime, Position position) {
+    // create a score entry
     ScoreEntry entry;
     entry.spriteID = ID;
     entry.lifetime = lifetime;
@@ -101,6 +115,7 @@ void SFMLWorldView::addScoreEntry(sprites::Sprite_ID ID, float lifetime, Positio
     scoreEntries.push_back(entry);
 }
 void SFMLWorldView::ItemEaten(sprites::Sprite_ID ID, Position position) {
+    // on an eaten item call the correct addScoreEntry based on the eaten SpriteID
     switch (ID) {
 
     case sprites::Sprite_ID::ORB_BIG:

@@ -8,12 +8,15 @@ namespace views {
 SFMLLockedGhostView::SFMLLockedGhostView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                                          std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                                          std::shared_ptr<Camera> camera)
-    : SFMLGhostView(texture, atlas, entity, window, camera) {}
+    : SFMLGhostView(texture, atlas, entity, window, camera) {} // create an SFMLGhostView object
 
 void SFMLLockedGhostView::FindSprite() {
+    // check for the existence of the reference
     auto e = entity.lock();
     if (!e)
         return;
+    // and on existence pick the correct SpritID needed for the current state of the ghost and report that to the atlas
+    // to get the correct rectangle
     int dirX = e->getDirection()[0];
     int dirY = e->getDirection()[1];
 

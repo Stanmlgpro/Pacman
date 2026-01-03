@@ -5,74 +5,124 @@
 #ifndef SFMLFRUITVIEW_H
 #define SFMLFRUITVIEW_H
 #include <views/SFMLView.h>
-
+/**
+ * @file SFMLFruitView.h
+ * @brief SFMLFruitView Class
+ */
 namespace views {
+    /**
+ * @class SFMLFruitView
+ * @brief Main FruitView class
+ *
+ * Parent of all SFMLViews related to fruits.
+ */
 class SFMLFruitView : public SFMLView {
 public:
+    /**
+ * @brief Creates a SFMLFruitView object.
+ * @param texture texture of which to get the sprites
+ * @param atlas atlast from where we get the correct rectangles to get our sprites from
+ * @param entity weak pointer to the entity of which this view belongs to
+ * @param window window to draw the sprites onto
+ * @param camera camera to calculate the correct position to draw the sprites
+ */
     SFMLFruitView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                   std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
-
+    /// Overrides SFMLView::Update
     void Update(float dt) override;
-
+    /// Overrides SFMLView::Draw
     void Draw() override;
 
     ~SFMLFruitView() override = default;
 };
 
+    /**
+ * @class SFMLCherryView
+ * @brief Cherry fruit
+ */
 class SFMLCherryView : public SFMLFruitView {
 public:
     SFMLCherryView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                    std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-
+    /**
+ * @class SFMLStrawberryView
+ * @brief Strawberry fruit
+ */
 class SFMLStrawberryView : public SFMLFruitView {
 public:
     SFMLStrawberryView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                        std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                        std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-
+    /**
+ * @class SFMLMelonView
+ * @brief Melon fruit
+ */
 class SFMLMelonView : public SFMLFruitView {
 public:
     SFMLMelonView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                   std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-
+    /**
+ * @class SFMLAppleView
+ * @brief Apple fruit
+ */
 class SFMLAppleView : public SFMLFruitView {
 public:
     SFMLAppleView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                   std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-
+    /**
+ * @class SFMLOrangeView
+ * @brief Orange fruit
+ */
 class SFMLOrangeView : public SFMLFruitView {
 public:
     SFMLOrangeView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                    std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-
+    /**
+ * @class SFMLGalaxianView
+ * @brief Galaxian fruit
+ */
 class SFMLGalaxianView : public SFMLFruitView {
 public:
     SFMLGalaxianView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                      std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-
+    /**
+ * @class SFMLBellView
+ * @brief Bell fruit
+ */
 class SFMLBellView : public SFMLFruitView {
 public:
     SFMLBellView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                  std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
-
+    /**
+ * @class SFMLKeyView
+ * @brief Key fruit
+ */
 class SFMLKeyView : public SFMLFruitView {
 public:
     SFMLKeyView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                 std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+    /// Overrides SFMLView::FindSprite
     void FindSprite() override;
 };
 } // namespace views

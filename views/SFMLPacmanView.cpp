@@ -9,6 +9,7 @@ SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::shared_ptr<sprit
                                std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                                std::shared_ptr<Camera> camera)
     : SFMLView(texture, atlas, entity, window, camera) {
+    // set the variables timers, etc...
     sprite.setScale(1.f, 1.f);
     sprite.setOrigin(8.f, 8.f);
     open = true;
@@ -17,23 +18,29 @@ SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::shared_ptr<sprit
 }
 
 void SFMLPacmanView::Update(float dt) {
+    // update the animation counter
     animation_counter += dt;
+    // check if we need to swap our boolean value
     if (animation_counter > animation_speed) {
         open = not open;
         animation_counter = 0;
     }
-    if (entity.lock()->getDying())
+    // check if we are currently dying
+    if (entity.lock()->getDying()) // if so we update the dying frame
         current_dying_frame += dt * 10;
     else
-        current_dying_frame = 0;
+        current_dying_frame = 0; // if not we reset it
+    // find the correct sprite based on the newly found values
     FindSprite();
 }
 
 void SFMLPacmanView::FindSprite() {
+    // check for the existence of the reference
     auto e = entity.lock();
     if (!e)
         return;
-
+    // and on existence pick the correct SpritID needed for the current state of pacman and report that to the atlas
+    // to get the correct rectangle
     int dirX = e->getDirection()[0];
     int dirY = e->getDirection()[1];
     bool dying = e->getDying();
@@ -95,19 +102,21 @@ void SFMLPacmanView::FindSprite() {
         rect = atlas->get(sprites::Sprite_ID::PACMAN_IDLE);
     }
 
-    sprite.setTextureRect(rect);
+    sprite.setTextureRect(rect); // set the rectangle
 }
 
 void SFMLPacmanView::Draw() {
+    // check for existence of the reference to the entity
     auto e = entity.lock();
     if (!e)
         return;
 
+    // set the correct screen position, scale using the camera class
     auto screensize = camera->getSpritePixelSize();
     auto screenpos = camera->worldToPixel(e->getPosition().x, e->getPosition().y);
     sprite.setScale(screensize.x / 16.f, screensize.y / 16.f);
     sprite.setPosition(screenpos.x, screenpos.y);
 
-    window.draw(sprite);
+    window.draw(sprite); // draw the sprite onto the screen
 }
 } // namespace views
