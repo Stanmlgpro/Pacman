@@ -36,7 +36,7 @@ public:
      * @brief Updates the view
      *
      * pure virtual, responsible for updating all animation variables
-     * choosing the curroct sprite for the current frame using the atlas
+     * choosing the correct sprite for the current frame using the atlas
      *
      * @param dt amount the animations should be moving
      */
