@@ -14,6 +14,7 @@ public:
     void PowerOrbEaten();
     void FruitEaten(sprites::Sprite_ID ID);
     void ghostEaten(int combo);
+    void levelWon();
     int getPoints() const;
     void wright();
     void reset();

@@ -1,5 +1,5 @@
-C:/Users/stan1/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/pacman_core.dir
-C:/Users/stan1/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/pacman_sfml.dir
-C:/Users/stan1/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/Pacman.dir
-C:/Users/stan1/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/stan1/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/stan/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/pacman_core.dir
+/home/stan/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/pacman_sfml.dir
+/home/stan/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/Pacman.dir
+/home/stan/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/stan/CLionProjects/Pacman/cmake-build-debug/CMakeFiles/rebuild_cache.dir
