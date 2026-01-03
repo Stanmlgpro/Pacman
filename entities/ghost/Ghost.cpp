@@ -115,7 +115,8 @@ void Ghost::Update(float dt) {
 }
 
 void Ghost::setFeared(bool feared) {
-    if (this->dying and feared) return;
+    if (this->dying and feared)
+        return;
     if (this->feared and feared) {
         fearcheck = 0.f;
         return;
