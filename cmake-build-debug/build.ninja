@@ -177,6 +177,14 @@ build CMakeFiles/pacman_core.dir/entities/collectable/Fruit.cpp.o: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles/pacman_core.dir
   OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/entities/collectable
 
+build CMakeFiles/pacman_core.dir/factory/EntityFactory.cpp.o: CXX_COMPILER__pacman_core_unscanned_Debug /home/stan/CLionProjects/Pacman/factory/EntityFactory.cpp || cmake_object_order_depends_target_pacman_core
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/pacman_core.dir/factory/EntityFactory.cpp.o.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/stan/CLionProjects/Pacman
+  OBJECT_DIR = CMakeFiles/pacman_core.dir
+  OBJECT_FILE_DIR = CMakeFiles/pacman_core.dir/factory
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target pacman_core
@@ -185,7 +193,7 @@ build CMakeFiles/pacman_core.dir/entities/collectable/Fruit.cpp.o: CXX_COMPILER_
 #############################################
 # Link the static library libpacman_core.a
 
-build libpacman_core.a: CXX_STATIC_LIBRARY_LINKER__pacman_core_Debug CMakeFiles/pacman_core.dir/entities/Entity.cpp.o CMakeFiles/pacman_core.dir/World.cpp.o CMakeFiles/pacman_core.dir/entities/Wall.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/Orb.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/Ghost.cpp.o CMakeFiles/pacman_core.dir/entities/Pacman.cpp.o CMakeFiles/pacman_core.dir/Camera.cpp.o CMakeFiles/pacman_core.dir/singleton/Stopwatch.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/ChaseGhost.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/LockedGhost.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/PredictGhost.cpp.o CMakeFiles/pacman_core.dir/singleton/Random.cpp.o CMakeFiles/pacman_core.dir/Score.cpp.o CMakeFiles/pacman_core.dir/sounds/WorldSound.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/PowerOrb.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/Fruit.cpp.o
+build libpacman_core.a: CXX_STATIC_LIBRARY_LINKER__pacman_core_Debug CMakeFiles/pacman_core.dir/entities/Entity.cpp.o CMakeFiles/pacman_core.dir/World.cpp.o CMakeFiles/pacman_core.dir/entities/Wall.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/Orb.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/Ghost.cpp.o CMakeFiles/pacman_core.dir/entities/Pacman.cpp.o CMakeFiles/pacman_core.dir/Camera.cpp.o CMakeFiles/pacman_core.dir/singleton/Stopwatch.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/ChaseGhost.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/LockedGhost.cpp.o CMakeFiles/pacman_core.dir/entities/ghost/PredictGhost.cpp.o CMakeFiles/pacman_core.dir/singleton/Random.cpp.o CMakeFiles/pacman_core.dir/Score.cpp.o CMakeFiles/pacman_core.dir/sounds/WorldSound.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/PowerOrb.cpp.o CMakeFiles/pacman_core.dir/entities/collectable/Fruit.cpp.o CMakeFiles/pacman_core.dir/factory/EntityFactory.cpp.o
   CONFIG = Debug
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/pacman_core.dir

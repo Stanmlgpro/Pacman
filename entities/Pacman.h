@@ -60,6 +60,10 @@ public:
 */
     void setMoving(bool moving);
     /**
+* @return return the Speed
+*/
+    float getSpeed() const;
+    /**
  * @return return Lives
  */
     int getLives() const;

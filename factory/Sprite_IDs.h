@@ -4,8 +4,15 @@
 
 #ifndef SPRITE_IDS_H
 #define SPRITE_IDS_H
-
+/**
+ * @file Sprite_IDs.h
+ * @brief Sprite_ID Class
+ */
 namespace sprites {
+    /**
+* @enum Sprite_ID
+* @brief full enum of all possible sprites
+*/
 enum class Sprite_ID {
 
     // PACMAN

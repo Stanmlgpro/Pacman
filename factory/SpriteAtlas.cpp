@@ -5,15 +5,16 @@
 #include "SpriteAtlas.h"
 namespace sprites {
 SpriteAtlas::SpriteAtlas(const sf::Texture& texture) {
+    // set the texture
     this->texture = texture;
-
-    spriteRects.resize(static_cast<int>(Sprite_ID::COUNT));
+    // load the rectangle vector
     load();
 }
 
 void SpriteAtlas::load() {
-
+    // resize the vector to the integer value of COUNT (since in an enum everything is technically just a number and COUNT was put last)
     spriteRects.resize(static_cast<int>(Sprite_ID::COUNT));
+    // add all the rectangles
     // PACMAN
     spriteRects[static_cast<int>(Sprite_ID::PACMAN_IDLE)] = sf::IntRect(488, 0, 16, 16);
     spriteRects[static_cast<int>(Sprite_ID::PACMAN_RIGHT_1)] = sf::IntRect(456, 0, 16, 16);
@@ -120,6 +121,6 @@ void SpriteAtlas::load() {
     spriteRects[static_cast<int>(Sprite_ID::BLUE_3000)] = sf::IntRect(518, 176, 20, 16);
     spriteRects[static_cast<int>(Sprite_ID::BLUE_5000)] = sf::IntRect(518, 192, 20, 16);
 }
-
+// return the rectangle requested using the vector with simple indexing
 sf::IntRect SpriteAtlas::get(Sprite_ID id) const { return spriteRects[static_cast<int>(id)]; }
 } // namespace sprites

@@ -24,6 +24,7 @@ add_library(pacman_core
         sounds/WorldSound.cpp
         entities/collectable/PowerOrb.cpp
         entities/collectable/Fruit.cpp
+        factory/EntityFactory.cpp
 )
 
 add_library(pacman_sfml

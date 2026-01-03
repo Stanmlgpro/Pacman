@@ -29,11 +29,14 @@
 namespace factory {
 SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera)
     : window(window) {
+    // assign all variables
     this->camera = camera;
     if (!texture.loadFromFile(texture_input))
         throw std::runtime_error("Failed to load textures: " + texture_input);
+    // create a new atlas with the texture file
     this->atlas = std::make_shared<sprites::SpriteAtlas>(texture);
 }
+    // create the entites and attach the Views
 std::shared_ptr<entities::Wall> SFMLFactory::createWall(float x, float y) {
     auto wall = std::make_shared<entities::Wall>(x, y);
     wall->setView(std::make_unique<views::SFMLWallView>(texture, atlas, wall, window, camera));
@@ -50,6 +53,7 @@ std::shared_ptr<entities::PowerOrb> SFMLFactory::createPowerOrb(float x, float y
     return powerorb;
 }
 std::shared_ptr<entities::Fruit> SFMLFactory::createFruit(float x, float y) {
+    // Choose 1 of 7 random possible fruits
     int rand_num = singleton::Random::getInstance().get(0, 7);
     switch (rand_num) {
     case 0: {
@@ -100,6 +104,7 @@ std::shared_ptr<entities::Ghost> SFMLFactory::createGhost(float x, float y, std:
                                                           std::vector<std::vector<bool>> wallGrid, int id,
                                                           bool first_time) {
     std::shared_ptr<entities::Ghost> ghost;
+    // choose chasetime and ghost type based on id
     switch (id) {
     case 0:
         ghost = std::make_shared<entities::LockedGhost>(x, y, pacman, wallGrid, id, 0.f);
@@ -126,10 +131,10 @@ std::shared_ptr<entities::Pacman> SFMLFactory::createPacman(float speed, int map
     pacman->setView(std::make_unique<views::SFMLPacmanView>(texture, atlas, pacman, window, camera));
     return pacman;
 }
-
+// create the worldview
 std::unique_ptr<views::View> SFMLFactory::createWorldView() {
     return std::make_unique<views::SFMLWorldView>(texture, atlas, window, camera);
 }
-
+// simple getter
 std::shared_ptr<Camera> SFMLFactory::getCamera() { return camera; }
 } // namespace factory

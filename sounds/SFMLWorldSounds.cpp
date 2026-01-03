@@ -7,6 +7,7 @@
 
 namespace sounds {
 SFMLWorldSounds::SFMLWorldSounds() {
+    // read in all buffers and set them to looping if needed
     if (!startBuffer.loadFromFile("../sounds/pacman_beginning.wav")) {
         std::cerr << "Failed to load sound!" << std::endl;
     }
@@ -43,7 +44,8 @@ SFMLWorldSounds::SFMLWorldSounds() {
     ghostWalkSound.setLoop(true);
     ghostWalkSound.setVolume(20);
 }
-
+// simply play the sounds requested
+// also makes sure not 2 conflicting sounds are playing at the same time
 void SFMLWorldSounds::Start() {
     startSound.play();
     ghostWalkSound.play();
