@@ -19,10 +19,10 @@ namespace entities {
 class PowerOrb : public Entity, public std::enable_shared_from_this<PowerOrb> {
 public:
     /**
-* @brief Creates a PowerOrb object.
-* @param x X Position
-* @param y Y Position
-*/
+     * @brief Creates a PowerOrb object.
+     * @param x X Position
+     * @param y Y Position
+     */
     PowerOrb(float x, float y);
 
     /// Override Entity::Interact

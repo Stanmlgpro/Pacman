@@ -46,7 +46,7 @@ void Pacman::Update(float dt) {
             Entity::Update(MoveDt(dt));
         moving = true;
         dying_time = 0;
-    // otherwise update the amount of time we are dying
+        // otherwise update the amount of time we are dying
     } else {
         dying_time += dt;
         // and set us to dead if we reach above the 1.6f cap
@@ -91,7 +91,7 @@ void Pacman::Right() {
 // more simple getters / setters
 void Pacman::setDirectionBuffer(std::vector<int> buffer) { direction_buffer = buffer; }
 std::vector<int> Pacman::getDirectionBuffer() const { return direction_buffer; }
-float Pacman::MoveDt(float dt) const {
+float Ghost::MoveDt(float dt) const {
     // create a local variable so we keep our original speed in tact
     auto sped = speed;
     // create even movement in every direction

@@ -10,7 +10,7 @@
  * @brief Ghost Class
  */
 namespace entities {
-    /**
+/**
  * @class Ghost
  * @brief Main ghost class
  *
@@ -19,14 +19,14 @@ namespace entities {
 class Ghost : public Entity, public std::enable_shared_from_this<Ghost> {
 public:
     /**
-* @brief Creates a PowerOrb object.
-* @param x X Position
-* @param y Y Position
-* @param pacman pacman object to get its status
-* @param wallgrid 2D vector of bools that represent the existing walls, used to prevent phasing trough them
-* @param id in (1,2,3,4) decides when a ghost can start chasing pacman
-* @param chasetime time since spawning in that ghost has to wait before moving
-*/
+     * @brief Creates a PowerOrb object.
+     * @param x X Position
+     * @param y Y Position
+     * @param pacman pacman object to get its status
+     * @param wallgrid 2D vector of bools that represent the existing walls, used to prevent phasing trough them
+     * @param id in (1,2,3,4) decides when a ghost can start chasing pacman
+     * @param chasetime time since spawning in that ghost has to wait before moving
+     */
     Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id,
           float chasetime);
     /**
@@ -74,7 +74,8 @@ public:
     /**
      * @brief Calculates the distance when taking a specific turn
      *
-     * child classes well override this to choose their own way of calculation the desired direction with the desired algorithm
+     * child classes well override this to choose their own way of calculation the desired direction with the desired
+     * algorithm
      *
      * @param direction direction we take before calculating the distance
      * @param dt amount we move in the direction
@@ -96,27 +97,27 @@ public:
     void Update(float dt) override;
 
     /**
- * @brief Sets fearmode
- * @param feared
- */
+     * @brief Sets fearmode
+     * @param feared
+     */
     void setFeared(bool feared);
     /**
- * @return if we are feared or not
- */
+     * @return if we are feared or not
+     */
     bool getFeared();
     /**
- * @return counter that checks the time we are in fearmode
- */
+     * @return counter that checks the time we are in fearmode
+     */
     float getFearCheck() const override;
     /**
- * @return returns the position the ghost was originally spawned on
- */
+     * @return returns the position the ghost was originally spawned on
+     */
     Position getStartPos() const;
     /**
- * @return returns the ID
- */
+     * @return returns the ID
+     */
     int getId() const;
-   /**
+    /**
      * @brief Calculates new Dt
      *
      * sets dt to the correct value based on mapwidth and maplength and the speed at which we are moving
@@ -125,34 +126,34 @@ public:
      * @return the newly calculated dt
      */
     float MoveDt(float dt) const;
-   /**
-* @brief Sets Speed
-* @param speed
-*/
+    /**
+     * @brief Sets Speed
+     * @param speed
+     */
     void setSpeed(float speed);
     /**
-* @return returns the Speed
-*/
+     * @return returns the Speed
+     */
     float getSpeed() const;
-   /**
-* @brief Sets FearTime
-* @param feartime
-*/
+    /**
+     * @brief Sets FearTime
+     * @param feartime
+     */
     void setFearTime(float feartime);
     /**
-* @return returns the Dying boolean value
-*/
+     * @return returns the Dying boolean value
+     */
     bool getDying() const override;
     /**
-* @brief Sets wether are not we are in the dying state (Right before actually being dead)
-* @param dying
-*/
+     * @brief Sets wether are not we are in the dying state (Right before actually being dead)
+     * @param dying
+     */
     void setDying(bool dying);
     /**
- * @brief resets the ghost
- *
- * returns ghost to their original position, directions and resets all timers
- */
+     * @brief resets the ghost
+     *
+     * returns ghost to their original position, directions and resets all timers
+     */
     void reset() override;
 
     ~Ghost() override = default;

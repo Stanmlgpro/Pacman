@@ -160,7 +160,7 @@ void Ghost::setFeared(bool feared) {
     } else
         speed *= 2.f;
 }
-    // simple getters
+// simple getters
 bool Ghost::getFeared() { return feared; }
 Position Ghost::getStartPos() const { return startpos; }
 int Ghost::getId() const { return id; }
@@ -177,14 +177,14 @@ float Ghost::MoveDt(float dt) const {
     // return the new value
     return dt;
 }
-    // simple getters
+// simple getters
 float Ghost::getFearCheck() const { return fearcheck; }
-    // simple setters
+// simple setters
 void Ghost::setSpeed(float speed) {
     this->speed = speed;
     this->original_speed = speed;
 }
-    // simple getters
+// simple getters
 float Ghost::getSpeed() const { return speed; }
 void Ghost::setFearTime(float feartime) { this->feartime = feartime; }
 bool Ghost::getDying() const { return dying; }
@@ -196,7 +196,7 @@ void Ghost::setDying(bool dying) {
     if (dying) {
         setFeared(false);
         speed = 15.f;
-    // that is reset on leaving the dying state
+        // that is reset on leaving the dying state
     } else
         speed = original_speed;
 }
@@ -216,7 +216,7 @@ float Ghost::ManhattanDistance(std::vector<int> direction, Position target, floa
     float newX = position.x + direction[0] * speed * dt;
     float newY = position.y + direction[1] * speed * dt;
     float dis = std::abs(newX - target.x) + std::abs(newY - target.y); // formula for distance
-    return dis; // and returns it
+    return dis;                                                        // and returns it
 }
 
 int Ghost::BFSGridDistance(int startX, int startY, int targetX, int targetY) const {

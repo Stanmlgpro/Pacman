@@ -53,7 +53,8 @@ void PredictGhost::CalculateNextTurn(float dt) {
     // Otherwise we chose one at random
     else
         this->direction = best_directions[random.get(0, best_directions.size() - 1)];
-    // a little delay before checking if we are able to make turns again (prevents verry gittery behaviour at large gaps)
+    // a little delay before checking if we are able to make turns again (prevents verry gittery behaviour at large
+    // gaps)
     turnTimer = turnSpeed;
 }
 } // namespace entities
