@@ -11,29 +11,29 @@
  * @brief SpriteAtlas Class
  */
 namespace sprites {
-    /**
-* @class SpriteAtlas
-* @brief precuts rectangles from the texture
-*
-* holds all rectangles for each possible entity model in the spriteID enum
-*/
+/**
+ * @class SpriteAtlas
+ * @brief precuts rectangles from the texture
+ *
+ * holds all rectangles for each possible entity model in the spriteID enum
+ */
 class SpriteAtlas {
 public:
     /**
-* @brief Creates a SpriteAtlas object.
-* @param texture the texture we cut from
-*/
+     * @brief Creates a SpriteAtlas object.
+     * @param texture the texture we cut from
+     */
     explicit SpriteAtlas(const sf::Texture& texture);
     /**
-* @brief predefined the rectangles
-*/
+     * @brief predefined the rectangles
+     */
     void load();
     /**
-  * @brief returns the rectangle based on the requested SpriteID
-  *
-  * @param id requested ID
-  * @return the Rectangle needed for the sprite
-  */
+     * @brief returns the rectangle based on the requested SpriteID
+     *
+     * @param id requested ID
+     * @return the Rectangle needed for the sprite
+     */
     sf::IntRect get(Sprite_ID id) const;
 
     ~SpriteAtlas() = default;

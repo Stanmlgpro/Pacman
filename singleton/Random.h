@@ -10,12 +10,12 @@
  * @brief Random Class
  */
 namespace singleton {
-    /**
-* @class Random
-* @brief Class for Random Chance
-*
-* Singleton class used by entities to break ties and make decisions
-*/
+/**
+ * @class Random
+ * @brief Class for Random Chance
+ *
+ * Singleton class used by entities to break ties and make decisions
+ */
 class Random {
 private:
     /** random distribution to generate random numbers */
@@ -38,8 +38,8 @@ public:
      */
     int get(int min, int max);
     /**
-* @brief Gives back the Random object
-*/
+     * @brief Gives back the Random object
+     */
     static Random& getInstance();
 };
 } // namespace singleton

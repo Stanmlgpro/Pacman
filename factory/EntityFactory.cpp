@@ -5,6 +5,6 @@
 #include "EntityFactory.h"
 
 namespace factory {
-    // simple getter
+// simple getter
 std::shared_ptr<Camera> EntityFactory::getCamera() { return camera; }
 } // namespace factory

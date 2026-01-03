@@ -16,17 +16,17 @@ class Event;
 } // namespace sf
 namespace states {
 class StateManager;
-    /**
-* @class State
-* @brief Main state class
-*
-* Parent State class to add al basic behaviour of states
-*/
+/**
+ * @class State
+ * @brief Main state class
+ *
+ * Parent State class to add al basic behaviour of states
+ */
 class State {
 public:
     /**
-* @brief Creates a State object.
-*/
+     * @brief Creates a State object.
+     */
     explicit State() = default;
     /**
      * @brief Handles SFML events
@@ -38,20 +38,21 @@ public:
      */
     virtual void HandleEvent(const sf::Event& e) = 0;
     /**
- * @brief Updates the State
- *
- * overwritten by all child classes
- * called every frame to ensure correct visuals and propagated through all variables of the states that need it
- */
+     * @brief Updates the State
+     *
+     * overwritten by all child classes
+     * called every frame to ensure correct visuals and propagated through all variables of the states that need it
+     */
     virtual void Update() = 0;
     /**
- * @brief Renders states
- *
- * overwritten by all child classes
- * called every frame to visually update all the states and propagated through all variables of the states that need to be visualised
- *
- * @window window on which to draw
- */
+     * @brief Renders states
+     *
+     * overwritten by all child classes
+     * called every frame to visually update all the states and propagated through all variables of the states that need
+     * to be visualised
+     *
+     * @window window on which to draw
+     */
     virtual void Render(sf::RenderWindow& window) = 0;
 
     virtual ~State() = default;

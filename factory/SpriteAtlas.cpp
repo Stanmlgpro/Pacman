@@ -12,7 +12,8 @@ SpriteAtlas::SpriteAtlas(const sf::Texture& texture) {
 }
 
 void SpriteAtlas::load() {
-    // resize the vector to the integer value of COUNT (since in an enum everything is technically just a number and COUNT was put last)
+    // resize the vector to the integer value of COUNT (since in an enum everything is technically just a number and
+    // COUNT was put last)
     spriteRects.resize(static_cast<int>(Sprite_ID::COUNT));
     // add all the rectangles
     // PACMAN

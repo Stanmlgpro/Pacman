@@ -11,18 +11,18 @@
  * @brief PausedState Class
  */
 namespace states {
-    /**
-* @class PausedState
-* @brief PausedState class Inherited from base State
-*
-* pushed when the user wants to pause the game and popped on resume
-*/
+/**
+ * @class PausedState
+ * @brief PausedState class Inherited from base State
+ *
+ * pushed when the user wants to pause the game and popped on resume
+ */
 class PausedState final : public State {
 public:
     /**
-* @brief Creates a PausedState object.
-* @param statemanager Reference to the statemanager so we can pop and push states
-*/
+     * @brief Creates a PausedState object.
+     * @param statemanager Reference to the statemanager so we can pop and push states
+     */
     PausedState(std::weak_ptr<StateManager> statemanager);
 
     /// Overrides State::HandleEvent

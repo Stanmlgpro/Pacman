@@ -9,17 +9,17 @@
  * @brief WorldSound Class
  */
 namespace sounds {
-    /**
-* @class WorldSound
-* @brief Base class to derive from and implement
-*
-* Basic framework to play sounds
-*/
+/**
+ * @class WorldSound
+ * @brief Base class to derive from and implement
+ *
+ * Basic framework to play sounds
+ */
 class WorldSound {
 public:
     /**
-* @brief plays/ends the correct sound based on the requested function
-*/
+     * @brief plays/ends the correct sound based on the requested function
+     */
     /// @{
     virtual void Start() = 0;
     virtual void OrbEaten() = 0;

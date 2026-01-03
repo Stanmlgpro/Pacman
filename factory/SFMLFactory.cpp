@@ -36,7 +36,7 @@ SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, st
     // create a new atlas with the texture file
     this->atlas = std::make_shared<sprites::SpriteAtlas>(texture);
 }
-    // create the entites and attach the Views
+// create the entites and attach the Views
 std::shared_ptr<entities::Wall> SFMLFactory::createWall(float x, float y) {
     auto wall = std::make_shared<entities::Wall>(x, y);
     wall->setView(std::make_unique<views::SFMLWallView>(texture, atlas, wall, window, camera));
