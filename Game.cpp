@@ -62,5 +62,5 @@ void Game::Render() {
     // on rendering clear the window
     window.clear();
     state_manager->Render(window); // then draw everything
-    window.display(); // then display everything on the screen
+    window.display();              // then display everything on the screen
 }

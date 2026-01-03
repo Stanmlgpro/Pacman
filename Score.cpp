@@ -21,10 +21,10 @@ void Score::orbEaten() {
         return;
     }
     score += 10 - static_cast<int>(last_orb_eaten); // add the scoring
-    last_orb_eaten = 0.f; // reset on eating an orb
+    last_orb_eaten = 0.f;                           // reset on eating an orb
 }
 void Score::PowerOrbEaten() {
-    score += 100; // add the scoring
+    score += 100;         // add the scoring
     last_orb_eaten = 0.f; // reset on eating an orb
 }
 void Score::FruitEaten(sprites::Sprite_ID ID) {
@@ -74,7 +74,7 @@ void Score::Update(float dt) { // update all the timers
     if (last_orb_eaten > 5.f) { // if it has been to long since we ate an orb
         decrease_timer += dt;
         if (decrease_timer >= 0.1f) {
-            score = std::max(0, score - 1);  // start deducting points
+            score = std::max(0, score - 1); // start deducting points
             decrease_timer = 0.f;
         }
     } else if (last_orb_eaten > 1.f) {

@@ -24,8 +24,8 @@ class EntityFactory;
 class Game {
 public:
     /**
- * @brief Creates a Game object.
- */
+     * @brief Creates a Game object.
+     */
     Game();
     /**
      * @brief runs the game loop
@@ -38,16 +38,16 @@ public:
 
 private:
     /**
-    *@brief updates the state_manager
-    */
+     *@brief updates the state_manager
+     */
     void Update() const;
     /**
-    *@brief renders the state_manager
-    */
+     *@brief renders the state_manager
+     */
     void Render();
     /**
-    * @brief checks for SFML event
-    */
+     * @brief checks for SFML event
+     */
     void CheckInput();
 
     std::shared_ptr<states::StateManager> state_manager;
