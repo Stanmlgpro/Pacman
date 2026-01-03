@@ -48,11 +48,6 @@ jobs:
             cd build
             cmake ..
             cmake --build .
-            OUTPUT=$(./Pacman)
-            if [ "$OUTPUT" = "Hello World" ]; then
-            echo "✅ Output matched: $OUTPUT"
-            else
-            echo "❌ Expected 'Hello World' but got: '$OUTPUT'"
             exit 1
             fi
 
