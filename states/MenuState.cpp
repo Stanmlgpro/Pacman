@@ -36,7 +36,7 @@ void MenuState::HandleEvent(const sf::Event& e) {
         if (e.text.unicode == 8) {
             if (!player.empty())
                 player.pop_back();
-        } else if ((std::isalnum(c) || c == '_' || c == '-') && player.size() < 16) {
+        } else if ((std::isalnum(c) || c == '_' || c == '-') && player.size() < 32) {
             player += c;
         }
     } else if (e.type == sf::Event::KeyPressed) {
