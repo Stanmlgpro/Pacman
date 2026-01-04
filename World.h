@@ -68,7 +68,8 @@ public:
     std::shared_ptr<entities::Entity> CollidesWithPacman(const std::shared_ptr<entities::Wall>& wall) const;
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orb> orb) const;
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::PowerOrb> powerorb);
-    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Fruit> fruit, sprites::Sprite_ID ID) const;
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Fruit> fruit,
+                                                         sprites::Sprite_ID ID) const;
     std::shared_ptr<entities::Entity> CollidesWithPacman(const std::shared_ptr<entities::Ghost>& ghost);
 
     /**

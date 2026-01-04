@@ -132,7 +132,8 @@ void World::loadMap_reset() {
     }
 }
 
-std::vector<int> World::NormalizedToGrid(const float normX, const float normY, const std::vector<std::vector<bool>>& wallGrid) {
+std::vector<int> World::NormalizedToGrid(const float normX, const float normY,
+                                         const std::vector<std::vector<bool>>& wallGrid) {
     // calculate the width and height of the grid
     const int gridWidth = static_cast<int>(wallGrid[0].size());
     const int gridHeight = static_cast<int>(wallGrid.size());
@@ -161,7 +162,8 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(const std::shared_pt
     const float dy = std::abs(pacPos.y + static_cast<float>(pacman->getDirection()[1]) * dt - wallPos.y) + epsilon;
 
     // check for a collision using the collision size
-    if (dx < wall->getCollsionSize() / static_cast<float>(wallGrid[0].size()) && dy < wall->getCollsionSize() / static_cast<float>(wallGrid.size()))
+    if (dx < wall->getCollsionSize() / static_cast<float>(wallGrid[0].size()) &&
+        dy < wall->getCollsionSize() / static_cast<float>(wallGrid.size()))
         pacman->setMoving(false); // set pacman to stop moving when hitting a wall
     return nullptr;
 }
@@ -248,12 +250,13 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(const std::shared_pt
     const float dx = std::abs(pacPos.x + static_cast<float>(pacman->getDirection()[0]) * dt - ghostPos.x) + epsilon;
     const float dy = std::abs(pacPos.y + static_cast<float>(pacman->getDirection()[1]) * dt - ghostPos.y) + epsilon;
 
-    if (dx < ghost->getCollsionSize() / static_cast<float>(wallGrid[0].size()) && dy < ghost->getCollsionSize() / static_cast<float>(wallGrid.size())) {
+    if (dx < ghost->getCollsionSize() / static_cast<float>(wallGrid[0].size()) &&
+        dy < ghost->getCollsionSize() / static_cast<float>(wallGrid.size())) {
         // on collision check whether are not the ghost was feared
         if (ghost->getFeared()) {
             // if the ghost was feared set it to be dying
             ghost->setDying(true);
-            combo++; // add to the combo
+            combo++;       // add to the combo
             if (combo > 3) // cap the combo at 4
                 combo = 4;
             // add the correct scoring based on the combo
@@ -351,7 +354,8 @@ bool World::Update() {
     singleton::Stopwatch& stopwatch = singleton::Stopwatch::getInstance();
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
-    if (paused) Resume(); // resume sounds if we were paused last update
+    if (paused)
+        Resume();   // resume sounds if we were paused last update
     if (dt > 0.06f) // and cap at 0.06f to prevent huge jumps on lag spikes from resizing etc...
         dt = 0.06f;
     if (pacman->isDead()) // reset pacman if he is dead
@@ -372,9 +376,9 @@ bool World::Update() {
                      // to prevent deleting from a vector we are looping through
     // loop through all the entities
     for (const auto& e : entities) {
-        e->checkWin(new_level);       // check if any orbs, power orbs are still in the level to set the boolean to false
-        if (fearmode) {               // if fearmode should be activated
-            e->setFeared(fearmode);   // set the entities to fearmode (only has effect on ghosts)
+        e->checkWin(new_level);     // check if any orbs, power orbs are still in the level to set the boolean to false
+        if (fearmode) {             // if fearmode should be activated
+            e->setFeared(fearmode); // set the entities to fearmode (only has effect on ghosts)
             world_sounds->FearMode(); // and play the fearmode sound
         }
         // add any items that should be removed to the removables vector
