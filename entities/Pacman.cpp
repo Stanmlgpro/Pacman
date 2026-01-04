@@ -9,7 +9,8 @@
 #include "ghost/Ghost.h"
 
 namespace entities {
-Pacman::Pacman(const float speed,const int mapwidth,const int mapheight,const float x,const float y) : Entity(mapwidth, mapheight) {
+Pacman::Pacman(const float speed, const int mapwidth, const int mapheight, const float x, const float y)
+    : Entity(mapwidth, mapheight) {
     // set all variables
     position = {x, y};
     direction.reserve(2);
@@ -89,7 +90,7 @@ void Pacman::Right() {
     direction_buffer[1] = 0;
 }
 // more simple getters / setters
-void Pacman::setDirectionBuffer(const std::vector<int> &buffer) { direction_buffer = buffer; }
+void Pacman::setDirectionBuffer(const std::vector<int>& buffer) { direction_buffer = buffer; }
 std::vector<int> Pacman::getDirectionBuffer() const { return direction_buffer; }
 float Pacman::MoveDt(float dt) const {
     // create a local variable so we keep our original speed in tact

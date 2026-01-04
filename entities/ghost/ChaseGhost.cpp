@@ -10,8 +10,8 @@
 #include <utility>
 
 namespace entities {
-ChaseGhost::ChaseGhost(const float x, const float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid,
-                       const int id, const float chasetime)
+ChaseGhost::ChaseGhost(const float x, const float y, std::shared_ptr<Pacman> pacman,
+                       const std::vector<std::vector<bool>>& wallgrid, const int id, const float chasetime)
     : Ghost(x, y, std::move(pacman), wallgrid, id, chasetime) {
     // Create a ghost and set its speed
     setSpeed(6.5f);

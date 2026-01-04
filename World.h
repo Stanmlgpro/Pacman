@@ -85,7 +85,7 @@ public:
      *
      * calculates the closest tile to the world coords
      */
-    static std::vector<int> NormalizedToGrid(float normX, float normY, const std::vector<std::vector<bool>> &wallGrid);
+    static std::vector<int> NormalizedToGrid(float normX, float normY, const std::vector<std::vector<bool>>& wallGrid);
     /**
      * @brief Renders the game
      *

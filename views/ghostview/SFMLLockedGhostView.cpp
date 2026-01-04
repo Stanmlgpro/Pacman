@@ -4,13 +4,14 @@
 
 #include "SFMLLockedGhostView.h"
 
-#include <utility>
 #include "entities/Entity.h"
+#include <utility>
 namespace views {
 SFMLLockedGhostView::SFMLLockedGhostView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                                          std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                                          std::shared_ptr<Camera> camera)
-    : SFMLGhostView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) {} // create an SFMLGhostView object
+    : SFMLGhostView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) {
+} // create an SFMLGhostView object
 
 void SFMLLockedGhostView::FindSprite() {
     // check for the existence of the reference

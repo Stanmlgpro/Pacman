@@ -123,7 +123,7 @@ std::shared_ptr<entities::Ghost> SFMLFactory::createGhost(float x, float y, std:
         ghost = std::make_shared<entities::PredictGhost>(x, y, pacman, wallGrid, id, first_time ? 10.f : 0.f);
         ghost->setView(std::make_unique<views::SFMLPredictGhost2View>(texture, atlas, ghost, window, camera));
         break;
-    default: ;
+    default:;
     }
     return ghost;
 }

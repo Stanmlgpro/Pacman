@@ -67,7 +67,7 @@ public:
      * @brief Sets the buffered direction
      * @param buffer
      */
-    void setDirectionBuffer(const std::vector<int> &buffer);
+    void setDirectionBuffer(const std::vector<int>& buffer);
     /**
      * @return return the buffered direction
      */

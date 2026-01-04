@@ -4,13 +4,14 @@
 
 #include "SFMLWallView.h"
 
-#include <utility>
 #include "entities/Entity.h"
+#include <utility>
 namespace views {
 SFMLWallView::SFMLWallView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
-std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera)
+                           std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
+                           std::shared_ptr<Camera> camera)
     : SFMLView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) { // create an SFMLView object
-    rect.setFillColor(sf::Color(0, 0, 180));             // set the rectangle color
+    rect.setFillColor(sf::Color(0, 0, 180));                                              // set the rectangle color
 }
 
 void SFMLWallView::Update(float dt) {}

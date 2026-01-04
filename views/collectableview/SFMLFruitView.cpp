@@ -4,8 +4,8 @@
 
 #include "SFMLFruitView.h"
 
-#include <utility>
 #include "entities/Entity.h"
+#include <utility>
 
 namespace views {
 SFMLFruitView::SFMLFruitView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,

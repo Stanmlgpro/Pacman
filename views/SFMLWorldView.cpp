@@ -11,15 +11,15 @@ bool ScoreEntry::operator==(const ScoreEntry& other) const {
     return position.x == other.position.x && position.y == other.position.y &&
            spriteID == other.spriteID; // simple copy constructor
 }
-void ScoreEntry::Draw(sf::RenderWindow& window) const { window.draw(sprite); }             // draw the entry
+void ScoreEntry::Draw(sf::RenderWindow& window) const { window.draw(sprite); }                         // draw the entry
 void ScoreEntry::setScale(const float scaleX, const float scaleY) { sprite.setScale(scaleX, scaleY); } // set the scale
-void ScoreEntry::setPosition(const float x, const float y) { sprite.setPosition(x, y); }               // set the position
+void ScoreEntry::setPosition(const float x, const float y) { sprite.setPosition(x, y); } // set the position
 void ScoreEntry::Update(const float dt) { lifetime -= dt; } // decrease the lifetime each update
 
-SFMLWorldView::SFMLWorldView(const sf::Texture& texture, const std::shared_ptr<sprites::SpriteAtlas> &atlas,
-                             sf::RenderWindow& window, const std::shared_ptr<Camera> &camera)
+SFMLWorldView::SFMLWorldView(const sf::Texture& texture, const std::shared_ptr<sprites::SpriteAtlas>& atlas,
+                             sf::RenderWindow& window, const std::shared_ptr<Camera>& camera)
     : SFMLView(texture, atlas, std::weak_ptr<entities::Entity>(), window, camera), score(0),
-      lives(3) {  // create an SFMLView object
+      lives(3) {                 // create an SFMLView object
     SFMLWorldView::FindSprite(); // find the correct sprite
     // set texture, scale, origin
     sprite.setTexture(texture);

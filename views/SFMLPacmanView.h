@@ -27,7 +27,7 @@ public:
      * @param camera camera to calculate the correct position to draw the sprites
      */
     SFMLPacmanView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
-    std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
+                   std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window, std::shared_ptr<Camera> camera);
     /// Overrides SFMLView::Update
     void Update(float dt) override;
     /// Overrides SFMLView::FindSprite

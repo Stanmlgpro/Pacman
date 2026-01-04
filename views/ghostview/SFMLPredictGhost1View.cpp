@@ -4,13 +4,14 @@
 
 #include "SFMLPredictGhost1View.h"
 
-#include <utility>
 #include "entities/Entity.h"
+#include <utility>
 namespace views {
 SFMLPredictGhost1View::SFMLPredictGhost1View(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                                              std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                                              std::shared_ptr<Camera> camera)
-    : SFMLGhostView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) {} // create an SFMLGhostView object
+    : SFMLGhostView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) {
+} // create an SFMLGhostView object
 
 void SFMLPredictGhost1View::FindSprite() {
     // check for the existence of the reference

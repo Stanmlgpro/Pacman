@@ -31,7 +31,7 @@ Position Camera::worldToPixel(float normX, float normY) const {
     // get the tile size
     const Position tileSize = getSpritePixelSize();
     const float tilePixel = tileSize.x; // square
-    if (tilePixel <= 0.f)         // check for illegal sizes
+    if (tilePixel <= 0.f)               // check for illegal sizes
         return {0.f, 0.f};
 
     // calculate the pixel width of the map
