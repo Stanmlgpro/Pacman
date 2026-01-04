@@ -64,7 +64,7 @@ void SFMLWorldSounds::EndFearMode() {
 }
 void SFMLWorldSounds::PacmanDying() { pacmandieSound.play(); }
 void SFMLWorldSounds::PauseGame() {
-    auto pauseIfPlaying = [](sf::Sound& s) { // function to check for each sound if it is playing
+    auto pauseIfPlaying = [](sf::Sound& s) {           // function to check for each sound if it is playing
         if (s.getStatus() == sf::SoundSource::Playing) // and pause it if so
             s.pause();
     };
@@ -80,7 +80,7 @@ void SFMLWorldSounds::PauseGame() {
 }
 
 void SFMLWorldSounds::ResumeGame() {
-    auto resumeIfPaused = [](sf::Sound& s) { // function to check for each sound if it is pause
+    auto resumeIfPaused = [](sf::Sound& s) {          // function to check for each sound if it is pause
         if (s.getStatus() == sf::SoundSource::Paused) // and resume it if so
             s.play();
     };
