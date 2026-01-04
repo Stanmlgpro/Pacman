@@ -32,15 +32,15 @@ class Fruit;
 class Entity {
 public:
     /**
-     * @brief Creates a Entity object.
+     * @brief Creates an Entity object.
      *
-     * default constructor for entites that dont need as much information to work
+     * default constructor for entities that don't need as much information to work
      */
     Entity() = default;
     /**
      * @brief Creates a Entity object.
      *
-     * default constructor for entites that dont need as much information to work
+     * default constructor for entities that don't need as much information to work
      *
      * @param mapwidth width of the map to calculate positions and speed
      * @param mapheight height of the map to calculate positions and speed
@@ -59,7 +59,7 @@ public:
     /**
      * @brief updates the entity
      *
-     * overrwritten by every entity, is called every frame with dt.
+     * overwritten by every entity, is called every frame with dt.
      * Used to update the position, timers, view of every entity in the level
      *
      * @param dt delta time between calls
@@ -76,7 +76,7 @@ public:
      * @brief Function to check for collisions
      *
      * function that is called every frame that is overwritten by every entity.
-     * All children callback to the World so we know wich Class is interacting with pacman
+     * All children callback to the World so we know which Class is interacting with pacman
      *
      * @param world used for callback
      *
