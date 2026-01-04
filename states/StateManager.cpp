@@ -43,7 +43,6 @@ void StateManager::PopState(const int amount) {
     for (int i = 0; i < amount; i++) {
         if (!states.empty())
             states.pop();
-        std::cout << states.size() << std::endl;
     }
 }
 

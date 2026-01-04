@@ -44,7 +44,6 @@ void MenuState::HandleEvent(const sf::Event& e) {
         // start a level on Enter (create a level state, which will in turn create a world)
     } else if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Enter) {
-            std::cout << "Starting new level with player: " << player << std::endl;
             // check for no player input and make an "Unknown" player
             statemanager.lock()->PushState(LEVEL, (!player.empty()) ? player : "Unknown");
         }

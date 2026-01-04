@@ -22,7 +22,6 @@ LevelState::LevelState(std::weak_ptr<StateManager> statemanager, std::shared_ptr
     this->world = std::make_unique<World>("../map.txt", this->entity_factory, this->world_sounds, player);
     // start sound
     this->world_sounds->Start();
-    std::cout << "new level and world created" << std::endl;
 }
 
 void LevelState::HandleEvent(const sf::Event& e) {

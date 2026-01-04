@@ -40,11 +40,8 @@ void PausedState::HandleEvent(const sf::Event& e) {
     // pop and push the correct states based on the key pressed
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
-            std::cout << "Returning to menu..." << std::endl;
             statemanager.lock()->PopState(2); // remove pause
-            std::cout << "Pops done" << std::endl;
         } else if (e.key.code == sf::Keyboard::Enter) {
-            std::cout << "Resuming game..." << std::endl;
             statemanager.lock()->PopState(1);
         }
     }
