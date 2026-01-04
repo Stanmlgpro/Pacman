@@ -18,14 +18,14 @@ Stopwatch& Stopwatch::getInstance() {
 }
 
 void Stopwatch::tick() {
-    // recalculate the delta time and the lasttime variables
-    auto now = std::chrono::high_resolution_clock::now();
+    // recalculate the delta time and the lastname variables
+    const auto now = std::chrono::high_resolution_clock::now();
     deltaTime = std::chrono::duration<float>(now - lastTime).count();
     lastTime = now;
 }
 
 float Stopwatch::getDeltaTime() const {
-    // return the deltatime if we are not paused
+    // return the delta time if we are not paused
     if (paused)
         return 0.f;
     return deltaTime;

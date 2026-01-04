@@ -17,22 +17,24 @@
 #include <entities/collectable/Fruit.h>
 #include <fstream>
 #include <iostream>
+#include <utility>
 
-World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory,
-             std::shared_ptr<sounds::WorldSound> world_sounds, std::string player) {
-    // initialize vairables
-    this->filename = filename;
+World::World(std::string filename, const std::shared_ptr<factory::EntityFactory>& entity_factory,
+             std::shared_ptr<sounds::WorldSound> world_sounds, const std::string& player) {
+    // initialize variables
+    this->filename = std::move(filename);
     this->entity_factory = entity_factory;
     this->score = std::make_unique<Score>(player);
-    this->world_sounds = world_sounds;
+    this->world_sounds = std::move(world_sounds);
     // std::move since we are using a unique pointer
     this->world_view = std::move(entity_factory->createWorldView());
 
     dt = 0;
-    // base dificulty values
+    // base difficulty values
     difficulty = 0;
     fear_time = 7;
     fear_timer = 0;
+    combo_timer = 0;
     ghost_speed_mul = 0.4;
     combo_time = 3.f;
     // load the map
@@ -40,15 +42,15 @@ World::World(std::string filename, std::shared_ptr<factory::EntityFactory> entit
 }
 
 void World::loadMap_reset() {
-    // increase the dificulty
+    // increase the difficulty
     // decreasing fear time
-    fear_time = fear_time * 0.9;
+    fear_time = fear_time * 0.9f;
     // reset values
     fear_timer = 0;
     combo_timer = 0;
     combo = -1;
     // increasing ghost speed
-    ghost_speed_mul = ghost_speed_mul * 1.3;
+    ghost_speed_mul = ghost_speed_mul * 1.3f;
     // reset sounds, vectors
     entities.clear();
     wallGrid.clear();
@@ -130,7 +132,7 @@ void World::loadMap_reset() {
     }
 }
 
-std::vector<int> World::NormalizedToGrid(float normX, float normY, std::vector<std::vector<bool>> wallGrid) {
+std::vector<int> World::NormalizedToGrid(float normX, float normY, const std::vector<std::vector<bool>> &wallGrid) {
     // calculate the width and height of the grid
     int gridWidth = static_cast<int>(wallGrid[0].size());
     int gridHeight = static_cast<int>(wallGrid.size());
@@ -147,16 +149,16 @@ std::vector<int> World::NormalizedToGrid(float normX, float normY, std::vector<s
 }
 
 // WHAT FOLLOWS ARE ALL VERRY SIMILAR FUNCTIONS SO ONLY ONCE WILL THE COLLISION CHECKING BE EXPLAINED
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Wall> wall) {
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(const std::shared_ptr<entities::Wall>& wall) const {
     // get the 2 positions we need
-    Position pacPos = pacman->getPosition();
-    Position wallPos = wall->getPosition();
+    const Position pacPos = pacman->getPosition();
+    const Position wallPos = wall->getPosition();
 
     // add a tolerance
-    float epsilon = 0.005f;
+    constexpr float epsilon = 0.005f;
     // calculate the difference in x and y
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - wallPos.x) + epsilon;
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - wallPos.y) + epsilon;
+    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - wallPos.x) + epsilon;
+    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - wallPos.y) + epsilon;
 
     // check for a collision using the collision size
     if (dx < wall->getCollsionSize() / wallGrid[0].size() && dy < wall->getCollsionSize() / wallGrid.size())
@@ -164,15 +166,15 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     return nullptr;
 }
 
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Orb> orb) {
-    Position pacPos = pacman->getPosition();
-    Position orbPos = orb->getPosition();
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Orb> orb) const {
+    const Position pacPos = pacman->getPosition();
+    const Position orbPos = orb->getPosition();
 
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
+    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
+    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
 
-    float collisionDistX = orb->getCollsionSize() / wallGrid[0].size();
-    float collisionDistY = orb->getCollsionSize() / wallGrid.size();
+    const float collisionDistX = orb->getCollsionSize() / wallGrid[0].size();
+    const float collisionDistY = orb->getCollsionSize() / wallGrid.size();
 
     if (dx < collisionDistX && dy < collisionDistY) {
         // on collision play the orb eat sound
@@ -186,14 +188,14 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
 }
 
 std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::PowerOrb> powerorb) {
-    Position pacPos = pacman->getPosition();
-    Position orbPos = powerorb->getPosition();
+    const Position pacPos = pacman->getPosition();
+    const Position orbPos = powerorb->getPosition();
 
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
+    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
+    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
 
-    float collisionDistX = powerorb->getCollsionSize() / wallGrid[0].size();
-    float collisionDistY = powerorb->getCollsionSize() / wallGrid.size();
+    const float collisionDistX = powerorb->getCollsionSize() / wallGrid[0].size();
+    const float collisionDistY = powerorb->getCollsionSize() / wallGrid.size();
 
     if (dx < collisionDistX && dy < collisionDistY) {
         // on collision play the powerorb eat sound
@@ -239,12 +241,12 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
 std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost) {
     if (ghost->getDying())
         return nullptr;
-    Position pacPos = pacman->getPosition();
-    Position ghostPos = ghost->getPosition();
+    const Position pacPos = pacman->getPosition();
+    const Position ghostPos = ghost->getPosition();
 
-    float epsilon = 0.005f;
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - ghostPos.x) + epsilon;
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - ghostPos.y) + epsilon;
+    constexpr float epsilon = 0.005f;
+    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - ghostPos.x) + epsilon;
+    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - ghostPos.y) + epsilon;
 
     if (dx < ghost->getCollsionSize() / wallGrid[0].size() && dy < ghost->getCollsionSize() / wallGrid.size()) {
         // on collision check whether are not the ghost was feared
@@ -276,6 +278,8 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
             case 3:
                 world_view->ItemEaten(sprites::Sprite_ID::GHOST_EYES_DOWN, ghost->getPosition());
                 break;
+            default:
+                break;
             }
             return nullptr;
         }
@@ -301,19 +305,19 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
 
 void World::TryBuffer() {
     // read out the direction buffer
-    auto buffer = pacman->getDirectionBuffer();
+    const auto buffer = pacman->getDirectionBuffer();
     if (buffer[0] == 0 && buffer[1] == 0) // check if it was never assigned
         return;
 
     // calculate the grid x and gri y using the NormlizedToGrid function
-    Position pacPos = pacman->getPosition();
-    auto gridPos = NormalizedToGrid(pacPos.x, pacPos.y, wallGrid);
-    int currentGridX = static_cast<int>(gridPos[0]);
-    int currentGridY = static_cast<int>(gridPos[1]);
+    const Position pacPos = pacman->getPosition();
+    const auto gridPos = NormalizedToGrid(pacPos.x, pacPos.y, wallGrid);
+    const int currentGridX = static_cast<int>(gridPos[0]);
+    const int currentGridY = static_cast<int>(gridPos[1]);
 
     // also calculate the grid x and grid y of where he would be if he took the direction
-    int targetGridX = currentGridX + buffer[0];
-    int targetGridY = currentGridY + buffer[1];
+    const int targetGridX = currentGridX + buffer[0];
+    const int targetGridY = currentGridY + buffer[1];
 
     bool canMove = true; // check if he is allowed to move
     if (targetGridX < 0 or targetGridX >= static_cast<int>(wallGrid[0].size()) or targetGridY < 0 or
@@ -326,18 +330,18 @@ void World::TryBuffer() {
         return;
 
     // otherwise calculate the current position
-    float tileSizeX = 2.0f / static_cast<float>(wallGrid[0].size());
-    float tileSizeY = 2.0f / static_cast<float>(wallGrid.size());
+    const float tileSizeX = 2.0f / static_cast<float>(wallGrid[0].size());
+    const float tileSizeY = 2.0f / static_cast<float>(wallGrid.size());
 
-    float cellCenterX = -1.0f + tileSizeX * (static_cast<float>(currentGridX) + 0.5f);
-    float cellCenterY = -1.0f + tileSizeY * (static_cast<float>(currentGridY) + 0.5f);
+    const float cellCenterX = -1.0f + tileSizeX * (static_cast<float>(currentGridX) + 0.5f);
+    const float cellCenterY = -1.0f + tileSizeY * (static_cast<float>(currentGridY) + 0.5f);
 
     // and calculate the difference between it and the nearest tile center
-    float distX = std::abs(pacPos.x - cellCenterX);
-    float distY = std::abs(pacPos.y - cellCenterY);
+    const float distX = std::abs(pacPos.x - cellCenterX);
+    const float distY = std::abs(pacPos.y - cellCenterY);
 
     // if it is close enough
-    float epsilon = 0.005f;
+    constexpr float epsilon = 0.005f;
     if (distX < epsilon && distY < epsilon)
         pacman->setDirection(
             buffer); // we can take the direction buffer and swap it out for the current actual direciton
@@ -427,7 +431,7 @@ bool World::Update() {
             world_sounds->EndFearMode();
         }
     }
-    fearmode = false;                         // reset feaer mode
+    fearmode = false;                         // reset fear mode
     world_view->setScore(score->getPoints()); // give world view the scoring
     world_view->setLives(pacman->getLives()); // give world view the amount of lives
     world_view->Update(dt);                   // update the world view
@@ -449,7 +453,7 @@ void World::Render() {
     world_view->Draw();
 }
 
-void World::movePacman(MOVE movement) { // propagate the move command through pacman
+void World::movePacman(MOVE movement) const { // propagate the move command through pacman
     if (movement == UP) {
         pacman->Up();
     }

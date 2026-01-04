@@ -7,16 +7,17 @@
 #include "entities/Pacman.h"
 #include <algorithm>
 #include <iostream>
+#include <utility>
 
 namespace entities {
-ChaseGhost::ChaseGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid,
-                       int id, float chasetime)
-    : Ghost(x, y, pacman, wallgrid, id, chasetime) {
+ChaseGhost::ChaseGhost(const float x, const float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid,
+                       const int id, const float chasetime)
+    : Ghost(x, y, std::move(pacman), wallgrid, id, chasetime) {
     // Create a ghost and set its speed
     setSpeed(6.5f);
 }
 
-float ChaseGhost::distanceTurn(std::vector<int> direction, float dt) {
+float ChaseGhost::distanceTurn(const std::vector<int> direction, const float dt) {
     if (dying)
         // If we are dying (eyes) Go back to startpos
         return BreathFirstDistance(direction, startpos, dt);
@@ -24,14 +25,14 @@ float ChaseGhost::distanceTurn(std::vector<int> direction, float dt) {
     return BreathFirstDistance(direction, pacman->getPosition(), dt);
 }
 
-void ChaseGhost::CalculateNextTurn(float dt) {
+void ChaseGhost::CalculateNextTurn(const float dt) {
     std::vector<int> direction;
     float best_distance = -1.f;
     std::vector<std::vector<int>> best_directions;
 
     // Calculate the closest distance if we were to take a certain direction
     for (const std::vector<int>& dir_try : IsAtIntersection()) {
-        float dis = distanceTurn(dir_try, dt);
+        const float dis = distanceTurn(dir_try, dt);
         // Maximize or minimize based on feared or not
         if ((best_distance == -1.f) || (feared ? dis > best_distance : dis < best_distance)) {
             best_distance = dis;

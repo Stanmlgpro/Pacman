@@ -3,22 +3,24 @@
 //
 
 #include "SFMLPredictGhost2View.h"
+
+#include <utility>
 #include "entities/Entity.h"
 namespace views {
 SFMLPredictGhost2View::SFMLPredictGhost2View(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                                              std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                                              std::shared_ptr<Camera> camera)
-    : SFMLGhostView(texture, atlas, entity, window, camera) {} // create an SFMLGhostView object
+    : SFMLGhostView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) {} // create an SFMLGhostView object
 
 void SFMLPredictGhost2View::FindSprite() {
     // check for the existence of the reference
-    auto e = entity.lock();
+    const auto e = entity.lock();
     if (!e)
         return;
     // and on existence pick the correct SpritID needed for the current state of the ghost and report that to the atlas
     // to get the correct rectangle
-    int dirX = e->getDirection()[0];
-    int dirY = e->getDirection()[1];
+    const int dirX = e->getDirection()[0];
+    const int dirY = e->getDirection()[1];
 
     sf::IntRect rect;
     if (e->getFeared() and e->getFearCheck() < 4.f) {

@@ -14,7 +14,7 @@ namespace views {
  * @class SFMLOrbView
  * @brief class to visualise orbs
  */
-class SFMLOrbView : public SFMLView {
+class SFMLOrbView final : public SFMLView {
 public:
     /**
      * @brief Creates a SFMLOrbView object.

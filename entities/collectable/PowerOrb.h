@@ -16,7 +16,7 @@ namespace entities {
  *
  * Collectable for Pacman that gives scoring and one that must be collected before resetting.
  */
-class PowerOrb : public Entity, public std::enable_shared_from_this<PowerOrb> {
+class PowerOrb final : public Entity, public std::enable_shared_from_this<PowerOrb> {
 public:
     /**
      * @brief Creates a PowerOrb object.

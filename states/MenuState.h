@@ -26,9 +26,9 @@ class MenuState final : public State {
 public:
     /**
      * @brief Creates a LevelState object.
-     * @param statemanager Reference to the statemanager so we can pop and push states
+     * @param statemanager Reference to the state manager so we can pop and push states
      */
-    MenuState(std::weak_ptr<StateManager> statemanager);
+    explicit MenuState(std::weak_ptr<StateManager> statemanager);
     /**
      * @brief Loads the highscores
      *

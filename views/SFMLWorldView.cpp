@@ -12,15 +12,15 @@ bool ScoreEntry::operator==(const ScoreEntry& other) const {
            spriteID == other.spriteID; // simple copy constructor
 }
 void ScoreEntry::Draw(sf::RenderWindow& window) const { window.draw(sprite); }             // draw the entry
-void ScoreEntry::setScale(float scaleX, float scaleY) { sprite.setScale(scaleX, scaleY); } // set the scale
-void ScoreEntry::setPosition(float x, float y) { sprite.setPosition(x, y); }               // set the position
-void ScoreEntry::Update(float dt) { lifetime -= dt; } // decrease the lifetime each update
+void ScoreEntry::setScale(const float scaleX, const float scaleY) { sprite.setScale(scaleX, scaleY); } // set the scale
+void ScoreEntry::setPosition(const float x, const float y) { sprite.setPosition(x, y); }               // set the position
+void ScoreEntry::Update(const float dt) { lifetime -= dt; } // decrease the lifetime each update
 
-SFMLWorldView::SFMLWorldView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
-                             sf::RenderWindow& window, std::shared_ptr<Camera> camera)
+SFMLWorldView::SFMLWorldView(const sf::Texture& texture, const std::shared_ptr<sprites::SpriteAtlas> &atlas,
+                             sf::RenderWindow& window, const std::shared_ptr<Camera> &camera)
     : SFMLView(texture, atlas, std::weak_ptr<entities::Entity>(), window, camera), score(0),
       lives(3) {  // create an SFMLView object
-    FindSprite(); // find the correct sprite
+    SFMLWorldView::FindSprite(); // find the correct sprite
     // set texture, scale, origin
     sprite.setTexture(texture);
     sprite.setScale(1.f, 1.f);
@@ -70,7 +70,7 @@ void SFMLWorldView::FindSprite() {
 
 void SFMLWorldView::Draw() {
     // set the score text position, scaling using the camera class
-    auto screensize = camera->getSpritePixelSize();
+    const auto screensize = camera->getSpritePixelSize();
     auto screenpos = camera->worldToPixel(0.4, 1.2);
     scoreText.setScale(screensize.x / 32.f, screensize.y / 32.f);
     scoreText.setPosition(screenpos.x, screenpos.y);
@@ -106,7 +106,7 @@ void SFMLWorldView::Draw() {
 // simple setters
 void SFMLWorldView::setLives(int lives) { this->lives = lives; }
 void SFMLWorldView::setScore(int score) { this->score = score; }
-void SFMLWorldView::addScoreEntry(sprites::Sprite_ID ID, float lifetime, Position position) {
+void SFMLWorldView::addScoreEntry(const sprites::Sprite_ID ID, const float lifetime, const Position position) {
     // create a score entry
     ScoreEntry entry;
     entry.spriteID = ID;
@@ -118,7 +118,7 @@ void SFMLWorldView::addScoreEntry(sprites::Sprite_ID ID, float lifetime, Positio
     entry.setPosition(100.f, 100.f);
     scoreEntries.push_back(entry);
 }
-void SFMLWorldView::ItemEaten(sprites::Sprite_ID ID, Position position) {
+void SFMLWorldView::ItemEaten(const sprites::Sprite_ID ID, const Position position) {
     // on an eaten item call the correct addScoreEntry based on the eaten SpriteID
     switch (ID) {
 

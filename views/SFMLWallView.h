@@ -16,7 +16,7 @@ namespace views {
  *
  * responsible for visualising walls
  */
-class SFMLWallView : public SFMLView {
+class SFMLWallView final : public SFMLView {
 public:
     /**
      * @brief Creates a SFMLWallView object.

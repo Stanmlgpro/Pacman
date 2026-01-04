@@ -9,7 +9,7 @@
 #include "ghost/Ghost.h"
 
 namespace entities {
-Pacman::Pacman(float speed, int mapwidth, int mapheight, float x, float y) : Entity(mapwidth, mapheight) {
+Pacman::Pacman(const float speed,const int mapwidth,const int mapheight,const float x,const float y) : Entity(mapwidth, mapheight) {
     // set all variables
     position = {x, y};
     direction.reserve(2);
@@ -28,11 +28,11 @@ std::shared_ptr<Entity> Pacman::Interact(World& world) {
     return world.CollidesWithPacman(shared_from_this());
 } // function that should never be called
 
-void Pacman::Update(float dt) {
-    // check if we are damageable, and if not decrouse our timer
+void Pacman::Update(const float dt) {
+    // check if we are damageable, and if not decrease our timer
     if (!damagable) {
         invincibility_timer += dt;
-        // and make us damageable if if reaches the duration
+        // and make us damageable if reaches the duration
         if (invincibility_timer > invincibility_duration) {
             damagable = true;
             // reset the timer
@@ -89,16 +89,16 @@ void Pacman::Right() {
     direction_buffer[1] = 0;
 }
 // more simple getters / setters
-void Pacman::setDirectionBuffer(std::vector<int> buffer) { direction_buffer = buffer; }
+void Pacman::setDirectionBuffer(const std::vector<int> &buffer) { direction_buffer = buffer; }
 std::vector<int> Pacman::getDirectionBuffer() const { return direction_buffer; }
 float Pacman::MoveDt(float dt) const {
     // create a local variable so we keep our original speed in tact
     auto sped = speed;
     // create even movement in every direction
     if (direction[0] == 1 or direction[0] == -1)
-        sped /= mapwidth;
+        sped /= static_cast<float>(mapwidth);
     else
-        sped /= mapheight;
+        sped /= static_cast<float>(mapheight);
     // multiply by our speed
     dt *= sped;
     // return the new value

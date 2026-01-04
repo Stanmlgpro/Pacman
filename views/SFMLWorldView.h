@@ -29,7 +29,7 @@ struct ScoreEntry {
     void Update(float dt);
 };
 
-class SFMLWorldView : public SFMLView {
+class SFMLWorldView final : public SFMLView {
     /**
      * @class SFMLWorldView
      * @brief SFMLWorldView class
@@ -44,8 +44,8 @@ public:
      * @param window window to draw the sprites onto
      * @param camera camera to calculate the correct position to draw the sprites
      */
-    SFMLWorldView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas, sf::RenderWindow& window,
-                  std::shared_ptr<Camera> camera);
+    SFMLWorldView(const sf::Texture& texture, const std::shared_ptr<sprites::SpriteAtlas> &atlas, sf::RenderWindow& window,
+                  const std::shared_ptr<Camera> &camera);
     /// Overrides SFMLView::Update
     void Update(float dt) override;
     /// Overrides SFMLView::FindSprite

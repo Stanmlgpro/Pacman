@@ -14,7 +14,7 @@ namespace views {
  * @class SFMLChaseGhostView
  * @brief Specific Ghost derived from SFMLGhostView
  */
-class SFMLChaseGhostView : public SFMLGhostView {
+class SFMLChaseGhostView final : public SFMLGhostView {
 public:
     /**
      * @brief Creates a SFMLChaseGhostView object.

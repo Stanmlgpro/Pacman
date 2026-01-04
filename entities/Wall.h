@@ -14,7 +14,7 @@ namespace entities {
  * @class Wall
  * @brief Wall class to create the boundaries
  */
-class Wall : public Entity, public std::enable_shared_from_this<Wall> {
+class Wall final : public Entity, public std::enable_shared_from_this<Wall> {
 public:
     /**
      * @brief Creates a Wall object.

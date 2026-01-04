@@ -16,7 +16,7 @@ namespace entities {
  *
  * Controls the main character of our game
  */
-class Pacman : public Entity, public std::enable_shared_from_this<Pacman> {
+class Pacman final : public Entity, public std::enable_shared_from_this<Pacman> {
 public:
     /**
      * @brief Creates a PowerOrb object.
@@ -28,7 +28,7 @@ public:
      */
     Pacman(float speed, int mapwidth, int mapheight, float x, float y);
     /**
-     * @brief exists since all entites must override it but should not be called
+     * @brief exists since all entities must override it but should not be called
      */
     std::shared_ptr<Entity> Interact(World& world) override;
     /**
@@ -67,7 +67,7 @@ public:
      * @brief Sets the buffered direction
      * @param buffer
      */
-    void setDirectionBuffer(std::vector<int> buffer);
+    void setDirectionBuffer(const std::vector<int> &buffer);
     /**
      * @return return the buffered direction
      */
@@ -75,7 +75,7 @@ public:
     /**
      * @brief Calculates new Dt
      *
-     * sets dt to the correct value based on mapwidth and maplength and the speed at which we are moving
+     * sets dt to the correct value based on map width and maplength and the speed at which we are moving
      *
      * @param dt the old delta time
      * @return the newly calculated dt

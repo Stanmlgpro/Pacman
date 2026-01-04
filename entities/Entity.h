@@ -125,7 +125,7 @@ public:
      */
     void setDirection(std::vector<int> direction);
     /**
-     * @return returns the collisionsize
+     * @return returns the collision
      */
     float getCollsionSize() const;
     /**

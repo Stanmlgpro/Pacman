@@ -27,7 +27,7 @@ void Score::PowerOrbEaten() {
     score += 100;         // add the scoring
     last_orb_eaten = 0.f; // reset on eating an orb
 }
-void Score::FruitEaten(sprites::Sprite_ID ID) {
+void Score::FruitEaten(const sprites::Sprite_ID ID) {
     // add the correct amount of scoring based of which fruit (SpriteID) we ate
     switch (ID) {
     case sprites::Sprite_ID::FRUIT_CHERRY:
@@ -61,7 +61,7 @@ void Score::FruitEaten(sprites::Sprite_ID ID) {
 }
 
 // add the scoring for eating ghosts, make sure to add the multiplier for combos
-void Score::ghostEaten(int combo) { score += 200 * std::pow(2, combo); }
+void Score::ghostEaten(const int combo) { score += static_cast<int>(200 * std::pow(2, combo)); }
 
 void Score::levelWon() { score += 1000; }; // add scoring for winning a level
 
@@ -69,7 +69,7 @@ void Score::reset() { score = 0; } // reset the score to 0
 
 int Score::getPoints() const { return score; } // simple getter
 
-void Score::Update(float dt) { // update all the timers
+void Score::Update(const float dt) { // update all the timers
     last_orb_eaten += dt;
     if (last_orb_eaten > 5.f) { // if it has been to long since we ate an orb
         decrease_timer += dt;

@@ -14,7 +14,7 @@ namespace views {
  * @class SFMLPowerOrbView
  * @brief class to visualise PowerOrbs
  */
-class SFMLPowerOrbView : public SFMLView {
+class SFMLPowerOrbView final : public SFMLView {
 public:
     /**
      * @brief Creates a SFMLPowerOrbView object.

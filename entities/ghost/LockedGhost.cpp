@@ -7,16 +7,17 @@
 #include <algorithm>
 #include <cmath>
 #include <iostream>
+#include <utility>
 
 namespace entities {
-LockedGhost::LockedGhost(float x, float y, std::shared_ptr<Pacman> pacman,
-                         const std::vector<std::vector<bool>>& wallgrid, int id, float chasetime)
-    : Ghost(x, y, pacman, wallgrid, id, chasetime) {
+LockedGhost::LockedGhost(const float x, const float y, std::shared_ptr<Pacman> pacman,
+                         const std::vector<std::vector<bool>>& wallgrid, const int id,const float chasetime)
+    : Ghost(x, y, std::move(pacman), wallgrid, id, chasetime) {
     // Create a ghost and set its speed
     setSpeed(8.5f);
 }
 
-float LockedGhost::distanceTurn(std::vector<int> direction, float dt) {
+float LockedGhost::distanceTurn(const std::vector<int> direction, const float dt) {
     if (dying)
         // If we are dying (eyes) Go back to startpos
         return BreathFirstDistance(direction, startpos, dt);
@@ -27,7 +28,7 @@ float LockedGhost::distanceTurn(std::vector<int> direction, float dt) {
     return 0.f;
 }
 
-void LockedGhost::CalculateNextTurn(float dt) {
+void LockedGhost::CalculateNextTurn(const float dt) {
     // Different algorithm for when we are feared or dying since we need to calculate in those cases
     if (dying || feared) {
         std::vector<int> direction;
@@ -57,7 +58,7 @@ void LockedGhost::CalculateNextTurn(float dt) {
 
         return;
     }
-    // If we are not feared or dying just choose a random direction out of the availables
+    // If we are not feared or dying just choose a random direction out of the available
     auto possible_dir = IsAtIntersection();
     // check for empty possibles direction and wait a tick with a 50% chance
     if (possible_dir.empty())

@@ -39,8 +39,8 @@ public:
      * @param world_sounds Reference to the world_sounds so we can create the necessary sounds
      * @param player to give to the Score class
      */
-    explicit World(std::string filename, std::shared_ptr<factory::EntityFactory> entity_factory,
-                   std::shared_ptr<sounds::WorldSound> world_sounds, std::string player);
+    explicit World(std::string filename, const std::shared_ptr<factory::EntityFactory>& entity_factory,
+                   std::shared_ptr<sounds::WorldSound> world_sounds, const std::string& player);
 
     /**
      * @brief Called when a new map needs to be loaded
@@ -65,8 +65,8 @@ public:
      * then deletes, adds scoring, ... based on which entity hits pacman
      */
     /// @{
-    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Wall> wall);
-    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orb> orb);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(const std::shared_ptr<entities::Wall>& wall) const;
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orb> orb) const;
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::PowerOrb> powerorb);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Fruit> fruit, sprites::Sprite_ID ID);
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost);
@@ -85,7 +85,7 @@ public:
      *
      * calculates the closest tile to the world coords
      */
-    static std::vector<int> NormalizedToGrid(float normX, float normY, std::vector<std::vector<bool>> wallGrid);
+    static std::vector<int> NormalizedToGrid(float normX, float normY, const std::vector<std::vector<bool>> &wallGrid);
     /**
      * @brief Renders the game
      *
@@ -99,7 +99,7 @@ public:
      *
      * sets the buffered direction of pacman to whatever was inputted
      */
-    void movePacman(MOVE movement);
+    void movePacman(MOVE movement) const;
 
     /**
      * @return returns the Entities

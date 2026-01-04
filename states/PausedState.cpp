@@ -3,14 +3,14 @@
 //
 
 #include "PausedState.h"
+
+#include <utility>
 #include "LevelState.h"
 #include "MenuState.h"
 #include "StateManager.h"
 
 namespace states {
-PausedState::PausedState(std::weak_ptr<StateManager> statemanager) {
-    // initiate variables
-    this->statemanager = statemanager;
+PausedState::PausedState(std::weak_ptr<StateManager> statemanager) : State(std::move(statemanager)) {
     // load the correct font based on OS
 #ifdef _WIN32
     font.loadFromFile("C:/Windows/Fonts/arial.ttf");
@@ -54,13 +54,13 @@ void PausedState::Update() {} // paused state has nothing to update
 
 void PausedState::Render(sf::RenderWindow& window) {
     // render the Hinting text
-    sf::RectangleShape overlay(sf::Vector2f(window.getSize().x, window.getSize().y));
+    sf::RectangleShape overlay(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
     overlay.setFillColor(sf::Color(0, 0, 0, 150));
     window.draw(overlay);
 
-    title.setPosition(window.getSize().x / 2.f - title.getGlobalBounds().width / 2.f, 100.f);
-    resumeHint.setPosition(window.getSize().x / 2.f - resumeHint.getGlobalBounds().width / 2.f, 250.f);
-    menuHint.setPosition(window.getSize().x / 2.f - menuHint.getGlobalBounds().width / 2.f, 310.f);
+    title.setPosition(static_cast<float>(window.getSize().x) / 2.f - title.getGlobalBounds().width / 2.f, 100.f);
+    resumeHint.setPosition(static_cast<float>(window.getSize().x) / 2.f - resumeHint.getGlobalBounds().width / 2.f, 250.f);
+    menuHint.setPosition(static_cast<float>(window.getSize().x) / 2.f - menuHint.getGlobalBounds().width / 2.f, 310.f);
 
     // draw the text
     window.draw(title);

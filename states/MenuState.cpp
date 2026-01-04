@@ -8,10 +8,9 @@
 #include "StateManager.h"
 #include <fstream>
 #include <sstream>
+#include <utility>
 namespace states {
-MenuState::MenuState(std::weak_ptr<StateManager> statemanager) {
-    // initiate variables
-    this->statemanager = statemanager;
+MenuState::MenuState(std::weak_ptr<StateManager> statemanager) : State(std::move(statemanager)) {
 
     // load the correct font based on OS
 #ifdef _WIN32
@@ -47,7 +46,7 @@ void MenuState::HandleEvent(const sf::Event& e) {
         if (e.key.code == sf::Keyboard::Enter) {
             std::cout << "Starting new level with player: " << player << std::endl;
             // check for no player input and make an "Unknown" player
-            statemanager.lock()->PushState(LEVEL, (player != "") ? player : "Unknown");
+            statemanager.lock()->PushState(LEVEL, (!player.empty()) ? player : "Unknown");
         }
     }
 }
@@ -60,13 +59,13 @@ std::vector<ScoreEntry> MenuState::loadHighscores(const std::string& filename) {
     if (!file.is_open())
         return scores;
 
-    // load line by line cutting on ":" to get the score and player seperate
+    // load line by line cutting on ":" to get the score and player separate
     std::string line;
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::string name;
-        int score;
         if (std::getline(iss, name, ':')) {
+            int score;
             iss >> score;
             name.erase(std::remove_if(name.begin(), name.end(), ::isspace), name.end());
             scores.push_back({name, score});
@@ -83,16 +82,16 @@ std::vector<ScoreEntry> MenuState::loadHighscores(const std::string& filename) {
 void MenuState::Update() { highscores = loadHighscores("../scoreboard.txt"); }
 
 void MenuState::Render(sf::RenderWindow& window) {
-    // render the Title, Playername, Highscores and Enter button text
-    title.setPosition(window.getSize().x / 2.f - title.getGlobalBounds().width / 2.f, 50.f);
+    // render the Title, Player, Highscores and Enter button text
+    title.setPosition(static_cast<float>(window.getSize().x) / 2.f - title.getGlobalBounds().width / 2.f, 50.f);
     window.draw(title);
 
     sf::Text playerText("Name: " + player + "_", font, 30);
     playerText.setFillColor(sf::Color::White);
-    playerText.setPosition(window.getSize().x / 2.f - playerText.getGlobalBounds().width / 2.f, 150.f);
+    playerText.setPosition(static_cast<float>(window.getSize().x) / 2.f - playerText.getGlobalBounds().width / 2.f, 150.f);
     window.draw(playerText);
 
-    hsTitle.setPosition(window.getSize().x / 2.f - hsTitle.getGlobalBounds().width / 2.f, 220.f);
+    hsTitle.setPosition(static_cast<float>(window.getSize().x) / 2.f - hsTitle.getGlobalBounds().width / 2.f, 220.f);
     window.draw(hsTitle);
 
     float y = 280.f;
@@ -103,14 +102,14 @@ void MenuState::Render(sf::RenderWindow& window) {
         ss << rank << ". " << s.name << " - " << s.score;
         sf::Text entry(ss.str(), font, 28);
         entry.setFillColor(sf::Color::White);
-        entry.setPosition(window.getSize().x / 2.f - entry.getGlobalBounds().width / 2.f, y);
+        entry.setPosition(static_cast<float>(window.getSize().x) / 2.f - entry.getGlobalBounds().width / 2.f, y);
         window.draw(entry);
         y += 35.f;
         ++rank;
     }
 
     // add the Enter text
-    hint.setPosition(window.getSize().x / 2.f - hint.getGlobalBounds().width / 2.f, window.getSize().y - 70.f);
+    hint.setPosition(static_cast<float>(window.getSize().x) / 2.f - hint.getGlobalBounds().width / 2.f, window.getSize().y - 70.f);
     window.draw(hint);
 }
 } // namespace states

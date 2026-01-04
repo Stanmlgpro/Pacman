@@ -4,11 +4,12 @@
 #include "SFMLPacmanView.h"
 #include "entities/Entity.h"
 #include <iostream>
+#include <utility>
 namespace views {
 SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                                std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                                std::shared_ptr<Camera> camera)
-    : SFMLView(texture, atlas, entity, window, camera) {
+    : SFMLView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) {
     // set the variables timers, etc...
     sprite.setScale(1.f, 1.f);
     sprite.setOrigin(8.f, 8.f);
@@ -17,7 +18,7 @@ SFMLPacmanView::SFMLPacmanView(const sf::Texture& texture, std::shared_ptr<sprit
     animation_counter = 0;
 }
 
-void SFMLPacmanView::Update(float dt) {
+void SFMLPacmanView::Update(const float dt) {
     // update the animation counter
     animation_counter += dt;
     // check if we need to swap our boolean value
@@ -36,14 +37,14 @@ void SFMLPacmanView::Update(float dt) {
 
 void SFMLPacmanView::FindSprite() {
     // check for the existence of the reference
-    auto e = entity.lock();
+    const auto e = entity.lock();
     if (!e)
         return;
     // and on existence pick the correct SpritID needed for the current state of pacman and report that to the atlas
     // to get the correct rectangle
-    int dirX = e->getDirection()[0];
-    int dirY = e->getDirection()[1];
-    bool dying = e->getDying();
+    const int dirX = e->getDirection()[0];
+    const int dirY = e->getDirection()[1];
+    const bool dying = e->getDying();
     sf::IntRect rect;
 
     if (!dying)
@@ -84,8 +85,6 @@ void SFMLPacmanView::FindSprite() {
             rect = atlas->get(sprites::Sprite_ID::PACMAN_DYING_11);
             break;
         case 11:
-            rect = atlas->get(sprites::Sprite_ID::PACMAN_DYING_12);
-            break;
         default:
             rect = atlas->get(sprites::Sprite_ID::PACMAN_DYING_12);
             break;
@@ -107,13 +106,13 @@ void SFMLPacmanView::FindSprite() {
 
 void SFMLPacmanView::Draw() {
     // check for existence of the reference to the entity
-    auto e = entity.lock();
+    const auto e = entity.lock();
     if (!e)
         return;
 
     // set the correct screen position, scale using the camera class
-    auto screensize = camera->getSpritePixelSize();
-    auto screenpos = camera->worldToPixel(e->getPosition().x, e->getPosition().y);
+    const auto screensize = camera->getSpritePixelSize();
+    const auto screenpos = camera->worldToPixel(e->getPosition().x, e->getPosition().y);
     sprite.setScale(screensize.x / 16.f, screensize.y / 16.f);
     sprite.setPosition(screenpos.x, screenpos.y);
 

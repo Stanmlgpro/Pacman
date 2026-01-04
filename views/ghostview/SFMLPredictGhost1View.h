@@ -14,7 +14,7 @@ namespace views {
  * @class SFMLPredictGhost1View
  * @brief Specific Ghost derived from SFMLGhostView
  */
-class SFMLPredictGhost1View : public SFMLGhostView {
+class SFMLPredictGhost1View final : public SFMLGhostView {
 public:
     /**
      * @brief Creates a SFMLPredictGhost1View object.

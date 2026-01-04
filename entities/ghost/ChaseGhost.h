@@ -16,7 +16,7 @@ namespace entities {
  *
  * 1 of 3 types of Ghost, this one targets the position of pacman directly
  */
-class ChaseGhost : public Ghost {
+class ChaseGhost final : public Ghost {
 public:
     /**
      * @brief Creates a PowerOrb object.
@@ -25,7 +25,7 @@ public:
      * @param pacman pacman object to get its status
      * @param wallgrid 2D vector of bools that represent the existing walls, used to prevent phasing trough them
      * @param id in (1,2,3,4) decides when a ghost can start chasing pacman
-     * @chasetime time since spawning in that ghost has to wait before moving
+     * @param chasetime time since spawning in that ghost has to wait before moving
      */
     ChaseGhost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id,
                float chasetime);

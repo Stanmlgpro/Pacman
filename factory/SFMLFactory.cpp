@@ -26,17 +26,18 @@
 #include "views/ghostview/SFMLPredictGhost2View.h"
 
 #include <iostream>
+#include <utility>
 namespace factory {
-SFMLFactory::SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera)
+SFMLFactory::SFMLFactory(sf::RenderWindow& window, const std::string& texture_input, std::shared_ptr<Camera> camera)
     : window(window) {
     // assign all variables
-    this->camera = camera;
+    this->camera = std::move(camera);
     if (!texture.loadFromFile(texture_input))
         throw std::runtime_error("Failed to load textures: " + texture_input);
     // create a new atlas with the texture file
     this->atlas = std::make_shared<sprites::SpriteAtlas>(texture);
 }
-// create the entites and attach the Views
+// create the entities and attach the Views
 std::shared_ptr<entities::Wall> SFMLFactory::createWall(float x, float y) {
     auto wall = std::make_shared<entities::Wall>(x, y);
     wall->setView(std::make_unique<views::SFMLWallView>(texture, atlas, wall, window, camera));
@@ -54,7 +55,7 @@ std::shared_ptr<entities::PowerOrb> SFMLFactory::createPowerOrb(float x, float y
 }
 std::shared_ptr<entities::Fruit> SFMLFactory::createFruit(float x, float y) {
     // Choose 1 of 7 random possible fruits
-    int rand_num = singleton::Random::getInstance().get(0, 7);
+    const int rand_num = singleton::Random::getInstance().get(0, 7);
     switch (rand_num) {
     case 0: {
         auto fruit = std::make_shared<entities::Cherry>(x, y);
@@ -102,9 +103,9 @@ std::shared_ptr<entities::Fruit> SFMLFactory::createFruit(float x, float y) {
 }
 std::shared_ptr<entities::Ghost> SFMLFactory::createGhost(float x, float y, std::shared_ptr<entities::Pacman> pacman,
                                                           std::vector<std::vector<bool>> wallGrid, int id,
-                                                          bool first_time) {
+                                                          const bool first_time) {
     std::shared_ptr<entities::Ghost> ghost;
-    // choose chasetime and ghost type based on id
+    // choose chase time and ghost type based on id
     switch (id) {
     case 0:
         ghost = std::make_shared<entities::LockedGhost>(x, y, pacman, wallGrid, id, 0.f);
@@ -122,6 +123,7 @@ std::shared_ptr<entities::Ghost> SFMLFactory::createGhost(float x, float y, std:
         ghost = std::make_shared<entities::PredictGhost>(x, y, pacman, wallGrid, id, first_time ? 10.f : 0.f);
         ghost->setView(std::make_unique<views::SFMLPredictGhost2View>(texture, atlas, ghost, window, camera));
         break;
+    default: ;
     }
     return ghost;
 }

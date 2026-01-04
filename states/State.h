@@ -27,7 +27,7 @@ public:
     /**
      * @brief Creates a State object.
      */
-    explicit State() = default;
+    explicit State(std::weak_ptr<StateManager> statemanager);
     /**
      * @brief Handles SFML events
      *

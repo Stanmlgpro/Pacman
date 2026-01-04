@@ -23,7 +23,7 @@ public:
      * @brief Creates a PausedState object.
      * @param statemanager Reference to the statemanager so we can pop and push states
      */
-    PausedState(std::weak_ptr<StateManager> statemanager);
+    explicit PausedState(std::weak_ptr<StateManager> statemanager);
 
     /// Overrides State::HandleEvent
     void HandleEvent(const sf::Event& e) override;

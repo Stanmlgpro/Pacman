@@ -17,7 +17,7 @@ namespace sounds {
  *
  * Implements all the pure virtual functions and plays specific SFML sounds
  */
-class SFMLWorldSounds : public WorldSound {
+class SFMLWorldSounds final : public WorldSound {
 public:
     /**
      * @brief Creates an SFMLFactory object.

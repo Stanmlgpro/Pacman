@@ -5,11 +5,12 @@
 #include "SFMLGhostView.h"
 #include "entities/Entity.h"
 #include <iostream>
+#include <utility>
 namespace views {
 SFMLGhostView::SFMLGhostView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,
                              std::weak_ptr<entities::Entity> entity, sf::RenderWindow& window,
                              std::shared_ptr<Camera> camera)
-    : SFMLView(texture, atlas, entity, window, camera) {
+    : SFMLView(texture, std::move(atlas), std::move(entity), window, std::move(camera)) {
     // set the variables timers, etc...
     animation_bool = true;
     animation_speed = 0.1f;
@@ -19,7 +20,7 @@ SFMLGhostView::SFMLGhostView(const sf::Texture& texture, std::shared_ptr<sprites
     animation_counter_feared = 0;
 }
 
-void SFMLGhostView::Update(float dt) {
+void SFMLGhostView::Update(const float dt) {
     // update the animation counter
     animation_counter += dt;
     // check if we need to swap our boolean value
@@ -48,13 +49,13 @@ void SFMLGhostView::Draw() {
     // find the correct sprite
     FindSprite();
     // check for existence of the reference to the entity
-    auto e = entity.lock();
+    const auto e = entity.lock();
     if (!e)
         return;
 
     // set the correct screen position, scale using the camera class
-    auto screensize = camera->getSpritePixelSize();
-    auto screenpos = camera->worldToPixel(e->getPosition().x, e->getPosition().y);
+    const auto screensize = camera->getSpritePixelSize();
+    const auto screenpos = camera->worldToPixel(e->getPosition().x, e->getPosition().y);
     sprite.setScale(screensize.x / 16.f, screensize.y / 16.f);
     sprite.setPosition(screenpos.x, screenpos.y);
 

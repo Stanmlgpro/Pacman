@@ -6,22 +6,24 @@
 
 #include <views/SFMLWorldView.h>
 
+#include <utility>
+
 #include "PausedState.h"
 #include "StateManager.h"
 #include "World.h"
 namespace states {
 LevelState::LevelState(std::weak_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory,
-                       std::shared_ptr<sounds::WorldSound> world_sounds, std::string player)
-    : player(player) {
+                       std::shared_ptr<sounds::WorldSound> world_sounds, const std::string& player)
+    :   State(std::move(statemanager)),
+        entity_factory(std::move(entity_factory)),
+        world_sounds(std::move(world_sounds)),
+        player(player) {
     // initiate variables
-    this->statemanager = statemanager;
-    this->entity_factory = entity_factory;
-    this->world_sounds = world_sounds;
 
     // load the world based on a txt file
-    this->world = std::make_unique<World>("../map.txt", entity_factory, world_sounds, player);
+    this->world = std::make_unique<World>("../map.txt", this->entity_factory, this->world_sounds, player);
     // start sound
-    world_sounds->Start();
+    this->world_sounds->Start();
     std::cout << "new level and world created" << std::endl;
 }
 

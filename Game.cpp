@@ -10,9 +10,9 @@
 #include "states/MenuState.h"
 
 Game::Game() : window(sf::VideoMode(750, 800), "Pac-Man") {
-    // create all needed variables to give to the statemanager
+    // create all needed variables to give to the state manager
     camera = std::make_shared<Camera>();
-    camera->setScreenSize(window.getSize().x, window.getSize().y);
+    camera->setScreenSize(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y));
     entity_factory = std::make_unique<factory::SFMLFactory>(window, "../Spritesheet.png", camera);
     world_sound = std::make_shared<sounds::SFMLWorldSounds>();
     state_manager = std::make_unique<states::StateManager>(entity_factory, world_sound);
@@ -41,7 +41,7 @@ void Game::CheckInput() {
         // on resizing
         if (event.type == sf::Event::Resized) {
             // set the new size
-            auto size = window.getSize();
+            const auto size = window.getSize();
 
             // Update camera with new screen size
             camera->setScreenSize(static_cast<float>(size.x), static_cast<float>(size.y));

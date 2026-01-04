@@ -9,16 +9,17 @@
 #include "State.h"
 #include "sounds/WorldSound.h"
 #include <SFML/Graphics.hpp>
+#include <utility>
 
 namespace states {
 StateManager::StateManager(std::shared_ptr<factory::EntityFactory> entity_factory,
                            std::shared_ptr<sounds::WorldSound> world_sound) {
     // initiate variables
-    this->entity_factory = entity_factory;
-    this->world_sound = world_sound;
+    this->entity_factory = std::move(entity_factory);
+    this->world_sound = std::move(world_sound);
 }
 
-void StateManager::PushState(StateID stateid, std::string player) {
+void StateManager::PushState(const StateID stateid, std::string player) {
     // push the correct states based on the StateID
     std::unique_ptr<State> state;
     if (stateid == StateID::MENU) {
@@ -37,7 +38,7 @@ void StateManager::PushState(StateID stateid, std::string player) {
     states.push(std::move(state));
 }
 
-void StateManager::PopState(int amount) {
+void StateManager::PopState(const int amount) {
     // pop "amount" amount of states
     for (int i = 0; i < amount; i++) {
         if (!states.empty())

@@ -7,7 +7,7 @@
 #include <iostream>
 
 namespace entities {
-PowerOrb::PowerOrb(float x, float y) {
+PowerOrb::PowerOrb(const float x, const float y) {
     // Create a PowerOrb with a position and collision
     position.x = x;
     position.y = y;
@@ -17,7 +17,7 @@ PowerOrb::PowerOrb(float x, float y) {
 std::shared_ptr<Entity> PowerOrb::Interact(World& world) { return world.CollidesWithPacman(shared_from_this()); }
 
 // Update the view
-void PowerOrb::Update(float dt) { view->Update(dt); }
+void PowerOrb::Update(const float dt) { view->Update(dt); }
 
 // Make sure we cannot have won yet if any PowerOrbs are still present
 void PowerOrb::checkWin(bool& check) { check = false; }

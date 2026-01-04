@@ -7,7 +7,7 @@
 #include <utility>
 
 namespace entities {
-Entity::Entity(int mapwidth, int mapheight) {
+Entity::Entity(const int mapwidth,const int mapheight) {
     // set all variables
     this->mapwidth = mapwidth;
     this->mapheight = mapheight;
@@ -51,7 +51,7 @@ void Entity::setView(std::unique_ptr<views::View> view) { this->view = std::move
 
 Position Entity::getPosition() const { return position; }
 
-void Entity::setPosition(float x, float y) {
+void Entity::setPosition(const float x, const float y) {
     position.x = x;
     position.y = y;
 }
@@ -62,5 +62,5 @@ void Entity::setDirection(std::vector<int> direction) { this->direction = std::m
 
 float Entity::getCollsionSize() const { return CollisionSize; }
 
-void Entity::setCollisionSize(float size) { CollisionSize = size; }
+void Entity::setCollisionSize(const float size) { CollisionSize = size; }
 } // namespace entities

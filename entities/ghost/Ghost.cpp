@@ -8,15 +8,16 @@
 #include <climits>
 #include <iostream>
 #include <queue>
+#include <utility>
 
 namespace entities {
-Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, int id,
-             float chasetime) {
+Ghost::Ghost(const float x, const float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, const int id,
+             const float chasetime) {
     // set the variables
     position.x = x;
     position.y = y;
     startpos = {x, y};
-    this->pacman = pacman;
+    this->pacman = std::move(pacman);
     this->wallgrid = wallgrid;
     this->id = id;
     direction = {0, 0};
@@ -34,21 +35,21 @@ Ghost::Ghost(float x, float y, std::shared_ptr<Pacman> pacman, const std::vector
 std::shared_ptr<Entity> Ghost::Interact(World& world) { return world.CollidesWithPacman(shared_from_this()); }
 
 std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
-    // find the closests Tile to the position
-    auto gridPos = World::NormalizedToGrid(position.x, position.y, wallgrid);
-    int gridX = static_cast<int>(gridPos[0]);
-    int gridY = static_cast<int>(gridPos[1]);
+    // find the closest Tile to the position
+    const auto gridPos = World::NormalizedToGrid(position.x, position.y, wallgrid);
+    const int gridX = static_cast<int>(gridPos[0]);
+    const int gridY = static_cast<int>(gridPos[1]);
 
     // calculate the tileSize and the Center
-    float tileSizeX = 2.0f / static_cast<float>(mapwidth);
-    float tileSizeY = 2.0f / static_cast<float>(mapheight);
-    float cellCenterX = -1.0f + tileSizeX * (static_cast<float>(gridX) + 0.5f);
-    float cellCenterY = -1.0f + tileSizeY * (static_cast<float>(gridY) + 0.5f);
+    const float tileSizeX = 2.0f / static_cast<float>(mapwidth);
+    const float tileSizeY = 2.0f / static_cast<float>(mapheight);
+    const float cellCenterX = -1.0f + tileSizeX * (static_cast<float>(gridX) + 0.5f);
+    const float cellCenterY = -1.0f + tileSizeY * (static_cast<float>(gridY) + 0.5f);
 
-    // Check our position agains the position we would snap to if we were to chose the closest tile center
-    float distX = std::abs(position.x - cellCenterX);
-    float distY = std::abs(position.y - cellCenterY);
-    float epsilon = 0.003f;
+    // Check our position against the position we would snap to if we were to choose the closest tile center
+    const float distX = std::abs(position.x - cellCenterX);
+    const float distY = std::abs(position.y - cellCenterY);
+    constexpr float epsilon = 0.003f;
 
     // ignore if it becomes to big
     if (!(distX < epsilon && distY < epsilon))
@@ -82,27 +83,27 @@ std::vector<std::vector<int>> Ghost::IsAtIntersection() const {
 
     // check for wanted corner curves
     if (openPaths == 2) {
-        bool left = (gridX > 0) && !wallgrid[gridY][gridX - 1];
-        bool right = (gridX < static_cast<int>(wallgrid[0].size()) - 1) && !wallgrid[gridY][gridX + 1];
-        bool up = (gridY > 0) && !wallgrid[gridY - 1][gridX];
-        bool down = (gridY < static_cast<int>(wallgrid.size()) - 1) && !wallgrid[gridY + 1][gridX];
+        const bool left = (gridX > 0) && !wallgrid[gridY][gridX - 1];
+        const bool right = (gridX < static_cast<int>(wallgrid[0].size()) - 1) && !wallgrid[gridY][gridX + 1];
+        const bool up = (gridY > 0) && !wallgrid[gridY - 1][gridX];
+        const bool down = (gridY < static_cast<int>(wallgrid.size()) - 1) && !wallgrid[gridY + 1][gridX];
 
-        bool hasHorizontal = left || right;
-        bool hasVertical = up || down;
+        const bool hasHorizontal = left || right;
+        const bool hasVertical = up || down;
 
         if (!(hasHorizontal && hasVertical))
             return {};
     }
 
-    // return the possible directions if all nessecities are met
+    // return the possible directions if all necessities are met
     return ret;
 }
 
-void Ghost::Update(float dt) {
+void Ghost::Update(const float dt) {
     // if we are dying check if we have reached or original position
     if (dying) {
-        float EPS = 0.01f;
-        // use epsilon comparison becouse of floating point arithmatic
+        constexpr float EPS = 0.01f;
+        // use epsilon comparison because of floating point arithmatic
         if (std::abs(position.x - startpos.x) < EPS && std::abs(position.y - startpos.y) < EPS) {
             // stop dying it the original position is reached
             setDying(false);
@@ -111,16 +112,16 @@ void Ghost::Update(float dt) {
     // if we are feared update our timer
     if (feared) {
         fearcheck += dt;
-        // if the timer reaches the disered time turn of fearmode and reset the timer
+        // if the timer reaches the desired time turn of fearmode and reset the timer
         if (fearcheck >= feartime) {
             setFeared(false);
             fearcheck = 0.f;
         }
     }
-    // if we are not yet chasin decreased the timer
+    // if we are not yet chasing decreased the timer
     if (!Chasing) {
         ChaseTimer -= dt;
-        // if it hits 0 we can start chasemode
+        // if it hits 0 we can start chase mode
         if (ChaseTimer <= 0.f) {
             Chasing = true;
         }
@@ -132,7 +133,7 @@ void Ghost::Update(float dt) {
     if (turnTimer > 0.f)
         turnTimer -= dt;
 
-    // only if we havent turned recently we check for new possible directions to turn
+    // only if we haven't turned recently we check for new possible directions to turn
     if (turnTimer <= 0.f)
         CalculateNextTurn(MoveDt(dt));
     // at the end we update our position
@@ -211,20 +212,20 @@ void Ghost::reset() {
     direction = {0, 0};
 }
 
-float Ghost::ManhattanDistance(std::vector<int> direction, Position target, float dt) {
+float Ghost::ManhattanDistance(const std::vector<int> &direction, const Position target, const float dt) const {
     // calculates the manhattandistance using the new position based on the direction and the dt
-    float newX = position.x + direction[0] * speed * dt;
-    float newY = position.y + direction[1] * speed * dt;
-    float dis = std::abs(newX - target.x) + std::abs(newY - target.y); // formula for distance
+    const float newX = position.x + direction[0] * speed * dt;
+    const float newY = position.y + direction[1] * speed * dt;
+    const float dis = std::abs(newX - target.x) + std::abs(newY - target.y); // formula for distance
     return dis;                                                        // and returns it
 }
 
-int Ghost::BFSGridDistance(int startX, int startY, int targetX, int targetY) const {
+int Ghost::BFSGridDistance(int startX, int startY, const int targetX, const int targetY) const {
     // uses the BFS algorithm the return the desired distance
-    int rows = wallgrid.size();
-    int cols = wallgrid[0].size();
+    const int rows = wallgrid.size();
+    const int cols = wallgrid[0].size();
 
-    // checks for out for out of bouds
+    // checks for out of bounds
     if (startX < 0 || startX >= cols || startY < 0 || startY >= rows)
         return INT_MAX;
     if (targetX < 0 || targetX >= cols || targetY < 0 || targetY >= rows)
@@ -245,10 +246,10 @@ int Ghost::BFSGridDistance(int startX, int startY, int targetX, int targetY) con
     // all possible directions we need to check
     const std::vector<std::pair<int, int>> dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-    // loop untill nothing more needs to be checked or if we found our target
+    // loop until nothing more needs to be checked or if we found our target
     while (!q.empty()) {
         // extract the top of the queue
-        auto entry = q.front();
+        const auto entry = q.front();
         const auto x = entry.first;
         const auto y = entry.second;
         q.pop();
@@ -279,22 +280,22 @@ int Ghost::BFSGridDistance(int startX, int startY, int targetX, int targetY) con
     // last return if we could not find a possible path
     return INT_MAX;
 }
-float Ghost::BreathFirstDistance(std::vector<int> direction, Position target, float dt) {
-    // calulate the positions to call the BFS function on
-    auto gpos = World::NormalizedToGrid(position.x, position.y, wallgrid);
-    int gx = static_cast<int>(gpos[0]);
-    int gy = static_cast<int>(gpos[1]);
+float Ghost::BreathFirstDistance(const std::vector<int> &direction, const Position target, float dt) const {
+    // calculate the positions to call the BFS function on
+    const auto gpos = World::NormalizedToGrid(position.x, position.y, wallgrid);
+    const int gx = static_cast<int>(gpos[0]);
+    const int gy = static_cast<int>(gpos[1]);
 
-    int nextX = gx + direction[0];
-    int nextY = gy + direction[1];
+    const int nextX = gx + direction[0];
+    const int nextY = gy + direction[1];
 
-    auto tpos = World::NormalizedToGrid(target.x, target.y, wallgrid);
-    int tx = static_cast<int>(tpos[0]);
-    int ty = static_cast<int>(tpos[1]);
+    const auto tpos = World::NormalizedToGrid(target.x, target.y, wallgrid);
+    const int tx = static_cast<int>(tpos[0]);
+    const int ty = static_cast<int>(tpos[1]);
 
-    // calulate the distnace
-    int d = BFSGridDistance(nextX, nextY, tx, ty);
+    // calculate the distance
+    const int d = BFSGridDistance(nextX, nextY, tx, ty);
 
-    return d; // and return it
+    return static_cast<float>(d); // and return it
 }
 } // namespace entities

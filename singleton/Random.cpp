@@ -14,8 +14,8 @@ Random& Random::getInstance() {
     return instance;
 }
 
-int Random::get(int min, int max) {
-    // return a random number between the boundaries using the ditribution
+int Random::get(const int min, const int max) {
+    // return a random number between the boundaries using the distribution
     std::uniform_int_distribution<int> dist(min, max);
     return dist(gen);
 }

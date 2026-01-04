@@ -39,7 +39,7 @@ public:
      * @param dt amount we move in the direction
      * @return returns the distance using the manhattandistance algorithm
      */
-    float ManhattanDistance(std::vector<int> direction, Position target, float dt);
+    float ManhattanDistance(const std::vector<int> &direction, Position target, float dt) const;
     /**
      * @brief Helper function
      *
@@ -62,7 +62,7 @@ public:
      * @param dt amount we move in the direction
      * @return returns the distance using the BreathFirstDistance algorithm
      */
-    float BreathFirstDistance(std::vector<int> direction, Position target, float dt);
+    float BreathFirstDistance(const std::vector<int> &direction, Position target, float dt) const;
     /**
      * @brief Function to see available directions
      *

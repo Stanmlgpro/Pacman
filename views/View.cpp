@@ -3,10 +3,12 @@
 //
 
 #include "View.h"
+
+#include <utility>
 namespace views {
 View::View(std::weak_ptr<entities::Entity> entity, std::shared_ptr<Camera> camera) {
     // initiate variables
-    this->entity = entity;
-    this->camera = camera;
+    this->entity = std::move(entity);
+    this->camera = std::move(camera);
 }
 } // namespace views

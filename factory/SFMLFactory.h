@@ -27,7 +27,7 @@ namespace factory {
  * Implements all the pure virtual functions and creates specific SFML objects to attach to them.
  * Creates SFML views and attaches them to the created entities
  */
-class SFMLFactory : public EntityFactory {
+class SFMLFactory final : public EntityFactory {
 public:
     /**
      * @brief Creates an SFMLFactory object.
@@ -36,7 +36,7 @@ public:
      * @param texture_input full texture file given to the views to splice the correct texture
      * @param camera used to correctly position all views for all screen sizes
      */
-    SFMLFactory(sf::RenderWindow& window, std::string texture_input, std::shared_ptr<Camera> camera);
+    SFMLFactory(sf::RenderWindow& window, const std::string& texture_input, std::shared_ptr<Camera> camera);
     /// Overrides EntityFactory::createWall
     std::shared_ptr<entities::Wall> createWall(float x, float y) override;
     /// Overrides EntityFactory::createGhost
