@@ -7,7 +7,7 @@
 #include <iostream>
 
 namespace entities {
-Fruit::Fruit(float x, float y) {
+Fruit::Fruit(const float x, const float y) {
     // Create A fruit and give at a position and collision
     position.x = x;
     position.y = y;
