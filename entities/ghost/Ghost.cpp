@@ -11,8 +11,8 @@
 #include <utility>
 
 namespace entities {
-Ghost::Ghost(const float x, const float y, std::shared_ptr<Pacman> pacman, const std::vector<std::vector<bool>>& wallgrid, const int id,
-             const float chasetime) {
+Ghost::Ghost(const float x, const float y, std::shared_ptr<Pacman> pacman,
+             const std::vector<std::vector<bool>>& wallgrid, const int id, const float chasetime) {
     // set the variables
     position.x = x;
     position.y = y;
@@ -212,12 +212,12 @@ void Ghost::reset() {
     direction = {0, 0};
 }
 
-float Ghost::ManhattanDistance(const std::vector<int> &direction, const Position target, const float dt) const {
+float Ghost::ManhattanDistance(const std::vector<int>& direction, const Position target, const float dt) const {
     // calculates the manhattandistance using the new position based on the direction and the dt
     const float newX = position.x + direction[0] * speed * dt;
     const float newY = position.y + direction[1] * speed * dt;
     const float dis = std::abs(newX - target.x) + std::abs(newY - target.y); // formula for distance
-    return dis;                                                        // and returns it
+    return dis;                                                              // and returns it
 }
 
 int Ghost::BFSGridDistance(int startX, int startY, const int targetX, const int targetY) const {
@@ -280,7 +280,7 @@ int Ghost::BFSGridDistance(int startX, int startY, const int targetX, const int 
     // last return if we could not find a possible path
     return INT_MAX;
 }
-float Ghost::BreathFirstDistance(const std::vector<int> &direction, const Position target, float dt) const {
+float Ghost::BreathFirstDistance(const std::vector<int>& direction, const Position target, float dt) const {
     // calculate the positions to call the BFS function on
     const auto gpos = World::NormalizedToGrid(position.x, position.y, wallgrid);
     const int gx = static_cast<int>(gpos[0]);

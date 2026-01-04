@@ -7,7 +7,7 @@
 #include <utility>
 
 namespace entities {
-Entity::Entity(const int mapwidth,const int mapheight) {
+Entity::Entity(const int mapwidth, const int mapheight) {
     // set all variables
     this->mapwidth = mapwidth;
     this->mapheight = mapheight;

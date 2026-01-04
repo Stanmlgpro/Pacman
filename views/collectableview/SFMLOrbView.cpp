@@ -4,8 +4,8 @@
 
 #include "SFMLOrbView.h"
 
-#include <utility>
 #include "entities/Entity.h"
+#include <utility>
 
 namespace views {
 SFMLOrbView::SFMLOrbView(const sf::Texture& texture, std::shared_ptr<sprites::SpriteAtlas> atlas,

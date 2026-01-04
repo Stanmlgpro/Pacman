@@ -132,7 +132,7 @@ void World::loadMap_reset() {
     }
 }
 
-std::vector<int> World::NormalizedToGrid(float normX, float normY, const std::vector<std::vector<bool>> &wallGrid) {
+std::vector<int> World::NormalizedToGrid(float normX, float normY, const std::vector<std::vector<bool>>& wallGrid) {
     // calculate the width and height of the grid
     int gridWidth = static_cast<int>(wallGrid[0].size());
     int gridHeight = static_cast<int>(wallGrid.size());

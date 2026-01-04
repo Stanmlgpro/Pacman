@@ -88,7 +88,8 @@ void MenuState::Render(sf::RenderWindow& window) {
 
     sf::Text playerText("Name: " + player + "_", font, 30);
     playerText.setFillColor(sf::Color::White);
-    playerText.setPosition(static_cast<float>(window.getSize().x) / 2.f - playerText.getGlobalBounds().width / 2.f, 150.f);
+    playerText.setPosition(static_cast<float>(window.getSize().x) / 2.f - playerText.getGlobalBounds().width / 2.f,
+                           150.f);
     window.draw(playerText);
 
     hsTitle.setPosition(static_cast<float>(window.getSize().x) / 2.f - hsTitle.getGlobalBounds().width / 2.f, 220.f);
@@ -109,7 +110,8 @@ void MenuState::Render(sf::RenderWindow& window) {
     }
 
     // add the Enter text
-    hint.setPosition(static_cast<float>(window.getSize().x) / 2.f - hint.getGlobalBounds().width / 2.f, window.getSize().y - 70.f);
+    hint.setPosition(static_cast<float>(window.getSize().x) / 2.f - hint.getGlobalBounds().width / 2.f,
+                     window.getSize().y - 70.f);
     window.draw(hint);
 }
 } // namespace states

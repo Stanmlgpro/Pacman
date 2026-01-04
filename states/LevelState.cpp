@@ -14,10 +14,8 @@
 namespace states {
 LevelState::LevelState(std::weak_ptr<StateManager> statemanager, std::shared_ptr<factory::EntityFactory> entity_factory,
                        std::shared_ptr<sounds::WorldSound> world_sounds, const std::string& player)
-    :   State(std::move(statemanager)),
-        entity_factory(std::move(entity_factory)),
-        world_sounds(std::move(world_sounds)),
-        player(player) {
+    : State(std::move(statemanager)), entity_factory(std::move(entity_factory)), world_sounds(std::move(world_sounds)),
+      player(player) {
     // initiate variables
 
     // load the world based on a txt file
