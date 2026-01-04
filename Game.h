@@ -52,7 +52,6 @@ private:
 
     std::shared_ptr<states::StateManager> state_manager;
     sf::RenderWindow window;
-    sf::Clock time;
 
     std::shared_ptr<factory::EntityFactory> entity_factory;
     std::shared_ptr<Camera> camera;

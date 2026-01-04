@@ -98,8 +98,8 @@ void World::loadMap_reset() {
         wallGrid.emplace_back();   // add another row to the wall grid for each line
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
             char c = line2[x];                            // read the specific character
-            float normX = -1.0f + tileSizeX * (x + 0.5f); // calculate the x value
-            float normY = -1.0f + tileSizeY * (y + 0.5f); // calculate the y value
+            float normX = -1.0f + tileSizeX * (static_cast<float>(x) + 0.5f); // calculate the x value
+            float normY = -1.0f + tileSizeY * (static_cast<float>(y) + 0.5f); // calculate the y value
 
             // create an entity using the entity->factory for each matching symbol (apart from ghosts ofc as explained
             // previously)
