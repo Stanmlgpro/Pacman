@@ -98,6 +98,12 @@ void SFMLWorldSounds::ResumeGame() {
 void SFMLWorldSounds::EndGame() { // stop sound on ending of the game
     ghostWalkSound.stop();
     fearSound.stop();
+    startSound.stop();
+    pacmandieSound.stop();
+    munchSound.stop();
+    munchpowerorbSound.stop();
+    munchFruitSound.stop();
+    ghosteatSound.stop();
 }
 
 SFMLWorldSounds::~SFMLWorldSounds() = default;
