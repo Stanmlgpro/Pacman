@@ -29,6 +29,7 @@ void LevelState::HandleEvent(const sf::Event& e) {
     // or simply pop a paused state on Escape
     if (e.type == sf::Event::KeyPressed) {
         if (e.key.code == sf::Keyboard::Escape) {
+            world->Pause(); // pause the game's sound on pushing of paused state
             statemanager.lock()->PushState(PAUSED, "");
         } else if (e.key.code == sf::Keyboard::Up) {
             world->movePacman(UP);

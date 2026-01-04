@@ -95,7 +95,7 @@ void World::loadMap_reset() {
     int id = 0;
 
     while (getline(file, line2)) { // read the file line by line
-        wallGrid.emplace_back();   // add another row to the wallgrid for each line
+        wallGrid.emplace_back();   // add another row to the wall grid for each line
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
             char c = line2[x];                            // read the specific character
             float normX = -1.0f + tileSizeX * (x + 0.5f); // calculate the x value
@@ -132,14 +132,14 @@ void World::loadMap_reset() {
     }
 }
 
-std::vector<int> World::NormalizedToGrid(float normX, float normY, const std::vector<std::vector<bool>>& wallGrid) {
+std::vector<int> World::NormalizedToGrid(const float normX, const float normY, const std::vector<std::vector<bool>>& wallGrid) {
     // calculate the width and height of the grid
-    int gridWidth = static_cast<int>(wallGrid[0].size());
-    int gridHeight = static_cast<int>(wallGrid.size());
+    const int gridWidth = static_cast<int>(wallGrid[0].size());
+    const int gridHeight = static_cast<int>(wallGrid.size());
 
     // calculate the size of the tiles
-    float tileSizeX = 2.0f / static_cast<float>(gridWidth);
-    float tileSizeY = 2.0f / static_cast<float>(gridHeight);
+    const float tileSizeX = 2.0f / static_cast<float>(gridWidth);
+    const float tileSizeY = 2.0f / static_cast<float>(gridHeight);
 
     // calculate the snapped grid tile
     int gridX = static_cast<int>((normX + 1.0f) / tileSizeX);
@@ -157,11 +157,11 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(const std::shared_pt
     // add a tolerance
     constexpr float epsilon = 0.005f;
     // calculate the difference in x and y
-    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - wallPos.x) + epsilon;
-    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - wallPos.y) + epsilon;
+    const float dx = std::abs(pacPos.x + static_cast<float>(pacman->getDirection()[0]) * dt - wallPos.x) + epsilon;
+    const float dy = std::abs(pacPos.y + static_cast<float>(pacman->getDirection()[1]) * dt - wallPos.y) + epsilon;
 
     // check for a collision using the collision size
-    if (dx < wall->getCollsionSize() / wallGrid[0].size() && dy < wall->getCollsionSize() / wallGrid.size())
+    if (dx < wall->getCollsionSize() / static_cast<float>(wallGrid[0].size()) && dy < wall->getCollsionSize() / static_cast<float>(wallGrid.size()))
         pacman->setMoving(false); // set pacman to stop moving when hitting a wall
     return nullptr;
 }
@@ -170,11 +170,11 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     const Position pacPos = pacman->getPosition();
     const Position orbPos = orb->getPosition();
 
-    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
-    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
+    const float dx = std::abs(pacPos.x + static_cast<float>(pacman->getDirection()[0]) * dt - orbPos.x);
+    const float dy = std::abs(pacPos.y + static_cast<float>(pacman->getDirection()[1]) * dt - orbPos.y);
 
-    const float collisionDistX = orb->getCollsionSize() / wallGrid[0].size();
-    const float collisionDistY = orb->getCollsionSize() / wallGrid.size();
+    const float collisionDistX = orb->getCollsionSize() / static_cast<float>(wallGrid[0].size());
+    const float collisionDistY = orb->getCollsionSize() / static_cast<float>(wallGrid.size());
 
     if (dx < collisionDistX && dy < collisionDistY) {
         // on collision play the orb eat sound
@@ -191,14 +191,14 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     const Position pacPos = pacman->getPosition();
     const Position orbPos = powerorb->getPosition();
 
-    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
-    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
+    const float dx = std::abs(pacPos.x + static_cast<float>(pacman->getDirection()[0]) * dt - orbPos.x);
+    const float dy = std::abs(pacPos.y + static_cast<float>(pacman->getDirection()[1]) * dt - orbPos.y);
 
-    const float collisionDistX = powerorb->getCollsionSize() / wallGrid[0].size();
-    const float collisionDistY = powerorb->getCollsionSize() / wallGrid.size();
+    const float collisionDistX = powerorb->getCollsionSize() / static_cast<float>(wallGrid[0].size());
+    const float collisionDistY = powerorb->getCollsionSize() / static_cast<float>(wallGrid.size());
 
     if (dx < collisionDistX && dy < collisionDistY) {
-        // on collision play the powerorb eat sound
+        // on collision play the power orb eat sound
         world_sounds->PowerOrbEaten();
         // add the correct scoring
         score->PowerOrbEaten();
@@ -208,22 +208,22 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
         fear_timer = 0;
         // activate fearmode
         fearmode = true;
-        // remove the powerorb from the game
+        // remove the power orb from the game
         return powerorb;
     }
     return nullptr;
 }
 
 std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Fruit> fruit,
-                                                            sprites::Sprite_ID ID) {
+                                                            const sprites::Sprite_ID ID) const {
     Position pacPos = pacman->getPosition();
     Position orbPos = fruit->getPosition();
 
-    float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - orbPos.x);
-    float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - orbPos.y);
+    float dx = std::abs(pacPos.x + static_cast<float>(pacman->getDirection()[0]) * dt - orbPos.x);
+    float dy = std::abs(pacPos.y + static_cast<float>(pacman->getDirection()[1]) * dt - orbPos.y);
 
-    float collisionDistX = fruit->getCollsionSize() / wallGrid[0].size();
-    float collisionDistY = fruit->getCollsionSize() / wallGrid.size();
+    float collisionDistX = fruit->getCollsionSize() / static_cast<float>(wallGrid[0].size());
+    float collisionDistY = fruit->getCollsionSize() / static_cast<float>(wallGrid.size());
 
     if (dx < collisionDistX && dy < collisionDistY) {
         // on collision play the fruit eaten sound
@@ -238,26 +238,22 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
     return nullptr;
 }
 
-std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost) {
+std::shared_ptr<entities::Entity> World::CollidesWithPacman(const std::shared_ptr<entities::Ghost>& ghost) {
     if (ghost->getDying())
         return nullptr;
     const Position pacPos = pacman->getPosition();
     const Position ghostPos = ghost->getPosition();
 
     constexpr float epsilon = 0.005f;
-    const float dx = std::abs(pacPos.x + pacman->getDirection()[0] * dt - ghostPos.x) + epsilon;
-    const float dy = std::abs(pacPos.y + pacman->getDirection()[1] * dt - ghostPos.y) + epsilon;
+    const float dx = std::abs(pacPos.x + static_cast<float>(pacman->getDirection()[0]) * dt - ghostPos.x) + epsilon;
+    const float dy = std::abs(pacPos.y + static_cast<float>(pacman->getDirection()[1]) * dt - ghostPos.y) + epsilon;
 
-    if (dx < ghost->getCollsionSize() / wallGrid[0].size() && dy < ghost->getCollsionSize() / wallGrid.size()) {
+    if (dx < ghost->getCollsionSize() / static_cast<float>(wallGrid[0].size()) && dy < ghost->getCollsionSize() / static_cast<float>(wallGrid.size())) {
         // on collision check whether are not the ghost was feared
         if (ghost->getFeared()) {
             // if the ghost was feared set it to be dying
             ghost->setDying(true);
-            if (combo == -1 || combo_timer < combo_time) { // add a combo if applicable
-                combo++;
-            } else {
-                combo++;
-            }
+            combo++; // add to the combo
             if (combo > 3) // cap the combo at 4
                 combo = 4;
             // add the correct scoring based on the combo
@@ -321,7 +317,7 @@ void World::TryBuffer() {
 
     bool canMove = true; // check if he is allowed to move
     if (targetGridX < 0 or targetGridX >= static_cast<int>(wallGrid[0].size()) or targetGridY < 0 or
-        targetGridY >= static_cast<int>(wallGrid.size())) // check for out of bouds movement
+        targetGridY >= static_cast<int>(wallGrid.size())) // check for out of bounds movement
         canMove = false;
     else if (wallGrid[targetGridY][targetGridX]) // check if at the new location a wall would reside
         canMove = false;
@@ -344,17 +340,18 @@ void World::TryBuffer() {
     constexpr float epsilon = 0.005f;
     if (distX < epsilon && distY < epsilon)
         pacman->setDirection(
-            buffer); // we can take the direction buffer and swap it out for the current actual direciton
+            buffer); // we can take the direction buffer and swap it out for the current actual direction
 }
 
 bool World::Update() {
-    // check if the game is lose and pacman is not dying anymore
+    // check if the game is lost and pacman is not dying anymore
     if (gamelost && !pacman->getDying())
         return true; // return if so
     // calculate the new dt
     singleton::Stopwatch& stopwatch = singleton::Stopwatch::getInstance();
     stopwatch.tick();
     dt = stopwatch.getDeltaTime();
+    if (paused) Resume(); // resume sounds if we were paused last update
     if (dt > 0.06f) // and cap at 0.06f to prevent huge jumps on lag spikes from resizing etc...
         dt = 0.06f;
     if (pacman->isDead()) // reset pacman if he is dead
@@ -373,9 +370,9 @@ bool World::Update() {
     std::vector<std::shared_ptr<entities::Entity>>
         removeables; // vector to add all items that should be removed into
                      // to prevent deleting from a vector we are looping through
-    // loop through all the entites
-    for (auto e : entities) {
-        e->checkWin(new_level);       // check if any orbs, powerorbs are still in the level to set the boolean to false
+    // loop through all the entities
+    for (const auto& e : entities) {
+        e->checkWin(new_level);       // check if any orbs, power orbs are still in the level to set the boolean to false
         if (fearmode) {               // if fearmode should be activated
             e->setFeared(fearmode);   // set the entities to fearmode (only has effect on ghosts)
             world_sounds->FearMode(); // and play the fearmode sound
@@ -390,7 +387,7 @@ bool World::Update() {
     pacman->Update(dt);
     if (new_level) { // if no orbs, power orbs were left we can start a new level
         // carry over the lives
-        int lives = pacman->getLives();
+        const int lives = pacman->getLives();
         // increase the difficulty
         difficulty++;
         // load the map again and increase the ghost speed and decrease the fear time
@@ -442,9 +439,9 @@ bool World::Update() {
 // simple getter
 std::vector<std::shared_ptr<entities::Entity>> World::getEntities() { return entities; }
 
-void World::Render() {
+void World::Render() const {
     // on render we first draw all the entities
-    for (auto entity : entities) {
+    for (const auto& entity : entities) {
         entity->Draw();
     }
     // then draw pacman
@@ -453,7 +450,7 @@ void World::Render() {
     world_view->Draw();
 }
 
-void World::movePacman(MOVE movement) const { // propagate the move command through pacman
+void World::movePacman(const MOVE movement) const { // propagate the move command through pacman
     if (movement == UP) {
         pacman->Up();
     }
@@ -477,4 +474,12 @@ std::shared_ptr<entities::Entity> World::CollidesWithPacman(std::shared_ptr<enti
 int World::getLives() const { return pacman->getLives(); }
 int World::getScore() const { return score->getPoints(); }
 
-World::~World() { world_sounds->EndGame(); } // play the endgame sound on distruction of the world
+void World::Pause() {
+    world_sounds->PauseGame();
+    paused = true;
+}
+void World::Resume() {
+    world_sounds->ResumeGame();
+    paused = false;
+}
+World::~World() { world_sounds->EndGame(); } // play the endgame sound on destruction of the world

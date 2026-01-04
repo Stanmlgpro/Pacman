@@ -29,6 +29,8 @@ public:
     virtual void FearMode() = 0;
     virtual void EndFearMode() = 0;
     virtual void PacmanDying() = 0;
+    virtual void PauseGame() = 0;
+    virtual void ResumeGame() = 0;
     virtual void EndGame() = 0;
     /// @}
 

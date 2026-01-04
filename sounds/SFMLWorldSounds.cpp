@@ -63,7 +63,39 @@ void SFMLWorldSounds::EndFearMode() {
     ghostWalkSound.play();
 }
 void SFMLWorldSounds::PacmanDying() { pacmandieSound.play(); }
-void SFMLWorldSounds::EndGame() {
+void SFMLWorldSounds::PauseGame() {
+    auto pauseIfPlaying = [](sf::Sound& s) { // function to check for each sound if it is playing
+        if (s.getStatus() == sf::SoundSource::Playing) // and pause it if so
+            s.pause();
+    };
+
+    pauseIfPlaying(ghostWalkSound);
+    pauseIfPlaying(fearSound);
+    pauseIfPlaying(startSound);
+    pauseIfPlaying(pacmandieSound);
+    pauseIfPlaying(munchSound);
+    pauseIfPlaying(munchpowerorbSound);
+    pauseIfPlaying(munchFruitSound);
+    pauseIfPlaying(ghosteatSound);
+}
+
+void SFMLWorldSounds::ResumeGame() {
+    auto resumeIfPaused = [](sf::Sound& s) { // function to check for each sound if it is pause
+        if (s.getStatus() == sf::SoundSource::Paused) // and resume it if so
+            s.play();
+    };
+
+    resumeIfPaused(ghostWalkSound);
+    resumeIfPaused(fearSound);
+    resumeIfPaused(startSound);
+    resumeIfPaused(pacmandieSound);
+    resumeIfPaused(munchSound);
+    resumeIfPaused(munchpowerorbSound);
+    resumeIfPaused(munchFruitSound);
+    resumeIfPaused(ghosteatSound);
+}
+
+void SFMLWorldSounds::EndGame() { // stop sound on ending of the game
     ghostWalkSound.stop();
     fearSound.stop();
 }

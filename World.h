@@ -68,9 +68,13 @@ public:
     std::shared_ptr<entities::Entity> CollidesWithPacman(const std::shared_ptr<entities::Wall>& wall) const;
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Orb> orb) const;
     std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::PowerOrb> powerorb);
-    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Fruit> fruit, sprites::Sprite_ID ID);
-    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Ghost> ghost);
-    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman);
+    std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Fruit> fruit, sprites::Sprite_ID ID) const;
+    std::shared_ptr<entities::Entity> CollidesWithPacman(const std::shared_ptr<entities::Ghost>& ghost);
+
+    /**
+     * @brief only here for completeness, is logically never called
+     */
+    static std::shared_ptr<entities::Entity> CollidesWithPacman(std::shared_ptr<entities::Pacman> pacman);
     /// @}
 
     /**
@@ -93,7 +97,7 @@ public:
      * renders pacman
      * renders the worldview
      */
-    void Render();
+    void Render() const;
     /**
      * @brief sets pacman's directions
      *
@@ -113,6 +117,14 @@ public:
      * @return returns the Score
      */
     int getScore() const;
+    /**
+     * @brief pauses the game's sounds
+     */
+    void Pause();
+    /**
+     * @brief resumes the game's sounds
+     */
+    void Resume();
 
     ~World();
 
@@ -131,6 +143,7 @@ private:
     float ghost_speed_mul;
     float fear_time;
     float fear_timer;
+    bool paused = false;
     std::unique_ptr<Score> score;
     /** used to decrease fearmode length and increase ghost speeds */
     int difficulty;

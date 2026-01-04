@@ -42,6 +42,10 @@ public:
     void EndFearMode() override;
     /// Overrides WorldSound::PacmanDying
     void PacmanDying() override;
+    /// Overrides WorldSound::PauseGame
+    void PauseGame() override;
+    /// Overrides WorldSound::ResumeGame
+    void ResumeGame() override;
     /// Overrides WorldSound::EndGame
     void EndGame() override;
 
