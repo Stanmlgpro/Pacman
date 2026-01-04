@@ -97,7 +97,7 @@ void World::loadMap_reset() {
     while (getline(file, line2)) { // read the file line by line
         wallGrid.emplace_back();   // add another row to the wall grid for each line
         for (int x = 0; x < static_cast<int>(line2.size()); x++) {
-            char c = line2[x];                            // read the specific character
+            char c = line2[x];                                                // read the specific character
             float normX = -1.0f + tileSizeX * (static_cast<float>(x) + 0.5f); // calculate the x value
             float normY = -1.0f + tileSizeY * (static_cast<float>(y) + 0.5f); // calculate the y value
 
