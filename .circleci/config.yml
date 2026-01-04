@@ -22,18 +22,20 @@ jobs:
             apt update
             apt install -y g++ cmake libsfml-dev
       - run:
-          name: Debug project structure
-          command: |
-            pwd
-            ls -la
-      - run:
           name: Build Project
           command: |
             cmake -S . -B build
             cmake --build build
+            if [ $? -ne 0 ]; then
+              echo "Build failed!"
+              exit 1
+            else
+              echo "Build succeeded!"
+            fi
 
   test:
     executor: linux
+    working_directory: ~/project
     steps:
       - checkout
       - run:
@@ -42,13 +44,18 @@ jobs:
             apt update
             apt install -y g++ cmake libsfml-dev
       - run:
-          name: Run Hello World Test
+          name: Test Build and Ensure Exit Code 0
           command: |
-            mkdir -p build                                           
+            mkdir -p build
             cd build
             cmake ..
             cmake --build .
-            exit 1
+            if [ $? -ne 0 ]; then
+              echo "Test build failed!"
+              exit 1
+            else
+              echo "Test build succeeded and returned 0!"
+              exit 0
             fi
 
 workflows:
