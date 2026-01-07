@@ -3,7 +3,7 @@ project(Pacman)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
+find_package(SFML 2.6 COMPONENTS graphics window system audio REQUIRED)
 
 add_library(pacman_core
         entities/Entity.cpp
