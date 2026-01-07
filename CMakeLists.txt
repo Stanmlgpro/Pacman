@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.28.3)
 project(Pacman)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(SFML 2.6 COMPONENTS graphics window system audio REQUIRED)
+find_package(SFML 2.6.1 COMPONENTS graphics window system audio REQUIRED)
 
 add_library(pacman_core
         entities/Entity.cpp
