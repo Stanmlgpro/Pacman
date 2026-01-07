@@ -6,7 +6,7 @@ This project was developed as part of the Advanced Programming course. It delive
 
 ## Features
 
-Startup menu with scoreboard and player identification.
+-  Startup menu with scoreboard and player identification
 
 -  Fully functional maze with correct collision handling
 
