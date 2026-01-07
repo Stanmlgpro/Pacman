@@ -5,7 +5,7 @@ Student ID: s0244221
 
 This project was developed as part of the Advanced Programming course. It delivers a complete Pacman game with stable gameplay, clean architectural design, and several meaningful enhancements beyond the core requirements.
 
-## - Features
+## Features
 
 Startup menu with scoreboard and player identification
 
@@ -25,7 +25,7 @@ Progressive difficulty scaling
 
 Life system and Game Over handling
 
-## - Bonus Features
+## Bonus Features
 Smarter Ghost AI (BFS Pathfinding)
 
 Ghosts can dynamically navigate the maze instead of getting stuck, resulting in more challenging and engaging gameplay.
