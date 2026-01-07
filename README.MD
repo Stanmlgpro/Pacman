@@ -14,7 +14,7 @@ This project was developed as part of the Advanced Programming course. It delive
 
 -  Intelligent Ghost AI with proper target tracking
 
--  Collectible Orbs and PowerOrbs influencing gameplay and score
+-  Collectible Orbs, PowerOrbs and Fruits influencing gameplay and score
 
 -  Fear mode with ghost reversal and behavior changes
 
@@ -29,3 +29,5 @@ This project was developed as part of the Advanced Programming course. It delive
 -  Smarter Ghost AI (BFS Pathfinding)
 
 -  Full Sound Integration
+
+-  Score Popup
